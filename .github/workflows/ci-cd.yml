@@ -82,3 +82,50 @@ jobs:
       - name: Derive version and tag
         id: derive
         run: scripts/derive-version.sh "${GITHUB_REF_NAME}"
+
+  # Per-app deploy job (see DEPLOY.md "The deploy job + Cloud Build"). Chains onto the tag job in
+  # the same run and deploys the tagged commit to Cloud Run via Cloud Build. The four load-bearing
+  # lines (needs / if / checkout ref / --substitutions) are the attach contract — don't change them.
+  deploy:
+    name: deploy to Cloud Run
+    needs: version-and-tag
+    if: github.event_name == 'push' && needs.version-and-tag.outputs.tag != ''
+    runs-on: ubuntu-latest
+    permissions: { contents: read, id-token: write } # id-token for WIF
+    env:
+      PROJECT_ID: snackbyte-apps
+      REGION: us-central1
+      WIF_PROVIDER: projects/917114118367/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+      DEPLOY_SA: snackbyte-deployer@snackbyte-apps.iam.gserviceaccount.com
+    steps:
+      - uses: actions/checkout@v6
+        with: { ref: '${{ needs.version-and-tag.outputs.tag }}', fetch-depth: 0 }
+      - name: Select environment from branch
+        id: target
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "dev" ]; then
+            echo "service=snackbyte-site-staging" >> "$GITHUB_OUTPUT"
+            echo "app_env=staging" >> "$GITHUB_OUTPUT"
+            echo "is_production=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "service=snackbyte-site" >> "$GITHUB_OUTPUT"
+            echo "app_env=" >> "$GITHUB_OUTPUT"
+            echo "is_production=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: google-github-actions/auth@v2
+        with:
+          {
+            workload_identity_provider: '${{ env.WIF_PROVIDER }}',
+            service_account: '${{ env.DEPLOY_SA }}',
+          }
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Build & deploy via Cloud Build
+        run: |
+          TAG="${{ needs.version-and-tag.outputs.tag }}"
+          SHORT_SHA="$(git rev-parse --short HEAD)"
+          gcloud builds submit \
+            --config=cloudbuild.yaml \
+            --substitutions="TAG_NAME=${TAG},SHORT_SHA=${SHORT_SHA},_SERVICE=${{ steps.target.outputs.service }},_APP_ENV=${{ steps.target.outputs.app_env }},_APP_IS_PRODUCTION=${{ steps.target.outputs.is_production }}" \
+            --service-account="projects/${PROJECT_ID}/serviceAccounts/${DEPLOY_SA}" \
+            --default-buckets-behavior=REGIONAL_USER_OWNED_BUCKET \
+            --project="$PROJECT_ID" --region="$REGION" .
