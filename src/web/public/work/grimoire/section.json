@@ -1,0 +1,18 @@
+{
+  "title": "Grimoire",
+  "blurb": "A platform for performative speech in chat communities: spells — stored sentences that do things when spoken. Design work, before the screens are built.",
+  "pages": [
+    {
+      "path": "design",
+      "title": "Design Canvas",
+      "blurb": "Four design turns, newest first — the spellbook, the composer, records and refusals, and the states board.",
+      "status": "Turn 4"
+    },
+    {
+      "path": "icon",
+      "title": "App Icon",
+      "blurb": "The Discord app icon at 512×512, with its construction alongside.",
+      "status": "Candidate"
+    }
+  ]
+}

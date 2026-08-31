@@ -1,0 +1,1601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Grimoire Design Canvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #0b0a08; -webkit-font-smoothing: antialiased; }
+  ::selection { background: rgba(205,163,73,0.28); }
+  a { color: #cda349; text-decoration: none; }
+  a:hover { color: #e4c374; }
+  .cvs-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+  .cvs-scroll::-webkit-scrollbar-thumb { background: rgba(232,224,208,0.14); border-radius: 4px; }
+</style>
+</head>
+<body>
+<div style="display:flex; flex-direction:column; gap:56px; padding:64px; font-family:'Hanken Grotesk', system-ui, sans-serif;">
+
+  <section style="display:flex; flex-direction:column; gap:28px;">
+
+    <div style="display:flex; flex-direction:column; gap:10px; max-width:900px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#6a6357;">Turn 4 · The other two refusals &mdash; and the states pass</div>
+      <div style="font-family:'Spectral', serif; font-size:26px; color:#e9e1d1; line-height:1.3;">What happened, and why</div>
+      <div style="font-size:15px; line-height:1.6; color:#9c9382; max-width:820px;">The composer designed <em>ungrammatical</em>. Here are the other two. <a href="#4a">4a</a> is Records &mdash; the ledger of what truly happened, with the invocation spine made <em>live</em>: one refused call, walked to the exact station where the law turned it away, told opaquely because an unknown caller and a forged one must look identical. <a href="#4b">4b</a> is a spell that has been failing for three days &mdash; <em>undeliverable</em>, retried, given up on, and honest that the casts are <em>held, not lost</em>. <a href="#4c">4c</a> is the states board: hover, disabled, confirm-a-hex, toasts, skeletons and focus rings, so the next build doesn&rsquo;t invent its own.</div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:flex-start;">
+
+      <!-- ============================= 4A : RECORDS + TRACE ============================= -->
+      <div id="4a" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">4a</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">Records &mdash; the ledger &amp; the trace</div>
+          <div style="font-size:13px; color:#6a6357;">the invocation spine, made live &middot; a refusal walked to its station</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:22px; height:22px; border-radius:6px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+              <span style="font-family:'Spectral', serif; font-size:15px; color:#e9e1d1;">Ashfall Guild</span>
+              <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+              <div style="display:flex; align-items:center; gap:8px; padding:6px 12px; width:220px; background:#1c1813; border:1px solid rgba(232,224,208,0.1); border-radius:7px;">
+                <span style="color:#6a6357; font-size:12px;">&#9906;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Search the book&hellip;</span>
+              </div>
+              <div style="width:28px; height:28px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+            <!-- sidebar : Records active -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:13px; opacity:0.7;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(205,163,73,0.12); border-radius:7px; color:#e4c374;"><span style="font-size:11px;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600;">Records</span></div>
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Grammar</div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- ledger main -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:26px 28px;">
+              <div style="display:flex; align-items:flex-end; gap:14px; margin-bottom:4px;">
+                <h1 style="margin:0; font-family:'Spectral', serif; font-size:28px; font-weight:600; color:#e9e1d1;">Records</h1>
+                <span style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; color:#6a6357; padding-bottom:5px;">every invocation, and what became of it</span>
+              </div>
+              <div style="font-family:'Spectral',serif; font-style:italic; font-size:14px; color:#8a8272; margin-bottom:20px;">The book never reports done what did not happen. This is the proof.</div>
+
+              <div style="display:flex; gap:8px; margin-bottom:16px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#e0d3ab; background:rgba(205,163,73,0.14); border:1px solid rgba(205,163,73,0.3); border-radius:20px; padding:5px 12px;">all &middot; 1,384</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272; border:1px solid rgba(232,224,208,0.1); border-radius:20px; padding:5px 12px;">delivered</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272; border:1px solid rgba(232,224,208,0.1); border-radius:20px; padding:5px 12px;">refused &middot; 23</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272; border:1px solid rgba(232,224,208,0.1); border-radius:20px; padding:5px 12px;">failed &middot; 4</span>
+              </div>
+
+              <div style="display:flex; flex-direction:column;">
+                <!-- header row -->
+                <div style="display:flex; gap:12px; padding:0 6px 8px; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#5c564b;">
+                  <span style="width:64px; flex-shrink:0;">time</span>
+                  <span style="flex:1;">invocation</span>
+                  <span style="width:120px; flex-shrink:0;">outcome</span>
+                </div>
+                <!-- selected: refused -->
+                <div style="display:flex; gap:12px; align-items:center; padding:12px 6px; margin:0 -6px; border-top:1px solid rgba(232,224,208,0.08); border-left:2px solid #bb6647; background:rgba(187,102,71,0.08); border-radius:0 6px 6px 0;">
+                  <span style="width:64px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272;">10:42:07</span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">external call &middot; <span style="color:#a89f8e;">/webhooks/&#8226;&#8226;&#8226;&#8226;/clickup</span></div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#7a7266; margin-top:2px;">no spell reached &mdash; turned away at the door</div>
+                  </div>
+                  <span style="width:120px; flex-shrink:0; display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#d18a6c;"><span style="width:7px; height:7px; border-radius:50%; background:#bb6647;"></span> refused &middot; law</span>
+                </div>
+                <!-- delivered -->
+                <div style="display:flex; gap:12px; align-items:center; padding:12px 6px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:64px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272;">10:41:55</span>
+                  <div style="flex:1; min-width:0;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">/taunt <span style="color:#8a8272;">&mdash;</span> <span style="color:#a89f8e;">reply at @grib</span></div></div>
+                  <span style="width:120px; flex-shrink:0; display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#86a06f;"><span style="width:7px; height:7px; border-radius:50%; background:#4f7a3e;"></span> delivered</span>
+                </div>
+                <!-- deduped -->
+                <div style="display:flex; gap:12px; align-items:center; padding:12px 6px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:64px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272;">10:38:12</span>
+                  <div style="flex:1; min-width:0;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">Relay the deployment <span style="color:#8a8272;">&mdash;</span> <span style="color:#a89f8e;">release v2.4.0</span></div></div>
+                  <span style="width:120px; flex-shrink:0; display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;"><span style="width:7px; height:7px; border-radius:50%; background:#6a6357;"></span> deduped &middot; skipped</span>
+                </div>
+                <!-- failing -->
+                <div style="display:flex; gap:12px; align-items:center; padding:12px 6px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:64px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272;">10:31:40</span>
+                  <div style="flex:1; min-width:0;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">Crown the patrons <span style="color:#8a8272;">&mdash;</span> <span style="color:#a89f8e;">grant @patron</span></div></div>
+                  <span style="width:120px; flex-shrink:0; display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#d1a24a;"><span style="width:7px; height:7px; border-radius:50%; background:#b58a2e;"></span> retrying &middot; 3/6</span>
+                </div>
+                <!-- delivered -->
+                <div style="display:flex; gap:12px; align-items:center; padding:12px 6px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:64px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272;">10:22:03</span>
+                  <div style="flex:1; min-width:0;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">Welcome the newly arrived <span style="color:#8a8272;">&mdash;</span> <span style="color:#a89f8e;">@lark joined</span></div></div>
+                  <span style="width:120px; flex-shrink:0; display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#86a06f;"><span style="width:7px; height:7px; border-radius:50%; background:#4f7a3e;"></span> delivered</span>
+                </div>
+                <!-- gave up -->
+                <div style="display:flex; gap:12px; align-items:center; padding:12px 6px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:64px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a8272;">07:58:19</span>
+                  <div style="flex:1; min-width:0;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">Crown the patrons <span style="color:#8a8272;">&mdash;</span> <span style="color:#a89f8e;">grant @patron</span></div></div>
+                  <span style="width:120px; flex-shrink:0; display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#c98d72;"><span style="width:7px; height:7px; border-radius:50%; background:#bb6647;"></span> gave up &middot; held</span>
+                </div>
+                <div style="border-top:1px solid rgba(232,224,208,0.08);"></div>
+              </div>
+            </div>
+
+            <!-- trace rail -->
+            <div class="cvs-scroll" style="width:372px; flex-shrink:0; border-left:1px solid rgba(232,224,208,0.09); background:#13110c; overflow-y:auto; padding:24px 22px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:5px;">The trace &middot; 10:42:07</div>
+              <h3 style="margin:0 0 4px; font-family:'Spectral',serif; font-size:19px; font-weight:600; color:#e9e1d1;">Refused at the law</h3>
+              <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5; margin-bottom:20px;">One invocation, walked across the whole grammar &mdash; and where it stopped.</div>
+
+              <!-- spine, vertical -->
+              <div style="display:flex; flex-direction:column;">
+                <!-- trigger : passed -->
+                <div style="display:flex; gap:13px;">
+                  <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:16px; height:16px; border-radius:50%; background:rgba(79,122,62,0.2); border:1.5px solid #4f7a3e; display:flex; align-items:center; justify-content:center; color:#86a06f; font-size:8px;">&#10003;</div>
+                    <div style="flex:1; width:1.5px; background:linear-gradient(#4f7a3e,#bb6647); margin:4px 0;"></div>
+                  </div>
+                  <div style="padding-bottom:16px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#c9c0ad;">trigger</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; color:#86a06f; margin-top:2px;">an external call arrived on a tenant path</div>
+                  </div>
+                </div>
+                <!-- law : REFUSED -->
+                <div style="display:flex; gap:13px;">
+                  <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:16px; height:16px; border-radius:50%; background:rgba(187,102,71,0.22); border:1.5px solid #bb6647; display:flex; align-items:center; justify-content:center; color:#d18a6c; font-size:9px;">&#10007;</div>
+                    <div style="flex:1; width:1.5px; background:rgba(232,224,208,0.08); margin:4px 0;"></div>
+                  </div>
+                  <div style="padding-bottom:16px; flex:1;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e4b199;">law admits &mdash; <span style="color:#d18a6c;">refused</span></div>
+                    <div style="margin-top:8px; padding:12px 13px; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:7px;">
+                      <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#e2d0c4; line-height:1.6;">unrecognized or unauthenticated caller</div>
+                      <div style="font-family:'Hanken Grotesk',sans-serif; font-size:11px; color:#a89f8e; line-height:1.55; margin-top:8px;">We can&rsquo;t tell you which. An unknown caller and a forged one look identical here &mdash; and that is the point: a wrong guess must learn nothing.</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- downstream : never reached -->
+                <div style="display:flex; gap:13px; opacity:0.4;">
+                  <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:16px; height:16px; border-radius:50%; border:1.5px solid rgba(232,224,208,0.18);"></div>
+                    <div style="flex:1; width:1.5px; background:rgba(232,224,208,0.08); margin:4px 0;"></div>
+                  </div>
+                  <div style="padding-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8a8272;">spell &middot; logic &middot; verb</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:11px; color:#6a6357; margin-top:2px;">not reached</div></div>
+                </div>
+                <div style="display:flex; gap:13px; opacity:0.4;">
+                  <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:16px; height:16px; border-radius:50%; border:1.5px solid rgba(232,224,208,0.18);"></div>
+                    <div style="flex:1; width:1.5px; background:rgba(232,224,208,0.08); margin:4px 0;"></div>
+                  </div>
+                  <div style="padding-bottom:14px;"><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8a8272;">nouns</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:11px; color:#6a6357; margin-top:2px;">not reached</div></div>
+                </div>
+                <div style="display:flex; gap:13px; opacity:0.4;">
+                  <div style="display:flex; flex-direction:column; align-items:center;">
+                    <div style="width:16px; height:16px; border-radius:50%; border:1.5px solid rgba(232,224,208,0.18);"></div>
+                  </div>
+                  <div><div style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#8a8272;">logistics performs</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:11px; color:#6a6357; margin-top:2px;">nothing was delivered &mdash; correctly</div></div>
+                </div>
+              </div>
+
+              <div style="margin-top:20px; padding:12px 14px; background:#181510; border:1px solid rgba(232,224,208,0.08); border-radius:7px; font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; color:#9c9382; line-height:1.6;">
+                This is one of the three ways a spell is refused: <span style="color:#c9b06a;">unspeakable</span> at the law. The other two are <span style="color:#b3abdc;">ungrammatical</span> (caught while writing) and <span style="color:#c98d72;">undeliverable</span> (caught while performing).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= 4B : FAILING SPELL ============================= -->
+      <div id="4b" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">4b</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">A spell failing for three days</div>
+          <div style="font-size:13px; color:#6a6357;">undeliverable &middot; retried, backed off, gave up &middot; held, not lost</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:22px; height:22px; border-radius:6px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+              <span style="font-family:'Spectral', serif; font-size:15px; color:#e9e1d1;">Ashfall Guild</span>
+              <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+              <div style="display:flex; align-items:center; gap:7px; padding:5px 11px; border-radius:20px; background:rgba(187,102,71,0.12); border:1px solid rgba(187,102,71,0.34);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#bb6647;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#d18a6c;">1 spell needs you</span>
+              </div>
+              <div style="width:28px; height:28px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+            <!-- sidebar -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(205,163,73,0.12); border-radius:7px; color:#e4c374;"><span style="font-size:13px;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#b58a2e;">6</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:11px; opacity:0.7;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Records</span></div>
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Grammar</div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- list (compact) -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:26px 26px;">
+              <h1 style="margin:0 0 18px; font-family:'Spectral', serif; font-size:26px; font-weight:600; color:#e9e1d1;">Your grimoire</h1>
+              <div style="display:flex; flex-direction:column;">
+                <div style="display:flex; gap:12px; align-items:center; padding:13px 4px; border-top:1px solid rgba(232,224,208,0.08);"><span style="width:8px; height:8px; border-radius:50%; background:#86a06f;"></span><span style="flex:1; font-family:'Spectral',serif; font-size:15.5px; color:#e9e1d1;">Welcome the newly arrived</span><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e;">healthy</span></div>
+                <div style="display:flex; gap:12px; align-items:center; padding:13px 4px; border-top:1px solid rgba(232,224,208,0.08);"><span style="width:8px; height:8px; border-radius:50%; background:#86a06f;"></span><span style="flex:1; font-family:'Spectral',serif; font-size:15.5px; color:#e9e1d1;">Relay the deployment</span><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e;">healthy</span></div>
+                <!-- failing, selected -->
+                <div style="display:flex; gap:12px; align-items:center; padding:13px 12px; margin:0 -8px; border-top:1px solid rgba(232,224,208,0.08); border-left:2px solid #bb6647; background:rgba(187,102,71,0.09); border-radius:0 6px 6px 0;">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#bb6647; box-shadow:0 0 0 3px rgba(187,102,71,0.2);"></span>
+                  <div style="flex:1;"><div style="font-family:'Spectral',serif; font-size:15.5px; color:#e9e1d1;">Crown the patrons</div><div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#d18a6c; margin-top:2px;">failing for 3 days</div></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#d18a6c;">needs you</span>
+                </div>
+                <div style="display:flex; gap:12px; align-items:center; padding:13px 4px; border-top:1px solid rgba(232,224,208,0.08);"><span style="width:8px; height:8px; border-radius:50%; background:#86a06f;"></span><span style="flex:1; font-family:'Spectral',serif; font-size:15.5px; color:#e9e1d1;">/taunt</span><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e;">healthy</span></div>
+                <div style="display:flex; gap:12px; align-items:center; padding:13px 4px; border-top:1px solid rgba(232,224,208,0.08);"><span style="color:#bb6647; font-size:10px;">&#128274;</span><span style="flex:1; font-family:'Spectral',serif; font-size:15.5px; color:#c9c0ad;">Banish</span><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#8a8272;">hex</span></div>
+                <div style="border-top:1px solid rgba(232,224,208,0.08);"></div>
+              </div>
+            </div>
+
+            <!-- reading pane : undeliverable -->
+            <div class="cvs-scroll" style="width:372px; flex-shrink:0; border-left:1px solid rgba(232,224,208,0.09); background:#e7ddc6; overflow-y:auto; padding:24px 24px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#bb6647;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#a0603f;">Undeliverable &middot; gave up</span>
+              </div>
+              <h2 style="margin:0 0 6px; font-family:'Spectral', serif; font-size:23px; font-weight:600; color:#26221a; line-height:1.2;">Crown the patrons</h2>
+              <div style="font-family:'Spectral',serif; font-style:italic; font-size:13.5px; color:#6f6653; line-height:1.5; margin-bottom:20px;">The spell is fine. The delivery isn&rsquo;t &mdash; Discord has refused this channel for three days.</div>
+
+              <!-- health strip -->
+              <div style="display:flex; align-items:flex-end; gap:3px; height:44px; margin-bottom:6px;">
+                <div style="flex:1; height:70%; background:#4f7a3e; border-radius:2px;"></div>
+                <div style="flex:1; height:80%; background:#4f7a3e; border-radius:2px;"></div>
+                <div style="flex:1; height:60%; background:#4f7a3e; border-radius:2px;"></div>
+                <div style="flex:1; height:100%; background:#b58a2e; border-radius:2px;"></div>
+                <div style="flex:1; height:85%; background:#bb6647; border-radius:2px;"></div>
+                <div style="flex:1; height:90%; background:#bb6647; border-radius:2px;"></div>
+                <div style="flex:1; height:75%; background:#bb6647; border-radius:2px;"></div>
+                <div style="flex:1; height:95%; background:#bb6647; border-radius:2px;"></div>
+                <div style="flex:1; height:80%; background:#bb6647; border-radius:2px;"></div>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:9px; color:#8a7a52; margin-bottom:20px;"><span>3 days ago</span><span>last success</span><span>now</span></div>
+
+              <!-- retry log -->
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#a08a4e; margin-bottom:9px;">What the book tried</div>
+              <div style="display:flex; flex-direction:column; gap:7px; margin-bottom:20px;">
+                <div style="display:flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a4436;"><span style="color:#a0603f;">&#10007;</span> attempt 6 &middot; 2h ago <span style="color:#8a7a52;">&mdash; 403, channel forbidden</span></div>
+                <div style="display:flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6653;"><span style="color:#a0603f;">&#10007;</span> attempts 1&ndash;5 &middot; backed off 1m &rarr; 32m</div>
+                <div style="display:flex; align-items:center; gap:9px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6653;"><span style="color:#8a7a52;">&#8213;</span> stopped retrying after 6 &mdash; no point hammering</div>
+              </div>
+
+              <!-- held not lost -->
+              <div style="padding:14px 15px; background:rgba(160,96,63,0.1); border:1px solid rgba(160,96,63,0.32); border-radius:8px; margin-bottom:18px;">
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#7a3f28; margin-bottom:5px;">3 casts are held, not lost.</div>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; color:#5a4a3a; line-height:1.55;">Nothing was reported delivered. Fix the channel and the book will speak them, in order &mdash; or let them go.</div>
+              </div>
+
+              <div style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; color:#6f6653; line-height:1.55; margin-bottom:16px;">Most likely: the <span style="font-family:'JetBrains Mono',monospace;">#hall-of-patrons</span> channel was deleted or the face lost access.</div>
+
+              <div style="display:flex; gap:9px;">
+                <button style="flex:1; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#26221a; background:transparent; border:1px solid rgba(38,34,26,0.3); border-radius:6px; padding:9px; cursor:pointer;">Retry now</button>
+                <button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6f6653; background:transparent; border:1px solid rgba(38,34,26,0.2); border-radius:6px; padding:9px 12px; cursor:pointer;">Discard held</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= 4C : STATES BOARD ============================= -->
+      <div id="4c" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">4c</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">States board</div>
+          <div style="font-size:13px; color:#6a6357;">the vocabulary the next build shouldn&rsquo;t have to invent</div>
+        </div>
+
+        <div style="width:1240px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); padding:30px 32px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:26px;">
+
+          <!-- buttons -->
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">Buttons</div>
+            <div style="display:flex; flex-direction:column; gap:11px;">
+              <div style="display:flex; align-items:center; gap:10px;"><button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#0b0a08; background:#cda349; border:none; border-radius:7px; padding:8px 15px;">Cast spell</button><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357;">default</span></div>
+              <div style="display:flex; align-items:center; gap:10px;"><button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#0b0a08; background:#e4c374; border:none; border-radius:7px; padding:8px 15px; box-shadow:0 0 0 3px rgba(205,163,73,0.2);">Cast spell</button><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357;">hover</span></div>
+              <div style="display:flex; align-items:center; gap:10px;"><button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#0b0a08; background:#b58a2e; border:none; border-radius:7px; padding:8px 15px; transform:translateY(1px);">Cast spell</button><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357;">active</span></div>
+              <div style="display:flex; align-items:center; gap:10px;"><button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#5c564b; background:#2a241c; border:1px solid rgba(232,224,208,0.1); border-radius:7px; padding:8px 15px; cursor:not-allowed;">Cast spell</button><span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357;">disabled</span></div>
+              <div style="display:flex; align-items:center; gap:10px;"><button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#a89f8e; background:transparent; border:1px solid rgba(232,224,208,0.14); border-radius:7px; padding:8px 15px;">Secondary</button><button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#e2c4b4; background:rgba(187,102,71,0.14); border:1px solid rgba(187,102,71,0.4); border-radius:7px; padding:8px 15px;">Cast hex</button></div>
+            </div>
+          </div>
+
+          <!-- status seals -->
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">Status seals</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <div style="display:flex; align-items:center; gap:9px;"><span style="width:8px; height:8px; border-radius:50%; background:#4f7a3e;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">active / delivered</span></div>
+              <div style="display:flex; align-items:center; gap:9px;"><span style="width:8px; height:8px; border-radius:50%; background:#b58a2e;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">paused / retrying</span></div>
+              <div style="display:flex; align-items:center; gap:9px;"><span style="width:8px; height:8px; border-radius:50%; background:#6a6357;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">deduped / skipped</span></div>
+              <div style="display:flex; align-items:center; gap:9px;"><span style="width:8px; height:8px; border-radius:50%; background:#bb6647; box-shadow:0 0 0 3px rgba(187,102,71,0.2);"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">failing / gave up</span></div>
+              <div style="display:flex; align-items:center; gap:9px;"><span style="color:#bb6647; font-size:11px;">&#128274;</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">sealed (hex)</span></div>
+            </div>
+          </div>
+
+          <!-- three refusals -->
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">The three refusals</div>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <div style="padding:9px 11px; background:rgba(144,137,191,0.1); border:1px solid rgba(144,137,191,0.34); border-radius:7px;"><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#b3abdc;">ungrammatical</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:10.5px; color:#8a8272; margin-top:2px;">language &mdash; caught while writing</div></div>
+              <div style="padding:9px 11px; background:rgba(205,163,73,0.1); border:1px solid rgba(205,163,73,0.34); border-radius:7px;"><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a;">unspeakable</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:10.5px; color:#8a8272; margin-top:2px;">law &mdash; refused at speaking time</div></div>
+              <div style="padding:9px 11px; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:7px;"><div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d18a6c;">undeliverable</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:10.5px; color:#8a8272; margin-top:2px;">logistics &mdash; never lies about done</div></div>
+            </div>
+          </div>
+
+          <!-- form controls -->
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">Form controls</div>
+            <div style="display:flex; flex-direction:column; gap:11px;">
+              <input placeholder="Name this spell" style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#e9e1d1; background:#1c1813; border:1px solid rgba(232,224,208,0.12); border-radius:7px; padding:9px 12px; outline:none;">
+              <input value="Announce the release" style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#e9e1d1; background:#1c1813; border:1px solid #cda349; border-radius:7px; padding:9px 12px; outline:none; box-shadow:0 0 0 3px rgba(205,163,73,0.2);">
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:8px 12px; background:#1c1813; border:1px solid rgba(232,224,208,0.12); border-radius:7px;"><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#a89f8e;">choose a trigger</span><span style="color:#6a6357; font-size:10px;">&#9662;</span></div>
+              <div style="display:flex; align-items:center; gap:10px;"><div style="width:38px; height:22px; border-radius:12px; background:#4f7a3e; position:relative;"><div style="position:absolute; top:2px; right:2px; width:18px; height:18px; border-radius:50%; background:#e9e1d1;"></div></div><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#a89f8e;">active</span><div style="width:38px; height:22px; border-radius:12px; background:#2a241c; border:1px solid rgba(232,224,208,0.12); position:relative;"><div style="position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%; background:#6a6357;"></div></div><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#6a6357;">off</span></div>
+            </div>
+          </div>
+
+          <!-- toasts -->
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">Toasts</div>
+            <div style="display:flex; flex-direction:column; gap:9px;">
+              <div style="display:flex; align-items:center; gap:10px; padding:11px 13px; background:#1c1813; border:1px solid rgba(79,122,62,0.4); border-left:3px solid #4f7a3e; border-radius:7px;"><span style="color:#86a06f; font-size:12px;">&#10003;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#d8cdb8;">Spell cast &mdash; &ldquo;Announce the release&rdquo;</span></div>
+              <div style="display:flex; align-items:center; gap:10px; padding:11px 13px; background:#1c1813; border:1px solid rgba(181,138,46,0.4); border-left:3px solid #b58a2e; border-radius:7px;"><span style="color:#cda349; font-size:12px;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#d8cdb8;">Delivery recovered &mdash; held casts sent</span></div>
+              <div style="display:flex; align-items:center; gap:10px; padding:11px 13px; background:#1c1813; border:1px solid rgba(187,102,71,0.4); border-left:3px solid #bb6647; border-radius:7px;"><span style="color:#d18a6c; font-size:12px;">&#10007;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#d8cdb8;">Gave up &mdash; 3 casts held, nothing lost</span></div>
+            </div>
+          </div>
+
+          <!-- confirm dialog (spans) -->
+          <div style="grid-column:span 2;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">Confirm a hex &middot; the only place a human casts one</div>
+            <div style="max-width:400px; background:#1a1611; border:1px solid rgba(187,102,71,0.4); border-radius:11px; padding:22px 22px; box-shadow:0 24px 50px -24px rgba(0,0,0,0.8);">
+              <div style="display:flex; align-items:center; gap:9px; margin-bottom:10px;"><span style="color:#bb6647; font-size:14px;">&#128274;</span><h3 style="margin:0; font-family:'Spectral',serif; font-size:18px; font-weight:600; color:#e9e1d1;">Cast Banish on @grib?</h3></div>
+              <p style="margin:0 0 18px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#a89f8e; line-height:1.6;">This bans the member and erases seven days of their messages. <strong style="color:#d18a6c;">It cannot be undone</strong>, and only you &mdash; not a spell &mdash; can do it.</p>
+              <div style="display:flex; gap:10px; justify-content:flex-end;">
+                <button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#a89f8e; background:transparent; border:1px solid rgba(232,224,208,0.14); border-radius:7px; padding:9px 16px;">Cancel</button>
+                <button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#fff; background:#a84d33; border:none; border-radius:7px; padding:9px 16px;">Cast the hex</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- skeleton -->
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:14px;">Loading skeleton</div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <div style="display:flex; gap:12px; align-items:center;"><div style="width:8px; height:8px; border-radius:50%; background:#2a241c;"></div><div style="flex:1;"><div style="height:12px; width:60%; background:#241f19; border-radius:4px; margin-bottom:7px;"></div><div style="height:9px; width:85%; background:#1e1a15; border-radius:4px;"></div></div></div>
+              <div style="display:flex; gap:12px; align-items:center;"><div style="width:8px; height:8px; border-radius:50%; background:#2a241c;"></div><div style="flex:1;"><div style="height:12px; width:48%; background:#241f19; border-radius:4px; margin-bottom:7px;"></div><div style="height:9px; width:72%; background:#1e1a15; border-radius:4px;"></div></div></div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#5c564b;">focus ring &middot; gold, 3px, 0.2 alpha &mdash; on every interactive element</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display:flex; flex-direction:column; gap:28px;">
+
+    <div style="display:flex; flex-direction:column; gap:10px; max-width:900px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#6a6357;">Turn 3 · The composer, the empty book, the first binding</div>
+      <div style="font-family:'Spectral', serif; font-size:26px; color:#e9e1d1; line-height:1.3;">Where the rules become an interaction</div>
+      <div style="font-size:15px; line-height:1.6; color:#9c9382; max-width:800px;"><a href="#3a">3a</a> is the composer. You build one sentence, and the sentence polices itself: the <em>trigger</em> chosen here is a webhook, which owes no reply &mdash; so the reply verbs are refused <em>in place</em>, with the reason, and hexes are simply not in the menu to begin with. <a href="#3b">3b</a> is the first thing a new tenant sees: a blank book, one clear act. <a href="#3c">3c</a> is the one manual step in the whole product &mdash; binding a community, with ownership <em>verified</em>, not claimed.</div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:flex-start;">
+
+      <!-- ============================= 3A : COMPOSER ============================= -->
+      <div id="3a" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">3a</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">The spell composer</div>
+          <div style="font-size:13px; color:#6a6357;">the menu is finite and honest &middot; the trigger constrains everything after it</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6a6357;">Spells</span>
+              <span style="color:#5c564b; font-size:10px;">/</span>
+              <span style="font-family:'Spectral', serif; font-size:14px; color:#c9c0ad; font-style:italic;">new spell</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:10px;">
+              <button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#a89f8e; background:transparent; border:1px solid rgba(232,224,208,0.14); border-radius:7px; padding:8px 14px; cursor:pointer;">Save draft</button>
+              <button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#5c564b; background:#2a241c; border:1px solid rgba(232,224,208,0.1); border-radius:7px; padding:8px 16px; cursor:not-allowed;">Cast spell</button>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+
+            <!-- sidebar -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(205,163,73,0.12); border-radius:7px; color:#e4c374;">
+                <span style="font-size:13px;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#b58a2e;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:12px; opacity:0.7;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;"><span style="font-size:11px; opacity:0.7;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Records</span></div>
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Grammar</div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- composer center -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:28px 34px; display:flex; flex-direction:column;">
+
+              <input value="Announce the release" style="font-family:'Spectral',serif; font-size:26px; font-weight:600; color:#e9e1d1; background:transparent; border:none; border-bottom:1px solid rgba(232,224,208,0.12); padding:0 0 8px; outline:none; width:100%;">
+              <div style="font-family:'Spectral',serif; font-style:italic; font-size:13.5px; color:#8a8272; margin:10px 0 22px;">A spell is one sentence. Fill each part from the menu &mdash; the book only offers what is legal here.</div>
+
+              <!-- the sentence -->
+              <div style="background:#e7ddc6; border-radius:9px; padding:26px 28px; box-shadow:0 2px 0 rgba(0,0,0,0.25), 0 14px 26px -18px rgba(0,0,0,0.6);">
+
+                <!-- WHEN -->
+                <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:18px;">
+                  <div style="width:52px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; color:#6a4fa0; padding-top:9px;">WHEN</div>
+                  <div style="flex:1;">
+                    <div style="display:inline-flex; align-items:center; gap:9px; background:rgba(106,79,160,0.1); border:1px solid rgba(106,79,160,0.4); border-radius:7px; padding:8px 12px;">
+                      <span style="width:7px; height:7px; border-radius:50%; background:#6a4fa0;"></span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#3d3550;">external call &middot; GitHub release</span>
+                      <span style="color:#6a4fa0; font-size:11px; cursor:pointer;">&#9998;</span>
+                    </div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a7a52; margin-top:7px;">a webhook from the outside world &mdash; it can be answered outward, but no one is waiting for a reply.</div>
+                  </div>
+                </div>
+
+                <!-- IF -->
+                <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:18px;">
+                  <div style="width:52px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; color:#6a4fa0; padding-top:9px;">IF</div>
+                  <div style="flex:1; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                    <div style="display:inline-flex; align-items:center; gap:9px; background:rgba(106,79,160,0.08); border:1px solid rgba(106,79,160,0.32); border-radius:7px; padding:8px 12px;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#3d3550;">tag matches <span style="background:rgba(38,34,26,0.08); padding:1px 5px; border-radius:3px;">v*</span></span>
+                      <span style="color:#6a4fa0; font-size:11px; cursor:pointer;">&#9998;</span>
+                    </div>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a08a4e; cursor:pointer;">+ and&hellip;</span>
+                  </div>
+                </div>
+
+                <!-- DO (active) -->
+                <div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:18px;">
+                  <div style="width:52px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; color:#8a6a1e; padding-top:9px;">DO</div>
+                  <div style="flex:1;">
+                    <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(205,163,73,0.16); border:1.5px dashed #b58a2e; border-radius:7px; padding:9px 14px;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#7a5f1e;">choose a verb</span>
+                      <span style="color:#8a6a1e; font-size:11px;">&#9656;</span>
+                    </div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a7a52; margin-top:7px;">pick from the menu on the right &rarr;</div>
+                  </div>
+                </div>
+
+                <!-- audience -->
+                <div style="display:flex; gap:16px; align-items:flex-start; padding-top:18px; border-top:1px solid rgba(38,34,26,0.13);">
+                  <div style="width:52px; flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#6f6653; padding-top:7px;">SEEN&nbsp;BY</div>
+                  <div style="flex:1;">
+                    <div style="display:inline-flex; border:1px solid rgba(38,34,26,0.2); border-radius:7px; overflow:hidden;">
+                      <div style="font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#26221a; background:rgba(205,163,73,0.35); padding:7px 14px;">the channel &middot; everyone</div>
+                      <div style="font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#9c917a; background:transparent; padding:7px 14px; border-left:1px solid rgba(38,34,26,0.15); text-decoration:line-through;">privately</div>
+                    </div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#a0603f; margin-top:8px; display:flex; align-items:center; gap:6px;"><span>&#10007;</span> a private reply isn&rsquo;t possible here &mdash; a webhook has no one to reply to.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- live grammar status -->
+              <div style="display:flex; align-items:center; gap:11px; margin-top:18px; padding:12px 16px; background:rgba(181,138,46,0.09); border:1px solid rgba(181,138,46,0.3); border-radius:8px;">
+                <span style="color:#cda349; font-size:14px;">&#9678;</span>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; color:#d8cdb8;"><strong style="color:#e4c374;">Not finished.</strong> This spell has no verb yet &mdash; it can&rsquo;t be cast until it says what to <em>do</em>. The book checks as you write; it will not let an illegal spell be saved.</div>
+              </div>
+            </div>
+
+            <!-- picker rail -->
+            <div class="cvs-scroll" style="width:366px; flex-shrink:0; border-left:1px solid rgba(232,224,208,0.09); background:#13110c; overflow-y:auto; padding:22px 20px;">
+              <div style="display:flex; align-items:baseline; gap:8px; margin-bottom:4px;">
+                <h3 style="margin:0; font-family:'Spectral',serif; font-size:18px; font-weight:600; color:#e9e1d1;">Choose a verb</h3>
+                <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">11 available here</span>
+              </div>
+              <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#8a8272; line-height:1.5; margin-bottom:18px;">Everything the book can say for a webhook trigger. Pick one.</div>
+
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#c9b06a; margin-bottom:10px;">Charms &middot; compose freely</div>
+              <div style="display:flex; flex-direction:column; gap:7px; margin-bottom:22px;">
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(205,163,73,0.09); border:1px solid rgba(205,163,73,0.28); border-radius:7px; cursor:pointer;"><span style="color:#cda349; font-size:11px;">&#9670;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e0d3ab;">post a message</span></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(205,163,73,0.09); border:1px solid rgba(205,163,73,0.28); border-radius:7px; cursor:pointer;"><span style="color:#cda349; font-size:11px;">&#9678;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e0d3ab;">post as a face</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:9px; color:#8a7a52;">custom name + avatar</span></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(205,163,73,0.09); border:1px solid rgba(205,163,73,0.28); border-radius:7px; cursor:pointer;"><span style="color:#cda349; font-size:11px;">&#9633;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e0d3ab;">toggle a role</span></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(205,163,73,0.09); border:1px solid rgba(205,163,73,0.28); border-radius:7px; cursor:pointer;"><span style="color:#cda349; font-size:11px;">&#9825;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e0d3ab;">add a reaction</span></div>
+                <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(205,163,73,0.09); border:1px solid rgba(205,163,73,0.28); border-radius:7px; cursor:pointer;"><span style="color:#cda349; font-size:11px;">&#9633;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#e0d3ab;">pin a message</span></div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6a6357; padding:4px 12px;">+ 6 more charms</div>
+              </div>
+
+              <!-- refused by the trigger -->
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#8a8272; margin-bottom:10px;">Not available for a webhook</div>
+              <div style="display:flex; flex-direction:column; gap:7px; margin-bottom:22px;">
+                <div style="padding:9px 12px; background:rgba(232,224,208,0.02); border:1px solid rgba(232,224,208,0.07); border-radius:7px; opacity:0.85;">
+                  <div style="display:flex; align-items:center; gap:9px;"><span style="color:#6a6357; font-size:10px;">&#10007;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7266; text-decoration:line-through;">reply in the channel</span></div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#7a7266; margin-top:5px; padding-left:19px; line-height:1.5;">a reply needs a trigger that owes one &mdash; an interaction, not a webhook.</div>
+                </div>
+                <div style="padding:9px 12px; background:rgba(232,224,208,0.02); border:1px solid rgba(232,224,208,0.07); border-radius:7px; opacity:0.85;">
+                  <div style="display:flex; align-items:center; gap:9px;"><span style="color:#6a6357; font-size:10px;">&#10007;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#7a7266; text-decoration:line-through;">reply privately</span></div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#7a7266; margin-top:5px; padding-left:19px; line-height:1.5;">same &mdash; and a private reply is only ever the platform&rsquo;s own voice.</div>
+                </div>
+              </div>
+
+              <!-- hexes: named, never listed -->
+              <div style="padding:13px 14px; background:#221d17; border:1px solid rgba(187,102,71,0.3); border-radius:8px; margin-bottom:16px;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;"><span style="color:#bb6647; font-size:11px;">&#128274;</span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:#c98d72;">Hexes are never here</span></div>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; color:#9c9382; line-height:1.55;">Ban, kick, purge &mdash; the irreversible acts &mdash; can&rsquo;t be built into a spell at all. They&rsquo;re cast by hand, by a person with standing, in the moment.</div>
+              </div>
+
+              <div style="display:flex; align-items:center; gap:8px; padding:11px 13px; border:1px dashed rgba(205,163,73,0.32); border-radius:8px;">
+                <span style="color:#cda349; font-size:12px;">&#10022;</span>
+                <span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#c9b06a;">Missing a verb you need? <span style="text-decoration:underline;">Request one</span></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= 3B : EMPTY STATE ============================= -->
+      <div id="3b" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">3b</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">The empty book</div>
+          <div style="font-size:13px; color:#6a6357;">a new tenant &middot; zero spells &middot; one clear act</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:22px; height:22px; border-radius:6px; background:repeating-linear-gradient(45deg,#2e3a30,#2e3a30 3px,#293429 3px,#293429 6px);"></div>
+              <span style="font-family:'Spectral', serif; font-size:15px; color:#e9e1d1;">Lantern Room</span>
+              <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+              <div style="width:28px; height:28px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+            <!-- sidebar (all zero) -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(205,163,73,0.12); border-radius:7px; color:#e4c374;"><span style="font-size:13px;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a7a52;">0</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#7a7266;"><span style="font-size:12px; opacity:0.6;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5c564b;">0</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#7a7266;"><span style="font-size:12px; opacity:0.6;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5c564b;">0</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#7a7266;"><span style="font-size:12px; opacity:0.6;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span></div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#7a7266;"><span style="font-size:11px; opacity:0.6;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Records</span></div>
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Grammar</div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- empty main, centered -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:0 40px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+              <div style="width:26px; height:26px; border:1.5px solid rgba(205,163,73,0.55); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:11px; margin-bottom:22px;">&#9670;</div>
+              <h1 style="margin:0 0 12px; font-family:'Spectral',serif; font-size:34px; font-weight:600; color:#e9e1d1;">Your book is blank.</h1>
+              <p style="margin:0 0 28px; font-family:'Spectral',serif; font-size:16px; font-style:italic; color:#9c9382; line-height:1.6; max-width:460px;">A spell is a sentence that does something when it&rsquo;s spoken &mdash; welcome a member, announce a release, hand out a role. Write your first and it lives here.</p>
+              <button style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#0b0a08; background:#cda349; border:none; border-radius:8px; padding:12px 24px; cursor:pointer; margin-bottom:44px;">+ Inscribe your first spell</button>
+
+              <div style="width:100%; max-width:620px; display:flex; align-items:center; gap:14px; margin-bottom:18px;">
+                <div style="flex:1; height:1px; background:rgba(232,224,208,0.1);"></div>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#6a6357;">or start from a page we&rsquo;ve written</span>
+                <div style="flex:1; height:1px; background:rgba(232,224,208,0.1);"></div>
+              </div>
+
+              <div style="display:flex; gap:12px; width:100%; max-width:660px;">
+                <div style="flex:1; background:#e7ddc6; border-radius:8px; padding:16px; text-align:left; box-shadow:0 2px 0 rgba(0,0,0,0.22), 0 12px 22px -18px rgba(0,0,0,0.6);">
+                  <div style="font-family:'Spectral',serif; font-size:15px; font-weight:600; color:#26221a; margin-bottom:6px;">Welcome new members</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653; line-height:1.6; margin-bottom:12px;">on join &rarr; post a greeting &middot; grant @member</div>
+                  <span style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; font-weight:600; color:#7a5f1e;">Use this &rarr;</span>
+                </div>
+                <div style="flex:1; background:#e7ddc6; border-radius:8px; padding:16px; text-align:left; box-shadow:0 2px 0 rgba(0,0,0,0.22), 0 12px 22px -18px rgba(0,0,0,0.6);">
+                  <div style="font-family:'Spectral',serif; font-size:15px; font-weight:600; color:#26221a; margin-bottom:6px;">Announce releases</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653; line-height:1.6; margin-bottom:12px;">on webhook &rarr; post to a channel</div>
+                  <span style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; font-weight:600; color:#7a5f1e;">Use this &rarr;</span>
+                </div>
+                <div style="flex:1; background:#e7ddc6; border-radius:8px; padding:16px; text-align:left; box-shadow:0 2px 0 rgba(0,0,0,0.22), 0 12px 22px -18px rgba(0,0,0,0.6);">
+                  <div style="font-family:'Spectral',serif; font-size:15px; font-weight:600; color:#26221a; margin-bottom:6px;">Self-assign roles</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653; line-height:1.6; margin-bottom:12px;">on reaction &rarr; toggle a role</div>
+                  <span style="font-family:'Hanken Grotesk',sans-serif; font-size:11.5px; font-weight:600; color:#7a5f1e;">Use this &rarr;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= 3C : ONBOARDING ============================= -->
+      <div id="3c" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">3c</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">First binding &mdash; install</div>
+          <div style="font-size:13px; color:#6a6357;">ownership verified, not claimed &middot; the one manual step</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:radial-gradient(120% 90% at 50% -10%, #1c1811 0%, #0d0b08 62%); border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;">
+
+          <div style="display:flex; align-items:center; gap:10px; position:absolute; top:28px; left:0; right:0; justify-content:center;">
+            <div style="width:22px; height:22px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:10px;">&#9670;</div>
+            <div style="font-family:'Spectral', serif; font-size:19px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+          </div>
+
+          <div style="width:560px; background:#15120e; border:1px solid rgba(232,224,208,0.12); border-radius:12px; padding:38px 40px; box-shadow:0 30px 70px -30px rgba(0,0,0,0.7);">
+            <h1 style="margin:0 0 8px; font-family:'Spectral',serif; font-size:27px; font-weight:600; color:#e9e1d1;">Bind your first community</h1>
+            <p style="margin:0 0 30px; font-family:'Spectral',serif; font-style:italic; font-size:14.5px; color:#9c9382; line-height:1.6;">A community you already run becomes a book you can write in. Three steps &mdash; and we take only what spells need.</p>
+
+            <!-- step 1 done -->
+            <div style="display:flex; gap:15px; padding-bottom:22px;">
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="width:26px; height:26px; border-radius:50%; background:#4f7a3e; display:flex; align-items:center; justify-content:center; color:#0b0a08; font-size:12px;">&#10003;</div>
+                <div style="flex:1; width:1.5px; background:rgba(232,224,208,0.12); margin-top:6px;"></div>
+              </div>
+              <div style="flex:1; padding-top:2px;">
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#c9c0ad; margin-bottom:3px;">Signed in</div>
+                <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                  <div style="width:22px; height:22px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#8a8272;">wren&#8228;keeper</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- step 2 active -->
+            <div style="display:flex; gap:15px; padding-bottom:22px;">
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="width:26px; height:26px; border-radius:50%; background:rgba(205,163,73,0.16); border:1.5px solid #cda349; display:flex; align-items:center; justify-content:center; color:#cda349; font-family:'JetBrains Mono',monospace; font-size:12px;">2</div>
+                <div style="flex:1; width:1.5px; background:rgba(232,224,208,0.12); margin-top:6px;"></div>
+              </div>
+              <div style="flex:1; padding-top:2px;">
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#e9e1d1; margin-bottom:3px;">Choose a community you manage</div>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#8a8272; margin-bottom:12px;">We check with Discord that you actually run it &mdash; ownership is verified, never taken on your word.</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:11px; padding:10px 12px; background:rgba(205,163,73,0.08); border:1px solid rgba(205,163,73,0.34); border-radius:8px; cursor:pointer;">
+                    <div style="width:26px; height:26px; border-radius:7px; background:repeating-linear-gradient(45deg,#2e3a30,#2e3a30 3px,#293429 3px,#293429 6px);"></div>
+                    <span style="font-family:'Spectral',serif; font-size:14px; color:#e9e1d1;">Lantern Room</span>
+                    <span style="margin-left:auto; display:flex; align-items:center; gap:5px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#86a06f;"><span>&#10003;</span> you manage this</span>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:11px; padding:10px 12px; background:rgba(232,224,208,0.02); border:1px solid rgba(232,224,208,0.07); border-radius:8px; opacity:0.7;">
+                    <div style="width:26px; height:26px; border-radius:7px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+                    <span style="font-family:'Spectral',serif; font-size:14px; color:#9c9382;">Old Guard</span>
+                    <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357;">needs Manage Server</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- step 3 -->
+            <div style="display:flex; gap:15px;">
+              <div style="display:flex; flex-direction:column; align-items:center;">
+                <div style="width:26px; height:26px; border-radius:50%; background:transparent; border:1.5px solid rgba(232,224,208,0.18); display:flex; align-items:center; justify-content:center; color:#6a6357; font-family:'JetBrains Mono',monospace; font-size:12px;">3</div>
+              </div>
+              <div style="flex:1; padding-top:2px;">
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#c9c0ad; margin-bottom:3px;">Add Grimoire to it</div>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#8a8272; margin-bottom:12px;">The one step only you can do &mdash; invite it in Discord, and the book opens.</div>
+                <button style="display:inline-flex; align-items:center; gap:9px; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; color:#fff; background:#5865f2; border:none; border-radius:8px; padding:11px 18px; cursor:pointer; opacity:0.55;">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#fff;"></span> Add to Lantern Room
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:absolute; bottom:26px; left:0; right:0; text-align:center; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5c564b;">Discord is the first binding &mdash; not the whole book. More platforms follow.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display:flex; flex-direction:column; gap:28px;">
+
+    <div style="display:flex; flex-direction:column; gap:10px; max-width:900px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#6a6357;">Turn 2 · Expanding 1b &mdash; the book, the hex, the grammar</div>
+      <div style="font-family:'Spectral', serif; font-size:26px; color:#e9e1d1; line-height:1.3;">The Book, taken to the next round</div>
+      <div style="font-size:15px; line-height:1.6; color:#9c9382; max-width:780px;">Following the brief: 1b is the direction. <a href="#2a">2a</a> is the home with per-row guarantee markers and a hex row that now carries real weight &mdash; opening a hex turns the reading page into a cold, sealed slab instead of warm parchment. <a href="#2b">2b</a> is the Grammar page: 1a&rsquo;s catalogue put where it belongs &mdash; reference you consult, not furniture you navigate around &mdash; ending in a dignified <em>request&#8209;a&#8209;verb</em>.</div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:flex-start;">
+
+      <!-- ============================= OPTION 2A : HOME ============================= -->
+      <div id="2a" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">2a</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">Home &mdash; the grimoire</div>
+          <div style="font-size:13px; color:#6a6357;">guarantee markers in the list &middot; a hex open in the pane</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:22px; height:22px; border-radius:6px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+              <span style="font-family:'Spectral', serif; font-size:15px; color:#e9e1d1;">Ashfall Guild</span>
+              <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+              <div style="display:flex; align-items:center; gap:8px; padding:6px 12px; width:220px; background:#1c1813; border:1px solid rgba(232,224,208,0.1); border-radius:7px;">
+                <span style="color:#6a6357; font-size:12px;">&#9906;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Search the book&hellip;</span>
+              </div>
+              <div style="width:28px; height:28px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+
+            <!-- sidebar -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(205,163,73,0.12); border-radius:7px; color:#e4c374;">
+                <span style="font-size:13px;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#b58a2e;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:11px; opacity:0.7;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Records</span>
+              </div>
+
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Grammar</div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- main list -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:26px 30px;">
+              <div style="display:flex; align-items:flex-end; gap:14px; margin-bottom:6px;">
+                <h1 style="margin:0; font-family:'Spectral', serif; font-size:28px; font-weight:600; color:#e9e1d1;">Your grimoire</h1>
+                <span style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; color:#6a6357; padding-bottom:5px;">6 spells &middot; 4 casting today</span>
+                <button style="margin-left:auto; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; color:#0b0a08; background:#cda349; border:none; border-radius:7px; padding:9px 16px; cursor:pointer;">+ New spell</button>
+              </div>
+              <div style="font-family:'Spectral',serif; font-style:italic; font-size:14px; color:#8a8272; margin-bottom:22px;">Stored sentences that do things when spoken.</div>
+
+              <div style="display:flex; flex-direction:column;">
+                <!-- row 1 -->
+                <div style="display:flex; gap:13px; padding:15px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#86a06f; flex-shrink:0; margin-top:6px;"></span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="display:flex; align-items:baseline; gap:12px;">
+                      <span style="font-family:'Spectral',serif; font-size:16.5px; color:#e9e1d1;">Welcome the newly arrived</span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#b58a2e;">charm</span>
+                      <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">cast 214&times; &middot; 20m ago</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9c9382;"><span style="color:#7a7266;">on join &rarr;</span> post as <span style="color:#c9b06a;">The Doorkeeper</span> &middot; grant <span style="color:#c9b06a;">@initiate</span></span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e; background:rgba(134,160,111,0.1); border-radius:3px; padding:2px 7px;">&#10003; idempotent &middot; recorded</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- row 2 -->
+                <div style="display:flex; gap:13px; padding:15px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#86a06f; flex-shrink:0; margin-top:6px;"></span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="display:flex; align-items:baseline; gap:12px;">
+                      <span style="font-family:'Spectral',serif; font-size:16.5px; color:#e9e1d1;">Relay the deployment</span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#b58a2e;">charm</span>
+                      <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">cast 51&times; &middot; 2h ago</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9c9382;"><span style="color:#7a7266;">on release &rarr;</span> if <span style="color:#9089bf;">tag ~ v*</span> &middot; post to <span style="color:#c9b06a;">#ship-log</span></span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e; background:rgba(134,160,111,0.1); border-radius:3px; padding:2px 7px;">&#10003; deduped &middot; recorded</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- row 3 -->
+                <div style="display:flex; gap:13px; padding:15px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#86a06f; flex-shrink:0; margin-top:6px;"></span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="display:flex; align-items:baseline; gap:12px;">
+                      <span style="font-family:'Spectral',serif; font-size:16.5px; color:#e9e1d1;">/taunt</span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#b58a2e;">charm</span>
+                      <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">cast 1,043&times; &middot; 4m ago</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#9c9382;"><span style="color:#7a7266;">on /taunt &rarr;</span> reply a random taunt at <span style="color:#c9b06a;">@target</span></span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e; background:rgba(134,160,111,0.1); border-radius:3px; padding:2px 7px;">&#10003; recorded &middot; private</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- row 4 -->
+                <div style="display:flex; gap:13px; padding:15px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#b58a2e; flex-shrink:0; margin-top:6px;"></span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="display:flex; align-items:baseline; gap:12px;">
+                      <span style="font-family:'Spectral',serif; font-size:16.5px; color:#c9c0ad;">Crown the patrons</span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#6a6357;">charm &middot; paused</span>
+                      <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">cast 38&times; &middot; 3d ago</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266;"><span style="color:#6a6357;">on payment &rarr;</span> grant <span style="color:#9c9382;">@patron</span> &middot; post to <span style="color:#9c9382;">#hall-of-patrons</span></span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#8a8272; background:rgba(232,224,208,0.05); border-radius:3px; padding:2px 7px;">&#8213; paused by you</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- row 5 : HEX selected -->
+                <div style="display:flex; gap:13px; padding:15px 12px; margin:0 -8px; border-top:1px solid rgba(232,224,208,0.08); border-left:2px solid #bb6647; background:rgba(187,102,71,0.09); border-radius:0 6px 6px 0;">
+                  <span style="color:#bb6647; font-size:11px; flex-shrink:0; width:8px; margin-top:4px;">&#128274;</span>
+                  <div style="flex:1; min-width:0;">
+                    <div style="display:flex; align-items:baseline; gap:12px;">
+                      <span style="font-family:'Spectral',serif; font-size:16.5px; color:#d8cdb8;">Banish</span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#d18a6c;">hex &middot; irreversible</span>
+                      <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">engineer-authored</span>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap;">
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;"><span style="color:#8a8272;">on /banish &rarr;</span> ban <span style="color:#c98d72;">@target</span> &middot; purge 7 days</span>
+                      <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#c98d72; background:rgba(187,102,71,0.12); border-radius:3px; padding:2px 7px;">not composable &middot; cast by hand</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="border-top:1px solid rgba(232,224,208,0.08);"></div>
+              </div>
+
+              <div style="margin-top:18px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#5c564b; display:flex; align-items:center; gap:8px;">
+                <span style="color:#4f7a3e;">&#10003;</span> every charm is deduped, retried, and recorded &mdash; the book never reports done what did not happen.
+              </div>
+            </div>
+
+            <!-- reading pane: a HEX open (sealed slab) -->
+            <div class="cvs-scroll" style="width:352px; flex-shrink:0; border-left:1px solid rgba(232,224,208,0.09); background:#221d17; overflow-y:auto; padding:26px 26px; position:relative;">
+              <div style="position:absolute; inset:0; background:repeating-linear-gradient(135deg,transparent,transparent 22px,rgba(187,102,71,0.03) 22px,rgba(187,102,71,0.03) 23px); pointer-events:none;"></div>
+              <div style="position:relative;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                  <span style="color:#bb6647; font-size:12px;">&#128274;</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#d18a6c;">Hex &middot; irreversible</span>
+                </div>
+                <h2 style="margin:0 0 6px; font-family:'Spectral', serif; font-size:24px; font-weight:600; color:#e2d8c4; line-height:1.2;">Banish</h2>
+                <div style="font-family:'Spectral',serif; font-style:italic; font-size:14px; color:#a89f8e; line-height:1.5; margin-bottom:22px;">Remove a member and erase their last week. There is no undo, and no version of this you may assemble yourself.</div>
+
+                <div style="margin-bottom:18px;">
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a6f52; margin-bottom:7px;">When</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#c9c0ad;">interaction <span style="color:#8a8272;">&mdash;</span> a human runs <span style="color:#d18a6c;">/banish</span>, in the moment</div>
+                </div>
+                <div style="margin-bottom:18px;">
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a6f52; margin-bottom:7px;">Who may</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#c9c0ad;">only a member whose standing covers <span style="color:#d18a6c;">both</span> the verb and the target. Checked against the server&rsquo;s own power at the instant it is cast.</div>
+                </div>
+                <div style="margin-bottom:20px;">
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a6f52; margin-bottom:7px;">What happens</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#c9c0ad;"><span style="color:#c98d72;">ban</span> @target <span style="color:#8a8272;">&middot;</span> <span style="color:#c98d72;">purge</span> 7 days of messages</div>
+                </div>
+
+                <div style="padding:14px 15px; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.4); border-radius:7px; margin-bottom:20px;">
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:11px; line-height:1.7; color:#d8cdb8;">Hexes cannot be composed by tenants. This one exists as an engineer-authored spell, cast only by a human with standing &mdash; <span style="color:#d18a6c;">never automated</span>.</div>
+                </div>
+
+                <div style="display:flex; align-items:center; gap:10px; padding:11px 14px; border:1px dashed rgba(187,102,71,0.4); border-radius:7px; color:#a89f8e;">
+                  <span style="color:#bb6647; font-size:13px;">&#128274;</span>
+                  <span style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px;">This spell is sealed &mdash; it cannot be edited or automated.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= OPTION 2B : GRAMMAR ============================= -->
+      <div id="2b" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">2b</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">The Grammar page</div>
+          <div style="font-size:13px; color:#6a6357;">reference you consult &mdash; ending in request&#8209;a&#8209;verb</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:22px; height:22px; border-radius:6px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+              <span style="font-family:'Spectral', serif; font-size:15px; color:#e9e1d1;">Ashfall Guild</span>
+              <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+              <div style="display:flex; align-items:center; gap:8px; padding:6px 12px; width:220px; background:#1c1813; border:1px solid rgba(232,224,208,0.1); border-radius:7px;">
+                <span style="color:#6a6357; font-size:12px;">&#9906;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Search the book&hellip;</span>
+              </div>
+              <div style="width:28px; height:28px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+
+            <!-- sidebar with Grammar active -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:13px; opacity:0.7;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:11px; opacity:0.7;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Records</span>
+              </div>
+
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(144,137,191,0.14); border-radius:7px; color:#b3abdc;">
+                  <span style="font-size:12px;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600;">Grammar</span>
+                </div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- grammar main -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:26px 34px;">
+              <div style="max-width:748px;">
+                <h1 style="margin:0 0 6px; font-family:'Spectral', serif; font-size:28px; font-weight:600; color:#e9e1d1;">The grammar</h1>
+                <div style="font-family:'Spectral',serif; font-style:italic; font-size:14px; color:#8a8272; margin-bottom:22px;">The whole vocabulary your spells are composed from. Engineer&#8209;grown, one of everything &mdash; you compose <em>within</em> it, and only engineering grows it.</div>
+
+                <!-- pattern / instance band -->
+                <div style="display:flex; align-items:stretch; border:1px solid rgba(232,224,208,0.12); border-radius:8px; overflow:hidden; margin-bottom:30px;">
+                  <div style="flex:1; padding:14px 18px; background:#100e0a;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#9089bf; margin-bottom:4px;">Pattern</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; color:#a89f8e;">platform &middot; one of everything &middot; code</div>
+                  </div>
+                  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 16px; background:#0d0b08; border-left:1px solid rgba(232,224,208,0.09); border-right:1px solid rgba(232,224,208,0.09);">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#9089bf; line-height:1.5;">&uarr; instance&#8209;of</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#cda349; line-height:1.5;">whose &darr;</span>
+                  </div>
+                  <div style="flex:1; padding:14px 18px; background:#17140f;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#cda349; margin-bottom:4px;">Instance</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; color:#a89f8e;">your grimoire &middot; many &middot; owned rows</div>
+                  </div>
+                </div>
+
+                <!-- trigger species -->
+                <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:14px;">
+                  <span style="color:#9089bf; font-size:11px;">&#9670;</span>
+                  <h2 style="margin:0; font-family:'Spectral', serif; font-size:19px; font-weight:600; color:#e9e1d1;">Trigger species</h2>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6a6357;">what makes a spell speak &mdash; and whether it can speak back</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:30px;">
+                  <div style="padding:14px 15px; background:#181510; border:1px solid rgba(144,137,191,0.2); border-radius:7px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#b3abdc; margin-bottom:5px;">interaction</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5; margin-bottom:9px;">slash command, button, modal &mdash; a person, in the moment.</div>
+                    <div style="display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#4f7a3e; background:rgba(134,160,111,0.12); border-radius:3px; padding:3px 7px;">&#8644; reply owed &middot; the only private voice</div>
+                  </div>
+                  <div style="padding:14px 15px; background:#181510; border:1px solid rgba(144,137,191,0.2); border-radius:7px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#b3abdc; margin-bottom:5px;">external call</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5; margin-bottom:9px;">an inbound webhook from the outside world.</div>
+                    <div style="display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#a89f8e; background:rgba(232,224,208,0.06); border-radius:3px; padding:3px 7px;">&rarr; speaks outward &middot; never replies</div>
+                  </div>
+                  <div style="padding:14px 15px; background:#181510; border:1px solid rgba(144,137,191,0.2); border-radius:7px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#b3abdc; margin-bottom:5px;">ambient event</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5; margin-bottom:9px;">a reaction, a member joining &mdash; something that just happens.</div>
+                    <div style="display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357; background:rgba(232,224,208,0.05); border-radius:3px; padding:3px 7px;">&#8709; no return channel &middot; may be silent</div>
+                  </div>
+                  <div style="padding:14px 15px; background:#181510; border:1px solid rgba(144,137,191,0.2); border-radius:7px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#b3abdc; margin-bottom:5px;">clock</div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5; margin-bottom:9px;">a schedule &mdash; the spell speaks at an appointed time.</div>
+                    <div style="display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:#6a6357; background:rgba(232,224,208,0.05); border-radius:3px; padding:3px 7px;">&#8709; no return channel &middot; may be silent</div>
+                  </div>
+                </div>
+
+                <!-- verbs -->
+                <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:14px;">
+                  <span style="color:#cda349; font-size:11px;">&#9670;</span>
+                  <h2 style="margin:0; font-family:'Spectral', serif; font-size:19px; font-weight:600; color:#e9e1d1;">Verbs</h2>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6a6357;">what a spell can do</span>
+                </div>
+                <div style="margin-bottom:14px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:9px;">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#c9b06a;">Charms</span>
+                    <span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#8a8272;">reversible &middot; low blast radius &middot; <span style="color:#c9b06a;">yours to compose freely</span></span>
+                  </div>
+                  <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">post a message</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">post as a face</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">reply privately</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">toggle a role</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">add a reaction</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">set a nickname</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#d8c99a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.32); border-radius:5px; padding:6px 11px;">pin a message</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#8a8272; background:rgba(232,224,208,0.04); border:1px dashed rgba(232,224,208,0.14); border-radius:5px; padding:6px 11px;">+5 more</span>
+                  </div>
+                </div>
+                <div style="margin-bottom:30px;">
+                  <div style="display:flex; align-items:center; gap:8px; margin-bottom:9px;">
+                    <span style="color:#bb6647; font-size:10px;">&#128274;</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#c98d72;">Hexes</span>
+                    <span style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#8a8272;">irreversible &middot; high blast radius &middot; <span style="color:#c98d72;">engineer-authored only, never yours to compose</span></span>
+                  </div>
+                  <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#c9a290; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:5px; padding:6px 11px;">&#128274; ban</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#c9a290; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:5px; padding:6px 11px;">&#128274; kick</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#c9a290; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:5px; padding:6px 11px;">&#128274; mass-delete</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#c9a290; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:5px; padding:6px 11px;">&#128274; purge messages</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#c9a290; background:rgba(187,102,71,0.1); border:1px solid rgba(187,102,71,0.34); border-radius:5px; padding:6px 11px;">&#128274; timeout</span>
+                  </div>
+                </div>
+
+                <!-- logic forms -->
+                <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:14px;">
+                  <span style="color:#9089bf; font-size:11px;">&#9670;</span>
+                  <h2 style="margin:0; font-family:'Spectral', serif; font-size:19px; font-weight:600; color:#e9e1d1;">Logic forms</h2>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6a6357;">how a spell decides &mdash; pure &amp; total: bounded, typed, no eval</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:30px;">
+                  <div style="padding:14px 15px; background:#181510; border:1px solid rgba(144,137,191,0.2); border-radius:7px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#b3abdc; margin-bottom:5px;">predicate <span style="color:#5c564b;">&mdash; whether</span></div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5;">a typed condition over known fields. <span style="font-family:'JetBrains Mono',monospace; color:#8a8272;">if tag matches v*</span></div>
+                  </div>
+                  <div style="padding:14px 15px; background:#181510; border:1px solid rgba(144,137,191,0.2); border-radius:7px;">
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; color:#b3abdc; margin-bottom:5px;">transform <span style="color:#5c564b;">&mdash; what shape</span></div>
+                    <div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.5;">reshape the trigger into the words spoken. <span style="font-family:'JetBrains Mono',monospace; color:#8a8272;">pick a line, name the target</span></div>
+                  </div>
+                </div>
+
+                <!-- agreement rules -->
+                <div style="display:flex; align-items:baseline; gap:10px; margin-bottom:14px;">
+                  <span style="color:#cda349; font-size:11px;">&#9670;</span>
+                  <h2 style="margin:0; font-family:'Spectral', serif; font-size:19px; font-weight:600; color:#e9e1d1;">Agreement rules</h2>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6a6357;">the editor refuses to write a spell that breaks one</span>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:32px;">
+                  <div style="display:flex; gap:14px; padding:14px 16px; background:#181510; border:1px solid rgba(232,224,208,0.09); border-radius:7px;">
+                    <span style="font-family:'Spectral',serif; font-size:22px; color:#6a6357; line-height:1;">1</span>
+                    <div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:13.5px; font-weight:600; color:#d8cdb8; margin-bottom:3px;">Audience</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.55;">A private reply needs an interaction trigger and the platform&rsquo;s own voice. <span style="color:#c9b06a;">A face can never whisper.</span></div></div>
+                  </div>
+                  <div style="display:flex; gap:14px; padding:14px 16px; background:#181510; border:1px solid rgba(232,224,208,0.09); border-radius:7px;">
+                    <span style="font-family:'Spectral',serif; font-size:22px; color:#6a6357; line-height:1;">2</span>
+                    <div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:13.5px; font-weight:600; color:#d8cdb8; margin-bottom:3px;">Authorship</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.55;">Your spells may use <span style="color:#c9b06a;">charms only</span>. Hexes live in engineer-authored spells with a human at the trigger.</div></div>
+                  </div>
+                  <div style="display:flex; gap:14px; padding:14px 16px; background:#181510; border:1px solid rgba(232,224,208,0.09); border-radius:7px;">
+                    <span style="font-family:'Spectral',serif; font-size:22px; color:#6a6357; line-height:1;">3</span>
+                    <div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:13.5px; font-weight:600; color:#d8cdb8; margin-bottom:3px;">Standing</div><div style="font-family:'Hanken Grotesk',sans-serif; font-size:12px; color:#9c9382; line-height:1.55;">A spell acting on a member is legal only if the speaker&rsquo;s authority covers <span style="color:#c9b06a;">both the verb and the target</span>.</div></div>
+                  </div>
+                </div>
+
+                <!-- request a verb -->
+                <div style="padding:22px 24px; border:1px solid rgba(205,163,73,0.3); border-radius:9px; background:linear-gradient(180deg,rgba(205,163,73,0.07),rgba(205,163,73,0.02));">
+                  <div style="display:flex; align-items:center; gap:9px; margin-bottom:8px;">
+                    <span style="color:#cda349; font-size:13px;">&#10022;</span>
+                    <h3 style="margin:0; font-family:'Spectral', serif; font-size:19px; font-weight:600; color:#e9e1d1;">Reached the edge of the vocabulary?</h3>
+                  </div>
+                  <div style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; line-height:1.6; color:#a89f8e; max-width:600px; margin-bottom:16px;">That&rsquo;s not a wall &mdash; it&rsquo;s a signal. You compose sentences from this menu; only we grow the menu, and the surest way we learn what to add next is the spell you couldn&rsquo;t quite write. Tell us the verb you wanted.</div>
+                  <button style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; color:#0b0a08; background:#cda349; border:none; border-radius:7px; padding:9px 18px; cursor:pointer;">Request a verb</button>
+                </div>
+
+                <div style="height:20px;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display:flex; flex-direction:column; gap:28px;">
+
+    <div style="display:flex; flex-direction:column; gap:10px; max-width:900px;">
+      <div style="font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:#6a6357;">Turn 1 · The spellbook home &mdash; two hierarchy extremes</div>
+      <div style="font-family:'Spectral', serif; font-size:26px; color:#e9e1d1; line-height:1.3;">A tenant&rsquo;s grimoire, shown two ways</div>
+      <div style="font-size:15px; line-height:1.6; color:#9c9382; max-width:760px;">Same product, same vocabulary, same palette. <a href="#1a">1a</a> makes the Platform&thinsp;&rarr;&thinsp;Tenant hierarchy the literal skeleton of the screen. <a href="#1b">1b</a> keeps that structure underneath a calm reading surface. Discord appears only where it makes the demo concrete; the core names no platform.</div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:flex-start;">
+
+      <!-- ============================= OPTION 1A ============================= -->
+      <div id="1a" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">1a</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">The Two Sides</div>
+          <div style="font-size:13px; color:#6a6357;">structural &mdash; the layout <em>is</em> the hierarchy</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:22px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+
+            <!-- invocation spine as the app backbone -->
+            <div style="display:flex; align-items:center; gap:0; flex:1; padding:0 8px;">
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#9089bf;"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#8a8272;">trigger</span></div>
+              <div style="flex:1; height:1px; background:linear-gradient(90deg,rgba(232,224,208,0.18),rgba(232,224,208,0.06)); margin:0 8px;"></div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#cda349;"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#8a8272;">law admits</span></div>
+              <div style="flex:1; height:1px; background:rgba(232,224,208,0.1); margin:0 8px;"></div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#e7ddc6; box-shadow:0 0 0 2px rgba(231,221,198,0.16);"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#c9c0ad;">spell</span></div>
+              <div style="flex:1; height:1px; background:rgba(232,224,208,0.1); margin:0 8px;"></div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#9089bf;"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#8a8272;">logic</span></div>
+              <div style="flex:1; height:1px; background:rgba(232,224,208,0.1); margin:0 8px;"></div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#9089bf;"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#8a8272;">verb</span></div>
+              <div style="flex:1; height:1px; background:rgba(232,224,208,0.1); margin:0 8px;"></div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#e7ddc6;"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#8a8272;">nouns</span></div>
+              <div style="flex:1; height:1px; background:rgba(232,224,208,0.1); margin:0 8px;"></div>
+              <div style="display:flex; align-items:center; gap:7px;"><span style="width:7px; height:7px; border-radius:50%; background:#86a06f;"></span><span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.04em; color:#8a8272;">logistics</span></div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:14px;">
+              <div style="display:flex; align-items:center; gap:8px; padding:5px 11px; border:1px solid rgba(232,224,208,0.14); border-radius:6px;">
+                <div style="width:20px; height:20px; border-radius:5px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+                <span style="font-family:'Spectral', serif; font-size:14px; color:#e9e1d1;">Ashfall Guild</span>
+                <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; padding:5px 10px; border-radius:6px; background:rgba(88,101,242,0.12); border:1px solid rgba(88,101,242,0.32);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.05em; color:#aeb6f5;">discord binding</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- platform / tenant band -->
+          <div style="display:flex; height:38px; flex-shrink:0; border-bottom:1px solid rgba(232,224,208,0.09);">
+            <div style="width:302px; display:flex; align-items:center; padding:0 20px; background:#100e0a; border-right:1px solid rgba(232,224,208,0.09);">
+              <span style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#9089bf;">Platform &middot; patterns &middot; code</span>
+            </div>
+            <div style="flex:1; display:flex; align-items:center; padding:0 24px; background:#17140f;">
+              <span style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#cda349;">Tenant &middot; Ashfall Guild &middot; owned rows</span>
+              <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.1em; color:#6a6357;">&uarr; instance&#8209;of &nbsp;&middot;&nbsp; whose &darr;</span>
+            </div>
+          </div>
+
+          <!-- body: 3 columns -->
+          <div style="display:flex; flex:1; min-height:0;">
+
+            <!-- PLATFORM grammar column -->
+            <div class="cvs-scroll" style="width:302px; flex-shrink:0; background:#100e0a; border-right:1px solid rgba(232,224,208,0.09); overflow-y:auto; padding:18px 16px; display:flex; flex-direction:column; gap:20px;">
+
+              <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:11px;"><span style="color:#9089bf; font-size:10px;">&#9670;</span><span style="font-family:'Spectral', serif; font-size:15px; color:#c9c0ad;">The Language</span><span style="font-family:'JetBrains Mono', monospace; font-size:9px; color:#5c564b; margin-left:auto;">what can be said</span></div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(144,137,191,0.14); border-radius:5px;">trigger species <span style="color:#5c564b;">&middot; 4</span></div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(144,137,191,0.14); border-radius:5px;">logic forms <span style="color:#5c564b;">&middot; predicate&nbsp;/&nbsp;transform</span></div>
+                  <div style="padding:7px 10px; background:#181510; border:1px solid rgba(144,137,191,0.14); border-radius:5px;">
+                    <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; margin-bottom:6px;">verb vocabulary <span style="color:#5c564b;">&middot; 19</span></div>
+                    <div style="display:flex; gap:6px;">
+                      <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; color:#c9b06a; background:rgba(205,163,73,0.12); border:1px solid rgba(205,163,73,0.3); border-radius:3px; padding:2px 6px;">charms &middot; 12</span>
+                      <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; color:#c98d72; background:rgba(187,102,71,0.12); border:1px solid rgba(187,102,71,0.3); border-radius:3px; padding:2px 6px;">hexes &middot; 7</span>
+                    </div>
+                  </div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(144,137,191,0.14); border-radius:5px;">agreement rules <span style="color:#5c564b;">&middot; 3</span></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:11px;"><span style="color:#cda349; font-size:10px;">&#9670;</span><span style="font-family:'Spectral', serif; font-size:15px; color:#c9c0ad;">The Law</span><span style="font-family:'JetBrains Mono', monospace; font-size:9px; color:#5c564b; margin-left:auto;">who may say it</span></div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(205,163,73,0.12); border-radius:5px;">authentication</div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(205,163,73,0.12); border-radius:5px;">tenant authority</div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(205,163,73,0.12); border-radius:5px;">member authority</div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(205,163,73,0.12); border-radius:5px;">the layering rule</div>
+                </div>
+              </div>
+
+              <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:11px;"><span style="color:#86a06f; font-size:10px;">&#9670;</span><span style="font-family:'Spectral', serif; font-size:15px; color:#c9c0ad;">The Logistics</span><span style="font-family:'JetBrains Mono', monospace; font-size:9px; color:#5c564b; margin-left:auto;">how it happens</span></div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(134,160,111,0.14); border-radius:5px;">media <span style="color:#5c564b;">&middot; per binding</span></div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(134,160,111,0.14); border-radius:5px;">guarantees <span style="color:#5c564b;">&middot; 5</span></div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#8a8272; padding:7px 10px; background:#181510; border:1px solid rgba(134,160,111,0.14); border-radius:5px;">growth</div>
+                </div>
+              </div>
+
+              <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07);">
+                <div style="font-family:'JetBrains Mono', monospace; font-size:9.5px; line-height:1.7; color:#5c564b;">one of everything &middot; engineer&#8209;grown. you compose <em style="color:#8a8272;">within</em> this grammar; you cannot change it.</div>
+              </div>
+            </div>
+
+            <!-- SPELLS column -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:20px 22px;">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:16px;">
+                <span style="color:#e7ddc6; font-size:12px;">&#9670;</span>
+                <h2 style="margin:0; font-family:'Spectral', serif; font-size:21px; font-weight:600; color:#e9e1d1;">Spells</h2>
+                <span style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#6a6357;">stored sentences &middot; 6</span>
+                <button style="margin-left:auto; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#0b0a08; background:#cda349; border:none; border-radius:6px; padding:7px 14px; cursor:pointer;">+ Inscribe a spell</button>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:12px;">
+
+                <!-- spell leaf 1 -->
+                <div style="background:#e7ddc6; border-radius:7px; padding:15px 17px; box-shadow:0 2px 0 rgba(0,0,0,0.25), 0 14px 26px -18px rgba(0,0,0,0.6); position:relative;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:9px;">
+                    <span style="font-family:'Spectral', serif; font-size:18px; font-weight:600; color:#26221a;">Welcome the newly arrived</span>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#7a5f1e; background:rgba(205,163,73,0.24); border-radius:3px; padding:2px 7px;">charm</span>
+                    <span style="margin-left:auto; display:flex; align-items:center; gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#4f7a3e;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653;">active</span></span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:12px; line-height:1.75; color:#4a4436;">
+                    <span style="color:#6a4fa0;">on</span> member.join <span style="color:#8a8272;">&rarr;</span> <span style="color:#8a6a1e;">post as</span> &#10216;The Doorkeeper&#10217; <span style="color:#8a8272;">&middot;</span> <span style="color:#8a6a1e;">grant</span> &#10216;@initiate&#10217;
+                  </div>
+                  <div style="display:flex; align-items:center; gap:14px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(38,34,26,0.13);">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">ambient event</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">cast 214&times;</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">last &middot; 20m ago</span>
+                    <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#4f7a3e;">&#10003; idempotent &middot; recorded</span>
+                  </div>
+                </div>
+
+                <!-- spell leaf 2 -->
+                <div style="background:#e7ddc6; border-radius:7px; padding:15px 17px; box-shadow:0 2px 0 rgba(0,0,0,0.25), 0 14px 26px -18px rgba(0,0,0,0.6);">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:9px;">
+                    <span style="font-family:'Spectral', serif; font-size:18px; font-weight:600; color:#26221a;">Relay the deployment</span>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#7a5f1e; background:rgba(205,163,73,0.24); border-radius:3px; padding:2px 7px;">charm</span>
+                    <span style="margin-left:auto; display:flex; align-items:center; gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#4f7a3e;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653;">active</span></span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:12px; line-height:1.75; color:#4a4436;">
+                    <span style="color:#6a4fa0;">on</span> github.release <span style="color:#8a8272;">&rarr;</span> <span style="color:#6a4fa0;">if</span> tag matches <span style="color:#4a4436;">v*</span> <span style="color:#8a8272;">&rarr;</span> <span style="color:#8a6a1e;">post to</span> &#10216;#ship-log&#10217;
+                  </div>
+                  <div style="display:flex; align-items:center; gap:14px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(38,34,26,0.13);">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">external call</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">cast 51&times;</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">last &middot; 2h ago</span>
+                    <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#4f7a3e;">&#10003; deduped &middot; recorded</span>
+                  </div>
+                </div>
+
+                <!-- spell leaf 3 -->
+                <div style="background:#e7ddc6; border-radius:7px; padding:15px 17px; box-shadow:0 2px 0 rgba(0,0,0,0.25), 0 14px 26px -18px rgba(0,0,0,0.6);">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:9px;">
+                    <span style="font-family:'Spectral', serif; font-size:18px; font-weight:600; color:#26221a;">/taunt</span>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#7a5f1e; background:rgba(205,163,73,0.24); border-radius:3px; padding:2px 7px;">charm</span>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#5c564b; border:1px solid rgba(38,34,26,0.2); border-radius:3px; padding:2px 7px;">has reply</span>
+                    <span style="margin-left:auto; display:flex; align-items:center; gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#4f7a3e;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653;">active</span></span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:12px; line-height:1.75; color:#4a4436;">
+                    <span style="color:#6a4fa0;">on</span> interaction &#10216;/taunt @target&#10217; <span style="color:#8a8272;">&rarr;</span> <span style="color:#8a6a1e;">reply</span> random line <span style="color:#8a8272;">from</span> &#10216;taunts&#10217; mentioning target
+                  </div>
+                  <div style="display:flex; align-items:center; gap:14px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(38,34,26,0.13);">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">interaction</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">cast 1,043&times;</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">last &middot; 4m ago</span>
+                    <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#4f7a3e;">&#10003; recorded</span>
+                  </div>
+                </div>
+
+                <!-- spell leaf 4 -->
+                <div style="background:#e7ddc6; border-radius:7px; padding:15px 17px; box-shadow:0 2px 0 rgba(0,0,0,0.25), 0 14px 26px -18px rgba(0,0,0,0.6);">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:9px;">
+                    <span style="font-family:'Spectral', serif; font-size:18px; font-weight:600; color:#26221a;">Crown the patrons</span>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#7a5f1e; background:rgba(205,163,73,0.24); border-radius:3px; padding:2px 7px;">charm</span>
+                    <span style="margin-left:auto; display:flex; align-items:center; gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#b58a2e;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6f6653;">paused</span></span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:12px; line-height:1.75; color:#4a4436;">
+                    <span style="color:#6a4fa0;">on</span> payment.succeeded <span style="color:#8a8272;">&rarr;</span> <span style="color:#8a6a1e;">grant</span> &#10216;@patron&#10217; <span style="color:#8a8272;">&middot;</span> <span style="color:#8a6a1e;">post to</span> &#10216;#hall-of-patrons&#10217;
+                  </div>
+                  <div style="display:flex; align-items:center; gap:14px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(38,34,26,0.13);">
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">external call</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">cast 38&times;</span>
+                    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">last &middot; 3d ago</span>
+                    <span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">&#8213; paused by you</span>
+                  </div>
+                </div>
+
+                <!-- spell leaf 5 - hex, locked -->
+                <div style="background:#221d17; border:1px solid rgba(187,102,71,0.35); border-radius:7px; padding:15px 17px;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:9px;">
+                    <span style="font-family:'Spectral', serif; font-size:18px; font-weight:600; color:#d8cdb8;">Banish</span>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:0.05em; text-transform:uppercase; color:#d18a6c; background:rgba(187,102,71,0.16); border:1px solid rgba(187,102,71,0.4); border-radius:3px; padding:2px 7px;">hex &middot; irreversible</span>
+                    <span style="margin-left:auto; display:flex; align-items:center; gap:6px;"><span style="color:#bb6647; font-size:11px;">&#128274;</span><span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#8a8272;">engineer-authored</span></span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono', monospace; font-size:12px; line-height:1.75; color:#8a8272;">
+                    <span style="color:#9089bf;">on</span> interaction &#10216;/banish @target&#10217; <span style="color:#6a6357;">&rarr;</span> <span style="color:#c98d72;">ban</span> target <span style="color:#6a6357;">&middot;</span> <span style="color:#c98d72;">purge</span> 7d messages
+                  </div>
+                  <div style="margin-top:11px; padding-top:10px; border-top:1px solid rgba(232,224,208,0.08); font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357; line-height:1.6;">
+                    hexes cannot be composed by tenants. cast only by a human with standing &mdash; never automated.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- NOUNS column -->
+            <div class="cvs-scroll" style="width:296px; flex-shrink:0; border-left:1px solid rgba(232,224,208,0.09); background:#13110c; overflow-y:auto; padding:20px 18px; display:flex; flex-direction:column; gap:22px;">
+              <div style="display:flex; align-items:baseline; gap:10px;">
+                <span style="color:#e7ddc6; font-size:11px;">&#9670;</span>
+                <h2 style="margin:0; font-family:'Spectral', serif; font-size:19px; font-weight:600; color:#e9e1d1;">Nouns</h2>
+                <span style="font-family:'JetBrains Mono', monospace; font-size:10px; color:#6a6357; margin-left:auto;">what spells point at</span>
+              </div>
+
+              <div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:10px;">Faces &middot; glamours</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:10px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;">
+                    <div style="width:26px; height:26px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+                    <div><div style="font-family:'Spectral',serif; font-size:13.5px; color:#e0d8c7;">The Doorkeeper</div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#6a6357;">webhook &middot; minted</div></div>
+                  </div>
+                  <div style="display:flex; align-items:center; gap:10px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;">
+                    <div style="width:26px; height:26px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+                    <div><div style="font-family:'Spectral',serif; font-size:13.5px; color:#e0d8c7;">The Herald</div><div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#6a6357;">webhook &middot; minted</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:10px;">Secrets &middot; by reference</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:9px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;"><span style="color:#cda349; font-size:11px;">&#128273;</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">github.signing</span></div>
+                  <div style="display:flex; align-items:center; gap:9px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;"><span style="color:#cda349; font-size:11px;">&#128273;</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">stripe.webhook</span></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:10px;">Targets &amp; whitelists</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:9px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;"><span style="color:#7f8cf0; font-size:11px;">#</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">ship-log, war-room</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:9px; color:#6a6357;">+4</span></div>
+                  <div style="display:flex; align-items:center; gap:9px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;"><span style="color:#cda349; font-size:11px;">&#9678;</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">self-assignable roles</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:9px; color:#6a6357;">8</span></div>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a8272; margin-bottom:10px;">Records</div>
+                <div style="display:flex; flex-direction:column; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:9px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;"><span style="color:#86a06f; font-size:9px;">&#9632;</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">delivery log</span></div>
+                  <div style="display:flex; align-items:center; gap:9px; padding:8px 10px; background:#1c1813; border:1px solid rgba(232,224,208,0.08); border-radius:6px;"><span style="color:#86a06f; font-size:9px;">&#9632;</span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#a89f8e;">infractions</span></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================= OPTION 1B ============================= -->
+      <div id="1b" style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:baseline; gap:12px;">
+          <div style="font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.1em; color:#0b0a08; background:#cda349; padding:3px 9px; border-radius:3px;">1b</div>
+          <div style="font-family:'Spectral', serif; font-size:17px; color:#e9e1d1;">The Book</div>
+          <div style="font-size:13px; color:#6a6357;">quiet &mdash; hierarchy guides IA, not shouted</div>
+        </div>
+
+        <div style="width:1240px; height:840px; background:#15120e; border:1px solid rgba(232,224,208,0.14); border-radius:8px; overflow:hidden; box-shadow:0 40px 80px -30px rgba(0,0,0,0.8); display:flex; flex-direction:column;">
+
+          <!-- top bar -->
+          <div style="display:flex; align-items:center; gap:18px; padding:0 22px; height:58px; border-bottom:1px solid rgba(232,224,208,0.09); background:#12100c; flex-shrink:0;">
+            <div style="display:flex; align-items:center; gap:9px;">
+              <div style="width:20px; height:20px; border:1.5px solid #cda349; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#cda349; font-size:9px;">&#9670;</div>
+              <div style="font-family:'Spectral', serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#e9e1d1;">Grimoire</div>
+            </div>
+            <div style="width:1px; height:24px; background:rgba(232,224,208,0.1);"></div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:22px; height:22px; border-radius:6px; background:repeating-linear-gradient(45deg,#3a3348,#3a3348 3px,#332d42 3px,#332d42 6px);"></div>
+              <span style="font-family:'Spectral', serif; font-size:15px; color:#e9e1d1;">Ashfall Guild</span>
+              <span style="color:#6a6357; font-size:11px;">&#9662;</span>
+            </div>
+            <div style="margin-left:auto; display:flex; align-items:center; gap:16px;">
+              <div style="display:flex; align-items:center; gap:8px; padding:6px 12px; width:220px; background:#1c1813; border:1px solid rgba(232,224,208,0.1); border-radius:7px;">
+                <span style="color:#6a6357; font-size:12px;">&#9906;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Search the book&hellip;</span>
+              </div>
+              <div style="width:28px; height:28px; border-radius:50%; background:repeating-linear-gradient(45deg,#4a3f2c,#4a3f2c 3px,#413827 3px,#413827 6px);"></div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex:1; min-height:0;">
+
+            <!-- calm sidebar -->
+            <div style="width:216px; flex-shrink:0; background:#12100c; border-right:1px solid rgba(232,224,208,0.09); padding:18px 12px; display:flex; flex-direction:column;">
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; background:rgba(205,163,73,0.12); border-radius:7px; color:#e4c374;">
+                <span style="font-size:13px;">&#9670;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600;">Spells</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#b58a2e;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">&#9678;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Faces</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">&#128273;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Secrets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">2</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:12px; opacity:0.7;">#</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Targets</span><span style="margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357;">6</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:9px 12px; color:#a89f8e;">
+                <span style="font-size:11px; opacity:0.7;">&#9632;</span><span style="font-family:'Hanken Grotesk',sans-serif; font-size:14px;">Records</span>
+              </div>
+
+              <div style="margin-top:20px; padding-top:16px; border-top:1px solid rgba(232,224,208,0.07); display:flex; flex-direction:column;">
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Grammar</div>
+                <div style="padding:7px 12px; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6a6357;">Guarantees</div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:7px; background:rgba(88,101,242,0.1); border:1px solid rgba(88,101,242,0.24);">
+                <span style="width:7px; height:7px; border-radius:50%; background:#7f8cf0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#9aa4f2;">discord &middot; connected</span>
+              </div>
+            </div>
+
+            <!-- main list -->
+            <div class="cvs-scroll" style="flex:1; min-width:0; overflow-y:auto; padding:26px 30px;">
+              <div style="display:flex; align-items:flex-end; gap:14px; margin-bottom:6px;">
+                <h1 style="margin:0; font-family:'Spectral', serif; font-size:28px; font-weight:600; color:#e9e1d1;">Your grimoire</h1>
+                <span style="font-family:'Hanken Grotesk',sans-serif; font-size:13px; color:#6a6357; padding-bottom:5px;">6 spells &middot; 4 casting today</span>
+                <button style="margin-left:auto; font-family:'Hanken Grotesk',sans-serif; font-size:13px; font-weight:600; color:#0b0a08; background:#cda349; border:none; border-radius:7px; padding:9px 16px; cursor:pointer;">+ New spell</button>
+              </div>
+              <div style="font-family:'Spectral',serif; font-style:italic; font-size:14px; color:#8a8272; margin-bottom:22px;">Stored sentences that do things when spoken.</div>
+
+              <div style="display:flex; flex-direction:column;">
+                <!-- row 1 -->
+                <div style="display:flex; align-items:center; gap:16px; padding:16px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#86a06f; flex-shrink:0;"></span>
+                  <div style="width:340px; flex-shrink:0;">
+                    <div style="font-family:'Spectral',serif; font-size:17px; color:#e9e1d1;">Welcome the newly arrived</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266; margin-top:3px;">when a member joins</div>
+                  </div>
+                  <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#9c9382;">post as <span style="color:#c9b06a;">The Doorkeeper</span> &middot; grant <span style="color:#c9b06a;">@initiate</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#b58a2e; flex-shrink:0;">charm</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357; width:70px; text-align:right; flex-shrink:0;">20m ago</span>
+                </div>
+                <!-- row 2 -->
+                <div style="display:flex; align-items:center; gap:16px; padding:16px 4px; border-top:1px solid rgba(232,224,208,0.08); background:rgba(205,163,73,0.05);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#86a06f; flex-shrink:0;"></span>
+                  <div style="width:340px; flex-shrink:0;">
+                    <div style="font-family:'Spectral',serif; font-size:17px; color:#e9e1d1;">Relay the deployment</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266; margin-top:3px;">when GitHub cuts a release</div>
+                  </div>
+                  <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#9c9382;">if <span style="color:#9089bf;">tag ~ v*</span> &middot; post to <span style="color:#c9b06a;">#ship-log</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#b58a2e; flex-shrink:0;">charm</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357; width:70px; text-align:right; flex-shrink:0;">2h ago</span>
+                </div>
+                <!-- row 3 -->
+                <div style="display:flex; align-items:center; gap:16px; padding:16px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#86a06f; flex-shrink:0;"></span>
+                  <div style="width:340px; flex-shrink:0;">
+                    <div style="font-family:'Spectral',serif; font-size:17px; color:#e9e1d1;">/taunt</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266; margin-top:3px;">when someone runs the command</div>
+                  </div>
+                  <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#9c9382;">reply with a random taunt at <span style="color:#c9b06a;">@target</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#b58a2e; flex-shrink:0;">charm</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357; width:70px; text-align:right; flex-shrink:0;">4m ago</span>
+                </div>
+                <!-- row 4 -->
+                <div style="display:flex; align-items:center; gap:16px; padding:16px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="width:8px; height:8px; border-radius:50%; background:#b58a2e; flex-shrink:0;"></span>
+                  <div style="width:340px; flex-shrink:0;">
+                    <div style="font-family:'Spectral',serif; font-size:17px; color:#c9c0ad;">Crown the patrons</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266; margin-top:3px;">when a payment succeeds</div>
+                  </div>
+                  <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266;">grant <span style="color:#9c9382;">@patron</span> &middot; post to <span style="color:#9c9382;">#hall-of-patrons</span></div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#6a6357; flex-shrink:0;">paused</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357; width:70px; text-align:right; flex-shrink:0;">3d ago</span>
+                </div>
+                <!-- row 5 hex -->
+                <div style="display:flex; align-items:center; gap:16px; padding:16px 4px; border-top:1px solid rgba(232,224,208,0.08);">
+                  <span style="color:#bb6647; font-size:10px; flex-shrink:0; width:8px;">&#128274;</span>
+                  <div style="width:340px; flex-shrink:0;">
+                    <div style="font-family:'Spectral',serif; font-size:17px; color:#c9c0ad;">Banish</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266; margin-top:3px;">engineer-authored &middot; cast by hand</div>
+                  </div>
+                  <div style="flex:1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#7a7266;">ban <span style="color:#c98d72;">@target</span> &middot; purge 7 days</div>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:#c98d72; flex-shrink:0;">hex</span>
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#6a6357; width:70px; text-align:right; flex-shrink:0;">&mdash;</span>
+                </div>
+                <div style="border-top:1px solid rgba(232,224,208,0.08);"></div>
+              </div>
+            </div>
+
+            <!-- reading pane: one spell open as a page -->
+            <div class="cvs-scroll" style="width:352px; flex-shrink:0; border-left:1px solid rgba(232,224,208,0.09); background:#e7ddc6; overflow-y:auto; padding:26px 26px;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#8a7a52; margin-bottom:8px;">Charm &middot; active</div>
+              <h2 style="margin:0 0 6px; font-family:'Spectral', serif; font-size:24px; font-weight:600; color:#26221a; line-height:1.2;">Relay the deployment</h2>
+              <div style="font-family:'Spectral',serif; font-style:italic; font-size:14px; color:#6f6653; line-height:1.5; margin-bottom:22px;">Announce every GitHub release in the guild&rsquo;s ship channel, once and only once.</div>
+
+              <div style="margin-bottom:20px;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#a08a4e; margin-bottom:7px;">When</div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#4a4436;">github.release <span style="color:#8a8272;">&mdash;</span> an external call</div>
+              </div>
+              <div style="margin-bottom:20px;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#a08a4e; margin-bottom:7px;">Who may</div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#4a4436;">a signed call on this tenant&rsquo;s secret. An unknown caller fails like a forged one.</div>
+              </div>
+              <div style="margin-bottom:20px;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#a08a4e; margin-bottom:7px;">What happens</div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; color:#4a4436;"><span style="color:#6a4fa0;">if</span> tag matches <span style="background:rgba(38,34,26,0.08); padding:1px 4px; border-radius:3px;">v*</span><br><span style="color:#8a6a1e;">post to</span> #ship-log</div>
+              </div>
+              <div style="margin-bottom:8px;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#a08a4e; margin-bottom:9px;">Guarantees</div>
+                <div style="display:flex; flex-direction:column; gap:7px;">
+                  <div style="display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a4436;"><span style="color:#4f7a3e;">&#10003;</span> deduped &middot; the same release never posts twice</div>
+                  <div style="display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a4436;"><span style="color:#4f7a3e;">&#10003;</span> retried with backoff if Discord is down</div>
+                  <div style="display:flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#4a4436;"><span style="color:#4f7a3e;">&#10003;</span> outcome recorded &mdash; never reports done what didn&rsquo;t happen</div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:9px; margin-top:24px;">
+                <button style="flex:1; font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; font-weight:600; color:#26221a; background:transparent; border:1px solid rgba(38,34,26,0.3); border-radius:6px; padding:9px; cursor:pointer;">Edit spell</button>
+                <button style="font-family:'Hanken Grotesk',sans-serif; font-size:12.5px; color:#6f6653; background:transparent; border:1px solid rgba(38,34,26,0.2); border-radius:6px; padding:9px 12px; cursor:pointer;">Pause</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+</body>
+</html>
