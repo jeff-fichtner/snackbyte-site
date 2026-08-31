@@ -9,3 +9,8 @@ package-lock.json
 .claude/
 specs/
 CLAUDE.md
+
+# Standalone published documents — complete HTML pages copied in from the project
+# that generates them, not app source. Reformatting them here would fight the generator.
+# NB: patterns in this file resolve relative to config/, hence the ../ prefix.
+../src/web/public/**

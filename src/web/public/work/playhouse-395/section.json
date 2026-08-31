@@ -1,0 +1,19 @@
+{
+  "title": "Playhouse 395",
+  "blurb": "Bishop's community theatre. Work in progress on how rehearsal schedules get made and shared, with Matilda as the first production through it.",
+  "pages": [
+    {
+      "path": "roadmap",
+      "title": "Schedule Map",
+      "blurb": "What could grow around the weekly rehearsal tab — near side built, far side still craft.",
+      "status": "Proposal"
+    },
+    {
+      "path": "call-board",
+      "title": "Matilda Call Board",
+      "blurb": "Pick your name, see when you're called and when you're done.",
+      "status": "Week 2",
+      "locked": true
+    }
+  ]
+}

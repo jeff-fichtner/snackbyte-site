@@ -18,6 +18,10 @@ function run(command, args) {
   }
 }
 
+// Client-section landing pages, generated from each section.json before the frontend
+// build copies public/ into dist/.
+run(process.execPath, ['scripts/build-sections.mjs']);
+
 // Frontend build.
 run(bin('vite'), ['build']);
 

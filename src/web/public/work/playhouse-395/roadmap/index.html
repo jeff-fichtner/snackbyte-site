@@ -1,0 +1,219 @@
+<title>Playhouse 395 Schedule Map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#EEF0F4; --surface:#FFFFFF; --sunk:#E3E7ED; --ghost:#F6F7FA;
+    --ink:#14171C; --muted:#59636F; --faint:#8A94A2; --rule:#D3D9E1;
+    --deep:#0E5E68; --deep-sf:#DDECEE;
+    --live:#B0620F; --live-sf:#F6E7D6;
+    --f-d:"Fraunces",Georgia,serif;
+    --f-b:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
+    --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
+    --deep:#5FB6C2; --deep-sf:#12262B;
+    --live:#E0A055; --live-sf:#2A1E12;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
+    --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
+    --deep:#5FB6C2; --deep-sf:#12262B;
+    --live:#E0A055; --live-sf:#2A1E12;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:64rem;margin:0 auto;padding:3.5rem 1.25rem 6rem;display:flex;flex-direction:column;gap:3.5rem}
+
+  .eyebrow{font-family:var(--f-m);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  h1{font-family:var(--f-d);font-weight:600;font-size:clamp(2.6rem,7vw,4.2rem);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  h2{font-family:var(--f-d);font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.1;margin:0;letter-spacing:-.01em}
+  h3{font-family:var(--f-m);font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:0}
+  p{margin:0}
+  .lede{font-size:1.06rem;color:var(--muted);max-width:44rem}
+  .lede b{color:var(--ink);font-weight:500}
+
+  header{display:flex;flex-direction:column;gap:.9rem}
+  section{display:flex;flex-direction:column;gap:1.4rem}
+  .sec-head{display:flex;flex-direction:column;gap:.5rem;max-width:44rem}
+
+  /* ── certainty scale: the spine of the whole page ── */
+  .scale{display:flex;flex-direction:column;gap:.55rem;padding:1.1rem 1.2rem;background:var(--sunk);border-radius:4px}
+  .scale-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+  .scale-bar i{height:5px;border-radius:1px;background:var(--faint)}
+  .scale-bar i:nth-child(1){opacity:.3}
+  .scale-bar i:nth-child(2){opacity:.55}
+  .scale-bar i:nth-child(3){background:var(--deep)}
+  .scale-bar i:nth-child(4){background:var(--live)}
+  .scale-lab{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;font-family:var(--f-m);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+  /* ── the hinge ── */
+  .hinge{background:var(--ink);color:var(--bg);border-radius:5px;padding:1.6rem 1.5rem;display:grid;grid-template-columns:1fr auto;gap:1.75rem;align-items:center}
+  @media (max-width:46rem){.hinge{grid-template-columns:1fr;gap:1.25rem}}
+  .hinge h2{color:var(--bg)}
+  .hinge p{font-size:.92rem;opacity:.8;max-width:32rem;margin-top:.5rem}
+  .hinge .tag{font-family:var(--f-m);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;opacity:.55;display:block;margin-bottom:.4rem}
+  .mini{border-collapse:collapse;font-family:var(--f-m);font-size:.66rem;background:transparent}
+  .mini th{padding:.32rem .6rem;text-align:left;border:1px solid rgba(255,255,255,.28);font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  .mini td{padding:.32rem .6rem;border:1px solid rgba(255,255,255,.16);opacity:.42;white-space:nowrap}
+  :root[data-theme="dark"] .mini th,:root:not([data-theme="light"]) .mini th{border-color:rgba(0,0,0,.32)}
+  :root[data-theme="dark"] .mini td,:root:not([data-theme="light"]) .mini td{border-color:rgba(0,0,0,.2)}
+
+  /* ── cards ── */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(16.5rem,1fr));gap:.85rem}
+  .card{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1rem 1.05rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+  .card.c1{background:var(--ghost);border-style:dashed}
+  .card.c2{background:var(--ghost)}
+  .meter{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;width:3.4rem}
+  .meter i{height:4px;border-radius:1px;background:var(--rule)}
+  .card.c1 .meter i:nth-child(-n+1){background:var(--faint)}
+  .card.c2 .meter i:nth-child(-n+2){background:var(--faint)}
+  .card.c3 .meter i:nth-child(-n+3){background:var(--deep)}
+  .card.c4 .meter i{background:var(--live)}
+  .card b{font-size:.98rem;font-weight:600;line-height:1.3;letter-spacing:-.005em}
+  .card p{font-size:.855rem;color:var(--muted);line-height:1.5}
+  .card .q{color:var(--deep)}
+
+  .stack{display:flex;flex-direction:column;gap:.85rem}
+  .qlist{display:flex;flex-direction:column;gap:0;background:var(--ghost);border:1px dashed var(--rule);border-radius:4px}
+  .qlist div{padding:.75rem 1.05rem;border-bottom:1px dashed var(--rule);font-size:.9rem;color:var(--muted)}
+  .qlist div:last-child{border-bottom:none}
+  .qlist b{color:var(--ink);font-weight:500}
+
+  /* ── axes matrix ── */
+  .t-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+  table.ax{border-collapse:collapse;width:100%;min-width:36rem;font-size:.88rem}
+  table.ax th{text-align:left;font-family:var(--f-m);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);padding:.7rem 1rem;border-bottom:1px solid var(--rule)}
+  table.ax td{padding:.75rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--muted)}
+  table.ax tr:last-child td{border-bottom:none}
+  table.ax td.a{color:var(--ink);font-weight:500;white-space:nowrap}
+  table.ax td.a span{display:block;font-family:var(--f-m);font-size:.68rem;font-weight:400;color:var(--faint);letter-spacing:.04em;margin-top:.15rem}
+
+  footer{border-top:1px solid var(--rule);padding-top:1.3rem;font-size:.87rem;color:var(--muted);max-width:46rem}
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Playhouse 395 &middot; scheduling &middot; first run on Matilda</div>
+    <h1>Schedule Map</h1>
+    <p class="lede">The weekly tab is the one piece of this that already works, and it stays exactly as it is. This maps what could grow on either side of it &mdash; <b>getting the week to the cast</b>, which is close and mostly built, and <b>deciding what goes in the week</b>, which is craft and largely unwritten.</p>
+  </header>
+
+  <div class="scale">
+    <div class="scale-bar"><i></i><i></i><i></i><i></i></div>
+    <div class="scale-lab"><span>Unknown</span><span>Emerging</span><span>Ready to build</span><span>Working</span></div>
+  </div>
+
+  <section>
+    <div class="hinge">
+      <div>
+        <span class="tag">The hinge &mdash; unchanged</span>
+        <h2>The weekly tab</h2>
+        <p>Filled in by hand, a week or two ahead. It is how this theatre works, and how the industry works. Nothing on this map asks anyone to fill it in differently, and nothing waits on it changing.</p>
+      </div>
+      <table class="mini">
+        <tr><th>Date</th><th>Time</th><th>Who</th><th>What</th></tr>
+        <tr><td>Mon</td><td>5:00</td><td>All Students</td><td>&mdash;</td></tr>
+        <tr><td>&nbsp;</td><td>6:00</td><td>All Cast</td><td>&mdash;</td></tr>
+        <tr><td>&nbsp;</td><td>7:00</td><td>&nbsp;</td><td>&mdash;</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h3>After the tab</h3>
+      <h2>Getting the week to the cast</h2>
+      <p class="lede">Everything here reads the weekly tab and needs nothing else from anyone. This is the near side of the map.</p>
+    </div>
+    <div class="cards">
+      <div class="card c4"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Call board</b><p>A performer finds their own name and sees when to arrive, when they&rsquo;re done, and what they&rsquo;re working on. Says &ldquo;not called&rdquo; plainly on their nights off.</p></div>
+      <div class="card c4"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Printable week</b><p>The same page printed or saved as a PDF, for the callboard and the group chat.</p></div>
+      <div class="card c4"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Double-booking check</b><p>Catches one person being needed in two rooms in the same hour &mdash; easy to miss when a performer covers roles in more than one group.</p></div>
+      <div class="card c3"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>On the website</b><p>The call board at playhouse395.com, so nobody has to scroll a thread to find the current week.</p></div>
+      <div class="card c2"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Personal notices</b><p>Your own call times sent to you, instead of a whole schedule you have to read yourself out of.</p></div>
+      <div class="card c2"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>What we&rsquo;ve covered so far</b><p>Weeks kept as they happen, so &ldquo;have we staged that yet?&rdquo; has an answer that isn&rsquo;t someone&rsquo;s memory.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h3>Before the tab</h3>
+      <h2>Deciding what goes in the week</h2>
+      <p class="lede">There is no industry standard here. It comes down to the director and the music director on each show. What follows is a first attempt at writing down the reasoning that seems to hold &mdash; offered as guidance to argue with, not a rule.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card c3"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Hardest material first</b><p>Whatever is hardest <em>in this show</em> gets scheduled earliest, so there is the most possible time to review it before opening. What counts as hardest is judged case by case and is the thing that outranks everything below.</p></div>
+      <div class="card c3"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Staging wants chronological order</b><p>Working scenes in show order lets performers build a character forward instead of in fragments, and makes entrances and exits far easier for everyone to track. It is the default for blocking &mdash; and it is what hard material breaks when the two collide.</p></div>
+      <div class="card c2"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>A claiming order, for musicals</b><p>Choreography calls the performers it needs first, then staging, then music works with whoever is left. The reasoning: choreo is a short front-loaded cost across relatively few numbers, staging is the thing performers cannot practise alone, and music can be absorbed in gaps and small groups.</p></div>
+      <div class="card c2"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>The override</b><p>In the first weeks, a large and difficult musical number can outrank that order. Small principal work fits around anything; it is the big-cast number that cannot find a slot where music asks for time that would otherwise have gone to staging.</p></div>
+      <div class="card c2"><div class="meter"><i></i><i></i><i></i><i></i></div>
+        <b>Preproduction fixes the frame, not the contents</b><p>The length of the rehearsal period, and roughly how many days each discipline needs, get settled before rehearsals start. How that time actually gets broken up is decided closer in, a week or two at a time.</p></div>
+    </div>
+
+    <div class="stack">
+      <h3>Still open</h3>
+      <div class="qlist">
+        <div><b>How is &ldquo;hardest&rdquo; actually judged for a given show?</b> Every principle above rests on this one, and it is the least written down.</div>
+        <div><b>How does cast availability get collected and folded in?</b></div>
+        <div><b>What makes a published week change once it is out?</b></div>
+        <div><b>Where does the claiming order stop working as a cast gets bigger?</b></div>
+      </div>
+    </div>
+
+    <div class="stack">
+      <h3>Could be built, once those are clearer</h3>
+      <div class="cards">
+        <div class="card c2"><div class="meter"><i></i><i></i><i></i><i></i></div>
+          <b>A show breakdown</b><p>Scenes, numbers, and who is in each. Built by hand on every production already; it is the input everything on this side would need.</p></div>
+        <div class="card c1"><div class="meter"><i></i><i></i><i></i><i></i></div>
+          <b>A season shell</b><p>Rehearsal period, week count, and roughly what each discipline gets.</p></div>
+        <div class="card c1"><div class="meter"><i></i><i></i><i></i><i></i></div>
+          <b>What a director is agreeing to</b><p>A written shape for the rehearsal period, so a director knows what they are signing up for before they say yes.</p></div>
+        <div class="card c1"><div class="meter"><i></i><i></i><i></i><i></i></div>
+          <b>A draft week to argue with</b><p>Not a schedule anyone has to accept. A first pass that saves the blank page.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h3>Cross-cutting</h3>
+      <h2>The show changes the weights</h2>
+      <p class="lede">None of the reasoning above holds evenly. Four things about a production shift it, and any standard worth writing has to say which kind of show it is describing.</p>
+    </div>
+    <div class="t-scroll">
+      <table class="ax">
+        <thead><tr><th>Axis</th><th>What shifts</th></tr></thead>
+        <tbody>
+          <tr><td class="a">Musical<span>vs. straight play</span></td>
+            <td>A straight play has no music or choreo lane at all. The claiming order collapses to one discipline, and chronological staging becomes the dominant principle rather than one pressure among three.</td></tr>
+          <tr><td class="a">Staging-heavy<span>vs. concert-heavy</span></td>
+            <td>Choreo-first assumes relatively few numbers carrying heavy staging. A score-driven show inverts it &mdash; music becomes the long pole and should be claiming performers first.</td></tr>
+          <tr><td class="a">Children in the cast<span>vs. adults only</span></td>
+            <td>Children&rsquo;s release times cut the usable evening roughly in half and make the overlap hour the scarcest thing in the process. An adults-only show has no such constraint and can schedule almost anything in almost any slot.</td></tr>
+          <tr><td class="a">Large cast<span>vs. small cast</span></td>
+            <td>With a small cast the claiming order barely matters &mdash; most people are needed most of the time. As the cast grows, and as performers start covering more than one role, the order becomes the whole game.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    The near side needs nothing from anyone beyond the weekly tab as it is already filled in. The far side is deliberately unresolved: those questions get answered by watching how a production actually runs, not by deciding something in advance &mdash; and answering one is what moves an idea on that side from a dashed outline to something worth building.
+  </footer>
+</div>
