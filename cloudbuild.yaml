@@ -17,6 +17,11 @@ substitutions:
   # BUILD-arg (drives the version chip). The defaults leave the prod build/deploy unchanged.
   _APP_ENV: ''
   _APP_IS_PRODUCTION: 'true'
+  # Warm instances to keep on production. 0 scales to zero and pays a cold start on the
+  # first request after idle; 1 costs one always-on instance. Staging is always 0 —
+  # it is derived from _APP_ENV in the deploy step, not passed in, so the deploy job's
+  # substitutions line stays exactly as every other app calls it.
+  _MIN_INSTANCES: '0'
 
 # Build tags → filterable chips in Cloud Build History (which app / ref / commit). Critical when
 # many apps build in the same project. (Underscores aren't allowed in tag values.)
@@ -66,10 +71,13 @@ steps:
       - |
         ENV_VARS="NODE_ENV=production,APP_VERSION=${TAG_NAME},BUILD_GIT_COMMIT=${SHORT_SHA},BUILD_DATE=$$(cat /workspace/build_date.txt)"
         if [ -n "${_APP_ENV}" ]; then ENV_VARS="$${ENV_VARS},APP_ENV=${_APP_ENV}"; fi
+        MIN_INSTANCES="${_MIN_INSTANCES}"
+        if [ -n "${_APP_ENV}" ]; then MIN_INSTANCES=0; fi
         gcloud run deploy ${_SERVICE} \
           --image=${_AR_HOST}/${PROJECT_ID}/${_REPO}/${_SERVICE}:${TAG_NAME}-${SHORT_SHA} \
           --project=${PROJECT_ID} \
           --region=${_REGION} \
+          --min-instances="$${MIN_INSTANCES}" \
           --set-env-vars="$${ENV_VARS}"
 
 images:
