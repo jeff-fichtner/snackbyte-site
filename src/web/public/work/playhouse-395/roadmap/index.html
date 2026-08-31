@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Playhouse 395 Schedule Map</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
@@ -92,8 +98,23 @@
   table.ax td.a span{display:block;font-family:var(--f-m);font-size:.68rem;font-weight:400;color:var(--faint);letter-spacing:.04em;margin-top:.15rem}
 
   footer{border-top:1px solid var(--rule);padding-top:1.3rem;font-size:.87rem;color:var(--muted);max-width:46rem}
-</style>
 
+  /* narrow screens */
+  .mini-wrap{overflow-x:auto;max-width:100%}
+  @media (max-width:34rem){
+    .wrap{padding:2rem 1rem 4rem;gap:2.5rem}
+    .scale{padding:.9rem 1rem}
+    .scale-lab{font-size:.56rem;letter-spacing:.02em;line-height:1.25}
+    .hinge{padding:1.2rem 1.1rem}
+    .cards{grid-template-columns:1fr}
+    .card{padding:.9rem .95rem 1rem}
+    .qlist div{padding:.7rem .9rem}
+    table.ax td,table.ax th{padding:.6rem .75rem}
+  }
+  @media (max-width:22rem){ .scale-lab span:nth-child(3){hyphens:auto} }
+</style>
+</head>
+<body>
 <div class="wrap">
 
   <header>
@@ -114,12 +135,14 @@
         <h2>The weekly tab</h2>
         <p>Filled in by hand, a week or two ahead. It is how this theatre works, and how the industry works. Nothing on this map asks anyone to fill it in differently, and nothing waits on it changing.</p>
       </div>
+      <div class="mini-wrap">
       <table class="mini">
         <tr><th>Date</th><th>Time</th><th>Who</th><th>What</th></tr>
         <tr><td>Mon</td><td>5:00</td><td>All Students</td><td>&mdash;</td></tr>
         <tr><td>&nbsp;</td><td>6:00</td><td>All Cast</td><td>&mdash;</td></tr>
         <tr><td>&nbsp;</td><td>7:00</td><td>&nbsp;</td><td>&mdash;</td></tr>
       </table>
+      </div>
     </div>
   </section>
 
@@ -217,3 +240,5 @@
     The near side needs nothing from anyone beyond the weekly tab as it is already filled in. The far side is deliberately unresolved: those questions get answered by watching how a production actually runs, not by deciding something in advance &mdash; and answering one is what moves an idea on that side from a dashed outline to something worth building.
   </footer>
 </div>
+</body>
+</html>
