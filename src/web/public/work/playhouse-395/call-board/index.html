@@ -1,258 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Matilda Call Board</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Archivo+Black&family=Public+Sans:wght@400;500;700&display=swap">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=https://rehearsal.playhouse395.com/">
+<link rel="canonical" href="https://rehearsal.playhouse395.com/">
+<title>Moved — rehearsal.playhouse395.com</title>
 <style>
-  :root{
-    --bg:#FBFAF7; --surface:#FFFFFF; --sunk:#F1F0EC;
-    --ink:#16161A; --muted:#5E6068; --rule:#DCDBD6;
-    --red:#C8102E; --red-sf:#FBE9EC; --navy:#1B2A4A; --navy-sf:#E7EBF3;
-    --l-music:#B01235; --l-choreo:#6B3FA0; --l-blocking:#15637C; --l-scene:#8A5211; --l-notes:#5E6068;
-    --f-d:"Archivo","Helvetica Neue",Arial,sans-serif;
-    --f-b:"Public Sans","Helvetica Neue",Arial,sans-serif;
-    --f-block:"Archivo Black","Archivo",Arial,sans-serif;
-  }
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-    --l-music:#FF7A90; --l-choreo:#B79BE8; --l-blocking:#6FC2DC; --l-scene:#E0A567; --l-notes:#9A9CA6;
-    --bg:#101116; --surface:#191B22; --sunk:#141620;
-    --ink:#F0F0F2; --muted:#9A9CA6; --rule:#2C2E38;
-    --red:#FF5C6E; --red-sf:#2A1419; --navy:#93A9D2; --navy-sf:#171C2A;
-  }}
-  :root[data-theme="dark"]{
-    --l-music:#FF7A90; --l-choreo:#B79BE8; --l-blocking:#6FC2DC; --l-scene:#E0A567; --l-notes:#9A9CA6;
-    --bg:#101116; --surface:#191B22; --sunk:#141620;
-    --ink:#F0F0F2; --muted:#9A9CA6; --rule:#2C2E38;
-    --red:#FF5C6E; --red-sf:#2A1419; --navy:#93A9D2; --navy-sf:#171C2A;
-  }
-  *{box-sizing:border-box}
-  body{background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:54rem;margin:0 auto;padding:2rem 1.1rem 4rem;display:flex;flex-direction:column;gap:1.6rem}
-
-  header{display:flex;flex-direction:column;gap:.5rem}
-  .kicker{font-family:var(--f-d);font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
-  h1{font-family:var(--f-block);font-size:clamp(2.3rem,9vw,3.6rem);line-height:.92;letter-spacing:-.02em;margin:0;text-transform:uppercase}
-  .span{font-family:var(--f-d);font-size:1.05rem;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
-  .windows{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.35rem}
-  .win{font-family:var(--f-d);font-size:.76rem;font-weight:600;padding:.25rem .55rem;border-radius:2px;background:var(--navy-sf);color:var(--navy);font-variant-numeric:tabular-nums}
-
-  h2{font-family:var(--f-d);font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 .8rem}
-  section{display:flex;flex-direction:column;gap:.75rem}
-
-  .picker-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-  .picker-label{font-family:var(--f-d);font-size:.72rem;font-weight:700;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--muted);flex:none}
-  .alphabet{display:flex;flex-wrap:wrap;gap:.22rem}
-  .ltr{font-family:var(--f-block);font-size:.72rem;width:1.55rem;height:1.55rem;display:grid;place-items:center;
-    background:var(--sunk);color:var(--ink);border:1px solid var(--rule);border-radius:2px;cursor:pointer;
-    padding:0;transition:background .12s,color .12s,border-color .12s}
-  .ltr:hover:not(:disabled){border-color:var(--red);color:var(--red)}
-  .ltr[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
-  .ltr:disabled{opacity:.28;cursor:default}
-  .ltr:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-
-  .names{display:flex;flex-wrap:wrap;gap:.35rem}
-  .names:empty{display:none}
-  .nm{font-family:var(--f-d);font-size:.82rem;font-weight:600;padding:.3rem .6rem;border-radius:2px;
-    background:var(--surface);border:1px solid var(--rule);color:var(--ink);cursor:pointer}
-  .nm:hover{border-color:var(--red);color:var(--red)}
-  .nm[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-  .nm:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-
-  #card:empty{display:none}
-  .card-note{font-size:.8rem;color:var(--muted);padding:.7rem 1.15rem;border-top:1px solid var(--rule);background:var(--sunk)}
-  .win-note{font-family:var(--f-b);font-size:.76rem;color:var(--muted);align-self:center}
-  .card{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--red);border-radius:3px;overflow:hidden}
-  .card-head{padding:1.1rem 1.15rem .9rem;border-bottom:1px solid var(--rule)}
-  .card-name{font-family:var(--f-block);font-size:clamp(1.4rem,5vw,1.9rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em}
-  .card-roles{font-size:.85rem;color:var(--muted);margin-top:.3rem}
-  .row{display:grid;grid-template-columns:3.6rem 1fr;gap:.9rem;padding:.85rem 1.15rem;border-bottom:1px solid var(--rule);align-items:baseline}
-  .row:last-child{border-bottom:none}
-  .row-off{color:var(--muted)}
-  .day{font-family:var(--f-d);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .times{font-family:var(--f-d);font-size:1.45rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-.01em}
-  .times .to{color:var(--muted);font-weight:600}
-  .work{display:flex;flex-direction:column;gap:.5rem;margin-top:.55rem}
-  .wk-hour{display:grid;grid-template-columns:2.9rem 1fr;gap:.1rem .5rem;align-items:baseline}
-  @media (max-width:24rem){.wk-l{min-width:0}}
-  .wk-t{font-family:var(--f-d);font-size:.78rem;font-weight:700;font-variant-numeric:tabular-nums;
-    color:var(--muted);grid-column:1}
-  .wk-items{grid-column:2;display:flex;flex-direction:column;gap:.22rem;min-width:0}
-  .wk{font-size:.86rem;color:var(--ink);line-height:1.35;display:flex;gap:.45rem;align-items:baseline;flex-wrap:wrap}
-  .wk-l{font-family:var(--f-d);font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-    flex:none;min-width:4.7rem;padding-top:.12rem}
-  .wk-l[data-lane="Music"]{color:var(--l-music)}
-  .wk-l[data-lane="Choreo"]{color:var(--l-choreo)}
-  .wk-l[data-lane="Blocking"]{color:var(--l-blocking)}
-  .wk-l[data-lane="Scene work"]{color:var(--l-scene)}
-  .wk-l[data-lane="Notes"]{color:var(--l-notes)}
-  th[data-lane="Music"]{color:var(--l-music)}
-  th[data-lane="Choreo"]{color:var(--l-choreo)}
-  th[data-lane="Blocking"]{color:var(--l-blocking)}
-  th[data-lane="Scene work"]{color:var(--l-scene)}
-  .free{font-family:var(--f-d);font-size:1rem;font-weight:600;color:var(--muted)}
-
-
-  #grid{display:flex;flex-direction:column;gap:1rem}
-  .t-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--surface)}
-  table{border-collapse:collapse;width:100%;min-width:44rem;font-size:.82rem}
-  caption{caption-side:top;text-align:left;font-family:var(--f-d);font-weight:700;font-size:.8rem;letter-spacing:.05em;
-    text-transform:uppercase;padding:.8rem 1rem .6rem;border-bottom:1px solid var(--rule);color:var(--ink)}
-  th{font-family:var(--f-d);text-align:left;font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-    color:var(--muted);padding:.6rem .8rem;border-bottom:1px solid var(--rule);white-space:nowrap}
-  td{padding:.55rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--muted)}
-  tr:last-child td{border-bottom:none}
-  td.hr{font-family:var(--f-d);font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-  footer{border-top:1px solid var(--rule);padding-top:1rem;font-size:.8rem;color:var(--muted)}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-  @media print{
-    .picker,.hint{display:none!important}
-    body{background:#fff}
-    .t-scroll{border:none} table{min-width:0;font-size:.7rem}
-  }
+  body{font-family:system-ui,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh;background:#fbfaf7;color:#16161a}
+  main{text-align:center;padding:2rem;max-width:26rem}
+  h1{font-size:1.3rem;margin:0 0 .5rem}
+  p{margin:.25rem 0;color:#5e6068}
+  a{color:#c8102e}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="kicker">Playhouse 395 · Rehearsal call</div>
-    <h1>Matilda</h1>
-    <div class="span" id="span"></div>
-    <div class="windows">
-      <span class="win">Students 5:00 &ndash; 8:00</span>
-      <span class="win">Adults 6:00 &ndash; 9:00</span>
-      <span class="win-note">Often out sooner. Plan for the full window.</span>
-    </div>
-  </header>
-
-  <section class="picker">
-    <div class="picker-bar">
-      <span class="picker-label">Your name</span>
-      <div class="alphabet" id="alphabet"></div>
-    </div>
-    <div class="names" id="names"></div>
-  </section>
-
-  <div id="card"></div>
-
-  <section>
-    <h2 id="grid-head">The whole week</h2>
-    <div id="grid"></div>
-  </section>
-
-  <footer>Questions about a call go to Karen or Allison.</footer>
-</div>
-
-<script>
-  const DATA = {"people":[{"name":"Kaiya H.","initial":"K","roles":["Matilda"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Act 1 Scene 9"},{"lane":"Scene work","text":"Read through Scenes 1.3 and 1.8"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"},{"lane":"Notes","text":"Announcements. Matilda pulled for storytelling technique"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Quiet - Matilda"},{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Porter L.","initial":"P","roles":["Bruce"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Aaron C.","initial":"A","roles":["Nigel"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Emma L.","initial":"E","roles":["Amanda"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Ellery C.","initial":"E","roles":["Lavender"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Waverly A.","initial":"W","roles":["Hortensia"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Amani B.","initial":"A","roles":["Alice"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Emily P.","initial":"E","roles":["Eric"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Allana S.","initial":"A","roles":["Tommy"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Kestrel M.","initial":"K","roles":["Michael","Dad 4"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Act 1 Scene 9"},{"lane":"Scene work","text":"Read through Scenes 1.3 and 1.8"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Embry A.","initial":"E","roles":["Big Kid","Rudolpho"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"8:00","items":[{"lane":"Scene work","text":"Scene 11"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Choreo","text":"Loud - Zinnia, Rudolpho, Honey and dancers"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Emma H.","initial":"E","roles":["Big Kid","Mum 3","Henchman 2"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Iris P.","initial":"I","roles":["Big Kid","Nurse"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Katrina F.","initial":"K","roles":["Big Kid","Henchman 4"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Marley H.","initial":"M","roles":["Scary Big Kid","Mum 2","Loud Dancer"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Tulika D.","initial":"T","roles":["Snark Kid","Mum 4","Loud Dancer"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Caitlin T.","initial":"C","roles":["Big Kid"],"schedule":[{"day":"Mon","off":false,"from":"5:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"Miracle"}]},{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Music","text":"When I Grow Up"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"5:00","to":"8:00","work":[{"at":"5:00","items":[{"lane":"Choreo","text":"Revolting Children - littles only"}]},{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Susan F.","initial":"S","roles":["Trunchbull"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"7:00","items":[{"lane":"Music","text":"The Hammer - Trunchbull"},{"lane":"Blocking","text":"Act 1 Scene 9"},{"lane":"Scene work","text":"Read through Scenes 1.3 and 1.8"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]},{"at":"8:00","items":[{"lane":"Scene work","text":"Trunchbull character work"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"8:00","items":[{"lane":"Music","text":"The Smell of Rebellion"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"8:00","items":[{"lane":"Scene work","text":"Character work"}]}]}]},{"name":"Abbey G.","initial":"A","roles":["Miss Honey"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"8:00","items":[{"lane":"Scene work","text":"Scene 11"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"},{"lane":"Scene work","text":"Mrs. Phelps and Honey"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"8:00","items":[{"lane":"Music","text":"The Smell of Rebellion"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Choreo","text":"Loud - Zinnia, Rudolpho, Honey and dancers"},{"lane":"Notes","text":"Announcements"}]},{"at":"8:00","items":[{"lane":"Scene work","text":"Character work"}]}]}]},{"name":"Mandi W.","initial":"M","roles":["Mrs. Wormwood"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Act 1 Scene 9"},{"lane":"Scene work","text":"Read through Scenes 1.3 and 1.8"}]},{"at":"8:00","items":[{"lane":"Scene work","text":"Scene 11"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Choreo","text":"Loud - Zinnia, Rudolpho, Honey and dancers"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Jesse A.","initial":"J","roles":["Mr. Wormwood"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Act 1 Scene 9"},{"lane":"Scene work","text":"Read through Scenes 1.3 and 1.8"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]},{"at":"7:00","items":[{"lane":"Music","text":"All I Know - Mr. Wormwood"},{"lane":"Blocking","text":"Scene 1.6 walk through / Scene 1.7"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Music","text":"Miracle - adult parts"},{"lane":"Blocking","text":"Scene 1.3 Wormwood home"},{"lane":"Scene work","text":"Scene 1.6"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Jane G.","initial":"J","roles":["Mrs. Phelps"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Act 1 Scene 9"},{"lane":"Scene work","text":"Read through Scenes 1.3 and 1.8"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"},{"lane":"Scene work","text":"Mrs. Phelps and Honey"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]},{"name":"Patience W.","initial":"P","roles":["Acrobat","Henchman 3","Loud Dancer"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]},{"name":"Gerard H.","initial":"G","roles":["Children's Entertainer","Judge","Sergei"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"9:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]},{"at":"8:00","items":[{"lane":"Music","text":"Children's Entertainer solo"},{"lane":"Scene work","text":"Scene 11"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]},{"name":"Jeff F.","initial":"J","roles":["Doctor","Escapologist"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"8:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]},{"at":"7:00","items":[{"lane":"Blocking","text":"Scene 1.6 / Scene 1.2 hospital"}]}]}]},{"name":"Alan S.","initial":"A","roles":["Dad 1","Mechanic","Henchman 1"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]},{"name":"Rosalynn B.","initial":"R","roles":["Dad 3","Cook","Henchman 5"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]},{"name":"Savannah C.","initial":"S","roles":["Dad 2","Loud Dancer"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]},{"name":"Marie F.","initial":"M","roles":["Mum 1"],"schedule":[{"day":"Mon","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Vocals with adults - Green Room"},{"lane":"Choreo","text":"Revolting Children"}]}]},{"day":"Tue","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"Miracle - adults added"}]}]},{"day":"Wed","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - all adults as back-ups"},{"lane":"Choreo","text":"Loud dance"},{"lane":"Notes","text":"Announcements"}]}]},{"day":"Thu","off":false,"from":"6:00","to":"7:00","work":[{"at":"6:00","items":[{"lane":"Music","text":"When I Grow Up - everyone else"},{"lane":"Notes","text":"Announcements"}]}]}]}],"grid":[{"name":"Monday","short":"Mon","date":"August 31","hours":[{"time":"6:00","lanes":["Vocals with adults - Green Room","Revolting Children","","",""]},{"time":"7:00","lanes":["The Hammer - Trunchbull","","Act 1 Scene 9","Read through Scenes 1.3 and 1.8",""]},{"time":"8:00","lanes":["Children's Entertainer solo","","","Scene 11",""]}]},{"name":"Tuesday","short":"Tue","date":"September 1","hours":[{"time":"5:00","lanes":["Miracle","","","",""]},{"time":"6:00","lanes":["Miracle - adults added","","","Mrs. Phelps and Honey","Announcements. Matilda pulled for storytelling technique"]},{"time":"7:00","lanes":["All I Know - Mr. Wormwood","","Scene 1.6 walk through / Scene 1.7","",""]},{"time":"8:00","lanes":["","","","Trunchbull character work",""]}]},{"name":"Wednesday","short":"Wed","date":"September 2","hours":[{"time":"5:00","lanes":["When I Grow Up","","","",""]},{"time":"6:00","lanes":["When I Grow Up - all adults as back-ups","Loud dance","","","Announcements"]},{"time":"7:00","lanes":["Miracle - adult parts","","Scene 1.3 Wormwood home","Scene 1.6",""]},{"time":"8:00","lanes":["The Smell of Rebellion","","","",""]}]},{"name":"Thursday","short":"Thu","date":"September 3","hours":[{"time":"5:00","lanes":["","Revolting Children - littles only","","",""]},{"time":"6:00","lanes":["When I Grow Up - everyone else","Loud - Zinnia, Rudolpho, Honey and dancers","","","Announcements"]},{"time":"7:00","lanes":["Quiet - Matilda","","Scene 1.6 / Scene 1.2 hospital","",""]},{"time":"8:00","lanes":["","","","Character work",""]}]}],"days":[{"name":"Monday","short":"Mon","date":"August 31"},{"name":"Tuesday","short":"Tue","date":"September 1"},{"name":"Wednesday","short":"Wed","date":"September 2"},{"name":"Thursday","short":"Thu","date":"September 3"}],"span":"August 31 – September 3","week":"2"};
-
-  const $ = (id) => document.getElementById(id);
-
-  $('span').textContent = DATA.span;
-
-  const letters = [...new Set(DATA.people.map((p) => p.initial))];
-  let letter = null, chosen = null;
-
-  const alpha = $('alphabet');
-  for (const L of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') {
-    const b = document.createElement('button');
-    b.className = 'ltr'; b.textContent = L; b.type = 'button';
-    b.setAttribute('aria-pressed', 'false');
-    if (!letters.includes(L)) b.disabled = true;
-    else b.onclick = () => { letter = letter === L ? null : L; chosen = null; render(); };
-    alpha.appendChild(b);
-  }
-
-  function render() {
-    // Persist here, not in the handlers — collapsing a letter also clears the
-    // selection, and that used to leave a stale name in storage.
-    try {
-      if (chosen) localStorage.setItem('m-name', chosen);
-      else localStorage.removeItem('m-name');
-    } catch {}
-    for (const b of alpha.children) b.setAttribute('aria-pressed', String(b.textContent === letter));
-    const list = $('names'); list.textContent = '';
-    for (const p of DATA.people.filter((p) => p.initial === letter)) {
-      const b = document.createElement('button');
-      b.className = 'nm'; b.type = 'button'; b.textContent = p.name;
-      b.setAttribute('aria-pressed', String(chosen === p.name));
-      b.onclick = () => { chosen = chosen === p.name ? null : p.name; render(); };
-      list.appendChild(b);
-    }
-    const card = $('card'); card.textContent = '';
-    const p = DATA.people.find((x) => x.name === chosen);
-    $('grid-head').textContent = p ? 'The whole week' : 'This week';
-    if (!p) return;
-    const wrap = document.createElement('div'); wrap.className = 'card';
-    const head = document.createElement('div'); head.className = 'card-head';
-    const nm = document.createElement('div'); nm.className = 'card-name'; nm.textContent = p.name;
-    const rl = document.createElement('div'); rl.className = 'card-roles'; rl.textContent = p.roles.join(' · ');
-    head.append(nm, rl); wrap.appendChild(head);
-    for (const d of p.schedule) {
-      const row = document.createElement('div'); row.className = 'row' + (d.off ? ' row-off' : '');
-      const day = document.createElement('div'); day.className = 'day'; day.textContent = d.day;
-      const body = document.createElement('div');
-      if (d.off) {
-        const f = document.createElement('div'); f.className = 'free'; f.textContent = 'Not called';
-        body.appendChild(f);
-      } else {
-        const t = document.createElement('div'); t.className = 'times';
-        t.append(d.from, Object.assign(document.createElement('span'), { className: 'to', textContent: ' → ' + d.to }));
-        const w = document.createElement('div'); w.className = 'work';
-        for (const hour of d.work) {
-          const block = document.createElement('div'); block.className = 'wk-hour';
-          const t = document.createElement('span'); t.className = 'wk-t'; t.textContent = hour.at;
-          const items = document.createElement('div'); items.className = 'wk-items';
-          for (const item of hour.items) {
-            const line = document.createElement('div'); line.className = 'wk';
-            const lab = document.createElement('span'); lab.className = 'wk-l';
-            lab.dataset.lane = item.lane; lab.textContent = item.lane;
-            const txt = document.createElement('span'); txt.textContent = item.text;
-            line.append(lab, txt); items.appendChild(line);
-          }
-          block.append(t, items); w.appendChild(block);
-        }
-        body.append(t, w);
-      }
-      row.append(day, body); wrap.appendChild(row);
-    }
-    const note = document.createElement('div'); note.className = 'card-note';
-    note.textContent = 'These are ' + p.name + '\u2019s times \u2014 when to arrive and when they can leave.';
-    wrap.appendChild(note);
-    card.appendChild(wrap);
-  }
-
-  const gridEl = $('grid');
-  const LANES = ['Music', 'Choreo', 'Blocking', 'Scene work', 'Notes'];
-  for (const day of DATA.grid) {
-    const box = document.createElement('div'); box.className = 't-scroll';
-    const t = document.createElement('table');
-    const cap = document.createElement('caption'); cap.textContent = day.name + ', ' + day.date; t.appendChild(cap);
-    const thead = document.createElement('thead'); const hr = document.createElement('tr');
-    for (const h of ['Time', ...LANES]) {
-      const th = document.createElement('th'); th.textContent = h;
-      if (h !== 'Time') th.dataset.lane = h;
-      hr.appendChild(th);
-    }
-    thead.appendChild(hr); t.appendChild(thead);
-    const tb = document.createElement('tbody');
-    for (const h of day.hours) {
-      const tr = document.createElement('tr');
-      const td0 = document.createElement('td'); td0.className = 'hr'; td0.textContent = h.time; tr.appendChild(td0);
-      for (const cell of h.lanes) { const td = document.createElement('td'); td.textContent = cell; tr.appendChild(td); }
-      tb.appendChild(tr);
-    }
-    t.appendChild(tb); box.appendChild(t); gridEl.appendChild(box);
-  }
-
-  try {
-    const saved = localStorage.getItem('m-name');
-    if (saved && DATA.people.some((p) => p.name === saved)) { chosen = saved; letter = saved[0].toUpperCase(); }
-  } catch {}
-  render();
-</script>
+<main>
+  <h1>The call board has moved</h1>
+  <p>It now lives at
+    <a href="https://rehearsal.playhouse395.com/">rehearsal.playhouse395.com</a>.</p>
+  <p>Update your bookmark &mdash; you&rsquo;re being sent there now.</p>
+</main>
+<script>location.replace('https://rehearsal.playhouse395.com/');</script>
 </body>
 </html>
