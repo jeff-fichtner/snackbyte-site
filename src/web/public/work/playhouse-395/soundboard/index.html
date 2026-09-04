@@ -11,7 +11,7 @@
     --bg:#EEF0F4; --surface:#FFFFFF; --sunk:#E3E7ED; --ghost:#F6F7FA;
     --ink:#14171C; --muted:#59636F; --faint:#8A94A2; --rule:#D3D9E1;
     --deep:#0E5E68; --deep-sf:#DDECEE;
-    --live:#B0620F; --live-sf:#F6E7D6;
+    --live:#B0620F;
     --f-d:"Fraunces",Georgia,serif;
     --f-b:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
     --f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
@@ -19,122 +19,117 @@
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
     --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
     --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
-    --deep:#5FB6C2; --deep-sf:#12262B;
-    --live:#E0A055; --live-sf:#2A1E12;
+    --deep:#5FB6C2; --deep-sf:#12262B; --live:#E0A055;
   }}
   :root[data-theme="dark"]{
     --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
     --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
-    --deep:#5FB6C2; --deep-sf:#12262B;
-    --live:#E0A055; --live-sf:#2A1E12;
+    --deep:#5FB6C2; --deep-sf:#12262B; --live:#E0A055;
   }
   *{box-sizing:border-box}
   body{background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.55;margin:0;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:64rem;margin:0 auto;padding:3.5rem 1.25rem 6rem;display:flex;flex-direction:column;gap:3.5rem}
+  .wrap{max-width:58rem;margin:0 auto;padding:3rem 1.25rem 5rem;display:flex;flex-direction:column;gap:2.75rem}
 
   .eyebrow{font-family:var(--f-m);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-  h1{font-family:var(--f-d);font-weight:600;font-size:clamp(2.6rem,7vw,4.2rem);line-height:.95;letter-spacing:-.02em;margin:0;text-wrap:balance}
-  h2{font-family:var(--f-d);font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.1;margin:0;letter-spacing:-.01em}
-  h3{font-family:var(--f-m);font-size:.72rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:0}
+  h1{font-family:var(--f-d);font-weight:600;font-size:clamp(2.4rem,6.5vw,3.6rem);line-height:.98;letter-spacing:-.02em;margin:0}
+  h2{font-family:var(--f-d);font-weight:600;font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.1;margin:0;letter-spacing:-.01em}
+  h3{font-family:var(--f-m);font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:0}
   p{margin:0}
-  a{color:var(--live);text-underline-offset:2px;text-decoration-thickness:1px}
+  a{color:var(--live);text-underline-offset:2px}
   a:focus-visible{outline:2px solid var(--live);outline-offset:3px;border-radius:2px}
-  .lede{font-size:1.06rem;color:var(--muted);max-width:44rem}
-  .lede b{color:var(--ink);font-weight:600}
 
-  header{display:flex;flex-direction:column;gap:.9rem}
-  section{display:flex;flex-direction:column;gap:1.4rem}
-  .sec-head{display:flex;flex-direction:column;gap:.5rem;max-width:46rem}
-  .sec-head p{color:var(--muted);font-size:.95rem}
+  header{display:flex;flex-direction:column;gap:.7rem}
+  .sub{color:var(--muted);max-width:40rem}
+  section{display:flex;flex-direction:column;gap:1.1rem}
+  .sec-head{display:flex;flex-direction:column;gap:.4rem;max-width:44rem}
+  .sec-head p{color:var(--muted);font-size:.93rem}
 
-  /* the standing note: this page recommends nothing */
-  .hinge{background:var(--ink);color:var(--bg);border-radius:5px;padding:1.6rem 1.5rem;display:flex;flex-direction:column;gap:.55rem}
-  .hinge h2{color:var(--bg);font-size:clamp(1.3rem,3vw,1.7rem)}
-  .hinge p{font-size:.94rem;opacity:.82;max-width:44rem}
-  .hinge .tag{font-family:var(--f-m);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+  /* ── the summary: everything a board member needs, before any scrolling ── */
+  .summary{background:var(--ink);color:var(--bg);border-radius:6px;padding:1.75rem 1.6rem 1.6rem;display:flex;flex-direction:column;gap:1.4rem}
+  .figures{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1.5rem;align-items:end}
+  @media (max-width:40rem){.figures{grid-template-columns:1fr;gap:1.1rem;align-items:start}}
+  .fig{display:flex;flex-direction:column;gap:.15rem}
+  .fig span{font-family:var(--f-m);font-size:.63rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;opacity:.55}
+  .fig b{font-family:var(--f-d);font-weight:600;font-size:1.5rem;line-height:1.1;letter-spacing:-.01em}
+  .fig.lead b{font-size:2.1rem}
+  .fig i{font-style:normal;font-family:var(--f-m);font-size:.7rem;opacity:.5;margin-top:.15rem}
+  .facts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.5rem;
+    border-top:1px solid rgba(128,128,128,.35);padding-top:1.2rem}
+  .facts li{font-size:.9rem;opacity:.85;line-height:1.5;padding-left:1rem;position:relative}
+  .facts li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:1px;background:currentColor;opacity:.55}
+  .facts b{font-weight:600;opacity:1}
+  .noprice{font-family:var(--f-m);font-size:.75rem;letter-spacing:.03em;line-height:1.5;opacity:.6;
+    border-top:1px solid rgba(128,128,128,.35);padding-top:1rem}
 
-  /* two headline items */
-  .items{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
-  @media (max-width:46rem){.items{grid-template-columns:1fr}}
-  .item{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.05rem 1.1rem 1.15rem;display:flex;flex-direction:column;gap:.45rem}
-  .item b{font-size:1.02rem;font-weight:600;letter-spacing:-.005em}
-  .item p{font-size:.87rem;color:var(--muted);line-height:1.5}
-  .item .num{font-family:var(--f-m);font-size:.94rem;color:var(--deep);font-weight:600;margin-top:.25rem}
-  .item .num span{display:block;font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:.15rem}
+  /* ── the decisions, immediately under the summary ── */
+  .decide{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+  @media (max-width:46rem){.decide{grid-template-columns:1fr}}
+  .d{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1rem 1.05rem 1.1rem;display:flex;flex-direction:column;gap:.4rem}
+  .d b{font-size:.98rem;font-weight:600}
+  .d p{font-size:.86rem;color:var(--muted);line-height:1.5}
 
-  /* tables */
+  /* ── tables ── */
   .t-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
-  table{border-collapse:collapse;width:100%;font-size:.9rem}
+  table{border-collapse:collapse;width:100%;font-size:.89rem}
   table.spec{min-width:21rem}
-  table.band{min-width:32rem}
-  table.pkg{min-width:30rem}
-  th{text-align:left;font-family:var(--f-m);font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--faint);padding:.7rem 1rem;border-bottom:1px solid var(--rule);white-space:nowrap}
-  td{padding:.72rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--muted)}
+  table.band,table.pkg{min-width:30rem}
+  th{text-align:left;font-family:var(--f-m);font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);padding:.65rem 1rem;border-bottom:1px solid var(--rule);white-space:nowrap}
+  td{padding:.7rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--muted)}
   tr:last-child td{border-bottom:none}
-  td.k{color:var(--ink);font-weight:500;white-space:nowrap}
-  td.n{font-family:var(--f-m);font-size:.85rem;color:var(--ink);white-space:nowrap}
+  td.k{color:var(--ink);font-weight:500}
+  td.n{font-family:var(--f-m);font-size:.84rem;color:var(--ink);white-space:nowrap}
   tfoot td{border-top:2px solid var(--rule);border-bottom:none;color:var(--ink);font-weight:600}
-
-  /* the age band table — the row that applies is marked */
   tr.applies td{background:var(--deep-sf)}
   tr.applies td.k{color:var(--deep)}
-  .flag{display:inline-block;font-family:var(--f-m);font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--deep);border:1px solid var(--deep);border-radius:2px;padding:.05rem .3rem;margin-left:.45rem;vertical-align:.05em}
+  .flag{display:inline-block;font-family:var(--f-m);font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--deep);border:1px solid var(--deep);border-radius:2px;padding:.05rem .3rem;margin-left:.4rem;vertical-align:.05em}
 
-  /* callout */
   .note{background:var(--ghost);border:1px dashed var(--rule);border-left:3px solid var(--deep);border-radius:4px;
-    padding:.95rem 1.1rem;font-size:.9rem;color:var(--muted);max-width:46rem}
+    padding:.9rem 1.05rem;font-size:.88rem;color:var(--muted);max-width:46rem}
   .note b{color:var(--ink);font-weight:600}
 
-  /* up / down columns */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+  /* ── up / down ── */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
   @media (max-width:46rem){.split{grid-template-columns:1fr}}
-  .col{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1rem 1.1rem 1.15rem}
-  .col h3{margin-bottom:.65rem}
+  .col{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.95rem 1.05rem 1.1rem}
+  .col h3{margin-bottom:.6rem}
   .col.up h3{color:var(--deep)}
   .col.down h3{color:var(--live)}
-  .col ul{margin:0;padding-left:1.05rem;display:flex;flex-direction:column;gap:.45rem}
-  .col li{font-size:.87rem;color:var(--muted);line-height:1.5}
+  .col ul{margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem}
+  .col li{font-size:.86rem;color:var(--muted);line-height:1.5}
   .col li b{color:var(--ink);font-weight:500}
 
-  /* decision list */
-  .qlist{display:flex;flex-direction:column;gap:0;background:var(--ghost);border:1px dashed var(--rule);border-radius:4px}
-  .qlist div{padding:.85rem 1.1rem;border-bottom:1px dashed var(--rule);font-size:.9rem;color:var(--muted)}
-  .qlist div:last-child{border-bottom:none}
-  .qlist b{color:var(--ink);font-weight:600;display:block;margin-bottom:.15rem}
-
-  /* photos */
-  .figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
-  figure{margin:0;display:flex;flex-direction:column;gap:.5rem}
+  /* ── photos ── */
+  .figs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  @media (max-width:44rem){.figs{grid-template-columns:1fr}}
+  figure{margin:0;display:flex;flex-direction:column;gap:.45rem}
   figure a{display:block;border-radius:4px;overflow:hidden;border:1px solid var(--rule);background:var(--sunk);line-height:0}
   figure a:hover{border-color:var(--deep)}
   figure img{width:100%;height:auto;display:block}
-  figcaption{font-size:.83rem;color:var(--muted);line-height:1.45}
-  figcaption b{display:block;font-family:var(--f-m);font-size:.63rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin-bottom:.2rem}
-  .figs.four{grid-template-columns:repeat(2,1fr)}
-  @media (max-width:46rem){.figs.four{grid-template-columns:1fr}}
-  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-  @media (max-width:40rem){.pair{grid-template-columns:1fr}}
+  figcaption{font-size:.81rem;color:var(--muted);line-height:1.45}
+  figcaption b{display:block;font-family:var(--f-m);font-size:.61rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--faint);margin-bottom:.15rem}
   figcaption .b4{color:var(--live)}
   figcaption .af{color:var(--deep)}
-  .hero a{border-color:var(--rule)}
+  .wide{grid-column:1/-1}
 
-  /* sources */
-  details{background:var(--ghost);border:1px solid var(--rule);border-radius:4px;padding:.85rem 1.1rem}
-  summary{cursor:pointer;font-family:var(--f-m);font-size:.7rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+  details{background:var(--ghost);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1.05rem}
+  summary{cursor:pointer;font-family:var(--f-m);font-size:.68rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
   summary:focus-visible{outline:2px solid var(--deep);outline-offset:3px;border-radius:2px}
-  details ul{margin:.9rem 0 0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.4rem}
-  details li{font-size:.85rem;color:var(--muted);line-height:1.5}
+  details ul{margin:.85rem 0 0;padding-left:1.05rem;display:flex;flex-direction:column;gap:.35rem}
+  details li{font-size:.83rem;color:var(--muted);line-height:1.5}
 
-  footer{border-top:1px solid var(--rule);padding-top:1.3rem;font-size:.87rem;color:var(--muted);max-width:46rem;display:flex;flex-direction:column;gap:.6rem}
-  footer .back{font-family:var(--f-m);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+  footer{border-top:1px solid var(--rule);padding-top:1.2rem;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:.5rem}
+  footer .back{font-family:var(--f-m);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase}
+
+  hr.rule{border:none;border-top:1px solid var(--rule);margin:.5rem 0 0}
+  .detail-lead{font-family:var(--f-m);font-size:.68rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
 
   @media (max-width:34rem){
-    .wrap{padding:2rem 1rem 4rem;gap:2.5rem}
-    .hinge{padding:1.2rem 1.1rem}
+    .wrap{padding:2rem 1rem 3.5rem;gap:2.25rem}
+    .summary{padding:1.3rem 1.1rem}
+    .fig.lead b{font-size:1.8rem}
     td,th{padding:.6rem .75rem}
-    .qlist div{padding:.75rem .9rem}
   }
 </style>
 </head>
@@ -144,58 +139,149 @@
   <header>
     <div class="eyebrow">Playhouse 395 &middot; Board packet &middot; September 2026</div>
     <h1>Soundboard Sale</h1>
-    <p class="lede">The Playhouse's <b>Soundcraft MFXi 20/2</b> console and its <b>Marathon Pro flight case</b>,
-    offered to a small community school nearby. Everything the board needs in order to name a number is on this
-    page: what the gear is, what condition it is in, what it cost new, and what the research says it is worth.</p>
+    <p class="sub">The Playhouse's Soundcraft MFXi 20/2 console and its Marathon Pro flight case,
+    offered to a small community school nearby.</p>
   </header>
 
-  <div class="hinge">
-    <span class="tag">Read this first</span>
-    <h2>This page does not recommend a price.</h2>
-    <p>It presents the valuation work as it was produced, including the parts that do not agree with each other.
-    Setting the number is the board's call. Come to the meeting with a figure and a reason.</p>
+  <div class="summary">
+    <div class="figures">
+      <div class="fig lead">
+        <span>Package, today</span>
+        <b>$500 &ndash; $700</b>
+        <i>~$950 &ndash; $1,020 new</i>
+      </div>
+      <div class="fig">
+        <span>Console</span>
+        <b>$350 &ndash; $500</b>
+      </div>
+      <div class="fig">
+        <span>Flight case</span>
+        <b>$150 &ndash; $225</b>
+      </div>
+    </div>
+    <ul class="facts">
+      <li><b>20-channel analog console</b> with GB30 preamps and built-in Lexicon effects, plus the
+        wheeled road case it has lived in.</li>
+      <li><b>Eleven to eighteen years old.</b> Analog consoles fall steeply for five to seven years and
+        then hit a floor. This one is on the floor, and the floor is where it stays.</li>
+      <li><b>Restored.</b> Years of gaffer tape and label residue cleaned off. The faders and pots
+        underneath are unworn.</li>
+      <li><b>Local sale.</b> Pickup by the school &mdash; no platform fee, no shipping risk, and none of the
+        thirty-to-ninety-day wait an open-market listing would mean.</li>
+    </ul>
+    <p class="noprice">No price is recommended on this page. The board sets the number.</p>
   </div>
 
   <section>
-    <div class="sec-head">
-      <h2>What is on the table</h2>
-      <p>Two items, sold together or separately. The research argues they are worth more as a pair;
-      the board decides whether they leave together.</p>
+    <div class="sec-head"><h2>What the board decides</h2></div>
+    <div class="decide">
+      <div class="d">
+        <b>The number</b>
+        <p>Somewhere between the age-model floor and the restored-condition market read. Where in that
+        span, and whether selling to a neighboring school moves it.</p>
+      </div>
+      <div class="d">
+        <b>Package or split</b>
+        <p>The console and case can go separately. The research argues against it &mdash; the case is what
+        makes this transportable to a school &mdash; but that is advice, not a constraint.</p>
+      </div>
+      <div class="d">
+        <b>Whether to sell</b>
+        <p>Nothing here argues the Playhouse should part with the console. It documents what parting
+        with it would be worth.</p>
+      </div>
     </div>
-    <div class="items">
-      <div class="item">
-        <b>Soundcraft MFXi 20/2</b>
-        <p>20-channel analog console. 20 mono mic inputs plus 2 stereo line channels, GB30 preamps,
-        built-in 24-bit Lexicon effects, 2 subgroups, 2 aux sends. Made in England. Discontinued.</p>
-        <div class="num"><span>Research range</span>$350 &ndash; $500</div>
-      </div>
-      <div class="item">
-        <b>Marathon Pro flight case</b>
-        <p>Split-lid road case sized to the console. Aluminum frame, foam-lined both halves,
-        butterfly latches, steel ball corners, wheels. IEC power cable stored in the lid.</p>
-        <div class="num"><span>Research range</span>$150 &ndash; $225</div>
-      </div>
+  </section>
+
+  <hr class="rule">
+  <div class="detail-lead">The detail behind those numbers</div>
+
+  <section>
+    <div class="sec-head">
+      <h2>Value by age</h2>
+      <p>We have no receipt, so we do not know the year the Playhouse bought it. This is the general
+      depreciation model for analog consoles, applied to the $639 street price.</p>
+    </div>
+    <div class="t-scroll">
+      <table class="band">
+        <thead><tr><th>Age at sale</th><th>Retained</th><th>Value on $639</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Year 1&ndash;2</td><td>65&ndash;75%</td><td class="n">$420 &ndash; $480</td></tr>
+          <tr><td class="k">Year 3&ndash;5</td><td>~50%</td><td class="n">~$320</td></tr>
+          <tr><td class="k">Year 6&ndash;10</td><td>35&ndash;40%</td><td class="n">$220 &ndash; $260</td></tr>
+          <tr class="applies"><td class="k">Year 10+<span class="flag">This one</span></td><td>30&ndash;45% (floor)</td><td class="n">$200 &ndash; $290</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>The missing receipt does not change the answer.</b> MFXi production ran from roughly 2008 to 2015,
+      so this console is between eleven and eighteen years old &mdash; it cannot have been bought new any later
+      than that. Whatever year the Playhouse acquired it, it lands in the bottom row.
     </div>
   </section>
 
   <section>
     <div class="sec-head">
-      <h2>The unit</h2>
-      <p>Read off the rear label and the manufacturer's own documentation.</p>
+      <h2>The market read</h2>
+      <p>Separately from the age model, what this specific unit &mdash; restored, flight-cased, 20 channels
+      of GB30 &mdash; would fetch from the right buyer today.</p>
+    </div>
+    <div class="t-scroll">
+      <table class="pkg">
+        <thead><tr><th>Item</th><th>New</th><th>Today</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Soundcraft MFXi 20/2</td><td class="n">$639 street / $799 list</td><td class="n">$350 &ndash; $500</td></tr>
+          <tr><td class="k">Marathon Pro case</td><td class="n">$300 &ndash; $380</td><td class="n">$150 &ndash; $225</td></tr>
+        </tbody>
+        <tfoot><tr><td>Package</td><td class="n">~$950 &ndash; $1,020</td><td class="n">$500 &ndash; $700</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="note">
+      <b>These two sections disagree, and both are shown on purpose.</b> The age model floors a ten-year-old
+      console at $200&ndash;290 and holds that condition moves you within that band rather than above it. The
+      market read puts this one at $350&ndash;500 on the strength of its condition and its preamps. Nothing here
+      reconciles them &mdash; the board is seeing the same two numbers the research produced.
+    </div>
+
+    <div class="split">
+      <div class="col up">
+        <h3>Pushing value up</h3>
+        <ul>
+          <li><b>20 channels of GB30 preamps</b> &mdash; the strongest value-retention factor on the unit.</li>
+          <li><b>Restored and flight-cased its whole life</b>, so no wear on the faders or pot shafts.</li>
+          <li><b>Clean examples are uncommon.</b> The surviving population is mostly beaten-up church,
+            school and community-theater boards.</li>
+        </ul>
+      </div>
+      <div class="col down">
+        <h3>Pushing value down</h3>
+        <ul>
+          <li><b>The analog market is soft.</b> A Behringer XR18 digital mixer is $509 new; an X32 Rack is $699.</li>
+          <li><b>Anyone equipping a working rig today buys digital.</b> This board's buyer specifically wants analog.</li>
+          <li><b>Thin trading.</b> Reverb's price guide returned no sold-transaction data for the model at all.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sub" style="font-size:.87rem;max-width:46rem"><b>Confidence: moderate.</b> The absence of sold
+    data tells us the model trades rarely, not that it trades cheaply.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>The gear</h2>
     </div>
     <div class="t-scroll">
       <table class="spec">
         <tbody>
-          <tr><td class="k">Model</td><td>Soundcraft MFXi 20/2</td></tr>
-          <tr><td class="k">Part number</td><td>RW5783 (US-market SKU RW5783US)</td></tr>
-          <tr><td class="k">Serial number</td><td class="n">30190106</td></tr>
-          <tr><td class="k">Origin</td><td>Made in England &mdash; Soundcraft's Potters Bar factory, Hertfordshire.
-            Later Soundcraft compact-series gear moved to Chinese production.</td></tr>
-          <tr><td class="k">Manufactured</td><td>Between 2008 and 2015. The RoHS mark on the label puts it at 2006
-            or later; the MFXi production run was roughly 2008&ndash;2015.</td></tr>
-          <tr><td class="k">Power</td><td>Universal internal supply &mdash; no external brick, runs on any mains voltage.</td></tr>
-          <tr><td class="k">Notable</td><td>GB30 mic preamps, the same preamp fitted to the larger LX7ii and GB series.
-            Lexicon FX section runs the AudioDNA processor, the same silicon as the Lexicon MX400.</td></tr>
+          <tr><td class="k">Model</td><td>Soundcraft MFXi 20/2 &mdash; part number RW5783, serial 30190106</td></tr>
+          <tr><td class="k">Channels</td><td>20 mono mic inputs plus 2 stereo line channels, 2 subgroups, 2 aux sends,
+            3-band EQ with swept mid, insert on every mono channel</td></tr>
+          <tr><td class="k">Effects</td><td>Built-in 24-bit Lexicon processor, 32 reverb/delay/chorus programs, tap tempo</td></tr>
+          <tr><td class="k">Origin</td><td>Made in England, at Soundcraft's Potters Bar factory. Manufactured
+            between 2008 and 2015; discontinued.</td></tr>
+          <tr><td class="k">Case</td><td>Marathon Pro split-lid road case. Aluminum frame, foam-lined both halves,
+            butterfly latches, steel ball corners, wheels. IEC power cable included.</td></tr>
         </tbody>
       </table>
     </div>
@@ -209,25 +295,24 @@
       no scratch grooves in the fader travel, no discoloration on the pot shafts.</p>
     </div>
 
-    <div class="note">
-      <b>The restoration was volunteered.</b> The cleaning work was donated, not billed to the Playhouse.
-      It is recorded here so the board knows what was done to the board it is selling &mdash; it is not a cost
-      to recover and it is not part of any price calculation.
-    </div>
+    <div class="figs">
+      <figure class="wide">
+        <a href="photos/console-restored.jpg"><img src="photos/console-restored.jpg" alt="The Soundcraft MFXi 20/2 console photographed from directly above after cleaning, all 20 channel strips and faders visible, no tape or residue." width="1300" height="975"></a>
+        <figcaption><b>After &mdash; the full surface</b>All 20 mono channels, both stereo channels, the effects
+        return and the subgroup and mix faders. No tape, no residue, no missing caps.</figcaption>
+      </figure>
 
-    <figure class="hero">
-      <a href="photos/console-restored.jpg"><img src="photos/console-restored.jpg" alt="The Soundcraft MFXi 20/2 console photographed from directly above after cleaning, all 20 channel strips and faders visible, no tape or residue." width="1300" height="975"></a>
-      <figcaption><b>After &mdash; the full surface</b>All 20 mono channels, both stereo channels, the effects
-      return and the subgroup and mix faders. No tape, no residue, no missing caps.</figcaption>
-    </figure>
+      <figure>
+        <a href="photos/as-received-in-case.jpg"><img src="photos/as-received-in-case.jpg" alt="The console sitting in the open flight case before cleaning, with blue gaffer tape and handwritten channel labels along the front edge." loading="lazy" width="1300" height="975"></a>
+        <figcaption><b class="b4">Before &mdash; as it came out of storage</b>The previous production's handwritten
+        gaffer-tape channel labels, still along the front edge.</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/faders.jpg"><img src="photos/faders.jpg" alt="Low-angle view along the row of white channel faders showing smooth unworn travel slots." loading="lazy" width="1300" height="975"></a>
+        <figcaption><b class="af">Fader travel</b>No wear grooves along the throw &mdash; the usual tell on a board
+        that has been mixed hard for years.</figcaption>
+      </figure>
 
-    <figure>
-      <a href="photos/as-received-in-case.jpg"><img src="photos/as-received-in-case.jpg" alt="The console sitting in the open flight case before cleaning, with blue gaffer tape and handwritten channel labels along the front edge." loading="lazy" width="1300" height="975"></a>
-      <figcaption><b>Before &mdash; as it came out of storage</b>Seated in the case, with the previous production's
-      handwritten gaffer-tape channel labels still along the front edge.</figcaption>
-    </figure>
-
-    <div class="pair">
       <figure>
         <a href="photos/residue-fader-strip-before.jpg"><img src="photos/residue-fader-strip-before.jpg" alt="Close-up of the front edge below channels 19 and 20 showing white adhesive residue left by removed tape." loading="lazy" width="1300" height="975"></a>
         <figcaption><b class="b4">Before &mdash; fader strip edge</b>Adhesive residue below channels 19 and 20.</figcaption>
@@ -236,9 +321,7 @@
         <a href="photos/residue-fader-strip-after.jpg"><img src="photos/residue-fader-strip-after.jpg" alt="The same front edge below channels 19 and 20 after cleaning, the paint clean and unmarked." loading="lazy" width="1300" height="975"></a>
         <figcaption><b class="af">After &mdash; same edge</b>Paint underneath is intact and unmarked.</figcaption>
       </figure>
-    </div>
 
-    <div class="pair">
       <figure>
         <a href="photos/residue-rear-panel-before.jpg"><img src="photos/residue-rear-panel-before.jpg" alt="Close-up of the rear panel near the ventilation slots showing heavy white adhesive residue over the caution label and the Soundcraft logo." loading="lazy" width="1300" height="975"></a>
         <figcaption><b class="b4">Before &mdash; rear panel</b>Residue across the caution label and the Soundcraft mark.</figcaption>
@@ -247,209 +330,35 @@
         <a href="photos/residue-rear-panel-after.jpg"><img src="photos/residue-rear-panel-after.jpg" alt="The same rear panel after cleaning, with the caution label and Soundcraft logo clearly legible." loading="lazy" width="1300" height="975"></a>
         <figcaption><b class="af">After &mdash; same panel</b>Label and logo legible again.</figcaption>
       </figure>
-    </div>
 
-    <div class="figs four">
-      <figure>
-        <a href="photos/faders.jpg"><img src="photos/faders.jpg" alt="Low-angle view along the row of white channel faders showing smooth unworn travel slots." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>Fader travel</b>No wear grooves along the throw &mdash; the usual tell on a board that has been mixed hard for years.</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/pots.jpg"><img src="photos/pots.jpg" alt="Close-up of the colour-coded EQ, aux and FX knobs across several channel strips." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>EQ and aux pots</b>Colour caps all present, shafts undiscoloured, legends unrubbed.</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/inputs.jpg"><img src="photos/inputs.jpg" alt="Close-up of the top-panel input section showing XLR mic inputs, line and insert jacks and red gain knobs for channels 7 through 11." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>Input section</b>XLR, line and insert on every mono channel, plus the 100&nbsp;Hz filter and gain.</figcaption>
-      </figure>
-      <figure>
-        <a href="photos/fx-and-meters.jpg"><img src="photos/fx-and-meters.jpg" alt="Close-up of the master section showing the Soundcraft MFXi badge, the Lexicon effects program list and the MIX SOLO LED meter ladder." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>Master section</b>The Lexicon program list, tap tempo, and the MIX/SOLO meter ladder.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>The flight case</h2>
-      <p>Good condition. Cosmetic scuffing on the badge plate and the extrusion edges, nothing structural.
-      The lid separates so the console can be operated while it sits in the base.</p>
-    </div>
-    <div class="figs">
       <figure>
         <a href="photos/case-closed.jpg"><img src="photos/case-closed.jpg" alt="The closed black flight case with aluminium extrusion edges, butterfly latches, recessed handle and chrome ball corners." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>Closed</b>Butterfly latches, recessed handles, steel ball corners, wheels on the far end.</figcaption>
+        <figcaption><b>The case, closed</b>Butterfly latches, recessed handles, steel ball corners, wheels.
+        Cosmetic scuffing on the edges, nothing structural.</figcaption>
       </figure>
       <figure>
         <a href="photos/case-open.jpg"><img src="photos/case-open.jpg" alt="The flight case open and empty, both halves foam-lined, with the IEC power cable coiled in the lid." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>Open</b>Foam-lined in both halves. The IEC power cable lives in the lid and goes with the sale.</figcaption>
+        <figcaption><b>The case, open</b>Foam-lined in both halves. The lid separates so the console can be
+        operated in the base. The IEC cable goes with the sale.</figcaption>
       </figure>
-      <figure>
-        <a href="photos/case-badge.jpg"><img src="photos/case-badge.jpg" alt="Close-up of the Marathon Pro badge plate riveted to the case lid." loading="lazy" width="1300" height="975"></a>
-        <figcaption><b>Marathon Pro badge</b>The brand identification the case valuation rests on.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>What it cost new</h2>
-      <p>The console is discontinued. Sweetwater and zZounds both list it as no longer available;
-      the pricing below is recovered from the retailer pages that are still up for reference.</p>
-    </div>
-    <div class="t-scroll">
-      <table class="pkg">
-        <thead><tr><th>Item</th><th>List</th><th>Street</th></tr></thead>
-        <tbody>
-          <tr><td class="k">Soundcraft MFXi 20/2</td><td class="n">$799.00</td><td class="n">$639.20</td></tr>
-          <tr><td class="k">Marathon Pro case</td><td class="n">&mdash;</td><td class="n">$300 &ndash; $380</td></tr>
-        </tbody>
-        <tfoot><tr><td>Package, new</td><td class="n">&mdash;</td><td class="n">~$950 &ndash; $1,020</td></tr></tfoot>
-      </table>
-    </div>
-    <p class="lede" style="font-size:.9rem">Realistic original purchase, through a dealer and before tax: <b>$640 &ndash; $700</b> for the console.
-    The case figure is a current replacement cost, not a historic one &mdash; comparable Marathon mixer cases with wheels run
-    $299 &ndash; $309 today.</p>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>Value by age</h2>
-      <p>We do not have a receipt, so we do not know the year the Playhouse bought it. This is the general
-      depreciation model for analog consoles, applied to the $639 street price. Find the row that matches
-      when you think we bought it.</p>
-    </div>
-    <div class="t-scroll">
-      <table class="band">
-        <thead><tr><th>Age at sale</th><th>Retained</th><th>Value on $639</th></tr></thead>
-        <tbody>
-          <tr><td class="k">Year 1&ndash;2</td><td>65&ndash;75%</td><td class="n">$420 &ndash; $480</td></tr>
-          <tr><td class="k">Year 3&ndash;5</td><td>~50%</td><td class="n">~$320</td></tr>
-          <tr><td class="k">Year 6&ndash;10</td><td>35&ndash;40%</td><td class="n">$220 &ndash; $260</td></tr>
-          <tr class="applies"><td class="k">Year 10+<span class="flag">This one</span></td><td>30&ndash;45% (floor)</td><td class="n">$200 &ndash; $290</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="note">
-      <b>The purchase date does not actually change the answer.</b> MFXi production ran from roughly 2008 to
-      2015, which puts this console between eleven and eighteen years old in 2026 — it cannot have been bought
-      new any later than that. Whatever year the Playhouse acquired it, it lands in the bottom row.
-    </div>
-
-    <p class="lede" style="font-size:.92rem">The mechanic behind the table: analog consoles fall steeply for
-    five to seven years and then stop. They do not trend toward zero the way digital gear does, because there
-    is no firmware, no operating system and no control-surface protocol to go obsolete. Where the floor sits is
-    set by <b>channel count</b> and <b>preamp reputation</b> &mdash; the GB30 pedigree is what holds this one up.</p>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>The market read</h2>
-      <p>Separately from the age model, the research put a figure on what this specific unit &mdash; restored,
-      flight-cased, 20 channels of GB30 &mdash; would fetch from the right buyer today.</p>
-    </div>
-    <div class="t-scroll">
-      <table class="pkg">
-        <thead><tr><th>Item</th><th>New</th><th>Today</th></tr></thead>
-        <tbody>
-          <tr><td class="k">Soundcraft MFXi 20/2</td><td class="n">~$640 street</td><td class="n">$350 &ndash; $500</td></tr>
-          <tr><td class="k">Marathon Pro case</td><td class="n">$300 &ndash; $380</td><td class="n">$150 &ndash; $225</td></tr>
-        </tbody>
-        <tfoot><tr><td>Package</td><td class="n">~$950 &ndash; $1,020</td><td class="n">$500 &ndash; $700</td></tr></tfoot>
-      </table>
-    </div>
-
-    <div class="note">
-      <b>These two sections disagree, and both are shown on purpose.</b> The age model puts a ten-year-old
-      console at $200&ndash;290 and holds that condition moves you within that band rather than above it.
-      The market read puts this one at $350&ndash;500 on the strength of its condition and its preamps.
-      Nothing here reconciles them &mdash; the board is seeing the same two numbers the research produced.
-    </div>
-
-    <div class="split">
-      <div class="col up">
-        <h3>Pushing value up</h3>
-        <ul>
-          <li><b>Restored condition.</b> No scratchpad wear on the fader travel, no discoloration on the pot shafts.</li>
-          <li><b>Flight-cased its whole life.</b> Climate and impact protection, minimal handling damage.</li>
-          <li><b>20 channels of GB30 preamps</b> &mdash; the single strongest value-retention factor on the unit.</li>
-          <li><b>Made in England</b>, from Soundcraft's own factory rather than the later Chinese production.</li>
-          <li><b>Clean examples are uncommon.</b> The surviving population is mostly beaten-up church, school and
-            community-theater boards.</li>
-        </ul>
-      </div>
-      <div class="col down">
-        <h3>Pushing value down</h3>
-        <ul>
-          <li><b>The analog market is soft.</b> A Behringer XR18 digital mixer is $509 new; an X32 Rack is $699;
-            an X32 Producer is $580.</li>
-          <li><b>Anyone equipping a working rig today buys digital.</b> The buyer for this board specifically wants analog.</li>
-          <li><b>Thin transaction volume.</b> Reverb's price guide for this model returned no sold-transaction data at all.</li>
-          <li><b>Slow sale on the open market</b> &mdash; 30 to 90 days is the realistic expectation.</li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="lede" style="font-size:.9rem"><b>Confidence: moderate.</b> The absence of sold data on Reverb is
-    itself informative &mdash; it tells us the model trades rarely, not that it trades cheaply. The comparables that
-    were found: a non-functional MFXi listed for parts at EUR&nbsp;219 on eBay Germany, an active US listing with
-    no captured price, and a general used-Soundcraft band running $225&ndash;$1,369 across all models and conditions.</p>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>Selling to the school changes the math</h2>
-      <p>The valuation above was written for an open-market listing on Reverb or eBay. A direct local sale
-      to a nearby community school is a different transaction, and mostly a better one.</p>
-    </div>
-    <div class="qlist">
-      <div><b>No platform fee and no shipping</b>Reverb and eBay both take a cut, and freighting a 20-channel
-        console is a damage claim waiting to happen. Local pickup removes both. Whatever the board sets is
-        what the Playhouse actually receives.</div>
-      <div><b>No 30-to-90-day wait</b>The open-market estimate assumed a slow sale into a thin market.
-        A buyer who already wants it collapses that to a single conversation.</div>
-      <div><b>This is exactly the buyer the research described</b>The named market for an analog board of this
-        size is "small theater, school, or house of worship." The school is not a fallback buyer; it is the
-        target one.</div>
-      <div><b>The case is what makes it portable</b>Its dollar value is modest, but it is what turns
-        "an old analog board" into a road-ready console a school can move between rooms and buildings.</div>
-    </div>
-  </section>
-
-  <section>
-    <div class="sec-head">
-      <h2>What the board decides</h2>
-      <p>Three open questions. None of them are answered on this page.</p>
-    </div>
-    <div class="qlist">
-      <div><b>The number</b>The research supports a package figure somewhere between the age-model floor
-        and the restored-condition market read. The board picks where in that span, and whether selling to a
-        neighboring school moves it.</div>
-      <div><b>Package or split</b>The console and the case can be sold separately. The research argues against
-        it &mdash; the case is what makes the console attractive and transportable to this buyer &mdash; but that
-        is a recommendation, not a constraint.</div>
-      <div><b>Whether to sell at all</b>Nothing on this page argues that the Playhouse should part with the
-        console. It documents what parting with it would be worth.</div>
     </div>
   </section>
 
   <details>
     <summary>Where the numbers came from</summary>
     <ul>
-      <li>Musician's Friend product page &mdash; embedded pricing data showing $639.20 street, $799.00 list, marked discontinued.</li>
+      <li>Musician's Friend &mdash; embedded pricing data showing $639.20 street, $799.00 list, marked discontinued.</li>
       <li>Sweetwater and zZounds &mdash; model pages retained for reference, both marked no longer available.</li>
-      <li>Soundcraft's own MFX and MFXi product documentation &mdash; specifications, GB30 preamp lineage, MFXi/MPMi differences.</li>
-      <li>B&amp;H Photo &mdash; MFXi 20/2 listing confirming part number RW5783US.</li>
-      <li>Reverb &mdash; canonical product entry exists and tags the era as "2010s," but the price guide returned no sold-transaction data.</li>
-      <li>eBay &mdash; Marathon case pricing ($299&ndash;$309 new), the general used-Soundcraft range, and the EUR&nbsp;219 parts-unit listing.</li>
-      <li>NSP Cases and Thomann &mdash; Soundcraft-specific flight case pricing for comparison (MFXi 12 case at &pound;258; Ghost 24 case at &pound;327).</li>
-      <li>The rear label on the unit itself &mdash; model, part number, serial, country of origin and compliance marks.</li>
+      <li>Soundcraft's own MFXi documentation &mdash; specifications and GB30 preamp lineage.</li>
+      <li>Reverb &mdash; canonical product entry exists and tags the era as "2010s," but the price guide returned no sold data.</li>
+      <li>eBay &mdash; Marathon case pricing ($299&ndash;$309 new) and the general used-Soundcraft range ($225&ndash;$1,369).</li>
+      <li>NSP Cases and Thomann &mdash; Soundcraft-specific flight case pricing (MFXi 12 case at &pound;258).</li>
+      <li>The rear label on the unit itself &mdash; model, part number, serial and country of origin.</li>
     </ul>
   </details>
 
   <footer>
-    <p>Compiled September 3, 2026. Photographs are of this unit, not stock images; click any photo for the
+    <p>Compiled September 2026. Photographs are of this unit, not stock images &mdash; click any photo for the
     full-size version. Every price on this page is research, not an offer.</p>
     <p class="back"><a href="../">&larr; Playhouse 395</a></p>
   </footer>
