@@ -5,14 +5,14 @@
     {
       "path": "roadmap",
       "title": "Schedule Map",
-      "blurb": "What could grow around the weekly rehearsal tab — near side built, far side still craft.",
+      "blurb": "What could grow around the weekly rehearsal tab \u2014 near side built, far side still craft.",
       "status": "Proposal"
     },
     {
-      "path": "call-board",
+      "url": "https://rehearsal.playhouse395.com/",
       "title": "Matilda Call Board",
-      "blurb": "Pick your name, see when you're called and when you're done. Now at rehearsal.playhouse395.com.",
-      "status": "Moved"
+      "blurb": "Pick your name, see when you're called and when you're done. Runs on its own host, updated weekly.",
+      "status": "Live"
     }
   ]
 }

@@ -13,7 +13,6 @@ src/web/public/work/playhouse-395/
   section.json           the manifest — you write this
   index.html             GENERATED from section.json — never hand-edit
   roadmap/index.html     a page — you write this
-  call-board/index.html  a page — you write this
 ```
 
 ## The contract for an outside contributor
@@ -48,15 +47,31 @@ src/web/public/work/playhouse-395/
       "blurb": "One line describing the page.",
       "status": "Proposal",
       "locked": true
+    },
+    {
+      "url": "https://rehearsal.playhouse395.com/",
+      "title": "Matilda Call Board",
+      "blurb": "One line describing where this goes.",
+      "status": "Live"
     }
   ]
 }
 ```
 
-`path` is a directory containing `index.html`. `status` is free text — it is a
-label, not an enum. `locked` is optional and only adds a badge; it does not
-enforce anything. **If a page needs protecting, the page protects itself** — the
-site serves static files and has no auth.
+Every page names **exactly one** of `path` or `url`, and the build throws if it
+names neither or both.
+
+- `path` — a directory in the section containing `index.html`.
+- `url` — an absolute URL. The card links straight there. Use it for work that
+  has outgrown the section and now runs on its own host: the card gets a small
+  `↗` and the reader lands on the real thing in one click. **Do not leave a
+  stub page behind that redirects** — an interstitial that bounces is a page
+  that can be bookmarked, cached, and shared, and it is slower than the link it
+  replaces. Delete the directory and give the entry a `url`.
+
+`status` is free text — it is a label, not an enum. `locked` is optional and only
+adds a badge; it does not enforce anything. **If a page needs protecting, the
+page protects itself** — the site serves static files and has no auth.
 
 ## Publishing from another repo
 

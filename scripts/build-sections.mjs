@@ -20,14 +20,35 @@ const esc = (s) =>
     (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
   );
 
+/**
+ * Where a card points. A page either lives in the section (`path`, a directory
+ * holding index.html) or somewhere else entirely (`url`, an absolute URL) — a
+ * section can list work that has outgrown it and now runs on its own host.
+ *
+ * Exactly one of the two, and it throws otherwise: a manifest that says neither
+ * would silently render a card linking to nowhere, and one that says both leaves
+ * the reader guessing which one the build honoured.
+ */
+function href(page) {
+  const hasPath = Boolean(page.path);
+  const hasUrl = Boolean(page.url);
+  if (hasPath === hasUrl) {
+    throw new Error(
+      `section page "${page.title ?? '(untitled)'}" needs exactly one of "path" or "url"` +
+        (hasPath ? ' — it has both' : ' — it has neither'),
+    );
+  }
+  return hasUrl ? page.url : `${page.path}/`;
+}
+
 /** Renders one section's index.html from its manifest. */
 export function renderSection(section) {
   const cards = section.pages
     .map(
-      (p) => `      <a class="card" href="${esc(p.path)}/">
+      (p) => `      <a class="card" href="${esc(href(p))}"${p.url ? ' rel="noopener"' : ''}>
         <span class="row"><span class="t">${esc(p.title)}</span>${
-          p.locked ? '<span class="lock" title="Password protected">Password</span>' : ''
-        }</span>
+          p.url ? '<span class="ext" aria-label="Opens another site">&#8599;</span>' : ''
+        }${p.locked ? '<span class="lock" title="Password protected">Password</span>' : ''}</span>
         <span class="b">${esc(p.blurb)}</span>
         <span class="s">${esc(p.status)}</span>
       </a>`,
@@ -62,6 +83,8 @@ export function renderSection(section) {
   .t{font-family:Fraunces,Georgia,serif;font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
   .lock{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
     color:var(--faint);border:1px solid var(--rule);border-radius:2px;padding:.1rem .35rem}
+  .ext{color:var(--faint);font-size:.9rem;line-height:1;margin-left:-.25rem}
+  .card:hover .ext{color:var(--brand)}
   .b{color:var(--muted);font-size:.92rem}
   .s{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-top:.35rem}
   footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.82rem;color:var(--faint)}

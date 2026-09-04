@@ -12,11 +12,17 @@ const section = {
   pages: [
     { path: 'roadmap', title: 'Schedule Map', blurb: 'What could grow.', status: 'Proposal' },
     {
-      path: 'call-board',
-      title: 'Call Board',
-      blurb: 'Your times.',
+      path: 'archive',
+      title: 'Archive',
+      blurb: 'Past weeks.',
       status: 'Running',
       locked: true,
+    },
+    {
+      url: 'https://rehearsal.playhouse395.com/',
+      title: 'Call Board',
+      blurb: 'Your times.',
+      status: 'Live',
     },
   ],
 };
@@ -25,8 +31,32 @@ describe('client section index', () => {
   it('links every page in the manifest', () => {
     const html = renderSection(section);
     expect(html).toContain('href="roadmap/"');
-    expect(html).toContain('href="call-board/"');
+    expect(html).toContain('href="archive/"');
     expect(html).toContain('Schedule Map');
+  });
+
+  it('sends a url page straight to its own host, with no local page in between', () => {
+    const html = renderSection(section);
+    expect(html).toContain('href="https://rehearsal.playhouse395.com/"');
+    expect(html).not.toContain('href="call-board/"');
+    expect(html).toMatch(/class="ext"/);
+  });
+
+  it('refuses a page that names neither a path nor a url', () => {
+    expect(() =>
+      renderSection({ ...section, pages: [{ title: 'Nowhere', blurb: '', status: '' }] }),
+    ).toThrow(/neither/);
+  });
+
+  it('refuses a page that names both, rather than silently picking one', () => {
+    const both = {
+      path: 'here',
+      url: 'https://elsewhere.test/',
+      title: 'Both',
+      blurb: '',
+      status: '',
+    };
+    expect(() => renderSection({ ...section, pages: [both] })).toThrow(/both/);
   });
 
   it('marks locked pages and leaves open ones unmarked', () => {
