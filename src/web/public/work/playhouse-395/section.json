@@ -5,8 +5,14 @@
     {
       "path": "roadmap",
       "title": "Schedule Map",
-      "blurb": "What could grow around the weekly rehearsal tab \u2014 near side built, far side still craft.",
+      "blurb": "What could grow around the weekly rehearsal tab — near side built, far side still craft.",
       "status": "Proposal"
+    },
+    {
+      "path": "soundboard",
+      "title": "Soundboard Sale",
+      "blurb": "What the Soundcraft MFXi and its road case are, and what the research says they are worth.",
+      "status": "For the board"
     },
     {
       "url": "https://rehearsal.playhouse395.com/",
