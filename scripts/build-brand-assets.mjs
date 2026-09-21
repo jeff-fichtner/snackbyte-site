@@ -329,4 +329,15 @@ for (const [name, t] of Object.entries(THEMES)) {
   );
 }
 write('tile.svg', tileThemedSvg());
+// The geometry as data, for code that draws the mark with the theme's own fills (the site's
+// inline SVG): each shape's path and whether it is the ink nibble or the sky nibble.
+const asData = ({ shapes, w, h }) => ({
+  viewBox: `0 0 ${r(w)} ${r(h)}`,
+  width: r(w),
+  height: r(h),
+  shapes: shapes.map((s) => ({ d: s.d, role: s.fill === ROLE.sky ? 'sky' : 'ink' })),
+});
+const ROLE = { ink: 'INK', sky: 'SKY' };
+write('row.json', JSON.stringify(asData(rowShapes(ROLE)), null, 2) + '\n');
+write('stack.json', JSON.stringify(asData(stackShapes(ROLE)), null, 2) + '\n');
 console.log('done');

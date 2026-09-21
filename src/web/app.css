@@ -1,0 +1,66 @@
+/* The holding page. One screen: the lockup, the headline, and where things stand. */
+
+.hold {
+  min-height: 100svh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--cell) var(--cell) var(--seam);
+}
+@media (max-width: 480px) {
+  .hold {
+    padding: var(--seam) 1rem var(--gap);
+  }
+}
+
+/* The block that centres in the space above the footer. */
+.stand {
+  margin-block: auto;
+}
+
+.hold .lockup {
+  --lockup-size: clamp(3.25rem, 11vw, 7.5rem);
+}
+
+.headline {
+  margin: var(--cell-seam) 0 0;
+  max-width: 20ch;
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  font-size: clamp(var(--type-2), 4.6vw, var(--type-3));
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.soon {
+  margin: var(--seam) 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  color: var(--muted);
+}
+.soon .dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--sky);
+}
+
+.foot {
+  margin-top: auto;
+  padding-top: var(--stack);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap) var(--seam);
+  color: var(--muted);
+}
+.foot a {
+  text-decoration: none;
+}
+.foot a:hover {
+  text-decoration: underline;
+}
