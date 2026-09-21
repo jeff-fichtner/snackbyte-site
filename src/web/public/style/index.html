@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snackbyte style</title>
+<meta name="description" content="How Snackbyte looks, and why. A preview of the style guide: the mark, the palette, the type, and the rules.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<script>
+  // Apply a saved theme before first paint. Absent or unreadable, the page follows the system.
+  (function () { try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {} })();
+</script>
+<style>
+  /* One palette, two values per role. Day is the default; night is the same roles re-valued. */
+  .day, :root {
+    --ground: #ECEDEA;      /* Alkali */
+    --ink: #45423E;         /* Granite */
+    --muted: #6B6762;       /* Shale */
+    --sage: #8B9B86;
+    --sage-text: #5F6E5A;   /* Sagebrush */
+    --sky: #38639A;
+    --bitterbrush: #D2A93A;
+    --rule: #cfd1cb;
+    --tile: #ECEDEA;
+  }
+  .night {
+    --ground: #2A2724;      /* Basalt */
+    --ink: #ECEDEA;         /* Alkali */
+    --muted: #A8A49D;       /* Ash */
+    --sage: #9DAE98;
+    --sage-text: #9DAE98;
+    --sky: #7FA7D3;
+    --bitterbrush: #DDB447;
+    --rule: #4a4642;
+    --tile: #2A2724;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #2A2724; --ink: #ECEDEA; --muted: #A8A49D; --sage: #9DAE98; --sage-text: #9DAE98; --sky: #7FA7D3; --bitterbrush: #DDB447; --rule: #4a4642; --tile: #2A2724;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #2A2724; --ink: #ECEDEA; --muted: #A8A49D; --sage: #9DAE98; --sage-text: #9DAE98; --sky: #7FA7D3; --bitterbrush: #DDB447; --rule: #4a4642; --tile: #2A2724;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 14;
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+  .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+  a { color: var(--sky); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 3px; }
+
+  /* ---- page header: the low-height lockup doing its job ---- */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 0; }
+  .top .lock { display: flex; align-items: center; gap: 10px; }
+  .top .lock svg { display: block; width: 92px; height: auto; }
+  .top .lock b { font-size: 21px; font-weight: 800; letter-spacing: -0.04em; font-variation-settings: "opsz" 96; line-height: 1; }
+  .switch { display: flex; gap: 2px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px; }
+  .switch button { font: inherit; font-size: 13px; line-height: 1; padding: 7px 12px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; }
+  .switch button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+
+  /* ---- hero ---- */
+  .hero { padding: 56px 0 48px; }
+  .hero svg { display: block; width: min(360px, 82%); height: auto; }
+  .hero .wm { margin-top: 16px; font-size: clamp(64px, 11vw, 112px); font-weight: 800; line-height: 0.92; letter-spacing: -0.05em; font-variation-settings: "opsz" 96; }
+  .hero p { margin: 26px 0 0; max-width: 46ch; font-size: 20px; color: var(--muted); }
+  .hero p b { color: var(--ink); font-weight: 600; }
+
+  /* ---- sections ---- */
+  section { padding: 48px 0 56px; border-top: 1px solid var(--rule); }
+  section h2 { margin: 0 0 8px; font-size: clamp(26px, 3.4vw, 34px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; font-variation-settings: "opsz" 96; text-wrap: balance; }
+  section > .wrap > p.lead { margin: 0 0 30px; max-width: 60ch; color: var(--muted); font-size: 18px; }
+  p { max-width: 62ch; }
+  section p + p { margin-top: 12px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 28px; } }
+  h3 { margin: 28px 0 8px; font-size: 17px; font-weight: 600; }
+  .why { margin: 0; color: var(--muted); font-size: 15px; }
+
+  /* ---- day/night pair of cards ---- */
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+  @media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
+  .card { background: var(--ground); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 26px 24px 24px; }
+  .card .tag { margin: 0 0 18px; font-size: 12px; color: var(--muted); }
+  .card svg { display: block; }
+  .above svg { width: min(260px, 80%); height: auto; }
+  .above .wm { margin-top: 10px; font-size: clamp(44px, 6vw, 64px); font-weight: 800; line-height: 0.95; letter-spacing: -0.045em; font-variation-settings: "opsz" 96; }
+  .beside { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .beside svg { width: 150px; height: auto; flex: none; }
+  .beside .wm { font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: -0.045em; font-variation-settings: "opsz" 96; }
+
+  /* ---- construction ---- */
+  .construct { margin-top: 18px; border: 1px solid var(--rule); border-radius: 8px; padding: 22px 18px 12px; }
+  .construct svg { display: block; width: 100%; height: auto; max-width: 620px; }
+  .construct text { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-size: 3.6px; fill: var(--muted); }
+  .construct .dim { stroke: var(--muted); stroke-width: 0.35; fill: none; }
+  .construct .bite { stroke: var(--sky); stroke-width: 0.5; stroke-dasharray: 1.2 1; fill: none; }
+
+  /* ---- icon sizes ---- */
+  .sizes { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; margin-top: 14px; }
+  .sizes .surface { background: color-mix(in srgb, var(--ink) 9%, var(--ground)); padding: 12px 14px 10px; border-radius: 8px; display: flex; align-items: flex-end; gap: 12px; }
+  .sizes small { display: block; font-size: 11px; color: var(--muted); text-align: center; margin-top: 4px; }
+  .icon-big { display: flex; align-items: center; gap: 22px; }
+
+  /* ---- palette ---- */
+  .tokens { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-top: 8px; }
+  .tok { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .tok .chips { display: grid; grid-template-columns: 1fr 1fr; height: 64px; }
+  .tok .chips i { display: block; }
+  .tok .lbl { padding: 10px 12px 12px; }
+  .tok b { display: block; font-size: 15px; font-weight: 600; }
+  .tok small { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .tok .from { margin-top: 6px; font-size: 13px; color: var(--ink); }
+
+  /* ---- type specimen ---- */
+  .spec { margin-top: 18px; border: 1px solid var(--rule); border-radius: 8px; padding: 28px 26px; }
+  .spec .name { font-size: clamp(40px, 6vw, 64px); font-weight: 800; line-height: 0.95; letter-spacing: -0.045em; font-variation-settings: "opsz" 96; }
+  .spec .head { margin: 22px 0 0; font-size: clamp(24px, 3vw, 30px); font-weight: 800; line-height: 1.06; letter-spacing: -0.03em; font-variation-settings: "opsz" 96; max-width: 22ch; text-wrap: balance; }
+  .spec .body { margin: 12px 0 0; max-width: 50ch; color: var(--muted); }
+  .spec .cap { margin: 22px 0 0; font-size: 13px; color: var(--muted); }
+  .glyphs { display: flex; gap: 28px; align-items: baseline; margin-top: 18px; flex-wrap: wrap; }
+  .glyphs span { font-size: 72px; line-height: 1; letter-spacing: -0.03em; }
+  .glyphs .d { font-weight: 800; font-variation-settings: "opsz" 96; }
+  .glyphs .t { font-weight: 400; font-variation-settings: "opsz" 12; }
+  .glyphs small { display: block; font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+  /* ---- rules ---- */
+  .rules { list-style: none; margin: 8px 0 0; padding: 0; max-width: 66ch; }
+  .rules li { padding: 14px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .rules li:last-child { border-bottom: 1px solid var(--rule); }
+  .rules b { font-weight: 600; }
+  .rules span { color: var(--muted); font-size: 15px; }
+
+  .foot { padding: 40px 0 72px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
+  .foot p { margin: 0; }
+</style>
+</head>
+<body>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <mask id="bite-row" maskUnits="userSpaceOnUse" x="-10" y="-20" width="130" height="50">
+      <rect x="-10" y="-20" width="130" height="50" fill="#fff"/><circle cx="106" cy="-1" r="8" fill="#000"/>
+    </mask>
+    <mask id="bite-top" maskUnits="userSpaceOnUse" x="-10" y="-20" width="80" height="70">
+      <rect x="-10" y="-20" width="80" height="70" fill="#fff"/><circle cx="50" cy="-1" r="8" fill="#000"/>
+    </mask>
+    <!-- the logo: one row, two nibbles, a wide seam, the bite from the last cell -->
+    <g id="m-row" mask="url(#bite-row)">
+      <rect x="0"  y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="56" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="69" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="82" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="95" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+    </g>
+    <!-- the icon: the same two nibbles stacked, sky over granite -->
+    <g id="m-stack" mask="url(#bite-top)">
+      <rect x="0" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="0" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+    </g>
+    <!-- the tile: the icon on a square of the ground colour -->
+    <g id="m-tile"><rect width="64" height="64" rx="14" style="fill:var(--tile)"/><g transform="translate(7.5 18.5)"><use href="#m-stack"/></g></g>
+  </defs>
+</svg>
+
+<header class="wrap top">
+  <div class="lock"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte"><use href="#m-row"/></svg><b>snackbyte</b></div>
+  <div class="switch" role="group" aria-label="Theme">
+    <button type="button" data-set="light" aria-pressed="false">Day</button>
+    <button type="button" data-set="dark" aria-pressed="false">Night</button>
+    <button type="button" data-set="" aria-pressed="false">Auto</button>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg>
+  <div class="wm">snackbyte</div>
+  <p><b>How Snackbyte looks, and why.</b> A preview of the style guide: the mark, the palette, the type, and the rules that hold them together. Decided 21 September 2026.</p>
+</div>
+
+<!-- ============ THE IDEA ============ -->
+<section>
+  <div class="wrap">
+    <h2>One idea: bounded pieces, and the seam between them</h2>
+    <p class="lead">Everything on this page is that sentence drawn.</p>
+    <div class="two">
+      <div>
+        <p>Snackbyte makes small, whole tools for the community around one person in the Eastern Sierra: a theatre's call board, a corkboard for the 395, a console for the day. Each tool is bounded. It does one job, knows only what it needs, and hands off cleanly to the next thing.</p>
+        <p>That is a way of building software, and it is also a temperament. It shows up in the code as one place that knows a thing, and everywhere else not knowing it. The style takes the same rule and makes it visible.</p>
+      </div>
+      <div>
+        <p>The name already says it. A <b>byte</b> is eight bits: the smallest unit that is a whole thing. A byte is two <b>nibbles</b> of four: the smallest named piece of a byte, a bounded piece inside a bounded piece. And a <b>snack</b> is a portion that is complete on its own.</p>
+        <p>So the mark is a byte, drawn as two nibbles, with a bite taken out of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MARK ============ -->
+<section>
+  <div class="wrap">
+    <h2>The mark, taken literally</h2>
+    <p class="lead">Eight cells in a row. Four granite, a seam, four sky, and a bite from the last one.</p>
+    <div class="construct">
+      <svg viewBox="0 0 134 52" role="img" aria-label="Construction of the mark: cells of ten, gaps of three, a seam of seven, and a bite of radius eight at the last corner">
+        <g transform="translate(8 14)">
+          <use href="#m-row"/>
+          <circle class="bite" cx="106" cy="-1" r="8"/>
+          <!-- cell -->
+          <path class="dim" d="M0 16 v3 M10 16 v3 M0 17.5 h10"/>
+          <text x="5" y="24" text-anchor="middle">10</text>
+          <!-- gap -->
+          <path class="dim" d="M10 16 v3 M13 16 v3"/>
+          <text x="11.5" y="24" text-anchor="middle">3</text>
+          <!-- seam -->
+          <path class="dim" d="M49 16 v3 M56 16 v3 M49 17.5 h7"/>
+          <text x="52.5" y="24" text-anchor="middle">7</text>
+          <!-- bite -->
+          <path class="dim" d="M106 -1 l6 -8"/>
+          <text x="113" y="-10.5">r 8</text>
+          <!-- names -->
+          <text x="24.5" y="32" text-anchor="middle">granite</text>
+          <text x="80.5" y="32" text-anchor="middle">sky</text>
+        </g>
+      </svg>
+    </div>
+    <div class="two">
+      <div>
+        <h3>The cells</h3>
+        <p class="why">Ten wide, corners of two, three apart. Eight of them, because a byte is eight bits. They are the same size and the same shape, and nothing else on the mark is a shape.</p>
+        <h3>The seam</h3>
+        <p class="why">Between the fourth cell and the fifth the gap is seven, not three. That is the seam between the two nibbles: two bounded pieces beside each other, never touching. Separation of concerns, as a distance. The colour change then confirms what the gap already said.</p>
+      </div>
+      <div>
+        <h3>The bite</h3>
+        <p class="why">A circle of radius eight, centred one unit outside the last cell's top-right corner, taken away. It is the snack. It is the one thing on the mark that is not a rule, and it always sits at the end.</p>
+        <h3>Granite, then sky</h3>
+        <p class="why">The two nibbles are the two colours of the valley: the Sierra, and the sky over it. Which is also, left to right, the ground and the accent of everything else on the page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE LOGO ============ -->
+<section>
+  <div class="wrap">
+    <h2>The logo, two heights</h2>
+    <p class="lead">The row is wide, so it wants to sit above the name. Where there is no height for that, it sits beside.</p>
+    <h3>Above, the primary</h3>
+    <div class="pair">
+      <div class="card day"><p class="tag">Day</p><div class="above"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+      <div class="card night"><p class="tag">Night</p><div class="above"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+    </div>
+    <p class="why" style="margin-top:12px">The row shares the name's left edge and is set a little narrower than the word. This is the poster form and the site form. Use it whenever there is room.</p>
+    <h3>Beside, the low-height alternative</h3>
+    <div class="pair">
+      <div class="card day"><p class="tag">Day</p><div class="beside"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+      <div class="card night"><p class="tag">Night</p><div class="beside"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+    </div>
+    <p class="why" style="margin-top:12px">The row sits at the cap height and the bite reads as a notch. This is the letterhead form and the header form; it is what is at the top of this page. The rule between the two is height, nothing else.</p>
+  </div>
+</section>
+
+<!-- ============ THE ICON ============ -->
+<section>
+  <div class="wrap">
+    <h2>The icon, the same byte folded</h2>
+    <p class="lead">A row is a poor icon. So for square places the two nibbles stack: sky over granite, a horizon. Same cells, same gaps, same seam, same bite. Nothing new is drawn.</p>
+    <div class="pair">
+      <div class="card day"><p class="tag">Day</p><div class="icon-big"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Snackbyte icon"><use href="#m-stack"/></svg><svg width="96" height="96" viewBox="0 0 64 64" role="img" aria-label="Snackbyte icon on a tile" style="border:1px solid var(--rule);border-radius:21px"><use href="#m-tile"/></svg></div>
+        <div class="sizes"><div class="surface">
+          <div><svg width="48" height="48" viewBox="0 0 64 64"><use href="#m-tile"/></svg><small>48</small></div>
+          <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#m-tile"/></svg><small>32</small></div>
+          <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#m-tile"/></svg><small>16</small></div>
+        </div></div>
+      </div>
+      <div class="card night"><p class="tag">Night</p><div class="icon-big"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Snackbyte icon"><use href="#m-stack"/></svg><svg width="96" height="96" viewBox="0 0 64 64" role="img" aria-label="Snackbyte icon on a tile" style="border:1px solid var(--rule);border-radius:21px"><use href="#m-tile"/></svg></div>
+        <div class="sizes"><div class="surface">
+          <div><svg width="48" height="48" viewBox="0 0 64 64"><use href="#m-tile"/></svg><small>48</small></div>
+          <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#m-tile"/></svg><small>32</small></div>
+          <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#m-tile"/></svg><small>16</small></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="two" style="margin-top:8px">
+      <div>
+        <h3>Sky over granite</h3>
+        <p class="why">Reversing the row's order is the only fold that keeps the bite full-size, outward-facing, and at the top right where the row has it. The bite is the one detail that says snack, so it wins over sequence. Read top to bottom, it is a horizon.</p>
+        <h3>The seam stays wide</h3>
+        <p class="why">Seven between the rows, like seven between the nibbles. One construction for both forms; the icon is the logo, not a cousin of it.</p>
+      </div>
+      <div>
+        <h3>The tile</h3>
+        <p class="why">Square places need a filled square. It takes the ground colour of whichever theme it sits in: Alkali by day, Basalt at night. That is the same rule as every other surface, so the icon never has to explain itself. Bare, the stack holds to 32; on the tile it keeps both colours to 16 and its bite to 32.</p>
+        <h3>Never beside the name</h3>
+        <p class="why">The stack is for square places only. The row is for wide places, beside or above the name. Two forms of one mark, each with one job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PALETTE ============ -->
+<section>
+  <div class="wrap">
+    <h2>The palette, from the Owens Valley</h2>
+    <p class="lead">Seven roles, each with a day value and a night value. Left half of a chip is day; right half is night. The colours are the valley's, named for where they come from.</p>
+    <div class="tokens">
+      <div class="tok"><div class="chips"><i style="background:#ECEDEA"></i><i style="background:#2A2724"></i></div><div class="lbl"><b>Ground</b><small>Alkali #ECEDEA<br>Basalt #2A2724</small><div class="from">The dry lake by day; the tablelands north of town at night.</div></div></div>
+      <div class="tok"><div class="chips"><i style="background:#45423E"></i><i style="background:#ECEDEA"></i></div><div class="lbl"><b>Ink</b><small>Granite #45423E<br>Alkali #ECEDEA</small><div class="from">The Sierra. Ground and ink trade places at night.</div></div></div>
+      <div class="tok"><div class="chips"><i style="background:#6B6762"></i><i style="background:#A8A49D"></i></div><div class="lbl"><b>Muted</b><small>Shale #6B6762<br>Ash #A8A49D</small><div class="from">Secondary text and captions.</div></div></div>
+      <div class="tok"><div class="chips"><i style="background:#38639A"></i><i style="background:#7FA7D3"></i></div><div class="lbl"><b>Sky</b><small>#38639A<br>#7FA7D3</small><div class="from">The accent, and the second nibble. Links, statuses, focus. Deep by day; lifted at night.</div></div></div>
+      <div class="tok"><div class="chips"><i style="background:#8B9B86"></i><i style="background:#9DAE98"></i></div><div class="lbl"><b>Sage</b><small>#8B9B86<br>#9DAE98</small><div class="from">The valley floor. Held for marks and surfaces; too light to read on Alkali.</div></div></div>
+      <div class="tok"><div class="chips"><i style="background:#5F6E5A"></i><i style="background:#9DAE98"></i></div><div class="lbl"><b>Sage, for text</b><small>Sagebrush #5F6E5A<br>Sage #9DAE98</small><div class="from">Where sage must carry words, it darkens by day and is itself at night.</div></div></div>
+      <div class="tok"><div class="chips"><i style="background:#D2A93A"></i><i style="background:#DDB447"></i></div><div class="lbl"><b>Bitterbrush</b><small>#D2A93A<br>#DDB447</small><div class="from">The May bloom. Held in reserve; never text.</div></div></div>
+    </div>
+    <h3>How the palette moves</h3>
+    <p class="why">Night is not a second palette. It is the same roles with the ground and the ink swapped and the accents lifted enough to read. Anything built from the roles, marks included, changes theme without being redrawn. Every text role passes 4.5:1 on its ground in both themes; Sky by day was nudged from #3F6FA3 to #38639A for exactly that.</p>
+  </div>
+</section>
+
+<!-- ============ THE TYPE ============ -->
+<section>
+  <div class="wrap">
+    <h2>The type, one family</h2>
+    <p class="lead">Bricolage Grotesque, at two optical sizes. The display cut is tight and a little odd; the text cut is plain. That is the whole type system.</p>
+    <div class="spec">
+      <div class="name">snackbyte</div>
+      <p class="head">Small tools, each with one job.</p>
+      <p class="body">Snackbyte builds software for the community around Bishop, California, and the method that keeps each piece bounded. It reports; it does not score.</p>
+      <div class="glyphs">
+        <div><span class="d">agy</span><small>Display, 800, opsz 96</small></div>
+        <div><span class="t">agy</span><small>Text, 400, opsz 12</small></div>
+      </div>
+      <p class="cap">The name is always lowercase, weight 800, optical size 96, tracked to -0.045em. Headlines take the display cut; anything read at length takes the text cut. Sentence case everywhere; no small caps, no tracked-out labels.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE RULES ============ -->
+<section>
+  <div class="wrap">
+    <h2>The rules, in one place</h2>
+    <ul class="rules">
+      <li><b>The row is for wide places; the stack is for square places.</b><span>The stack is never set beside the name.</span></li>
+      <li><b>Above the name whenever there is room; beside it when there is not.</b><span>Height is the only thing that decides.</span></li>
+      <li><b>Cells of ten, gaps of three, a seam of seven, a bite of radius eight.</b><span>Both forms are built from these four numbers and nothing else.</span></li>
+      <li><b>The bite is always at the end, always at the top right, always full size.</b><span>It is the only part of the mark that is not a rule.</span></li>
+      <li><b>Ground and ink swap at night; the accents lift.</b><span>One palette, two values per role, no redrawing.</span></li>
+      <li><b>Sage and Bitterbrush are for marks and surfaces, not for words.</b><span>Where sage must be read, it becomes Sagebrush by day.</span></li>
+      <li><b>One family, two optical sizes, sentence case.</b><span>Bricolage Grotesque for the name, the headlines, and the text.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ NOT YET ============ -->
+<section>
+  <div class="wrap">
+    <h2>Not yet in the guide</h2>
+    <p class="lead">Decided so far is the mark, the palette, and the face. Still to come:</p>
+    <p>The type scale and the spacing scale, which should both be built from the seam unit. The voice: how the words sound, which the docs already know and the site does not yet. And the surfaces downstream of the mark: the printed QR codes, the cards, the letterhead, the signature.</p>
+  </div>
+</section>
+
+<footer class="wrap foot">
+  <p>A preview of the Snackbyte style guide. Unlinked, and not the homepage yet.</p>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var buttons = document.querySelectorAll('.switch [data-set]');
+    function mark() {
+      var current = root.dataset.theme || '';
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(current === b.dataset.set)); });
+    }
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var v = b.dataset.set;
+        if (v) root.dataset.theme = v; else delete root.dataset.theme;
+        try { if (v) localStorage.setItem('theme', v); else localStorage.removeItem('theme'); } catch (e) {}
+        mark();
+      });
+    });
+    mark();
+  })();
+</script>
+</body>
+</html>

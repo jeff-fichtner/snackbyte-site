@@ -14,3 +14,7 @@ CLAUDE.md
 # that generates them, not app source. Reformatting them here would fight the generator.
 # NB: patterns in this file resolve relative to config/, hence the ../ prefix.
 ../src/web/public/**
+
+# Published artifacts (claude.ai artifact pages kept here so their URLs stay stable) —
+# complete standalone documents, not app source, same as public/ above.
+../artifacts/
