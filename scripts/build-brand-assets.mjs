@@ -123,7 +123,7 @@ function tileSvg(t, { rounded = true } = {}) {
     S,
     `  <rect width="${S}" height="${S}"${corner} fill="${t.ground}"/>\n` +
       `  <g transform="translate(${r(tx)} ${r(ty)})">\n${pathsToSvg(shapes)}\n  </g>`,
-    { title: 'Snackbyte' },
+    { title: 'snackbyte' },
   );
 }
 
@@ -140,7 +140,7 @@ function tileThemedSvg() {
     `  <g transform="translate(${r((S - w) / 2)} ${r((S - h) / 2)})">\n` +
     shapes.map((s) => `    <path d="${s.d}" class="${s.fill === 'SKY' ? 's' : 'g'}"/>`).join('\n') +
     `\n  </g>`;
-  return svgDoc(S, S, body, { title: 'Snackbyte' });
+  return svgDoc(S, S, body, { title: 'snackbyte' });
 }
 
 // ---- the wordmark, outlined ---------------------------------------------------
@@ -294,11 +294,11 @@ for (const [name, t] of Object.entries(THEMES)) {
   const stack = stackShapes(t);
   write(
     `mark-row-${name}.svg`,
-    svgDoc(row.w, row.h, pathsToSvg(row.shapes), { title: 'Snackbyte' }),
+    svgDoc(row.w, row.h, pathsToSvg(row.shapes), { title: 'snackbyte' }),
   );
   write(
     `icon-stack-${name}.svg`,
-    svgDoc(stack.w, stack.h, pathsToSvg(stack.shapes), { title: 'Snackbyte' }),
+    svgDoc(stack.w, stack.h, pathsToSvg(stack.shapes), { title: 'snackbyte' }),
   );
   write(`tile-${name}.svg`, tileSvg(t));
   write(`wordmark-${name}.svg`, wordmarkSvg(t));

@@ -1,6 +1,6 @@
-# Snackbyte brand
+# snackbyte brand
 
-The record of how Snackbyte looks, and why. Decided 2026-09-21. The readable
+The record of how snackbyte looks, sounds, and why. Decided 2026-09-21. The readable
 version, with the reasoning, is the live page at <https://snackbyte.io/style/>
 (unlinked, `noindex`); this file is the part a build can consume.
 
@@ -14,7 +14,7 @@ published versions are the three rounds of options that were eliminated.
 
 ## The idea
 
-Bounded pieces, and the seam between them. Snackbyte makes small, whole tools,
+Bounded pieces, and the seam between them. snackbyte makes small, whole tools,
 each doing one job and knowing only what it needs. The name says it: a byte is
 eight bits, the smallest whole unit; a byte is two nibbles of four, a bounded
 piece inside a bounded piece; a snack is a portion complete on its own. The
@@ -83,10 +83,15 @@ favicon follows the OS theme, is `src/web/public/style/icon.svg`.
 
 Two, and the only thing that decides between them is height.
 
-- **Above** (primary): the row above the name, sharing its left edge, set a
-  little narrower than the word. Posters, the site, anywhere with room.
-- **Beside** (low-height alternative): the row to the left of the name at
-  roughly the cap height. Letterhead, headers, the top of `/style`.
+- **Above** (primary): the row above the name, left edges aligned on ink, the row
+  three quarters of the name's ink width, one seam between them. Posters, the site,
+  anywhere with room.
+- **Beside** (low-height alternative): the row to the left of the name, standing on
+  the baseline exactly as tall as the x-height, one seam before the name. Letterhead,
+  headers, the top of `/style`.
+
+Both derive from the font metrics, so they hold at any size; `scripts/build-brand-assets.mjs`
+is the reference implementation and `brand/` holds the cut files.
 
 The stack is for square places only and is never set beside the name.
 
@@ -101,6 +106,33 @@ everywhere; no small caps, no tracked-out labels.
 Loaded from Google Fonts on `/style`:
 `Bricolage+Grotesque:opsz,wght@12..96,300..800`.
 
+## Voice
+
+Extracted from the docs, which were already sounding like this.
+
+- **Say what it does, then what it doesn't.** "It reports; it does not score." "It
+  stores no passwords." The negative clause is the signature move: the seam, in prose.
+  Every tool gets one.
+- **Short declaratives, semicolons doing logic.** No adjectives that sell. "A console
+  over the systems you already use" is a complete pitch with no praise in it.
+- **Name from the concept, never the domain.** Slate, Grimoire, Cue; spells, lanes;
+  lit, banked, out. A product's name is what it means, not what it handles.
+- **Explain before you show.** The concept comes before the code; the style page opens
+  with the idea before the mark. The site does the same.
+- **Specific over general.** Bishop's community theatre. The 395. Two WEN 56360iX
+  generators. A real noun beats a category.
+- **Sentence case, plain verbs, one job per sentence.** No all-caps, no "Submit," no
+  exclamation marks. Dry humour allowed, rare, never signalled.
+- **Two registers, one voice.** The site explains; the tools just say. Same rules,
+  fewer of them.
+- **The name is lowercase, always.** `snackbyte` in the wordmark and in prose, including
+  as the first word of a sentence. The only exception is the legal name (Snackbyte LLC)
+  on legal and financial paper.
+
+**The headline:** "Software that knows where it ends." Under it: "snackbyte builds
+tools for the community around Bishop, California. Each one does one job, knows only
+what it needs, and stops there." "Building something good" is retired.
+
 ## Rules
 
 - The row is for wide places; the stack is for square places.
@@ -110,11 +142,12 @@ Loaded from Google Fonts on `/style`:
 - Ground and ink swap at night; the accents lift.
 - Sage and Bitterbrush are for marks and surfaces, not for words.
 - One family, two optical sizes, sentence case.
+- The name is lowercase, always; say what it does, then what it doesn't.
 
 ## Not yet decided
 
-The type scale and the spacing scale (both to be built from the seam unit).
-The voice. The downstream surfaces: printed QR codes (`snackbyte-links`
+The type scale and the spacing scale (both to be built from the seam unit). The
+downstream surfaces: printed QR codes (`snackbyte-links`
 already prints the old mark), business cards, letterhead, email signature,
 social. A PNG favicon set for browsers without SVG favicons.
 
