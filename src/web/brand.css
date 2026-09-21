@@ -1,0 +1,113 @@
+/*
+ * The brand as CSS: the tokens recorded in docs/BRAND.md, and the two scales built from
+ * the seam unit. This file is the part of the brand every page inherits, and it moves to
+ * the brand's own package when a second consumer appears. Page styles live elsewhere.
+ */
+
+:root {
+  /* One palette, two values per role. Day is the default. */
+  --ground: #ecedea; /* Alkali */
+  --ink: #45423e; /* Granite */
+  --muted: #6b6762; /* Shale */
+  --sky: #38639a;
+  --sage: #8b9b86;
+  --sage-text: #5f6e5a; /* Sagebrush */
+  --bitterbrush: #d2a93a;
+  --rule: #cfd1cb;
+
+  /* The seam unit. The mark is cell 10, gap 3, seam 7; at 4px those are the spacing steps. */
+  --u: 4px;
+  --gap: calc(3 * var(--u)); /* 12px */
+  --seam: calc(7 * var(--u)); /* 28px */
+  --cell: calc(10 * var(--u)); /* 40px */
+  --cell-seam: calc(17 * var(--u)); /* 68px: a cell and a seam, the stack's row pitch */
+  --stack: calc(27 * var(--u)); /* 108px: the stack's height */
+
+  /* The type scale: ratio 10/7 (cell to seam), from 16px. */
+  --type-0: 1rem;
+  --type-1: 1.43rem;
+  --type-2: 2.04rem;
+  --type-3: 2.92rem;
+  --type-4: 4.17rem;
+  --type-5: 5.95rem;
+
+  --font: 'Bricolage Grotesque', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ground: #2a2724; /* Basalt */
+    --ink: #ecedea; /* Alkali */
+    --muted: #a8a49d; /* Ash */
+    --sky: #7fa7d3;
+    --sage: #9dae98;
+    --sage-text: #9dae98;
+    --bitterbrush: #ddb447;
+    --rule: #4a4642;
+  }
+}
+:root[data-theme='dark'] {
+  --ground: #2a2724;
+  --ink: #ecedea;
+  --muted: #a8a49d;
+  --sky: #7fa7d3;
+  --sage: #9dae98;
+  --sage-text: #9dae98;
+  --bitterbrush: #ddb447;
+  --rule: #4a4642;
+}
+
+html,
+body {
+  margin: 0;
+}
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-optical-sizing: auto;
+  font-variation-settings: 'opsz' 14;
+  font-size: var(--type-0);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  color: var(--sky);
+}
+a:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* The wordmark: the name, always lowercase, in the display cut. */
+.wordmark {
+  font-family: var(--font);
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+/*
+ * The primary lockup: the row above the name, left edges aligned on ink, the row three
+ * quarters of the name's ink width, one seam between them. The numbers come from the
+ * font's metrics (see scripts/build-brand-assets.mjs): the name's ink is 4.31em wide
+ * with a 0.024em left bearing, and its ascender tops sit 0.13em below a line-height-1 box.
+ */
+.lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: var(--lockup-size, 6rem);
+}
+.lockup > .mark {
+  display: block;
+  width: 3.23em; /* 0.75 × 4.31em */
+  height: auto;
+  margin-bottom: 0.085em; /* one seam (0.215em) minus the ascender's inset (0.13em) */
+}
+.lockup > .wordmark {
+  font-size: 1em;
+  margin-left: -0.024em; /* the left bearing, so ink aligns with the row */
+}

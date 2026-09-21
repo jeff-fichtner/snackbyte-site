@@ -22,6 +22,9 @@ function run(command, args) {
 // build copies public/ into dist/.
 run(process.execPath, ['scripts/build-sections.mjs']);
 
+// Favicons, from the generated brand assets, likewise.
+run(process.execPath, ['scripts/copy-favicons.mjs']);
+
 // Frontend build.
 run(bin('vite'), ['build']);
 
