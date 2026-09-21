@@ -20,7 +20,8 @@
     "test:watch": "vitest",
     "test:release": "bash scripts/derive-version.test.sh",
     "check:all": "npm run format:check && npm run lint && npm run typecheck && npm test",
-    "spec:html": "node scripts/spec-html.mjs"
+    "spec:html": "node scripts/spec-html.mjs",
+    "brand:assets": "node scripts/build-brand-assets.mjs"
   },
   "dependencies": {
     "express": "^5.2.1",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/express": "^5.0.6",
     "@types/node": "^25.9.1",
     "@types/react": "^19.2.15",
@@ -39,6 +41,7 @@
     "dotenv-expand": "^13.0.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
+    "fontkit": "^2.0.4",
     "globals": "^17.6.0",
     "highlight.js": "^11.11.1",
     "jsdom": "^27.0.1",
