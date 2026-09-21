@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snackbyte Brand Directions</title>
+<meta name="description" content="Round 3: the two-nibble byte as logo and icon, with every remaining decision shown as its options, day and night.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<style>
+  .day, :root {
+    --ground: #ECEDEA;   /* Alkali */
+    --ink: #45423E;      /* Granite */
+    --muted: #6B6762;    /* Shale */
+    --sage: #8B9B86;
+    --sky: #38639A;
+    --bitterbrush: #D2A93A;
+    --rule: #cfd1cb;
+    --tile: #ECEDEA;
+  }
+  .night {
+    --ground: #2A2724;   /* Basalt */
+    --ink: #ECEDEA;      /* Alkali */
+    --muted: #A8A49D;    /* Ash */
+    --sage: #9DAE98;
+    --sky: #7FA7D3;
+    --bitterbrush: #DDB447;
+    --rule: #4a4642;
+    --tile: #2A2724;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #2A2724; --ink: #ECEDEA; --muted: #A8A49D; --sage: #9DAE98; --sky: #7FA7D3; --bitterbrush: #DDB447; --rule: #4a4642; --tile: #2A2724;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #2A2724; --ink: #ECEDEA; --muted: #A8A49D; --sage: #9DAE98; --sky: #7FA7D3; --bitterbrush: #DDB447; --rule: #4a4642; --tile: #2A2724;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 14;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+  .intro { padding: 56px 0 44px; }
+  .intro h1 { margin: 0 0 12px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .intro p { margin: 0; max-width: 62ch; color: var(--muted); }
+  .intro p + p { margin-top: 10px; }
+  .intro .kept { color: var(--ink); }
+
+  section { padding: 44px 0 52px; border-top: 1px solid var(--rule); }
+  .s-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-bottom: 28px; }
+  .s-head h2 { margin: 0; font-size: 15px; font-weight: 600; }
+  .s-head p { margin: 0; font-size: 15px; color: var(--muted); max-width: 64ch; }
+
+  /* a pair of full cards, day and night */
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+  .pair + .pair { margin-top: 16px; }
+  .theme { background: var(--ground); color: var(--ink); padding: 32px 32px 30px; border-radius: 8px; border: 1px solid var(--rule); }
+  @media (max-width: 480px) { .theme { padding: 24px 18px 22px; } }
+  .theme .tag { margin: 0 0 22px; font-size: 12px; color: var(--muted); }
+
+  /* a row of options, each split day | night */
+  .opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .opts.two { grid-template-columns: repeat(2, 1fr); }
+  .opts.wrap-tiles { grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); }
+  .opts > .opt, .split > div { min-width: 0; }
+  @media (max-width: 860px) { .opts, .opts.two, .opts.wrap-tiles { grid-template-columns: 1fr; } }
+  .opt h3 { margin: 0 0 10px; font-size: 15px; font-weight: 600; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .split > div { background: var(--ground); color: var(--ink); padding: 26px 16px; display: grid; place-items: center; gap: 12px; }
+  .split svg { display: block; }
+  .opt .read { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+  .opt .read strong { color: var(--ink); font-weight: 600; }
+  .pick { display: inline-block; margin-left: 10px; font-size: 11px; font-weight: 600; color: var(--sky); border: 1px solid var(--sky); border-radius: 999px; padding: 1px 8px; vertical-align: middle; line-height: 1.5; }
+  .opt.picked .split, .opt.picked .theme { border-color: var(--sky); box-shadow: inset 0 0 0 1px var(--sky); }
+  .opt .why { margin: 8px 0 0; font-size: 14px; color: var(--ink); max-width: 64ch; }
+  .lock-opts > .opt + .opt { margin-top: 26px; }
+
+  /* lockups */
+  .logo-above svg { display: block; width: min(300px, 78%); height: auto; }
+  .logo-above .wm { margin-top: 12px; font-size: clamp(48px, 7.5vw, 76px); font-weight: 800; line-height: 0.95; letter-spacing: -0.045em; font-variation-settings: "opsz" 96; }
+  .logo-beside { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .logo-beside svg { display: block; width: 176px; height: auto; flex: none; }
+  .logo-beside .wm { font-size: 46px; font-weight: 800; line-height: 1; letter-spacing: -0.045em; font-variation-settings: "opsz" 96; }
+
+  /* tile sizes inside a split half */
+  .tiles { display: flex; align-items: flex-end; gap: 12px; }
+  .tiles small { display: block; font-size: 11px; color: var(--muted); text-align: center; margin-top: 4px; }
+  .surface { background: color-mix(in srgb, var(--ink) 9%, var(--ground)); padding: 12px 14px 10px; border-radius: 8px; }
+
+  /* in use */
+  .use { display: grid; gap: 22px; }
+  .mock { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+  .mock-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; }
+  .mock-head .lock { display: flex; align-items: center; gap: 10px; }
+  .mock-head .lock svg { display: block; width: 92px; height: auto; }
+  .mock-head .lock b { font-size: 20px; font-weight: 800; letter-spacing: -0.04em; font-variation-settings: "opsz" 96; line-height: 1; }
+  .mock-head a { color: var(--sky); font-size: 14px; text-decoration: none; }
+  .mock-head a:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 2px; }
+  .mock-body { padding: 14px 16px 18px; border-top: 1px solid var(--rule); }
+  .mock-body h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; font-variation-settings: "opsz" 96; text-wrap: balance; }
+  .mock-body p { margin: 0; color: var(--muted); font-size: 14px; max-width: 46ch; }
+  .tabs { display: flex; align-items: flex-end; gap: 2px; padding: 8px 8px 0; background: color-mix(in srgb, var(--ink) 8%, var(--ground)); }
+  .tab { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px 8px 0 0; font-size: 13px; color: var(--muted); background: color-mix(in srgb, var(--ink) 4%, var(--ground)); min-width: 0; }
+  .tab.on { background: var(--ground); color: var(--ink); }
+  .tab svg { display: block; flex: none; }
+  .tab span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 12ch; }
+  .tab .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); flex: none; }
+  .home { display: flex; gap: 22px; padding: 18px 16px 16px; align-items: flex-start; background: color-mix(in srgb, var(--ink) 12%, var(--ground)); }
+  .app { display: grid; justify-items: center; gap: 6px; font-size: 11px; color: var(--ink); }
+  .app .tile { width: 60px; height: 60px; border-radius: 14px; display: grid; place-items: center; }
+  .app .tile.blank { background: color-mix(in srgb, var(--ink) 10%, var(--ground)); }
+  .app .tile svg { display: block; }
+
+  .note { margin: 22px 0 0; font-size: 14px; color: var(--muted); max-width: 64ch; }
+  .note strong { color: var(--ink); font-weight: 600; }
+  .foot { padding: 40px 0 64px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--rule); }
+  .foot p { margin: 0; max-width: 62ch; }
+</style>
+</head>
+<body>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- bites: the same circle, placed where each option needs it -->
+    <mask id="bite-row" maskUnits="userSpaceOnUse" x="-10" y="-20" width="130" height="50">
+      <rect x="-10" y="-20" width="130" height="50" fill="#fff"/><circle cx="106" cy="-1" r="8" fill="#000"/>
+    </mask>
+    <mask id="bite-top" maskUnits="userSpaceOnUse" x="-10" y="-20" width="80" height="70">
+      <rect x="-10" y="-20" width="80" height="70" fill="#fff"/><circle cx="50" cy="-1" r="8" fill="#000"/>
+    </mask>
+    <mask id="bite-bottom" maskUnits="userSpaceOnUse" x="-10" y="-10" width="80" height="70">
+      <rect x="-10" y="-10" width="80" height="70" fill="#fff"/><circle cx="50" cy="28" r="8" fill="#000"/>
+    </mask>
+    <mask id="bite-seam" maskUnits="userSpaceOnUse" x="-10" y="-10" width="80" height="70">
+      <rect x="-10" y="-10" width="80" height="70" fill="#fff"/><circle cx="50" cy="17" r="6" fill="#000"/>
+    </mask>
+
+    <!-- the logo: one row, two nibbles, the seam wider than the gaps, the bite from the last cell -->
+    <g id="m-row" mask="url(#bite-row)">
+      <rect x="0"  y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="56" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="69" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="82" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="95" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+    </g>
+
+    <!-- stack A: sky over granite, wide seam, bite top right -->
+    <g id="m-stack-a" mask="url(#bite-top)">
+      <rect x="0" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="0" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="17" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+    </g>
+    <!-- stack B: granite over sky, wide seam, bite bottom right -->
+    <g id="m-stack-b" mask="url(#bite-bottom)">
+      <rect x="0" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="0" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="13" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="26" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="39" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+    </g>
+    <!-- stack C: granite over sky, wide seam, bite into the seam (smaller, to stay off the granite) -->
+    <g id="m-stack-c" mask="url(#bite-seam)">
+      <rect x="0" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="0" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="13" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="26" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="39" y="17" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+    </g>
+    <!-- stack, uniform gaps: sky over granite, every gap three, bite top right -->
+    <g id="m-stack-tight" mask="url(#bite-top)">
+      <rect x="0" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="13" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/><rect x="39" y="0" width="10" height="10" rx="2" style="fill:var(--sky)"/>
+      <rect x="0" y="13" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="13" y="13" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+      <rect x="26" y="13" width="10" height="10" rx="2" style="fill:var(--ink)"/><rect x="39" y="13" width="10" height="10" rx="2" style="fill:var(--ink)"/>
+    </g>
+
+    <!-- fixed-colour stacks for tiles that do not follow the theme -->
+    <g id="m-stack-fixed-day" mask="url(#bite-top)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="#38639A"/><rect x="13" y="0" width="10" height="10" rx="2" fill="#38639A"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" fill="#38639A"/><rect x="39" y="0" width="10" height="10" rx="2" fill="#38639A"/>
+      <rect x="0" y="17" width="10" height="10" rx="2" fill="#45423E"/><rect x="13" y="17" width="10" height="10" rx="2" fill="#45423E"/>
+      <rect x="26" y="17" width="10" height="10" rx="2" fill="#45423E"/><rect x="39" y="17" width="10" height="10" rx="2" fill="#45423E"/>
+    </g>
+    <g id="m-stack-fixed-night" mask="url(#bite-top)">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="#7FA7D3"/><rect x="13" y="0" width="10" height="10" rx="2" fill="#7FA7D3"/>
+      <rect x="26" y="0" width="10" height="10" rx="2" fill="#7FA7D3"/><rect x="39" y="0" width="10" height="10" rx="2" fill="#7FA7D3"/>
+      <rect x="0" y="17" width="10" height="10" rx="2" fill="#ECEDEA"/><rect x="13" y="17" width="10" height="10" rx="2" fill="#ECEDEA"/>
+      <rect x="26" y="17" width="10" height="10" rx="2" fill="#ECEDEA"/><rect x="39" y="17" width="10" height="10" rx="2" fill="#ECEDEA"/>
+    </g>
+
+    <!-- tiles -->
+    <g id="t-ground"><rect width="64" height="64" rx="14" style="fill:var(--tile)"/><g transform="translate(7.5 18.5)"><use href="#m-stack-a"/></g></g>
+    <g id="t-alkali"><rect width="64" height="64" rx="14" fill="#ECEDEA"/><g transform="translate(7.5 18.5)"><use href="#m-stack-fixed-day"/></g></g>
+    <g id="t-granite"><rect width="64" height="64" rx="14" fill="#45423E"/><g transform="translate(7.5 18.5)"><use href="#m-stack-fixed-night"/></g></g>
+  </defs>
+</svg>
+
+<header class="wrap intro">
+  <h1>Snackbyte, round three</h1>
+  <p class="kept">Chosen: the row of two nibbles, granite then sky, with Bricolage setting the name. That is the logo. The icon is the same two nibbles stacked, because a row is a poor icon.</p>
+  <p>Getting from the row to the icon took four decisions, and each is shown here as the options it was, every option by day and by night. My pick in each is marked and given its reason; the other options stand on their own and the marking is only a recommendation. The last section puts my picks in use so you can see them land.</p>
+</header>
+
+<!-- ============ 1. LOCKUP ============ -->
+<section aria-labelledby="h-lock">
+  <div class="wrap">
+    <div class="s-head">
+      <h2 id="h-lock">Lockup</h2>
+      <p>Where the row sits relative to the name. Settled: both are used. Above is the primary; beside is the low-height alternative for headers, letterhead, and anywhere height is scarce.</p>
+    </div>
+    <div class="lock-opts">
+    <div class="opt picked">
+      <h3>Above <span class="pick">Primary</span></h3>
+      <div class="pair">
+      <div class="theme day"><p class="tag">Above, day</p><div class="logo-above"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+      <div class="theme night"><p class="tag">Above, night</p><div class="logo-above"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+    </div>
+      <p class="why">Why both: the row is the mark, and above the name it gets to be wide, which is what it is. Beside the name it shrinks to the cap height and the bite becomes a dot, which is fine wherever the name is doing the work and height is not available.</p>
+    </div>
+    <div class="opt picked">
+      <h3>Beside <span class="pick">Low-height alternative</span></h3>
+      <div class="pair">
+      <div class="theme day"><p class="tag">Beside, day</p><div class="logo-beside"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+      <div class="theme night"><p class="tag">Beside, night</p><div class="logo-beside"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte mark"><use href="#m-row"/></svg><div class="wm">snackbyte</div></div></div>
+    </div>
+    </div>
+    </div>
+    <p class="note"><strong>Above</strong> shares the name's left edge and lets the row be set a little narrower than the word; it is the poster form and the site form. <strong>Beside</strong> is the letterhead and header form; the row sits at the cap height, and the bite reads as a notch. The rule between them is height: use above whenever there is room for it.</p>
+  </div>
+</section>
+
+<!-- ============ 2. STACKING ============ -->
+<section aria-labelledby="h-stack">
+  <div class="wrap">
+    <div class="s-head">
+      <h2 id="h-stack">Stacking order, and where the bite goes</h2>
+      <p>The row folds into two rows of four. Which nibble goes on top decides where the bite can be.</p>
+    </div>
+    <div class="opts">
+      <div class="opt picked">
+        <h3>Sky over granite <span class="pick">My pick</span></h3>
+        <div class="split">
+          <div class="day"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Sky over granite, bite top right"><use href="#m-stack-a"/></svg></div>
+          <div class="night"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Sky over granite, bite top right"><use href="#m-stack-a"/></svg></div>
+        </div>
+        <p class="read"><strong>Read:</strong> reverses the row's sequence, but the bite stays at the top right, exactly where the row has it, and the stack reads as a horizon.</p>
+        <p class="why">Why: the bite is the one detail that says snack, and this is the only order that keeps it full-size and outward-facing. The sequence flip costs nothing a viewer would notice.</p>
+      </div>
+      <div class="opt">
+        <h3>Granite over sky, bite below</h3>
+        <div class="split">
+          <div class="day"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Granite over sky, bite bottom right"><use href="#m-stack-b"/></svg></div>
+          <div class="night"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Granite over sky, bite bottom right"><use href="#m-stack-b"/></svg></div>
+        </div>
+        <p class="read"><strong>Read:</strong> keeps the row's sequence. The bite moves to the outer bottom corner, where it tends to read as a folded page corner rather than a bite.</p>
+      </div>
+      <div class="opt">
+        <h3>Granite over sky, bite into the seam</h3>
+        <div class="split">
+          <div class="day"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Granite over sky, bite into the seam"><use href="#m-stack-c"/></svg></div>
+          <div class="night"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Granite over sky, bite into the seam"><use href="#m-stack-c"/></svg></div>
+        </div>
+        <p class="read"><strong>Read:</strong> keeps the sequence and the bitten cell's corner. The bite has to shrink to stay off the granite above it, and it faces inward, so it is the least visible of the three.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. SEAM ============ -->
+<section aria-labelledby="h-seam">
+  <div class="wrap">
+    <div class="s-head">
+      <h2 id="h-seam">The seam in the stack</h2>
+      <p>The row keeps its nibbles apart with a gap of seven to the cells' three. Stacked, the colour change already marks the seam, so the wide gap is a choice, not a need. Shown with sky over granite; it applies to whichever order wins.</p>
+    </div>
+    <div class="opts two">
+      <div class="opt picked">
+        <h3>Wide seam, seven <span class="pick">My pick, least sure</span></h3>
+        <div class="split">
+          <div class="day"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Wide seam"><use href="#m-stack-a"/></svg></div>
+          <div class="night"><svg width="140" height="77" viewBox="0 0 49 27" role="img" aria-label="Wide seam"><use href="#m-stack-a"/></svg></div>
+        </div>
+        <p class="read"><strong>Read:</strong> the same rule as the row, so logo and icon are one construction. Two separate things, deliberately apart.</p>
+        <p class="why">Why: the seam is the brief, and one construction for both forms is worth more than a tighter favicon. This is the pick I am least sure of; if the 16-pixel icon matters more than the rule, take the uniform gaps.</p>
+      </div>
+      <div class="opt">
+        <h3>Uniform gaps, three</h3>
+        <div class="split">
+          <div class="day"><svg width="140" height="66" viewBox="0 0 49 23" role="img" aria-label="Uniform gaps"><use href="#m-stack-tight"/></svg></div>
+          <div class="night"><svg width="140" height="66" viewBox="0 0 49 23" role="img" aria-label="Uniform gaps"><use href="#m-stack-tight"/></svg></div>
+        </div>
+        <p class="read"><strong>Read:</strong> denser and squarer, so it fills a tile better and holds together at 16. Reads as one object with two colours rather than two objects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. TILE ============ -->
+<section aria-labelledby="h-tile">
+  <div class="wrap">
+    <div class="s-head">
+      <h2 id="h-tile">The tile, for square places</h2>
+      <p>App icons and favicons need a filled square. What colour it is decides whether the icon follows the theme or stays constant. Shown at 80, 32 and 16 on a neutral surface so the tile is visible. Sage was tried and dropped: sky on sage is 2:1.</p>
+    </div>
+    <div class="opts wrap-tiles">
+      <div class="opt picked">
+        <h3>Ground colour, follows the theme <span class="pick">My pick</span></h3>
+        <div class="split">
+          <div class="day"><div class="surface tiles">
+            <div><svg width="80" height="80" viewBox="0 0 64 64"><use href="#t-ground"/></svg><small>80</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#t-ground"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-ground"/></svg><small>16</small></div>
+          </div></div>
+          <div class="night"><div class="surface tiles">
+            <div><svg width="80" height="80" viewBox="0 0 64 64"><use href="#t-ground"/></svg><small>80</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#t-ground"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-ground"/></svg><small>16</small></div>
+          </div></div>
+        </div>
+        <p class="read"><strong>Read:</strong> Alkali by day, Basalt at night. Sits quietly in either theme; in a tab strip it is nearly invisible except for the two colours. Two icons to ship.</p>
+        <p class="why">Why: it is the same rule as everything else on the page, ground and ink swapping at night, so the icon never has to explain itself. Two icons to ship is a build step, not a design cost.</p>
+      </div>
+      <div class="opt">
+        <h3>Alkali, constant</h3>
+        <div class="split">
+          <div class="day"><div class="surface tiles">
+            <div><svg width="80" height="80" viewBox="0 0 64 64"><use href="#t-alkali"/></svg><small>80</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#t-alkali"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-alkali"/></svg><small>16</small></div>
+          </div></div>
+          <div class="night"><div class="surface tiles">
+            <div><svg width="80" height="80" viewBox="0 0 64 64"><use href="#t-alkali"/></svg><small>80</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#t-alkali"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-alkali"/></svg><small>16</small></div>
+          </div></div>
+        </div>
+        <p class="read"><strong>Read:</strong> one icon everywhere, and it is the day logo exactly. At night it is a light square on a dark screen, which most app icons are.</p>
+      </div>
+      <div class="opt">
+        <h3>Granite, constant</h3>
+        <div class="split">
+          <div class="day"><div class="surface tiles">
+            <div><svg width="80" height="80" viewBox="0 0 64 64"><use href="#t-granite"/></svg><small>80</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#t-granite"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-granite"/></svg><small>16</small></div>
+          </div></div>
+          <div class="night"><div class="surface tiles">
+            <div><svg width="80" height="80" viewBox="0 0 64 64"><use href="#t-granite"/></svg><small>80</small></div>
+            <div><svg width="32" height="32" viewBox="0 0 64 64"><use href="#t-granite"/></svg><small>32</small></div>
+            <div><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-granite"/></svg><small>16</small></div>
+          </div></div>
+        </div>
+        <p class="read"><strong>Read:</strong> one icon everywhere, dark, with the night nibbles on it. The strongest at 16 by day, and the one that looks most like an app. On a dark screen the tile nearly matches the ground and the nibbles carry it alone. It is the only place granite is a ground.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IN USE ============ -->
+<section aria-labelledby="h-use">
+  <div class="wrap">
+    <div class="s-head">
+      <h2 id="h-use">In use, with my picks</h2>
+      <p>Shown with the marked picks: above as the primary lockup and beside in the header; sky over granite; the wide seam; the ground-colour tile. Change any pick and this section changes with it.</p>
+    </div>
+    <div class="pair">
+      <div class="theme day">
+        <p class="tag">Day</p>
+        <div class="use">
+          <div class="mock">
+            <div class="mock-head"><div class="lock"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte"><use href="#m-row"/></svg><b>snackbyte</b></div><a href="#h-use">Work</a></div>
+            <div class="mock-body"><h3>Small tools, each with one job.</h3><p>Software for the community around Bishop, California, and the method that keeps each piece bounded.</p></div>
+          </div>
+          <div class="mock">
+            <div class="tabs">
+              <div class="tab on"><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-ground"/></svg><span>Snackbyte</span></div>
+              <div class="tab"><i class="dot"></i><span>Matilda call board</span></div>
+              <div class="tab"><i class="dot"></i><span>Slate</span></div>
+            </div>
+            <div class="mock-body" style="padding-top:12px"><p>The favicon is the tile at 16.</p></div>
+          </div>
+          <div class="mock">
+            <div class="home">
+              <div class="app"><div class="tile"><svg width="60" height="60" viewBox="0 0 64 64" style="border-radius:14px"><use href="#t-ground"/></svg></div>Snackbyte</div>
+              <div class="app"><div class="tile blank"></div>Calendar</div>
+              <div class="app"><div class="tile blank"></div>Messages</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="theme night">
+        <p class="tag">Night</p>
+        <div class="use">
+          <div class="mock">
+            <div class="mock-head"><div class="lock"><svg viewBox="0 0 105 10" role="img" aria-label="Snackbyte"><use href="#m-row"/></svg><b>snackbyte</b></div><a href="#h-use">Work</a></div>
+            <div class="mock-body"><h3>Small tools, each with one job.</h3><p>Software for the community around Bishop, California, and the method that keeps each piece bounded.</p></div>
+          </div>
+          <div class="mock">
+            <div class="tabs">
+              <div class="tab on"><svg width="16" height="16" viewBox="0 0 64 64"><use href="#t-ground"/></svg><span>Snackbyte</span></div>
+              <div class="tab"><i class="dot"></i><span>Matilda call board</span></div>
+              <div class="tab"><i class="dot"></i><span>Slate</span></div>
+            </div>
+            <div class="mock-body" style="padding-top:12px"><p>The favicon is the tile at 16.</p></div>
+          </div>
+          <div class="mock">
+            <div class="home">
+              <div class="app"><div class="tile"><svg width="60" height="60" viewBox="0 0 64 64" style="border-radius:14px"><use href="#t-ground"/></svg></div>Snackbyte</div>
+              <div class="app"><div class="tile blank"></div>Calendar</div>
+              <div class="app"><div class="tile blank"></div>Messages</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="note"><strong>One rule that falls out regardless:</strong> the row is for wide places, beside or above the name; the stack is for square places, and is never set beside the name. Two forms of one mark, each with one job.</p>
+  </div>
+</section>
+
+<footer class="wrap foot">
+  <p>Rounds one and two are in this page's version history. Four picks settle the mark; after that, what's left is the type scale, spacing from the seam unit, and the site itself.</p>
+</footer>
+
+</body>
+</html>

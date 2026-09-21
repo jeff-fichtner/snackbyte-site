@@ -18,3 +18,10 @@ This project uses spec-driven development (GitHub Spec Kit). Nothing is spec’d
 yet — run `/speckit-constitution` to establish this app’s principles, then
 `/speckit-specify` to define the first feature. Plans live under `specs/`.
 <!-- SPECKIT END -->
+
+## Brand
+
+The brand (mark, palette, type, rules) is recorded in `docs/BRAND.md`, with the
+readable version live at <https://snackbyte.io/style/>. It will move to its own
+npm package when the homepage is rebuilt on it; until then that file is the record.
+The homepage and `src/web/Logo.tsx` still carry the old brand.
