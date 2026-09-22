@@ -146,10 +146,30 @@ what it needs, and stops there." "Building something good" is retired.
 
 ## Not yet decided
 
-The type scale and the spacing scale (both to be built from the seam unit). The
-downstream surfaces: printed QR codes (`snackbyte-links`
-already prints the old mark), business cards, letterhead, email signature,
-social. A PNG favicon set for browsers without SVG favicons.
+The type scale and the spacing scale have a first cut in `src/web/brand.css`, both
+from the seam unit: spacing steps at cell 10, gap 3, seam 7 on a 4px unit (12, 28,
+40, 68, 108), and a type scale at the cell-to-seam ratio 10/7 from 16px (16, 23, 33,
+47, 67, 95). They are decided when the real site has held them.
+
+## Rollout
+
+Where the brand has landed and where it has not. This list is the one place that
+tracks it, across repos; it moves with this file into the package. Web presence
+first; paper and print wait for the real site.
+
+| Surface                          | Status                                                                                                                          |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Homepage (`snackbyte.io`)        | Done 2026-09-21: holding page on the brand, links `/style`.                                                                     |
+| `/style`                         | Done: the preview of this guide. Link comes off with the real site.                                                             |
+| Favicons, touch icon             | Done: copied from `brand/` at build.                                                                                            |
+| The real site                    | Next. Constitution and first spec first; removes the `/style` link.                                                             |
+| The package                      | At the second consumer in another repo.                                                                                         |
+| `snackbyte-links` QR centre mark | Waiting: every link today carries a client's mark, not ours. When a snackbyte resource is linked, the centre mark is the stack. |
+| Email signature                  | Waiting on the real site. Uses the beside lockup PNG.                                                                           |
+| Letterhead                       | Waiting on the real site. Beside lockup; a Docs template.                                                                       |
+| Business cards                   | Waiting on the real site. Needs CMYK choices on paper, not a conversion.                                                        |
+| Social covers                    | Waiting on the real site.                                                                                                       |
+| Old deliverables                 | To archive as retired so nothing picks them up.                                                                                 |
 
 ## The old brand
 
