@@ -71,8 +71,8 @@ function bittenCellPath(x, y) {
     `M${r(x + topX)},${r(y)} ` + // start where the bite meets the top edge
     `h-${r(topX - k)} a${k},${k} 0 0 0 -${k},${k} v${c - 2 * k} ` + // top-left corner, down the left
     `a${k},${k} 0 0 0 ${k},${k} h${c - 2 * k} a${k},${k} 0 0 0 ${k},-${k} ` + // along the bottom, bottom-right corner
-    `v-${r(c - rightY)} ` + // up the right edge to the bite
-    `A${BITE_R},${BITE_R} 0 0 0 ${r(x + topX)},${r(y)} z` // the bite, back to the start
+    `v-${r(c - k - rightY)} ` + // up the right edge (it starts after the corner radius) to the bite
+    `A${BITE_R},${BITE_R} 0 0 1 ${r(x + topX)},${r(y)} z` // the bite, bowing inward, back to the start
   );
 }
 
