@@ -23,6 +23,15 @@ describe('app serves', () => {
     expect(res.text).toContain('<div id="root"');
   });
 
+  it('serves the link-preview card the head points at', async () => {
+    const app = createApp();
+    const home = await request(app).get('/');
+    expect(home.text).toContain('property="og:image" content="https://snackbyte.io/social.png"');
+    const card = await request(app).get('/social.png');
+    expect(card.status).toBe(200);
+    expect(card.headers['content-type']).toBe('image/png');
+  });
+
   it('responds on an API route (replace with your own)', async () => {
     const res = await request(createApp()).get('/api/health');
     expect(res.status).toBe(200);

@@ -33,8 +33,8 @@ const BITE_C = { x: CELL + 1, y: -1 }; // in the bitten cell's own coordinates
 
 // ---- the palette --------------------------------------------------------------
 const THEMES = {
-  day: { ground: '#ECEDEA', ink: '#45423E', sky: '#38639A' },
-  night: { ground: '#2A2724', ink: '#ECEDEA', sky: '#7FA7D3' },
+  day: { ground: '#ECEDEA', ink: '#45423E', sky: '#38639A', muted: '#6B6762' },
+  night: { ground: '#2A2724', ink: '#ECEDEA', sky: '#7FA7D3', muted: '#A8A49D' },
 };
 
 // ---- the wordmark -------------------------------------------------------------
@@ -153,14 +153,15 @@ async function ensureFont() {
 }
 
 /**
- * Lays out the wordmark at `size` px and returns its glyph paths (y down, origin at the
- * baseline's left advance origin) plus the ink bounds and the font's vertical metrics.
+ * Lays out `text` at `size` px in the given variation and returns its glyph paths (y down,
+ * origin at the baseline's left advance origin) plus the ink bounds and the font's vertical
+ * metrics. The wordmark is one call of this; the social card's headline is another.
  */
-function wordmark(size) {
-  const font = fontkit.openSync(FONT_PATH).getVariation(VARIATION);
+function outline(text, size, variation = VARIATION, trackingEm = TRACKING_EM) {
+  const font = fontkit.openSync(FONT_PATH).getVariation(variation);
   const scale = size / font.unitsPerEm;
-  const tracking = TRACKING_EM * size;
-  const run = font.layout(WORD);
+  const tracking = trackingEm * size;
+  const run = font.layout(text);
   let x = 0;
   const paths = [];
   let minX = Infinity;
@@ -189,6 +190,9 @@ function wordmark(size) {
     capHeight: (font.capHeight / font.unitsPerEm) * size,
   };
 }
+
+/** The wordmark: the name, in the display cut, tracked tight. */
+const wordmark = (size) => outline(WORD, size);
 
 /** The name alone, outlined, cropped to its ink. */
 function wordmarkSvg(t, size = 100) {
@@ -247,6 +251,45 @@ function lockupBesideSvg(t, size = 100) {
     `  <g transform="translate(${r(pad)} ${r(baseline - w.xHeight)}) scale(${r(unit)})">\n${pathsToSvg(row.shapes)}\n  </g>\n` +
       `  <path transform="translate(${r(pad + rowW + gap - w.ink.minX)} ${r(baseline)})" d="${w.d}" fill="${t.ink}"/>`,
     { title: 'snackbyte' },
+  );
+}
+
+/**
+ * The social card, 1200 × 630, for link previews (Open Graph): the lockup, the headline on
+ * two lines, the place. Everything is outlined so it renders anywhere.
+ */
+function socialSvg(t) {
+  const W = 1200;
+  const H = 630;
+  const pad = 80;
+  const w = wordmark(150);
+  const row = rowShapes(t);
+  const unit = (0.75 * w.ink.width) / row.w;
+  const rowH = row.h * unit;
+  const gap = SEAM * unit;
+  const wordTop = pad + rowH + gap;
+  const wordBottom = wordTop + (w.ink.maxY - w.ink.minY);
+  const display = { wght: 800, opsz: 96, wdth: 100 };
+  const lines = ['Software that knows', 'where it ends.'].map((s) =>
+    outline(s, 64, display, -0.03),
+  );
+  const lineH = 64 * 1.06;
+  const headTop = wordBottom + 60;
+  const place = outline('Bishop, California.', 26, { wght: 400, opsz: 14, wdth: 100 }, 0);
+  const placeBaseline = H - pad + 6;
+  const text = (o, y, fill) =>
+    `  <path transform="translate(${r(pad - o.ink.minX)} ${r(y)})" d="${o.d}" fill="${fill}"/>`;
+  return svgDoc(
+    W,
+    H,
+    `  <rect width="${W}" height="${H}" fill="${t.ground}"/>\n` +
+      `  <g transform="translate(${pad} ${pad}) scale(${r(unit)})">\n${pathsToSvg(row.shapes)}\n  </g>\n` +
+      text(w, wordTop - w.ink.minY, t.ink) +
+      '\n' +
+      lines.map((o, i) => text(o, headTop - o.ink.minY + i * lineH, t.ink)).join('\n') +
+      '\n' +
+      text(place, placeBaseline, t.muted),
+    { title: 'snackbyte. Software that knows where it ends.' },
   );
 }
 
@@ -311,6 +354,7 @@ for (const [name, t] of Object.entries(THEMES)) {
   write(`png/lockup-beside-${name}-1200.png`, png(beside, 1200));
   write(`png/lockup-beside-${name}-2400.png`, png(beside, 2400));
   write(`png/mark-row-${name}-1200.png`, png(svgDoc(row.w, row.h, pathsToSvg(row.shapes)), 1200));
+  write(`png/social-${name}.png`, png(socialSvg(t), 1200));
 
   // favicons and app icons from the tile
   const tile = tileSvg(t);
