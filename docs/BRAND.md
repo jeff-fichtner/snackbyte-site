@@ -159,10 +159,10 @@ first; paper and print wait for the real site.
 
 | Surface                          | Status                                                                                                                          |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Homepage (`snackbyte.io`)        | Done 2026-09-21: holding page on the brand, links `/style`.                                                                     |
-| `/style`                         | Done: the preview of this guide. Link comes off with the real site.                                                             |
+| Homepage (`snackbyte.io`)        | Done 2026-09-21: holding page on the brand. Links nothing.                                                                      |
+| `/style`                         | Done: the preview of this guide. Unlinked; reached by URL.                                                                      |
 | Favicons, touch icon             | Done: copied from `brand/` at build.                                                                                            |
-| The real site                    | Next. Constitution and first spec first; removes the `/style` link.                                                             |
+| The real site                    | Next. Constitution and first spec first.                                                                                        |
 | The package                      | At the second consumer in another repo.                                                                                         |
 | `snackbyte-links` QR centre mark | Waiting: every link today carries a client's mark, not ours. When a snackbyte resource is linked, the centre mark is the stack. |
 | Email signature                  | Waiting on the real site. Uses the beside lockup PNG.                                                                           |

@@ -16,7 +16,6 @@ export function App() {
         </div>
         <footer className="foot">
           <span>Bishop, California.</span>
-          <a href="/style/">The style, so far.</a>
         </footer>
       </main>
       <VersionChip />

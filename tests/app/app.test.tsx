@@ -12,9 +12,9 @@ describe('the holding page', () => {
     expect(html).toContain('Software that knows where it ends.');
   });
 
-  it('says where things stand and where the style is', () => {
+  it('says where things stand, and links nothing', () => {
     expect(html).toContain('Coming soon.');
-    expect(html).toContain('href="/style/"');
+    expect(html).not.toContain('href=');
   });
 });
 
