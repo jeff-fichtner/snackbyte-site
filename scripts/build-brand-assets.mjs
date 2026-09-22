@@ -293,6 +293,32 @@ function socialSvg(t) {
   );
 }
 
+/**
+ * The square card, 800 × 800, for link previews that lay out compactly (iMessage shows a
+ * square image as a thumbnail beside the title rather than a banner above it): the lockup
+ * alone, centred, the name at four fifths of the width.
+ */
+function squareSvg(t) {
+  const S = 800;
+  const pad = 80;
+  const size = r((S - 2 * pad) / 4.31); // the name's ink is 4.31em wide
+  const w = wordmark(size);
+  const row = rowShapes(t);
+  const unit = (0.75 * w.ink.width) / row.w;
+  const rowH = row.h * unit;
+  const gap = SEAM * unit;
+  const total = rowH + gap + (w.ink.maxY - w.ink.minY);
+  const top = (S - total) / 2;
+  return svgDoc(
+    S,
+    S,
+    `  <rect width="${S}" height="${S}" fill="${t.ground}"/>\n` +
+      `  <g transform="translate(${pad} ${r(top)}) scale(${r(unit)})">\n${pathsToSvg(row.shapes)}\n  </g>\n` +
+      `  <path transform="translate(${r(pad - w.ink.minX)} ${r(top + rowH + gap - w.ink.minY)})" d="${w.d}" fill="${t.ink}"/>`,
+    { title: 'snackbyte' },
+  );
+}
+
 // ---- raster -------------------------------------------------------------------
 function png(svg, width) {
   return new Resvg(svg, { fitTo: { mode: 'width', value: width } }).render().asPng();
@@ -355,6 +381,7 @@ for (const [name, t] of Object.entries(THEMES)) {
   write(`png/lockup-beside-${name}-2400.png`, png(beside, 2400));
   write(`png/mark-row-${name}-1200.png`, png(svgDoc(row.w, row.h, pathsToSvg(row.shapes)), 1200));
   write(`png/social-${name}.png`, png(socialSvg(t), 1200));
+  write(`png/social-square-${name}.png`, png(squareSvg(t), 800));
 
   // favicons and app icons from the tile
   const tile = tileSvg(t);

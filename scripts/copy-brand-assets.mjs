@@ -13,7 +13,7 @@ const FILES = [
   ['tile.svg', 'favicon.svg'], // follows the OS theme
   ['favicon/day/favicon.ico', 'favicon.ico'],
   ['favicon/day/apple-touch-icon-180.png', 'apple-touch-icon.png'],
-  ['png/social-night.png', 'social.png'], // the Open Graph card for link previews
+  ['png/social-square-night.png', 'social.png'], // the Open Graph card: square, so previews stay compact
 ];
 
 for (const [src, dest] of FILES) copyFileSync(from(src), to(dest));
