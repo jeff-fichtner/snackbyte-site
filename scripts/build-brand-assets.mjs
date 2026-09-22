@@ -301,21 +301,33 @@ function socialSvg(t) {
 function squareSvg(t) {
   const S = 800;
   const pad = 80;
-  const size = r((S - 2 * pad) / 4.31); // the name's ink is 4.31em wide
+  const size = r((S - 2 * pad - 40) / 4.31); // the name's ink is 4.31em wide
   const w = wordmark(size);
   const row = rowShapes(t);
   const unit = (0.75 * w.ink.width) / row.w;
   const rowH = row.h * unit;
   const gap = SEAM * unit;
-  const total = rowH + gap + (w.ink.maxY - w.ink.minY);
+  const wordH = w.ink.maxY - w.ink.minY;
+  const display = { wght: 800, opsz: 96, wdth: 100 };
+  const lines = ['Software that knows', 'where it ends.'].map((s) =>
+    outline(s, 52, display, -0.03),
+  );
+  const lineH = 52 * 1.06;
+  const headGap = 52;
+  const total = rowH + gap + wordH + headGap + lineH * lines.length;
   const top = (S - total) / 2;
+  const headTop = top + rowH + gap + wordH + headGap;
+  const text = (o, y) =>
+    `  <path transform="translate(${r(pad - o.ink.minX)} ${r(y)})" d="${o.d}" fill="${t.ink}"/>`;
   return svgDoc(
     S,
     S,
     `  <rect width="${S}" height="${S}" fill="${t.ground}"/>\n` +
       `  <g transform="translate(${pad} ${r(top)}) scale(${r(unit)})">\n${pathsToSvg(row.shapes)}\n  </g>\n` +
-      `  <path transform="translate(${r(pad - w.ink.minX)} ${r(top + rowH + gap - w.ink.minY)})" d="${w.d}" fill="${t.ink}"/>`,
-    { title: 'snackbyte' },
+      text(w, top + rowH + gap - w.ink.minY) +
+      '\n' +
+      lines.map((o, i) => text(o, headTop - o.ink.minY + i * lineH)).join('\n'),
+    { title: 'snackbyte. Software that knows where it ends.' },
   );
 }
 
