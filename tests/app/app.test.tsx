@@ -10,7 +10,7 @@ const html = renderToString(<App />);
 const prose = [
   page.headline,
   page.claim,
-  page.place,
+  page.based,
   page.contact.lead,
   ...page.work.flatMap((item) => [item.title, item.line]),
 ];
@@ -20,7 +20,7 @@ describe('the homepage', () => {
     expect(html).toContain('>snackbyte<');
     expect(html).not.toContain('Snackbyte');
     expect(html).toContain(page.headline);
-    expect(html).toContain('Bishop, California');
+    expect(html).toContain('Based in Bishop, California');
   });
 
   it('says nothing that goes stale on its own', () => {
@@ -42,6 +42,13 @@ describe('the homepage', () => {
     }
     // the contact address is the only link on the page
     expect([...html.matchAll(/<a\b/g)]).toHaveLength(1);
+  });
+
+  it('places snackbyte without limiting it to that place', () => {
+    // Bishop is the address, not the market: the work goes wherever it is wanted.
+    expect(page.based).toMatch(/based in/i);
+    expect(page.claim).not.toMatch(/bishop/i);
+    expect(page.claim).not.toMatch(/\b(local|nearby|in the area|around)\b/i);
   });
 
   it('claims nothing that is not a real client', () => {

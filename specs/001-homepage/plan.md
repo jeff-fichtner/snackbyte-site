@@ -151,8 +151,17 @@ concept and it exists to keep Principle VI checkable.
 The headline comes from the brand (`copy.headline`). Under it, one sentence that says
 what snackbyte actually does, for whom:
 
-> snackbyte builds small software for the people and organizations around Bishop,
-> California, and for anyone who needs a tool that does not exist yet.
+> snackbyte builds small software for people and organizations who need a tool that
+> nobody sells.
+
+And under that, the address — not the market:
+
+> Based in Bishop, California.
+
+**The claim once said "for the people and organizations around Bishop, California".**
+That was wrong, and wrong in a way that shrinks the business: Bishop is where the work is
+done, not who it is for. The work goes wherever it is wanted. Corrected 2026-09-23 in the
+guide first (`copy.based`, guide v1.2.0) because it is a brand decision, not a page one.
 
 ### The work, in words
 

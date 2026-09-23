@@ -12,14 +12,12 @@ export const page = {
   /** The brand's own words, passed through so a component imports only this module. */
   name: brand.name,
   headline: brand.headline,
-  place: brand.place,
+  /** Where the work is done. Not who it is for — the work goes wherever it is wanted. */
+  based: brand.based,
 
-  /**
-   * What snackbyte does, for whom. Names Bishop so the first screen carries the place
-   * without the footer having to be visible.
-   */
+  /** What snackbyte does, and for whom: anyone, anywhere, who needs a thing that is not sold. */
   claim:
-    'snackbyte builds small software for the people and organizations around Bishop, California, and for anyone who needs a tool that does not exist yet.',
+    'snackbyte builds small software for people and organizations who need a tool that nobody sells.',
 
   /**
    * The work, described by what it does for the people who use it. Deliberately not

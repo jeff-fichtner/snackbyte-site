@@ -47,6 +47,11 @@
   text-wrap: balance;
 }
 
+.based {
+  margin: var(--gap) 0 0;
+  color: var(--muted);
+}
+
 .claim {
   margin: var(--seam) 0 0;
   max-width: 46ch;
