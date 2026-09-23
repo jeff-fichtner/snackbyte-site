@@ -19,7 +19,7 @@ export const page = {
    * without the footer having to be visible.
    */
   claim:
-    'snackbyte builds small software for the people and organizations around Bishop, California — a theatre, a crew, a shop — and for anyone who needs a tool that does not exist yet.',
+    'snackbyte builds small software for the people and organizations around Bishop, California, and for anyone who needs a tool that does not exist yet.',
 
   /**
    * The work, described by what it does for the people who use it. Deliberately not
