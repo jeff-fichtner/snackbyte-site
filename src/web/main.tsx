@@ -1,5 +1,6 @@
 import { hydrateRoot, createRoot } from 'react-dom/client';
-import './brand.css';
+import '@snackbyte/brand/tokens.css';
+import '@snackbyte/brand/base.css';
 import './app.css';
 import { App } from './App';
 

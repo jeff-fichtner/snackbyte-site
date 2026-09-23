@@ -1,19 +1,19 @@
-import row from '../../brand/row.json';
+import { marks } from '@snackbyte/brand';
 
 /**
- * The mark: one row, two nibbles, a bite. The geometry is data from the brand's generator
- * (brand/row.json); the fills are the theme's own tokens, so one SVG serves day and night.
+ * The mark: one row, two nibbles, a bite. The geometry comes from the brand package,
+ * which carries a role per shape rather than a colour, so one SVG serves day and night.
  */
 export function Mark(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      viewBox={row.viewBox}
+      viewBox={marks.row.viewBox}
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-label="snackbyte"
       {...props}
     >
-      {row.shapes.map((s, i) => (
+      {marks.row.shapes.map((s, i) => (
         <path key={i} d={s.d} style={{ fill: s.role === 'sky' ? 'var(--sky)' : 'var(--ink)' }} />
       ))}
     </svg>
