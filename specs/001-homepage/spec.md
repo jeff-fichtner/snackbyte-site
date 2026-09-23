@@ -142,8 +142,15 @@ the page.
   small number of concrete things built, named by what they do for the people who use
   them. It MUST NOT link any of them, and MUST NOT name a client without that client's
   agreement.
-- **FR-008a**: Anything described MUST be finished and running at the time it is
-  described. Nothing in progress, nothing planned.
+- **FR-008a**: Anything described MUST be running at the time it is described, and the
+  description MUST be true of it today. Nothing planned, and no description that only
+  becomes true once the work is finished.
+- **FR-008b**: Each description MUST name the product — what it does for the person who
+  uses it — rather than the machinery that produces it.
+- **FR-008c**: The work described MUST span more than one kind of client, so that a
+  reader can place what snackbyte does rather than inferring it is only one thing.
+- **FR-008b**: The work described MUST span more than one kind of client, so that a
+  reader can place what snackbyte does rather than inferring it is only one thing.
 - **FR-009**: The page MUST NOT link to any client section, and MUST NOT expose the
   existence of one.
 - **FR-010**: `/style` MUST remain reachable at its URL, unlinked from the homepage and
