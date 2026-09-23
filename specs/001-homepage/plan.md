@@ -165,9 +165,8 @@ no client named.
 > **Registration for a school's after-school music program.** Families enrol their
 > children, staff see who is in which class, and nobody re-types a spreadsheet.
 >
-> **An eye for a wedding videographer's raw footage.** It watches every clip and finds
-> what is usable and what is a moment, so a day's shooting arrives as a shortlist rather
-> than as hours.
+> **An AI that edits wedding films.** It is being taught to watch a day's raw footage,
+> in picture and in sound, and cut it into the film a videographer would have made.
 >
 > **A call board for a community theatre.** Cast and crew pick their name and see when
 > they are called, and when they are done.
@@ -185,13 +184,15 @@ generator maintenance log (real and charming, but the smallest thing here); the 
 over one person's day (not built for anyone else, so it is not evidence of work done for
 others).
 
-**The second one needs a ruling against FR-008a.** The judging pipeline runs today —
-transcription, per-frame vision analysis, a per-clip judgment — and is being validated
-against the videographer's own independent reads. What does not yet exist is the finished
-product that does this unattended; that is deliberately unspecified. The sentence above
-describes what the system does, which is true today, rather than claiming it is finished.
-If the stricter reading of FR-008a is wanted, this item drops and short links with
-printed QR codes takes its place.
+**The second one is the biggest claim on the page, and it is written as ongoing on
+purpose.** "Is being taught" is the whole of its honesty: the judging pipeline runs today
+— transcription, per-frame vision analysis, a per-clip judgment, validated against the
+videographer's own independent reads — and picture's reference is filling while its
+self-training program is built. Sound has not started, and the user-facing product is
+deliberately unspecified until both mediums have trained. So the sentence claims the
+ambition and the work, and claims nothing finished. Written in the past or present
+perfect it would be a lie; written as ongoing it is exactly true, and it is the most
+interesting thing on the page.
 
 **A correction worth keeping**: the first draft of this line described the capture tool —
 the app where the videographer marks clips by hand. That is the machinery that trains the
