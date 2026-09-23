@@ -157,21 +157,48 @@ what snackbyte actually does, for whom:
 
 ### The work, in words
 
-Three, described by what they do for the people who use them. No links, no technology, no
-client named:
+Three, chosen to span an institution, a craft business and a community — the range a
+stranger needs in order to place what snackbyte does. Each names the product — what it
+does for the person who uses it — not the machinery inside it. No links, no technology,
+no client named.
 
+> **Registration for a school's after-school music program.** Families enrol their
+> children, staff see who is in which class, and nobody re-types a spreadsheet.
+>
+> **An eye for a wedding videographer's raw footage.** It watches every clip and finds
+> what is usable and what is a moment, so a day's shooting arrives as a shortlist rather
+> than as hours.
+>
 > **A call board for a community theatre.** Cast and crew pick their name and see when
-> they are called, and when they are done. Updated every week of the run.
->
-> **A maintenance log for a pair of generators.** Log a run, an oil change, an hour
-> reading — from a phone, standing next to the machine.
->
-> **A console for one person's day.** Reads the calendars and task lists already in use
-> and puts them on one plane. It reports; it does not score.
+> they are called, and when they are done.
 
-**Open for your ruling**: whether Playhouse 395 is named. "A community theatre" is safe
-and needs no one's permission; using the name is stronger and is their call, not ours.
-Written unnamed above, per FR-008.
+**Why these three** (surveyed 2026-09-22, and decided over a weaker first attempt):
+the first is the one that says an institution depends on this software; the second is
+current work with a real idea in it, and it is the only one that reads as modern; the
+third is live, local and the closest to the brand's own voice. All three are running —
+the call board verified at its host, the other two in active development with commits
+in the last fortnight.
+
+**Considered and not used**: short links and printed QR codes (live, tangible, but
+thinner than the three); limited-use magazine downloads (legible but narrow); the
+generator maintenance log (real and charming, but the smallest thing here); the console
+over one person's day (not built for anyone else, so it is not evidence of work done for
+others).
+
+**The second one needs a ruling against FR-008a.** The judging pipeline runs today —
+transcription, per-frame vision analysis, a per-clip judgment — and is being validated
+against the videographer's own independent reads. What does not yet exist is the finished
+product that does this unattended; that is deliberately unspecified. The sentence above
+describes what the system does, which is true today, rather than claiming it is finished.
+If the stricter reading of FR-008a is wanted, this item drops and short links with
+printed QR codes takes its place.
+
+**A correction worth keeping**: the first draft of this line described the capture tool —
+the app where the videographer marks clips by hand. That is the machinery that trains the
+product, not the product. FR-008b exists because of it.
+
+**Naming**: all three are client work and are described unnamed, per FR-008. Adding a
+name later never requires taking anything down; the reverse does.
 
 ### Contact
 
