@@ -17,7 +17,7 @@ export const page = {
 
   /** What snackbyte does, and for whom: anyone, anywhere, who needs a thing that is not sold. */
   claim:
-    'snackbyte builds small software for people and organizations who need a tool that nobody sells.',
+    'snackbyte builds small software for people and organizations who need a tool that does not exist yet.',
 
   /**
    * The work, described by what it does for the people who use it. Deliberately not
