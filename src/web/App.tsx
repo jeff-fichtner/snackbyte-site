@@ -11,6 +11,7 @@ export function App() {
           <Lockup />
           <h1 className="headline">{page.headline}</h1>
           <p className="claim">{page.claim}</p>
+          <p className="based">{page.based}</p>
         </section>
 
         <section className="work" aria-labelledby="work-heading">
@@ -33,7 +34,7 @@ export function App() {
           </p>
         </section>
 
-        <footer className="foot">{page.place}</footer>
+        <footer className="foot">snackbyte llc</footer>
       </main>
       <VersionChip />
     </>

@@ -118,8 +118,9 @@ the page.
 
 - **FR-001**: The page MUST state what snackbyte does in language a non-technical reader
   understands, without naming a technology.
-- **FR-002**: The page MUST identify snackbyte as a real, located business — the place it
-  works from is part of what makes it credible.
+- **FR-002**: The page MUST identify snackbyte as a real, located business by naming
+  where the work is done. It MUST NOT imply that the place is the market: the work is
+  not limited to the area around it.
 - **FR-003**: The page MUST NOT claim anything that is not true at the moment it is read,
   and MUST NOT contain a status that goes stale on its own (such as "coming soon" or a
   count of things built).
