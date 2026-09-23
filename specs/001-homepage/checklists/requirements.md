@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain — **3 open** (FR-007 contact, FR-008 work, FR-010 `/style`), each raised deliberately by the owner
+- [x] No [NEEDS CLARIFICATION] markers remain — all three resolved in conversation 2026-09-22
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -24,14 +24,22 @@
 
 ## Feature Readiness
 
-- [ ] All functional requirements have clear acceptance criteria — blocked on the three above
+- [x] All functional requirements have clear acceptance criteria
 - [x] User scenarios cover primary flows
 - [x] Feature meets measurable outcomes defined in Success Criteria
 - [x] No implementation details leak into specification
 
 ## Notes
 
-- The three open markers are the questions the owner asked to have surfaced rather than
-  assumed. Story 1 (P1) is unaffected by all three and could be built alone; stories 2
-  and 3 depend on FR-007 and FR-008 respectively.
-- Answer them in `/speckit-clarify`, or here in conversation, before `/speckit-plan`.
+Three questions were raised rather than assumed, and answered by the owner:
+
+1. **Contact (FR-007)** — a published email address as a `mailto:` link. A form was
+   rejected as the only thing on the page that could break silently; a scheduling link as
+   presuming a meeting. The specific address is still to be confirmed and must route.
+2. **Work (FR-008)** — described in words, nothing linked, no client named without
+   agreement. A live anonymised activity graph was wanted and deferred; logged as an idea
+   in `snackbyte-lane-engine` with what it collides with.
+3. **`/style` (FR-010)** — stays exactly as it is, untouched by this feature. Its
+   replacement by a brand-story page is backlogged at `specs/backlog-brand-page/`.
+
+Ready for `/speckit-plan`.

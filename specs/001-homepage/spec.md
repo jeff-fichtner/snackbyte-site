@@ -8,7 +8,7 @@
 
 **Input**: User description: "The real homepage for snackbyte.io — replacing the holding page. What a stranger who was handed a link or a business card needs to see in ten seconds: who snackbyte is, what it does, that the work is real, and how to reach Jeff if they want to. Governed by the constitution at .specify/memory/constitution.md; brand comes from @snackbyte/brand. Client sections are never linked. Open questions to surface as clarifications rather than assume: whether there is contact and in what form, whether any work is listed and which, and whether /style stays reachable."
 
-## User Scenarios & Testing *(mandatory)*
+## User Scenarios & Testing _(mandatory)_
 
 ### User Story 1 - The stranger with a link (Priority: P1)
 
@@ -49,7 +49,7 @@ say so. Today there is no way to do that from the page at all.
 
 **Why this priority**: it converts interest into a conversation, which is the only action
 the page can usefully produce. It is P2 rather than P1 because a visitor who cannot
-contact from the page has usually been handed the link *by* Jeff and already has another
+contact from the page has usually been handed the link _by_ Jeff and already has another
 route to him; the page failing story 1 loses them entirely, while failing story 2 only
 costs a small number of inbound messages.
 
@@ -86,6 +86,8 @@ the page.
    presented as work is genuinely finished and genuinely snackbyte's to show.
 2. **Given** work is shown, **When** a visitor looks at it, **Then** it is described in
    terms of what it does for the people who use it, not in terms of its technology.
+3. **Given** a described piece of work, **When** a visitor looks for a link to it,
+   **Then** there is none, and its absence does not read as an omission.
 
 ---
 
@@ -108,7 +110,7 @@ the page.
   may have quietly become untrue — no "coming soon", no dated claim, no count that
   drifts.
 
-## Requirements *(mandatory)*
+## Requirements _(mandatory)_
 
 ### Functional Requirements
 
@@ -130,17 +132,23 @@ the page.
 
 - **FR-006**: The page MUST fit its core message — name, what it does, where it is — in
   one screen at a phone size, without scrolling.
-- **FR-007**: The page MUST offer a way to make contact. [NEEDS CLARIFICATION: what form
-  — a published email address, a form, a scheduling link, or something else? Each has a
-  different cost in spam, in build, and in what a visitor expects.]
-- **FR-008**: The page MUST decide whether it shows any of the work. [NEEDS
-  CLARIFICATION: does the homepage list work, and if so which items — given that client
-  sections are never linked from it and most personal tools are unfinished?]
+- **FR-007**: The page MUST offer exactly one way to make contact: a published email
+  address, presented as a link that opens the reader's mail client with nothing
+  pre-filled but the recipient. No form, no scheduling link, no third-party service.
+- **FR-007a**: That address MUST be a real, monitored address on the snackbyte domain,
+  and MUST carry the brand and nothing else — no role word, no environment, no
+  department. It is a string a stranger reads and types.
+- **FR-008**: The page MUST show that the work is real by describing it in words — a
+  small number of concrete things built, named by what they do for the people who use
+  them. It MUST NOT link any of them, and MUST NOT name a client without that client's
+  agreement.
+- **FR-008a**: Anything described MUST be finished and running at the time it is
+  described. Nothing in progress, nothing planned.
 - **FR-009**: The page MUST NOT link to any client section, and MUST NOT expose the
   existence of one.
-- **FR-010**: The style guide page's reachability MUST be settled. [NEEDS CLARIFICATION:
-  does `/style` remain reachable at its URL once the real site ships, and is it ever
-  linked?]
+- **FR-010**: `/style` MUST remain reachable at its URL, unlinked from the homepage and
+  `noindex`, exactly as it is today. This feature MUST NOT link it, change it, or remove
+  it.
 
 **How the page behaves**
 
@@ -161,7 +169,7 @@ the page.
 
 Not applicable — the page holds no data and stores nothing about its visitors.
 
-## Success Criteria *(mandatory)*
+## Success Criteria _(mandatory)_
 
 ### Measurable Outcomes
 
@@ -175,6 +183,8 @@ Not applicable — the page holds no data and stores nothing about its visitors.
   rather than assumed.
 - **SC-005**: A visitor who wants to make contact can begin doing so in one action from
   the page, without creating an account or accepting tracking.
+- **SC-008**: Mail sent to the published address reaches a mailbox that is read, verified
+  by sending one.
 - **SC-006**: The page contains no statement that will become untrue through the passage
   of time alone.
 - **SC-007**: Sharing the URL in a message produces a preview carrying the brand's card
@@ -198,8 +208,15 @@ Not applicable — the page holds no data and stores nothing about its visitors.
 - **The type and spacing scales get their real test here.** They are recorded as a first
   cut; this page running on them is what settles them or sends them back.
 - **The holding page is replaced, not extended.** "Coming soon." is retired by this work.
-- **`/style` and client sections continue to exist** at their URLs regardless of FR-010's
-  resolution; the question is only about linking and reachability, not deletion.
+- **Contact is a published address, decided 2026-09-22.** A form was rejected as the only
+  thing on the page that could break silently, and a scheduling link as presuming a
+  meeting. Some address-scraping spam is accepted as the cost; swapping to a form later
+  is a contained change, whereas withdrawing a form is not.
+- **`/style` and client sections continue to exist** at their URLs and are untouched by
+  this feature.
+- **`/style` is slated for replacement** by a different page — the brand's story rather
+  than its reference. That is its own unit, backlogged at
+  `specs/backlog-brand-page/`, and nothing here depends on it.
 
 ## Out of Scope
 
@@ -211,3 +228,8 @@ Not applicable — the page holds no data and stores nothing about its visitors.
 - A content management system, or any way to edit the page without a commit.
 - Paper surfaces — business cards, letterhead, email signature — tracked in the brand
   guide's rollout list.
+- **A live, anonymised activity graph** of the owner's work, in the manner of a commit
+  graph, as the page's evidence. Wanted, and deliberately not built here: it needs a
+  public surface from another product, and it collides with that product's stance that it
+  reports rather than scores. Recorded as an idea in `snackbyte-lane-engine`'s
+  `docs/IDEAS.md`, with what it collides with, so it is not rediscovered from scratch.
