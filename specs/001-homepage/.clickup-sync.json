@@ -14,6 +14,9 @@
   },
   "card": {
     "id": "86bc5txgz",
-    "hash": "sha256:49430e2d59f3ba2a6fd3a0289cd00c3f7c6b8256d09bfde5e89cf6c3e700f0d1"
+    "hash": "sha256:3e9b05ae936288d002aa60292df17da58e916c0c97abda4e152ce6ecd5ac9283"
+  },
+  "lifecycle": {
+    "analyzed": true
   }
 }
