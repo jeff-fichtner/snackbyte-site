@@ -162,11 +162,11 @@ stranger needs in order to place what snackbyte does. Each names the product —
 does for the person who uses it — not the machinery inside it. No links, no technology,
 no client named.
 
-> **Registration for a school's after-school music program.** Families enrol their
-> children, staff see who is in which class, and nobody re-types a spreadsheet.
+> **Enrollment for an after-school music program.** Families sign their children up,
+> staff see who is in which class, and nobody re-types a spreadsheet.
 >
-> **An AI that edits wedding films.** It is being taught to watch a day's raw footage,
-> in picture and in sound, and cut it into the film a videographer would have made.
+> **An AI that edits wedding films.** It is learning to watch a day's raw footage and cut
+> it into the film a videographer would have made.
 >
 > **A call board for a community theatre.** Cast and crew pick their name and see when
 > they are called, and when they are done.
@@ -197,6 +197,13 @@ interesting thing on the page.
 **A correction worth keeping**: the first draft of this line described the capture tool —
 the app where the videographer marks clips by hand. That is the machinery that trains the
 product, not the product. FR-008b exists because of it.
+
+**Spelling and phrasing** (corrected 2026-09-23): American spelling throughout — the
+business is in California and the reader is in Bishop. "A school's after-school music
+program" said school twice in five words. "In picture and in sound" is the industry's
+words, not a stranger's, and the detail belongs in the guide rather than on the page.
+"Theatre" stays: it is how the art form is spelled, and how the theatre in question
+spells itself.
 
 **Naming**: all three are client work and are described unnamed, per FR-008. Adding a
 name later never requires taking anything down; the reverse does.

@@ -19,7 +19,7 @@ export const page = {
    * without the footer having to be visible.
    */
   claim:
-    'snackbyte builds small software for the people and organisations around Bishop, California — a theatre, a crew, a shop — and for anyone who needs a tool that does not exist yet.',
+    'snackbyte builds small software for the people and organizations around Bishop, California — a theatre, a crew, a shop — and for anyone who needs a tool that does not exist yet.',
 
   /**
    * The work, described by what it does for the people who use it. Deliberately not
@@ -28,12 +28,12 @@ export const page = {
    */
   work: [
     {
-      title: "Registration for a school's after-school music program.",
-      line: 'Families enrol their children, staff see who is in which class, and nobody re-types a spreadsheet.',
+      title: 'Enrollment for an after-school music program.',
+      line: 'Families sign their children up, staff see who is in which class, and nobody re-types a spreadsheet.',
     },
     {
       title: 'An AI that edits wedding films.',
-      line: "It is being taught to watch a day's raw footage, in picture and in sound, and cut it into the film a videographer would have made.",
+      line: "It is learning to watch a day's raw footage and cut it into the film a videographer would have made.",
     },
     {
       title: 'A call board for a community theatre.',
