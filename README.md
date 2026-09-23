@@ -73,21 +73,24 @@ expected, not a bug. (The frontend chip's version comes from `package.json` at b
 time; its commit/date are populated only if the build passes them as Docker build-args —
 see [DEPLOY.md](DEPLOY.md).)
 
-## Spec-driven development
+## How work reaches main
 
-This project is set up for spec-driven development (GitHub Spec Kit). Nothing is
-spec'd yet — start here:
+This repository is governed by its constitution — read it first:
+`.specify/memory/constitution.md`. It binds the owner's global rules and
+`snackbyte-base`'s constitution by reference rather than restating them.
 
-1. **`/speckit-constitution`** — establish this app's principles. A few worth carrying
-   forward (they apply broadly, not just to this app):
-   - **Spec stays in spec spaces.** `specs/`, `.specify/`, `.claude/` are AI-assist
-     scaffolding. Shipped code (`src/`, `tests/`, `README`, `docs/`, scripts) must
-     stand on its own and never reference specs, FRs, or principle numbers — state the
-     rule directly instead.
-   - **Convention over configuration.** The tooling is set up and complete; don't
-     re-litigate it per feature.
-   - **Pinned, linted, type-safe, tested.** Node 24 LTS, TypeScript throughout, and
-     `npm run check:all` (format + lint + typecheck + test) green on every change.
-   - Then add principles specific to this app.
-2. **`/speckit-specify`** → **`/speckit-plan`** → **`/speckit-tasks`** →
-   **`/speckit-implement`** — one feature at a time, one branch per feature.
+The short version:
+
+- **The site renders the brand; it does not own it.** Colour, type, spacing, the marks
+  and the voice come from `@snackbyte/brand`. Never write a brand value here.
+- **Derived, never hand-cut.** Favicons, the link-preview card and each client section's
+  landing page are generated at build. Fix the generator, not the output.
+- **Nothing is linked that is not finished.** Client sections are never linked from the
+  homepage; pages shared deliberately are `noindex` and reached by URL.
+- **Proven in the built thing.** A change is not done when it compiles: the production
+  build is served by the real server, every route it touches is requested, and the page
+  is read in both themes and at phone width.
+- **Pinned, linted, type-safe, tested.** Node 24 LTS, TypeScript throughout, and
+  `npm run check:all` green on every change.
+
+A unit of work is a branch with a pull request as its handle, reviewed before it merges.

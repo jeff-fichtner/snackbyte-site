@@ -1,6 +1,7 @@
 import { createElement, type ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import { App } from './App';
+import { NotFound } from './NotFound';
 
 /**
  * Build-time render entries. Each entry maps an output HTML file to the React
@@ -18,7 +19,10 @@ export interface PrerenderEntry {
   element: ReactElement;
 }
 
-export const entries: PrerenderEntry[] = [{ html: 'index.html', element: createElement(App) }];
+export const entries: PrerenderEntry[] = [
+  { html: 'index.html', element: createElement(App) },
+  { html: '404.html', element: createElement(NotFound) },
+];
 
 /** Renders an entry's element to a static HTML string. */
 export function renderEntry(entry: PrerenderEntry): string {

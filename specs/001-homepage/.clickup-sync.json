@@ -17,6 +17,7 @@
     "hash": "sha256:3e9b05ae936288d002aa60292df17da58e916c0c97abda4e152ce6ecd5ac9283"
   },
   "lifecycle": {
-    "analyzed": true
+    "analyzed": true,
+    "implementStarted": true
   }
 }
