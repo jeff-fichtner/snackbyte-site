@@ -1,0 +1,17 @@
+# Where this repo's feature-cards live.
+#
+# NOTE: the target is "products" → the "site" folder → its "Roadmap" list
+# (901418532217). Every product folder in this workspace has a list called
+# "Roadmap", so resolving by name alone is ambiguous — the per-feature manifest
+# (.clickup-sync.json) carries the explicit list id, which is what sync uses.
+# If a future provision resolves the wrong Roadmap, check the id against the one
+# above before letting it write.
+space: 'products'
+list: 'Roadmap'
+statuses:
+  open: 'backlog'
+  in-design: 'in design'
+  ready: 'ready for development'
+  in-development: 'in development'
+  in-review: 'in review'
+  done: 'shipped'
