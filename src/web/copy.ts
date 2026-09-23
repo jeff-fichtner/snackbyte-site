@@ -16,8 +16,7 @@ export const page = {
   based: brand.based,
 
   /** What snackbyte does, and for whom: anyone, anywhere, who needs a thing that is not sold. */
-  claim:
-    'snackbyte builds small software for people and organizations who need a tool that does not exist yet.',
+  claim: 'snackbyte builds neat tools that haven\u2019t been made yet.',
 
   /**
    * The work, described by what it does for the people who use it. Deliberately not
