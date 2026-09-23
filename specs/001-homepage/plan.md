@@ -151,9 +151,8 @@ concept and it exists to keep Principle VI checkable.
 The headline comes from the brand (`copy.headline`). Under it, one sentence that says
 what snackbyte actually does, for whom:
 
-> snackbyte builds small software for the people and organisations around Bishop,
-> California — a theatre, a crew, a shop — and for anyone who needs a tool that does not
-> exist yet.
+> snackbyte builds small software for the people and organizations around Bishop,
+> California, and for anyone who needs a tool that does not exist yet.
 
 ### The work, in words
 
@@ -197,6 +196,12 @@ interesting thing on the page.
 **A correction worth keeping**: the first draft of this line described the capture tool —
 the app where the videographer marks clips by hand. That is the machinery that trains the
 product, not the product. FR-008b exists because of it.
+
+**The claim once ended "— a theatre, a crew, a shop —" and that was cut.** There is no
+shop among the clients: the third item was invented to complete a rule of three, which is
+filler the voice rules forbid and a false claim on a page whose job is to be credible.
+"A theatre" also previewed the work list eight lines below it. The list does that job
+properly; the claim does not need to.
 
 **Spelling and phrasing** (corrected 2026-09-23): American spelling throughout — the
 business is in California and the reader is in Bishop. "A school's after-school music

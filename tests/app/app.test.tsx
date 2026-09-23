@@ -44,6 +44,13 @@ describe('the homepage', () => {
     expect([...html.matchAll(/<a\b/g)]).toHaveLength(1);
   });
 
+  it('claims nothing that is not a real client', () => {
+    // "a theatre, a crew, a shop" once ended this sentence; there is no shop. Anything
+    // that sounds like an example has to be one.
+    expect(page.claim).not.toMatch(/\ba shop\b/);
+    expect(page.claim).not.toMatch(/—[^—]*,[^—]*,[^—]*—/); // a rule-of-three aside
+  });
+
   it('spans more than one kind of client', () => {
     const kinds = [/school|program/i, /wedding|videographer|film/i, /theatre|community/i];
     for (const kind of kinds) {
