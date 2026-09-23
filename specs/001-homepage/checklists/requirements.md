@@ -37,8 +37,8 @@ Three questions were raised rather than assumed, and answered by the owner:
    rejected as the only thing on the page that could break silently; a scheduling link as
    presuming a meeting. The specific address is still to be confirmed and must route.
 2. **Work (FR-008)** — described in words, nothing linked, no client named without
-   agreement. A live anonymised activity graph was wanted and deferred; logged as an idea
-   in `snackbyte-lane-engine` with what it collides with.
+   agreement. A live anonymised activity graph was wanted and deferred; backlogged at
+   `specs/backlog-activity-view/` with what it collides with.
 3. **`/style` (FR-010)** — stays exactly as it is, untouched by this feature. Its
    replacement by a brand-story page is backlogged at `specs/backlog-brand-page/`.
 

@@ -229,7 +229,7 @@ Not applicable — the page holds no data and stores nothing about its visitors.
 - Paper surfaces — business cards, letterhead, email signature — tracked in the brand
   guide's rollout list.
 - **A live, anonymised activity graph** of the owner's work, in the manner of a commit
-  graph, as the page's evidence. Wanted, and deliberately not built here: it needs a
-  public surface from another product, and it collides with that product's stance that it
-  reports rather than scores. Recorded as an idea in `snackbyte-lane-engine`'s
-  `docs/IDEAS.md`, with what it collides with, so it is not rediscovered from scratch.
+  graph, as the page's evidence. Wanted, and deliberately not built here: it would derive
+  from Slate, which has no public surface, and it collides with that product's stance
+  that it reports rather than scores. Backlogged at `specs/backlog-activity-view/` with
+  what it collides with, so it is not rediscovered from scratch.
