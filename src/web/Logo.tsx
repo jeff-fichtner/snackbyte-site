@@ -2,7 +2,7 @@ import { marks } from '@snackbyte/brand';
 
 /**
  * The mark: one row, two nibbles, a bite. The geometry comes from the brand package,
- * which carries a role per shape rather than a colour, so one SVG serves day and night.
+ * which carries a role per shape rather than a color, so one SVG serves day and night.
  */
 export function Mark(props: React.SVGProps<SVGSVGElement>) {
   return (
