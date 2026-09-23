@@ -23,7 +23,7 @@
     "spec:html": "node scripts/spec-html.mjs"
   },
   "dependencies": {
-    "@snackbyte/brand": "github:jeff-fichtner/snackbyte-brand-render#v1.1.1",
+    "@snackbyte/brand": "github:jeff-fichtner/snackbyte-brand-render#v1.1.2",
     "express": "^5.2.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
