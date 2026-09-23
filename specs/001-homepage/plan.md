@@ -12,7 +12,7 @@ screen at a phone size, prerendered, following the system theme.
 
 Most of the machinery already exists and was built during the brand work — the lockup,
 the theme, prerendering, the favicons, the link-preview card. What this feature adds is
-**content and two gaps**: copy that has never been written, and a not-found page, because
+**content and one gap**: copy that has never been written, and a not-found page, because
 the server currently answers every unknown URL with the homepage and a 200.
 
 ## Technical Context

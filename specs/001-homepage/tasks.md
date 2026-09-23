@@ -100,15 +100,18 @@ anyone not touching `App.tsx`.
 
 Principle VII: this is part of done, not a follow-up.
 
-- [ ] T031 Measure contrast on the real rendered colours for every text element, in both themes, against its actual background
+- [ ] T031 Measure contrast on the real rendered colours for every text element in both themes against its actual background, and confirm each reaches 4.5:1, or 3:1 where the text is 24px or larger
 - [ ] T032 Confirm `prefers-reduced-motion` is honoured and the page is complete without motion
 - [ ] T033 Re-read the whole page and the not-found page at 1280 and 390, both themes
 - [ ] T034 Confirm the link preview still resolves: the head points at `/social.png` and it serves
 - [ ] T035 Read `dist/index.html` and `dist/404.html` and confirm the words are in the delivered HTML
 - [ ] T036 Confirm no brand value appears anywhere in `src/` — no hex, no scale literal, no mark geometry
 - [ ] T037 Confirm no spec or FR reference leaked into `src/`, `tests/` or `README.md`
-- [ ] T038 Run `npm run check:all` and confirm green
-- [ ] T039 Open the PR with day and night screenshots and the verification results
+- [ ] T038 Measure first contentful paint for the built page on a throttled connection and confirm the words are visible within two seconds; record the number rather than asserting the page is fast
+- [ ] T039 Re-read every sentence on the finished page and confirm none becomes untrue through the passage of time alone — no status, no count, no date, and no claim that expires when the work behind it finishes
+- [ ] T040 Confirm the three pieces of work still span more than one kind of client, so a later swap cannot quietly narrow them
+- [ ] T041 Run `npm run check:all` and confirm green
+- [ ] T042 Open the PR with day and night screenshots and the verification results
 
 ---
 
@@ -132,7 +135,7 @@ Phase 1 (setup)
 
 - T010, T016, T022, T028 — test files, each separate from the others.
 - Phase 6 in full, alongside any story phase.
-- T031–T037 — independent checks once the page is built.
+- T031–T040 — independent checks once the page is built.
 
 ## MVP scope
 
