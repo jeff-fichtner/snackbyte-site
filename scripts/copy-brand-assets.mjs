@@ -1,12 +1,15 @@
 /**
- * Places the site's favicons and social card into public/ from the generated brand assets,
- * so the frontend build ships them at the root without a second copy living in git. Same pattern as the
- * section landing pages: generated into public/ at build time, ignored by git.
+ * Places the site's favicons and social card into public/ from the brand package, so the
+ * frontend build ships them at the root without a second copy living in git.
  */
 import { copyFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const from = (p) => fileURLToPath(new URL(`../brand/${p}`, import.meta.url));
+const require = createRequire(import.meta.url);
+const brandDir = resolve(require.resolve('@snackbyte/brand/marks.json'), '..');
+const from = (p) => resolve(brandDir, p);
 const to = (p) => fileURLToPath(new URL(`../src/web/public/${p}`, import.meta.url));
 
 const FILES = [
