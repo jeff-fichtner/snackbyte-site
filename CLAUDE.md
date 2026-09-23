@@ -19,6 +19,9 @@ This project uses spec-driven development (GitHub Spec Kit). Read
 the owner's global rules and `snackbyte-base`'s constitution by reference rather
 than restating them. A feature gets a spec (`/speckit-specify`); a chore does not.
 Plans live under `specs/`.
+
+Active: `specs/001-homepage/plan.md` — the real homepage, replacing the holding page.
+Backlogged: `specs/backlog-brand-page/`, `specs/backlog-activity-view/`.
 <!-- SPECKIT END -->
 
 ## Brand
