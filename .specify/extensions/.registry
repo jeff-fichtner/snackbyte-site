@@ -14,6 +14,61 @@
       },
       "registered_skills": [],
       "installed_at": "2026-06-01T04:38:21.146185+00:00"
+    },
+    "engine": {
+      "version": "1.0.0",
+      "source": {
+        "kind": "catalog",
+        "catalog": "snackbyte"
+      },
+      "manifest_hash": "sha256:e86aa97e7646711fb0dac0110a8f0016c4811e30ea38c2c7f2c548b7af9c60d2",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "claude": [
+          "speckit.engine.verify",
+          "speckit.engine.close"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-09-23T07:03:23.510185+00:00"
+    },
+    "clickup": {
+      "version": "1.0.0",
+      "source": {
+        "kind": "catalog",
+        "catalog": "snackbyte"
+      },
+      "manifest_hash": "sha256:178a388c026ffaefb9e5edb956ec07d9a21f405812d42ea983b19e1f8073fa16",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "claude": [
+          "speckit.clickup.provision",
+          "speckit.clickup.sync",
+          "speckit.clickup.design-rules"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-09-23T07:03:24.359048+00:00"
+    },
+    "git-lifecycle": {
+      "version": "1.0.0",
+      "source": {
+        "kind": "catalog",
+        "catalog": "snackbyte"
+      },
+      "manifest_hash": "sha256:e676444f7dd270320f97af82d226b31e9b39fe630ba31951d5fa65aa65c5dc42",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "claude": [
+          "speckit.git-lifecycle.specify-branch",
+          "speckit.git-lifecycle.commit"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-09-23T07:03:25.231014+00:00"
     }
   }
 }

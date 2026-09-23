@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1",
+  "feature": "001-homepage",
+  "workspaceId": "90141363864",
+  "spaceId": "90146746995",
+  "listId": "901418532217",
+  "statusMapping": {
+    "open": "backlog",
+    "in-design": "in design",
+    "ready": "ready for development",
+    "in-development": "in development",
+    "in-review": "in review",
+    "done": "shipped"
+  },
+  "card": {
+    "id": "86bc5txgz",
+    "hash": "sha256:49430e2d59f3ba2a6fd3a0289cd00c3f7c6b8256d09bfde5e89cf6c3e700f0d1"
+  }
+}
