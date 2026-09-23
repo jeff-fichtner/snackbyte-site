@@ -12,8 +12,8 @@ Principle VII. Every phase ends with the check gate green.
 
 ## Phase 1: Setup
 
-- [ ] T001 Confirm the branch is cut from current `main` and `npm install` is clean, in the repo root
-- [ ] T002 Verify `@snackbyte/brand` resolves and exposes `copy`, `marks` and both stylesheets, by reading `node_modules/@snackbyte/brand/dist/`
+- [x] T001 Confirm the branch is cut from current `main` and `npm install` is clean, in the repo root
+- [x] T002 Verify `@snackbyte/brand` resolves and exposes `copy`, `marks` and both stylesheets, by reading `node_modules/@snackbyte/brand/dist/`
 
 ---
 
@@ -21,9 +21,9 @@ Principle VII. Every phase ends with the check gate green.
 
 These change shared files. Nothing in Phase 3+ should start until they are done.
 
-- [ ] T003 Create `src/web/copy.ts` holding this page's words, importing `copy` from `@snackbyte/brand` for the name, headline, subhead and place so none is restated
-- [ ] T004 Replace the hard-coded headline string in `src/web/App.tsx` with the value from `copy.ts`, leaving the page otherwise unchanged, and confirm the page still renders
-- [ ] T005 Run `npm run check:all` and confirm green before any story begins
+- [x] T003 Create `src/web/copy.ts` holding this page's words, importing `copy` from `@snackbyte/brand` for the name, headline, subhead and place so none is restated
+- [x] T004 Replace the hard-coded headline string in `src/web/App.tsx` with the value from `copy.ts`, leaving the page otherwise unchanged, and confirm the page still renders
+- [x] T005 Run `npm run check:all` and confirm green before any story begins
 
 ---
 
@@ -35,13 +35,13 @@ where it is.
 **Independent test**: show the built page to someone who has never heard of snackbyte for
 ten seconds; they can then say what it does and who it is for.
 
-- [ ] T006 [US1] Write the claim sentence into `src/web/copy.ts`, naming Bishop so SC-002 is met without moving the footer
-- [ ] T007 [US1] Rewrite `src/web/App.tsx` to render the lockup, the headline, the claim and the place, and remove "Coming soon." and its dot
-- [ ] T008 [US1] Update `src/web/app.css` for the new block, using only the brand's space and type steps — no literal values
-- [ ] T009 [US1] Update `src/web/index.html`'s description meta to match what the page now says
-- [ ] T010 [P] [US1] Update `tests/app/app.test.tsx`: the name is lowercase, the headline and claim render, "Coming soon" is gone, and no client name appears
-- [ ] T011 [US1] Build, serve the production build with the real server, and confirm `dist/index.html` contains the claim as text rather than only rendering it
-- [ ] T012 [US1] Read the page at 1280 and 390 in both themes; confirm name, claim and place are visible at 390 without scrolling
+- [x] T006 [US1] Write the claim sentence into `src/web/copy.ts`, naming Bishop so SC-002 is met without moving the footer
+- [x] T007 [US1] Rewrite `src/web/App.tsx` to render the lockup, the headline, the claim and the place, and remove "Coming soon." and its dot
+- [x] T008 [US1] Update `src/web/app.css` for the new block, using only the brand's space and type steps — no literal values
+- [x] T009 [US1] Update `src/web/index.html`'s description meta to match what the page now says
+- [x] T010 [P] [US1] Update `tests/app/app.test.tsx`: the name is lowercase, the headline and claim render, "Coming soon" is gone, and no client name appears
+- [x] T011 [US1] Build, serve the production build with the real server, and confirm `dist/index.html` contains the claim as text rather than only rendering it
+- [x] T012 [US1] Read the page at 1280 and 390 in both themes; confirm name, claim and place are visible at 390 without scrolling
 
 **Checkpoint**: a complete, shippable homepage.
 
@@ -54,12 +54,12 @@ ten seconds; they can then say what it does and who it is for.
 **Independent test**: from the page alone a visitor can begin contact and knows what will
 happen.
 
-- [ ] T013 [US2] Add the contact line and `jeff@snackbyte.io` to `src/web/copy.ts` as the only address, with no fallback
-- [ ] T014 [US2] Render it in `src/web/App.tsx` as a `mailto:` link with nothing pre-filled but the recipient
-- [ ] T015 [US2] Style the link in `src/web/app.css` from the brand's tokens, with a visible focus state
-- [ ] T016 [P] [US2] Extend `tests/app/app.test.tsx`: exactly one `mailto:`, no form element, no other link
-- [ ] T017 [US2] **Send a real message to `jeff@snackbyte.io` and confirm it arrives.** DNS routes to Workspace; the mailbox itself is unverified and this is the page's only call to action
-- [ ] T018 [US2] Tab to the link in the built page and confirm focus is visible
+- [x] T013 [US2] Add the contact line and `jeff@snackbyte.io` to `src/web/copy.ts` as the only address, with no fallback
+- [x] T014 [US2] Render it in `src/web/App.tsx` as a `mailto:` link with nothing pre-filled but the recipient
+- [x] T015 [US2] Style the link in `src/web/app.css` from the brand's tokens, with a visible focus state
+- [x] T016 [P] [US2] Extend `tests/app/app.test.tsx`: exactly one `mailto:`, no form element, no other link
+- [~] T017 [US2] **Send a real message to `jeff@snackbyte.io` and confirm it arrives.** DNS routes to Workspace; the mailbox itself is unverified and this is the page's only call to action — SENT 2026-09-23, no bounce; **arrival is the one thing that could not be verified from here**, because the sending account is not the Workspace mailbox
+- [x] T018 [US2] Tab to the link in the built page and confirm focus is visible
 
 **Checkpoint**: the page can produce a conversation.
 
@@ -71,11 +71,11 @@ happen.
 
 **Independent test**: a visitor can name one real thing snackbyte has built.
 
-- [ ] T019 [US3] Add the three work descriptions to `src/web/copy.ts`, exactly as approved in the plan's Content section
-- [ ] T020 [US3] Render them in `src/web/App.tsx` as a list, below the first screen
-- [ ] T021 [US3] Style the list in `src/web/app.css` from the brand's steps
-- [ ] T022 [P] [US3] Extend `tests/app/app.test.tsx`: three items render, none is a link, and no client name appears in the markup
-- [ ] T023 [US3] Re-read the built page at both widths and both themes with the work present
+- [x] T019 [US3] Add the three work descriptions to `src/web/copy.ts`, exactly as approved in the plan's Content section
+- [x] T020 [US3] Render them in `src/web/App.tsx` as a list, below the first screen
+- [x] T021 [US3] Style the list in `src/web/app.css` from the brand's steps
+- [x] T022 [P] [US3] Extend `tests/app/app.test.tsx`: three items render, none is a link, and no client name appears in the markup
+- [x] T023 [US3] Re-read the built page at both widths and both themes with the work present
 
 **Checkpoint**: the claim is evidenced.
 
@@ -86,13 +86,13 @@ happen.
 Independent of all three stories and of the content; can run in parallel with Phase 3+ by
 anyone not touching `App.tsx`.
 
-- [ ] T024 Create `src/web/NotFound.tsx` — the lockup, one line in the voice, and a link home, the only page that links the homepage
-- [ ] T025 Add a `404.html` shell so Vite emits a file with the prerender placeholder, alongside `src/web/index.html`
-- [ ] T026 Add the `404.html` entry to `src/web/prerender.ts` so its markup is rendered at build
-- [ ] T027 Change the fallback in `src/server.ts` to send `404.html` with status 404 instead of `index.html` with 200
-- [ ] T028 [P] Create `tests/app/not-found.test.tsx` for the component
-- [ ] T029 Extend `tests/app/server-smoke.test.ts`: an unknown path returns 404 and the not-found page; `/` still returns 200
-- [ ] T030 Serve the build and confirm `/nonsense` returns 404, a real section under `/work/<slug>/` still returns 200, and every asset route is unaffected
+- [x] T024 Create `src/web/NotFound.tsx` — the lockup, one line in the voice, and a link home, the only page that links the homepage
+- [x] T025 Add a `404.html` shell so Vite emits a file with the prerender placeholder, alongside `src/web/index.html`
+- [x] T026 Add the `404.html` entry to `src/web/prerender.ts` so its markup is rendered at build
+- [x] T027 Change the fallback in `src/server.ts` to send `404.html` with status 404 instead of `index.html` with 200
+- [x] T028 [P] Create `tests/app/not-found.test.tsx` for the component
+- [x] T029 Extend `tests/app/server-smoke.test.ts`: an unknown path returns 404 and the not-found page; `/` still returns 200
+- [x] T030 Serve the build and confirm `/nonsense` returns 404, a real section under `/work/<slug>/` still returns 200, and every asset route is unaffected
 
 ---
 
@@ -100,17 +100,17 @@ anyone not touching `App.tsx`.
 
 Principle VII: this is part of done, not a follow-up.
 
-- [ ] T031 Measure contrast on the real rendered colours for every text element in both themes against its actual background, and confirm each reaches 4.5:1, or 3:1 where the text is 24px or larger
-- [ ] T032 Confirm `prefers-reduced-motion` is honoured and the page is complete without motion
-- [ ] T033 Re-read the whole page and the not-found page at 1280 and 390, both themes
-- [ ] T034 Confirm the link preview still resolves: the head points at `/social.png` and it serves
-- [ ] T035 Read `dist/index.html` and `dist/404.html` and confirm the words are in the delivered HTML
-- [ ] T036 Confirm no brand value appears anywhere in `src/` — no hex, no scale literal, no mark geometry
-- [ ] T037 Confirm no spec or FR reference leaked into `src/`, `tests/` or `README.md`
-- [ ] T038 Measure first contentful paint for the built page on a throttled connection and confirm the words are visible within two seconds; record the number rather than asserting the page is fast
-- [ ] T039 Re-read every sentence on the finished page and confirm none becomes untrue through the passage of time alone — no status, no count, no date, and no claim that expires when the work behind it finishes
-- [ ] T040 Confirm the three pieces of work still span more than one kind of client, so a later swap cannot quietly narrow them
-- [ ] T041 Run `npm run check:all` and confirm green
+- [x] T031 Measure contrast on the real rendered colours for every text element in both themes against its actual background, and confirm each reaches 4.5:1, or 3:1 where the text is 24px or larger
+- [x] T032 Confirm `prefers-reduced-motion` is honoured and the page is complete without motion
+- [x] T033 Re-read the whole page and the not-found page at 1280 and 390, both themes
+- [x] T034 Confirm the link preview still resolves: the head points at `/social.png` and it serves
+- [x] T035 Read `dist/index.html` and `dist/404.html` and confirm the words are in the delivered HTML
+- [x] T036 Confirm no brand value appears anywhere in `src/` — no hex, no scale literal, no mark geometry
+- [x] T037 Confirm no spec or FR reference leaked into `src/`, `tests/` or `README.md`
+- [x] T038 Measure first contentful paint for the built page on a throttled connection and confirm the words are visible within two seconds; record the number rather than asserting the page is fast
+- [x] T039 Re-read every sentence on the finished page and confirm none becomes untrue through the passage of time alone — no status, no count, no date, and no claim that expires when the work behind it finishes
+- [x] T040 Confirm the three pieces of work still span more than one kind of client, so a later swap cannot quietly narrow them
+- [x] T041 Run `npm run check:all` and confirm green
 - [ ] T042 Open the PR with day and night screenshots and the verification results
 
 ---

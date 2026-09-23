@@ -26,10 +26,12 @@ export function createApp(): Express {
 
   app.use(express.static(distDir));
 
-  // SPA fallback: serve index.html for any unmatched GET so client routing works.
-  // Express 5 requires a named wildcard rather than a bare "*".
+  // Anything not served above does not exist. This site has no client-side routing, so
+  // answering a miss with the homepage would tell a visitor nothing and would let a
+  // search engine index unlimited duplicates of it. Express 5 requires a named wildcard
+  // rather than a bare "*".
   app.get('/*splat', (_req, res) => {
-    res.sendFile('index.html', { root: distDir });
+    res.status(404).sendFile('404.html', { root: distDir });
   });
 
   return app;

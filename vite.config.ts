@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { PORT } from './src/config';
 
 const webRoot = fileURLToPath(new URL('./src/web', import.meta.url));
@@ -38,6 +39,14 @@ export default defineConfig({
   build: {
     outDir: distDir,
     emptyOutDir: true,
+    rollupOptions: {
+      // Both pages are real HTML documents; each needs its own entry so Vite emits a
+      // file for the prerender step to inject markup into.
+      input: {
+        index: resolve(webRoot, 'index.html'),
+        '404': resolve(webRoot, '404.html'),
+      },
+    },
   },
   test: {
     // jsdom by default so component tests have a DOM. Tests that need the plain Node

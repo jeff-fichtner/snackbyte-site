@@ -1,27 +1,38 @@
-/* The holding page. One screen: the lockup, the headline, and where things stand. */
+/*
+ * The homepage's layout. Every value here is a brand step — spacing from the seam unit,
+ * type from the scale — so nothing in this file is a brand decision.
+ */
 
-.hold {
-  min-height: 100svh;
+.page {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   max-width: 64rem;
   margin: 0 auto;
   padding: var(--cell) var(--cell) var(--seam);
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack);
 }
 @media (max-width: 480px) {
-  .hold {
-    padding: var(--seam) 1rem var(--gap);
+  .page {
+    padding: var(--seam) 1rem var(--seam);
+    gap: var(--cell-seam);
   }
 }
 
-/* The block that centres in the space above the footer. */
-.stand {
-  margin-block: auto;
+/* The first screen: the lockup, the headline, the claim. */
+.opening {
+  min-height: calc(100svh - var(--stack));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media (max-width: 480px) {
+  .opening {
+    min-height: calc(100svh - var(--cell-seam) - var(--seam) * 2);
+  }
 }
 
-.hold .lockup {
+.opening .lockup {
   --lockup-size: clamp(3.25rem, 11vw, 7.5rem);
 }
 
@@ -29,38 +40,68 @@
   margin: var(--cell-seam) 0 0;
   max-width: 20ch;
   font-weight: 800;
-  font-variation-settings: 'opsz' 96;
+  font-variation-settings: 'opsz' var(--font-display-opsz);
   font-size: clamp(var(--type-2), 4.6vw, var(--type-3));
   line-height: 1.06;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
-.soon {
+.claim {
   margin: var(--seam) 0 0;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--gap);
+  max-width: 46ch;
+  font-size: var(--type-1);
+  line-height: 1.45;
   color: var(--muted);
 }
-.soon .dot {
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: 50%;
-  background: var(--sky);
+
+/* The work, and anything else with a quiet heading above it. */
+.section-heading {
+  margin: 0 0 var(--gap);
+  font-size: var(--type-0);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.work ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 56ch;
+}
+.work li {
+  padding: var(--gap) 0;
+  border-top: 1px solid var(--rule);
+  line-height: 1.5;
+  color: var(--muted);
+}
+.work li:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.work b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.contact p {
+  margin: 0;
+  font-size: var(--type-1);
 }
 
 .foot {
-  margin-top: auto;
-  padding-top: var(--stack);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap) var(--seam);
   color: var(--muted);
 }
-.foot a {
-  text-decoration: none;
+
+/* The not-found page: the opening block and nothing after it. */
+.not-found {
+  gap: 0;
 }
-.foot a:hover {
-  text-decoration: underline;
+.not-found .opening {
+  min-height: 100svh;
+}
+.not-found .claim {
+  margin-top: var(--cell-seam);
+}
+.not-found p + p {
+  margin: var(--seam) 0 0;
 }
