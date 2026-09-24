@@ -76,9 +76,21 @@ promoting).
    what's deployed. Staging additionally returns an `X-Robots-Tag: noindex` header; production
    does not.
 
-**Manual deploy** anytime (no CI): `./scripts/deploy.sh <service> <project> <region> [version]`.
-This runs `gcloud run deploy --source .`. The version is whatever you pass (or `git describe`),
-not a `package.json` patch.
+**Manual deploy** — there is one deploy path, `cloudbuild.yaml`. To run it outside CI, submit
+the same build CI submits:
+
+```bash
+gcloud builds submit --config=cloudbuild.yaml \
+  --substitutions="TAG_NAME=<tag>,SHORT_SHA=$(git rev-parse --short HEAD),_SERVICE=<service>" \
+  --service-account="projects/<project>/serviceAccounts/<deployer-SA>" \
+  --default-buckets-behavior=REGIONAL_USER_OWNED_BUCKET \
+  --project=<project> --region=<region> .
+```
+
+There is no `scripts/deploy.sh`. A `gcloud run deploy --source .` shortcut is not a substitute:
+it sets no `--ingress`, so a service it stands up comes up reachable on `*.run.app`, bypassing
+the load balancer and Cloud Armor; it runs the build under the default build identity; and it
+bakes no version into the frontend bundle.
 
 **Recovery — tag pushed but the deploy failed** (transient GCP/GitHub error): the tag exists but
 prod wasn't updated, and re-running the whole workflow would hit the fail-loud "tag exists"
