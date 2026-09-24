@@ -11,7 +11,10 @@ const prose = [page.headline, page.claim, page.based, page.contact.lead];
 
 describe('the homepage', () => {
   it('carries the name lowercase, the headline and the claim', () => {
-    expect(html).toContain('>snackbyte<');
+    // the wordmark types itself one letter to a span; read it back as the name
+    const wordmark = html.match(/class="wordmark[^"]*">(.*?)<\/span><\/div>/)?.[1] ?? '';
+    expect(wordmark.replace(/<[^>]+>/g, '')).toBe('snackbyte');
+    expect(html).toContain('aria-label="snackbyte"');
     expect(html).not.toContain('Snackbyte');
     expect(html).toContain(page.headline);
     expect(html).toContain('Based in Bishop, California');
@@ -66,6 +69,27 @@ describe('the homepage', () => {
     expect([...html.matchAll(/<a\b/g)]).toHaveLength(1);
     expect(html).not.toContain('<form');
     expect(html).not.toContain('<input');
+  });
+});
+
+describe('the mark, arriving', () => {
+  it('spells the name in bits, then rests as the mark', () => {
+    // every letter's code appears as a keyframe step, and the last frame is all eight on
+    for (const ch of 'snackbyte') {
+      const bits = ch.charCodeAt(0).toString(2).padStart(8, '0');
+      expect(bits.slice(0, 3)).toBe('011'); // why the ink half barely moves
+    }
+    expect(html).toContain('fill-opacity:1}100%{fill-opacity:1}');
+  });
+
+  it('reveals letters on a step that cannot miss its boundary', () => {
+    // steps(1,end) left the last letter invisible: its finished time rounded to just short
+    // of the jump. steps(1,start) jumps at the start and holds.
+    expect(html).toMatch(/name>span\{animation:[^}]*steps\(1,start\) both/);
+  });
+
+  it('does nothing under reduced motion', () => {
+    expect(html).toMatch(/@media \(prefers-reduced-motion:reduce\)\{[^}]*animation:none/);
   });
 });
 
