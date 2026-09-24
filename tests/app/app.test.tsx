@@ -65,6 +65,13 @@ describe('the homepage', () => {
     }
   });
 
+  it('ends on the one thing it asks for', () => {
+    // No footer: the address is in the opening, and a legal-name line was neither the
+    // brand nor the legal name. The last thing on the page is the contact.
+    expect(html).not.toContain('<footer');
+    expect(html.trimEnd().endsWith('</a></p></section></main>')).toBe(true);
+  });
+
   it('names no client', () => {
     for (const client of ['Playhouse', '395', 'MCDS', 'forte', 'Tonic', 'StoryEngine']) {
       expect(prose.join(' ')).not.toContain(client);

@@ -33,8 +33,6 @@ export function App() {
             <a href={`mailto:${page.contact.address}`}>{page.contact.address}</a>
           </p>
         </section>
-
-        <footer className="foot">snackbyte llc</footer>
       </main>
       <VersionChip />
     </>
