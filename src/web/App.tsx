@@ -1,4 +1,4 @@
-import { Lockup } from './Logo';
+import { ArrivingLockup } from './ArrivingLockup';
 import { VersionChip } from './VersionChip';
 import { page } from './copy';
 
@@ -8,7 +8,7 @@ export function App() {
     <>
       <main className="page">
         <section className="opening">
-          <Lockup />
+          <ArrivingLockup />
           <h1 className="headline">{page.headline}</h1>
           {/* One statement: what snackbyte does, then where it is. The address is the
               claim's second sentence, not a caption under it. */}
