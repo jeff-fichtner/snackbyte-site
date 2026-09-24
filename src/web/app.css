@@ -93,10 +93,6 @@
   font-size: var(--type-1);
 }
 
-.foot {
-  color: var(--muted);
-}
-
 /* The not-found page: the opening block and nothing after it. */
 .not-found {
   gap: 0;
