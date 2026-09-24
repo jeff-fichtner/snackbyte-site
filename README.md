@@ -55,18 +55,17 @@ See [DEPLOY.md](DEPLOY.md) for the full versioning + CI/deploy model.
 
 ## Deploy
 
-```bash
-./scripts/deploy.sh <service-name> <gcp-project> [region]   # builds the image and runs gcloud run deploy
-```
+There is one deploy path: **`cloudbuild.yaml`**, which builds the image and deploys it to Cloud
+Run behind the shared load balancer. There is no manual deploy script — see
+[DEPLOY.md](DEPLOY.md) for the `gcloud builds submit` command that runs the same build by hand.
 
-Deploys a container to Cloud Run. Idle cost is near zero — Cloud Run scales to zero
-and bills only while handling a request.
+Idle cost is near zero — Cloud Run scales to zero and bills only while handling a request.
 
 ## Version
 
 The app reports its version at `/api/version` and (in non-prod) a small on-page chip. The
 server endpoint reads `APP_VERSION` / `BUILD_GIT_COMMIT` / `BUILD_DATE` from **runtime
-environment variables** — `scripts/deploy.sh` sets these, so a deployed release reports
+environment variables** — the deploy sets these, so a deployed release reports
 its true `vX.Y.Z` / commit / date at `/api/version`. Built and run locally (no deploy
 env), it self-reports `0.0.0-dev` / `commit: dev` / `environment: development` — that's
 expected, not a bug. (The frontend chip's version comes from `package.json` at build
