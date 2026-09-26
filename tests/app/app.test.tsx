@@ -27,6 +27,11 @@ describe('the homepage', () => {
     }
   });
 
+  it('states the address as the second sentence of the claim, at the same weight', () => {
+    expect(html).toContain(`<p class="claim">${page.claim} ${page.based}</p>`);
+    expect(html).not.toContain('class="based"');
+  });
+
   it('places snackbyte without limiting it to that place', () => {
     // Bishop is the address, not the market: the work goes wherever it is wanted.
     expect(page.based).toMatch(/based in/i);
