@@ -3,13 +3,16 @@
  * type from the scale — so nothing in this file is a brand decision.
  */
 
+/* One screen: the opening and the contact, centred together. */
 .page {
   box-sizing: border-box;
+  min-height: 100svh;
   max-width: 64rem;
   margin: 0 auto;
   padding: var(--cell) var(--cell) var(--seam);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: var(--stack);
 }
 @media (max-width: 480px) {
@@ -19,17 +22,10 @@
   }
 }
 
-/* The first screen: the lockup, the headline, the claim. */
+/* The lockup, the headline, the claim, the address. */
 .opening {
-  min-height: calc(100svh - var(--stack));
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-@media (max-width: 480px) {
-  .opening {
-    min-height: calc(100svh - var(--cell-seam) - var(--seam) * 2);
-  }
 }
 
 .opening .lockup {
@@ -60,34 +56,6 @@
   color: var(--muted);
 }
 
-/* The work, and anything else with a quiet heading above it. */
-.section-heading {
-  margin: 0 0 var(--gap);
-  font-size: var(--type-0);
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.work ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-width: 56ch;
-}
-.work li {
-  padding: var(--gap) 0;
-  border-top: 1px solid var(--rule);
-  line-height: 1.5;
-  color: var(--muted);
-}
-.work li:last-child {
-  border-bottom: 1px solid var(--rule);
-}
-.work b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
 .contact p {
   margin: 0;
   font-size: var(--type-1);
@@ -96,9 +64,6 @@
 /* The not-found page: the opening block and nothing after it. */
 .not-found {
   gap: 0;
-}
-.not-found .opening {
-  min-height: 100svh;
 }
 .not-found .claim {
   margin-top: var(--cell-seam);

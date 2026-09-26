@@ -18,26 +18,6 @@ export const page = {
   /** What snackbyte does, and for whom: anyone, anywhere, who needs a thing that is not sold. */
   claim: 'snackbyte builds neat tools that haven’t been made yet.',
 
-  /**
-   * The work, described by what it does for the people who use it. Deliberately not
-   * linked, and no client is named: each of these is someone else's to name, and adding
-   * a name later never requires taking one down.
-   */
-  work: [
-    {
-      title: 'Enrollment for an after-school music program.',
-      line: 'Families sign their children up, staff see who is in which class, and nobody re-types a spreadsheet.',
-    },
-    {
-      title: 'An AI that edits wedding films.',
-      line: "It is learning to watch a day's raw footage and cut it into the film a videographer would have made.",
-    },
-    {
-      title: 'A call board for a community theatre.',
-      line: 'Cast and crew pick their name and see when they are called, and when they are done.',
-    },
-  ],
-
   /** The only address, and the only link on the page. */
   contact: {
     lead: 'Something you need built?',

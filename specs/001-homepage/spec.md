@@ -67,6 +67,10 @@ what will happen when they do. Testable by following the affordance to its end.
 
 ### User Story 3 - The visitor who wants evidence (Priority: P3)
 
+> **Withdrawn for now** (2026-09-26, owner's decision). The page shipped with this story
+> and the work list was then taken down. What follows is kept as written so it can come
+> back unchanged; the approved descriptions are in `plan.md` § Content.
+
 A visitor believes the claim and wants to see that the work exists — that this is not a
 page describing an intention. They look for something concrete: a thing built, for
 someone real, that is running.
@@ -150,8 +154,11 @@ the page.
   uses it — rather than the machinery that produces it.
 - **FR-008c**: The work described MUST span more than one kind of client, so that a
   reader can place what snackbyte does rather than inferring it is only one thing.
-- **FR-008b**: The work described MUST span more than one kind of client, so that a
-  reader can place what snackbyte does rather than inferring it is only one thing.
+
+  > **FR-008 to FR-008c are withdrawn for now** (2026-09-26, owner's decision): the
+  > page shows no work. They stay here as written so the section can return without
+  > being re-argued; the approved descriptions are in `plan.md` § Content.
+
 - **FR-009**: The page MUST NOT link to any client section, and MUST NOT expose the
   existence of one.
 - **FR-010**: `/style` MUST remain reachable at its URL, unlinked from the homepage and

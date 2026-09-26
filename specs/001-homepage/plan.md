@@ -165,6 +165,9 @@ guide first (`copy.based`, guide v1.2.0) because it is a brand decision, not a p
 
 ### The work, in words
 
+> **Withdrawn from the page for now** (2026-09-26, owner's decision). It shipped, and was
+> then taken down; the approved text below is kept so it can return unchanged.
+
 Three, chosen to span an institution, a craft business and a community — the range a
 stranger needs in order to place what snackbyte does. Each names the product — what it
 does for the person who uses it — not the machinery inside it. No links, no technology,
