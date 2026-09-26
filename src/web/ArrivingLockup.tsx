@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { copy, geometry } from '@snackbyte/brand';
+import { copy, geometry, motion } from '@snackbyte/brand';
 
 /**
  * The lockup, arriving. The mark's eight cells are treated as the eight bits of a byte and
@@ -13,16 +13,17 @@ import { copy, geometry } from '@snackbyte/brand';
  *
  * It is CSS only, rendered into the page at build, so it plays from first paint with no
  * script and cannot delay the words. At rest, and under reduced motion, it is exactly the
- * mark. Nothing here is a brand value: the geometry and the name come from the package, and
- * the sequence is derived from the name.
+ * mark. Nothing here is a brand value: the rule is the brand guide's, and its timings, the
+ * geometry and the name all come from the package; the sequence is derived from the name.
  */
 
-/** How long each letter is shown, then how long the full byte holds before the bite. */
-const LETTER_MS = 140;
-const HOLD_MS = 160;
-const BITE_MS = 320;
-/** How visible a cell is when its bit is 0: present, so the byte keeps its shape. */
-const OFF = 0.16;
+const {
+  letterMs: LETTER_MS,
+  holdMs: HOLD_MS,
+  biteMs: BITE_MS,
+  offOpacity: OFF,
+  biteEasing: BITE_EASING,
+} = motion.arrival;
 
 /** The eight bits of a character's code, most significant first. */
 const bitsOf = (ch: string) =>
@@ -56,7 +57,7 @@ export function ArrivingLockup() {
     `.a${id}>rect{animation-duration:${total}ms;animation-timing-function:steps(1,end);animation-fill-mode:both}`,
     ...xs.map((_, i) => `.a${id} .c${i}{animation-name:a${id}c${i}}`),
     `@keyframes a${id}bite{from{transform:scale(0)}to{transform:scale(1)}}`,
-    `.a${id} .bite{transform-box:fill-box;transform-origin:center;animation:a${id}bite ${BITE_MS}ms cubic-bezier(.3,1.6,.5,1) ${total}ms both}`,
+    `.a${id} .bite{transform-box:fill-box;transform-origin:center;animation:a${id}bite ${BITE_MS}ms ${BITE_EASING} ${total}ms both}`,
     `@keyframes a${id}letter{from{opacity:0}to{opacity:1}}`,
     // steps(1,start) jumps at the start of the window and holds. steps(1,end) jumps exactly at
     // its end, and a finished animation's time can round to just short of that boundary —

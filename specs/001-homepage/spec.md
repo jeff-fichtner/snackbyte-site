@@ -180,6 +180,17 @@ the page.
 - **FR-016**: A request for a URL that does not exist MUST return a page in the brand
   that offers a route to the homepage, and MUST report itself as not found.
 
+**How the mark arrives** (added 2026-09-26)
+
+- **FR-017**: On the homepage, the mark MAY arrive the way the brand guide's § Motion
+  defines: its cells spell the name in bits while the wordmark types in step, then the
+  bite is taken. The rule and its timings are the guide's; this page MUST NOT restate them.
+- **FR-018**: The arrival MUST NOT delay the words — every word on the page is present in
+  the delivered HTML and visible at first paint — and MUST come to rest as exactly the
+  mark.
+- **FR-019**: Under a request for reduced motion the arrival MUST NOT play; the mark is
+  shown at rest from the first frame.
+
 ### Key Entities
 
 Not applicable — the page holds no data and stores nothing about its visitors.
