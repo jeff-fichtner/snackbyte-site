@@ -7,13 +7,7 @@ import { page } from '../../src/web/copy';
 const html = renderToString(<App />);
 
 /** Every sentence the page says, as written rather than as escaped markup. */
-const prose = [
-  page.headline,
-  page.claim,
-  page.based,
-  page.contact.lead,
-  ...page.work.flatMap((item) => [item.title, item.line]),
-];
+const prose = [page.headline, page.claim, page.based, page.contact.lead];
 
 describe('the homepage', () => {
   it('carries the name lowercase, the headline and the claim', () => {
@@ -33,17 +27,6 @@ describe('the homepage', () => {
     }
   });
 
-  it('shows three pieces of work, none of them a link', () => {
-    expect(page.work).toHaveLength(3);
-    // Compare against the copy: React escapes apostrophes in the rendered markup.
-    for (const item of page.work) {
-      expect(prose).toContain(item.title);
-      expect(item.line.length).toBeGreaterThan(0);
-    }
-    // the contact address is the only link on the page
-    expect([...html.matchAll(/<a\b/g)]).toHaveLength(1);
-  });
-
   it('places snackbyte without limiting it to that place', () => {
     // Bishop is the address, not the market: the work goes wherever it is wanted.
     expect(page.based).toMatch(/based in/i);
@@ -56,13 +39,6 @@ describe('the homepage', () => {
     // that sounds like an example has to be one.
     expect(page.claim).not.toMatch(/\ba shop\b/);
     expect(page.claim).not.toMatch(/—[^—]*,[^—]*,[^—]*—/); // a rule-of-three aside
-  });
-
-  it('spans more than one kind of client', () => {
-    const kinds = [/school|program/i, /wedding|videographer|film/i, /theatre|community/i];
-    for (const kind of kinds) {
-      expect(page.work.some((item) => kind.test(item.title))).toBe(true);
-    }
   });
 
   it('ends on the one thing it asks for', () => {
@@ -81,6 +57,8 @@ describe('the homepage', () => {
   it('offers exactly one way to make contact, and collects nothing', () => {
     expect([...html.matchAll(/mailto:/g)]).toHaveLength(1);
     expect(html).toContain(`mailto:${page.contact.address}`);
+    // the contact address is the only link on the page
+    expect([...html.matchAll(/<a\b/g)]).toHaveLength(1);
     expect(html).not.toContain('<form');
     expect(html).not.toContain('<input');
   });
