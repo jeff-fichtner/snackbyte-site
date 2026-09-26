@@ -16,7 +16,7 @@ export const page = {
   based: brand.based,
 
   /** What snackbyte does, and for whom: anyone, anywhere, who needs a thing that is not sold. */
-  claim: 'snackbyte builds neat tools that haven’t been made yet.',
+  claim: 'snackbyte makes the tools that somehow don’t exist yet.',
 
   /** The only address, and the only link on the page. */
   contact: {
