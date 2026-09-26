@@ -10,8 +10,9 @@ export function App() {
         <section className="opening">
           <Lockup />
           <h1 className="headline">{page.headline}</h1>
-          <p className="claim">{page.claim}</p>
-          <p className="based">{page.based}</p>
+          {/* One statement: what snackbyte does, then where it is. The address is the
+              claim's second sentence, not a caption under it. */}
+          <p className="claim">{`${page.claim} ${page.based}`}</p>
         </section>
 
         <section className="contact">
