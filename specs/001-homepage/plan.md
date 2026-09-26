@@ -148,15 +148,20 @@ concept and it exists to keep Principle VI checkable.
 
 ### The claim, under the headline
 
-The headline comes from the brand (`copy.headline`). Under it, one sentence that says
-what snackbyte actually does, for whom:
+The headline comes from the brand (`copy.headline`). Under it, one statement in two
+sentences — what snackbyte does, then where it is — at the same weight:
 
-> snackbyte builds small software for people and organizations who need a tool that
-> nobody sells.
+> snackbyte makes the tools that somehow don’t exist yet. Based in Bishop, California.
 
-And under that, the address — not the market:
+**How it got there** (2026-09-23 to 26). "A tool that nobody sells" read as nobody
+wanting it. "Neat tools that haven’t been made yet" was the owner’s phrasing; its last
+clause was long and passive. Among the rewrites, the idea kept was disbelief that the
+tools are missing, said with as few negatives as possible: "somehow" carries the
+disbelief, and "yet" is the quiet promise that snackbyte is who makes them. "The" is
+kept because it points at specific, obvious tools rather than a category.
 
-> Based in Bishop, California.
+The address was a smaller caption under the claim; it is now the claim’s second
+sentence, because where the work is done is part of the statement, not a footnote to it.
 
 **The claim once said "for the people and organizations around Bishop, California".**
 That was wrong, and wrong in a way that shrinks the business: Bishop is where the work is
