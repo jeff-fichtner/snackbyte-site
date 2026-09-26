@@ -3,6 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { App } from '../../src/web/App';
 import { Mark } from '../../src/web/Logo';
 import { page } from '../../src/web/copy';
+import { motion } from '@snackbyte/brand';
 
 const html = renderToString(<App />);
 
@@ -86,6 +87,15 @@ describe('the mark, arriving', () => {
     // steps(1,end) left the last letter invisible: its finished time rounded to just short
     // of the jump. steps(1,start) jumps at the start and holds.
     expect(html).toMatch(/name>span\{animation:[^}]*steps\(1,start\) both/);
+  });
+
+  it('takes its timings from the brand, not from this repository', () => {
+    const { letterMs, holdMs, biteMs, offOpacity, biteEasing } = motion.arrival;
+    const total = 'snackbyte'.length * letterMs + holdMs;
+    expect(html).toContain(`animation-duration:${total}ms`);
+    expect(html).toContain(`${biteMs}ms ${biteEasing} ${total}ms`);
+    expect(html).toContain(`fill-opacity:${offOpacity}`);
+    expect(html).toContain(`animation-delay:${8 * letterMs}ms`); // the last letter
   });
 
   it('does nothing under reduced motion', () => {
