@@ -18,7 +18,17 @@
       "path": "sound-system",
       "title": "Sound System Plan",
       "blurb": "A case for the WING, 16 more wireless channels in their own band, a stage box to plug it all into, and what it costs.",
-      "status": "For the board"
+      "status": "For the board",
+      "new": true,
+      "image": "sound-system/photos/wing-ours.jpg"
+    },
+    {
+      "path": "matilda-publicity",
+      "title": "Matilda Publicity",
+      "blurb": "The flyer, the homepage card and the Matilda page, proposed together so everything points the same way.",
+      "status": "For the board",
+      "new": true,
+      "image": "matilda-publicity/img/flyer.jpg"
     },
     {
       "url": "https://rehearsal.playhouse395.com/",
