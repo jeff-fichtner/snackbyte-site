@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Matilda Publicity — Playhouse 395</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#EEF0F4; --surface:#FFFFFF; --sunk:#E3E7ED; --ghost:#F6F7FA;
+    --ink:#14171C; --muted:#59636F; --faint:#8A94A2; --rule:#D3D9E1;
+    --deep:#0E5E68; --deep-sf:#DDECEE;
+    --live:#B0620F;
+    --f-d:"Fraunces",Georgia,serif;
+    --f-b:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
+    --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
+    --deep:#5FB6C2; --deep-sf:#12262B; --live:#E0A055;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
+    --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
+    --deep:#5FB6C2; --deep-sf:#12262B; --live:#E0A055;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.55;margin:0;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:58rem;margin:0 auto;padding:3rem 1.25rem 5rem;display:flex;flex-direction:column;gap:2.75rem}
+
+  .eyebrow{font-family:var(--f-m);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .eyebrow a{color:inherit;text-decoration:none}
+  .eyebrow a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+  .eyebrow a:focus-visible{outline:2px solid var(--live);outline-offset:3px;border-radius:2px}
+  h1{font-family:var(--f-d);font-weight:600;font-size:clamp(2.4rem,6.5vw,3.6rem);line-height:.98;letter-spacing:-.02em;margin:0}
+  h2{font-family:var(--f-d);font-weight:600;font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.1;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:var(--live);text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--live);outline-offset:3px;border-radius:2px}
+
+  header{display:flex;flex-direction:column;gap:.7rem}
+  .sub{color:var(--muted);max-width:40rem}
+  section{display:flex;flex-direction:column;gap:1.1rem}
+  .sec-head{display:flex;flex-direction:column;gap:.4rem;max-width:44rem}
+  .sec-head p{color:var(--muted);font-size:.93rem}
+  .secnum{font-family:var(--f-m);font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--deep)}
+
+  /* the summary: the whole proposal before any scrolling */
+  .summary{background:var(--ink);color:var(--bg);border-radius:6px;padding:1.75rem 1.6rem 1.6rem;display:flex;flex-direction:column;gap:1.3rem}
+  .summary h3{font-family:var(--f-m);font-size:.66rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;opacity:.6;margin:0}
+  .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.6rem;align-items:center}
+  .step{border:1px solid rgba(128,128,128,.45);border-radius:4px;padding:.8rem .9rem;display:flex;flex-direction:column;gap:.15rem}
+  .step b{font-family:var(--f-d);font-weight:600;font-size:1.15rem;line-height:1.15}
+  .step span{font-size:.8rem;opacity:.7;line-height:1.35}
+  .arrow{font-family:var(--f-m);opacity:.55;text-align:center}
+  .shortcut{font-size:.86rem;opacity:.8}
+  @media (max-width:40rem){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);line-height:1}}
+  .facts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.5rem;border-top:1px solid rgba(128,128,128,.35);padding-top:1.2rem}
+  .facts li{font-size:.9rem;opacity:.85;line-height:1.5;padding-left:1rem;position:relative}
+  .facts li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:1px;background:currentColor;opacity:.55}
+  .facts b{font-weight:600;opacity:1}
+
+  figure{margin:0;display:flex;flex-direction:column;gap:.35rem}
+  figure > a{display:block;border-radius:4px;overflow:hidden;border:1px solid var(--rule);background:#fff;line-height:0}
+  figure > a:hover{border-color:var(--deep)}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font-size:.76rem;color:var(--faint);line-height:1.4}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;align-items:start}
+  .withphone{display:grid;grid-template-columns:3fr 1fr;gap:.9rem;align-items:start}
+  .flyer{max-width:30rem}
+  @media (max-width:40rem){.pair,.withphone{grid-template-columns:1fr}.withphone figure.phone{max-width:16rem}}
+
+  .notes{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem;max-width:44rem}
+  .notes li{font-size:.93rem;line-height:1.5;padding-left:1rem;position:relative;color:var(--ink)}
+  .notes li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:1px;background:var(--faint)}
+  .tag{font-family:var(--f-m);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.15rem .4rem;border-radius:2px;background:var(--deep-sf);color:var(--deep);margin-right:.35rem;white-space:nowrap}
+  .tag.open{background:var(--sunk);color:var(--live)}
+
+  table{border-collapse:collapse;width:100%;max-width:46rem;background:var(--surface);border:1px solid var(--rule);border-radius:4px;font-size:.9rem}
+  th,td{text-align:left;vertical-align:top;padding:.7rem .9rem;border-bottom:1px solid var(--rule)}
+  th{font-family:var(--f-m);font-size:.63rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  tr:last-child td{border-bottom:none}
+  td.who{white-space:nowrap;color:var(--muted)}
+  @media (max-width:34rem){
+    .wrap{padding:2rem 1rem 3.5rem;gap:2.25rem}
+    .summary{padding:1.3rem 1.1rem}
+    table thead{display:none}
+    table tr{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--rule)}
+    table tr:last-child{border-bottom:none}
+    table td{border-bottom:none;padding:.35rem .9rem}
+    table td:first-child{padding-top:.75rem;font-weight:600}
+    table td:last-child{padding-bottom:.75rem}
+  }
+  .foot{color:var(--muted);font-size:.9rem;border-top:1px solid var(--rule);padding-top:1.2rem;max-width:44rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow"><a href="../">Playhouse 395</a> &middot; For the board &middot; October 2026</div>
+    <h1>Matilda: the flyer and the website</h1>
+    <p class="sub">What I&rsquo;m proposing for the Matilda flyer, the playhouse395.com homepage, and the
+    Matilda page, so that everything someone sees about the show says the same thing and leads to
+    the same place. <b>None of this is live yet.</b> I&rsquo;d like your comments before it goes up.</p>
+  </header>
+
+  <div class="summary">
+    <h3>How it fits together</h3>
+    <div class="flow">
+      <div class="step"><b>The flyer</b><span>prints playhouse395.com and carries a QR code</span></div>
+      <div class="arrow">&rarr;</div>
+      <div class="step"><b>The homepage</b><span>leads with a Matilda card: &ldquo;Show info &amp; tickets&rdquo;</span></div>
+      <div class="arrow">&rarr;</div>
+      <div class="step"><b>The Matilda page</b><span>dates, times, place, tickets</span></div>
+    </div>
+    <p class="shortcut">The QR code skips the homepage and goes straight to the Matilda page.</p>
+    <ul class="facts">
+      <li><b>One look everywhere.</b> All three use the show&rsquo;s official artwork and title from our
+        license, with colours taken from that artwork.</li>
+      <li><b>The cast list comes off the Matilda page.</b> The page becomes the place to find
+        showtimes and tickets.</li>
+      <li><b>Still needed before anything is final:</b> ticket details, the exact venue name, and the
+        credit lines our license requires. Section 4 has the list.</li>
+    </ul>
+  </div>
+
+  <section id="flyer">
+    <div class="sec-head">
+      <div class="secnum">01 &middot; The flyer</div>
+      <h2>Letter size, the poster artwork with all eight performances</h2>
+      <p>This is the current draft as it stands. Anything in a <b>pink dashed box</b> is not yet
+      confirmed. The QR code works now. Scan it and you should land on the Matilda page.</p>
+    </div>
+    <figure class="flyer">
+      <a href="img/flyer.jpg"><img src="img/flyer.jpg" alt="Draft Matilda flyer: Playhouse 395 presents, the Matilda key art, November performances, venue, tickets QR code" width="1632" height="2112"></a>
+      <figcaption>Draft flyer. <a href="matilda-flyer-draft.pdf">Download the PDF</a> to print a test copy.</figcaption>
+    </figure>
+    <ul class="notes">
+      <li><b>Performances:</b> Fridays and Saturdays at 7 PM, Sundays at 2 PM, plus a 2 PM matinee on
+        Saturday, November 21.</li>
+      <li><b>The printed address is playhouse395.com</b>, because it&rsquo;s short and easy to type. The
+        homepage will lead with Matilda (section 2). The QR code goes straight to the Matilda page.</li>
+    </ul>
+  </section>
+
+  <section id="homepage">
+    <div class="sec-head">
+      <div class="secnum">02 &middot; The homepage</div>
+      <h2>&ldquo;See the cast list&rdquo; becomes &ldquo;Show info &amp; tickets&rdquo;</h2>
+      <p>The bar under the headline currently announces the cast. It would be replaced by a Matilda
+      card in the show&rsquo;s colours with one button to the Matilda page. Everything else on the
+      homepage stays the same.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <a href="img/home-today.jpg"><img src="img/home-today.jpg" alt="The playhouse395.com homepage today, with a Cast announced bar" width="1280" height="1100"></a>
+        <figcaption>Today</figcaption>
+      </figure>
+      <figure>
+        <a href="img/home-proposed.jpg"><img src="img/home-proposed.jpg" alt="The homepage with the proposed Matilda card and a Show info and tickets button" width="1280" height="1100"></a>
+        <figcaption>Proposed</figcaption>
+      </figure>
+    </div>
+    <figure style="max-width:14rem">
+      <a href="img/home-proposed-phone.jpg"><img src="img/home-proposed-phone.jpg" alt="The proposed homepage card on a phone" width="500" height="1000"></a>
+      <figcaption>Proposed, on a phone</figcaption>
+    </figure>
+  </section>
+
+  <section id="matilda-page">
+    <div class="sec-head">
+      <div class="secnum">03 &middot; The Matilda page</div>
+      <h2>From cast announcement to the show&rsquo;s page</h2>
+      <p>playhouse395.com/matilda currently thanks everyone who auditioned, gives the first-rehearsal
+      details, and lists the cast. It would become the flyer as a web page: the artwork, every
+      performance, the venue, and a tickets section, with the whole page in the poster&rsquo;s dark
+      colours. The cast list comes off. Cast members get their
+      rehearsal details from the call board.</p>
+    </div>
+    <div class="withphone">
+      <figure>
+        <a href="img/matilda-proposed.jpg"><img src="img/matilda-proposed.jpg" alt="The proposed Matilda page on a computer" width="1280" height="2200"></a>
+        <figcaption>Proposed, on a computer</figcaption>
+      </figure>
+      <figure class="phone">
+        <a href="img/matilda-proposed-phone.jpg"><img src="img/matilda-proposed-phone.jpg" alt="The proposed Matilda page on a phone" width="500" height="1360"></a>
+        <figcaption>Proposed, on a phone</figcaption>
+      </figure>
+    </div>
+    <ul class="notes">
+      <li><b>The tickets section is a placeholder.</b> It will say how much, where to buy, and how
+        seating works, once those are decided.</li>
+    </ul>
+  </section>
+
+  <section id="open">
+    <div class="sec-head">
+      <div class="secnum">04 &middot; Still open</div>
+      <h2>What we need before this goes out</h2>
+    </div>
+    <table>
+      <thead><tr><th>What</th><th>Why it matters</th><th>Who</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag open">Decide</span>Ticket details</td><td>Prices, where to buy (online, at the door, anywhere else), reserved or general seating, and whether the door takes cards. The flyer and the Matilda page both need them.</td><td class="who">Board</td></tr>
+        <tr><td><span class="tag open">Decide</span>The venue&rsquo;s name</td><td>We have used three: &ldquo;Bishop High School Theater&rdquo;, &ldquo;&hellip;Theatre&rdquo;, and &ldquo;Bishop Union High School Performing Arts Center&rdquo;. We should pick one and use it everywhere.</td><td class="who">Board</td></tr>
+        <tr><td><span class="tag open">Confirm</span>Credit lines from the license</td><td>Licensed shows usually have to print specific credits on publicity (authors, and a line about the licensing company), sometimes at a minimum size. The exact wording is in our license agreement.</td><td class="who">Whoever holds the license paperwork</td></tr>
+        <tr><td><span class="tag">Then</span>Put it live</td><td>Upload the artwork to the website, paste in the new homepage card and Matilda page, and print the flyers.</td><td class="who">Jeff</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="foot">Comments, corrections, anything missing: reply to Jeff. Everything here is a draft
+  and easy to change.</p>
+
+</div>
+</body>
+</html>
