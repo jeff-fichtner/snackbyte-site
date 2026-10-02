@@ -141,7 +141,8 @@
   figure a:hover{border-color:var(--deep)}
   figure img{width:100%;height:auto;display:block}
   figcaption{font-size:.76rem;color:var(--faint);line-height:1.4}
-  .lead-fig{max-width:26rem}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;max-width:46rem;align-items:start}
+  @media (max-width:40rem){.pair{grid-template-columns:1fr}}
   .wide-fig{max-width:46rem}
 
   .flag.rec{color:var(--live);border-color:var(--live)}
@@ -242,10 +243,16 @@
       on at a time. That leaves 16 usable channels, not 32. The fix: keep one set, sell the other, and add
       16 channels in a different band.</p>
     </div>
-    <figure class="lead-fig">
-      <a href="photos/wing-bk.jpg"><img src="photos/wing-bk.jpg" alt="The Behringer WING-BK digital mixing console, black, seen from the front with its touch screen raised." width="1000" height="520" loading="lazy"></a>
-      <figcaption>Behringer WING-BK, the console we have.</figcaption>
-    </figure>
+    <div class="pair">
+      <figure>
+        <a href="photos/wing-ours.jpg"><img src="photos/wing-ours.jpg" alt="Playhouse 395's black Behringer WING console on a carpeted floor, seen at an angle from the front: the touch screen, channel displays and faders." width="1024" height="768" loading="lazy"></a>
+        <figcaption>Our WING-BK.</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/wing-ours-rear.jpg"><img src="photos/wing-ours-rear.jpg" alt="The rear panel of the same WING at floor level: rows of XLR inputs and outputs, the power cable, and the WING-LIVE card in the expansion slot." width="1024" height="640" loading="lazy"></a>
+        <figcaption>Its rear panel, where every connection lives, with the WING-LIVE card in the expansion slot.</figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- ─────────────── 02 ─────────────── -->
@@ -556,7 +563,6 @@
         <a href="https://cdn-media.empowertribe.com/01a6a424478d4816a85b9ca03f946f9c/QSG_BE_0603-AFC_WING-BK_WW.pdf">&ldquo;WING and WING-BK&rdquo; quick start guide</a>
         (dimensions and weight, one specification for both); Thomann&rsquo;s
         <a href="https://www.thomannmusic.com/behringer_wing_bk_case_bundle.htm">WING-BK case bundle</a>.</li>
-      <li>Behringer WING-BK photo via <a href="https://chucklevins.com/products/behringer-wing-48-channel-digital-mixer-black">Chuck Levin&rsquo;s</a>.</li>
       <li>VocoPro &mdash; <a href="https://vocopro.com/products/performing/wireless-microphones/Digital-Play-16">Digital-Play-16</a>
         (included accessories, receiver dimensions, 900&nbsp;MHz band, photo).</li>
       <li>Shielded etherCON cable &mdash;
