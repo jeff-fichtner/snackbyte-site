@@ -24,6 +24,15 @@ export function createApp(): Express {
 
   registerRoutes(app);
 
+  // The theatre's own name has no hyphen, so people type /work/playhouse395. Send them to the
+  // real section, keeping whatever page and query they asked for.
+  app.use((req, res, next) => {
+    const m = /^\/work\/playhouse395(\/.*)?$/.exec(req.path);
+    if (!m) return next();
+    const query = req.originalUrl.slice(req.path.length);
+    res.redirect(301, `/work/playhouse-395${m[1] ?? '/'}${query}`);
+  });
+
   app.use(express.static(distDir));
 
   // Anything not served above does not exist. This site has no client-side routing, so

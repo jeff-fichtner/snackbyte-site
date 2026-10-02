@@ -34,6 +34,20 @@ describe('app serves', () => {
     expect(res.status).toBe(200);
   });
 
+  it('redirects the unhyphenated playhouse395 address to the real section, keeping the rest', async () => {
+    const app = createApp();
+    for (const [from, to] of [
+      ['/work/playhouse395', '/work/playhouse-395/'],
+      ['/work/playhouse395/', '/work/playhouse-395/'],
+      ['/work/playhouse395/sound-system/', '/work/playhouse-395/sound-system/'],
+      ['/work/playhouse395/sound-system/?x=1', '/work/playhouse-395/sound-system/?x=1'],
+    ]) {
+      const res = await request(app).get(from);
+      expect(res.status, from).toBe(301);
+      expect(res.headers.location, from).toBe(to);
+    }
+  });
+
   it('serves the link-preview card the head points at', async () => {
     const app = createApp();
     const home = await request(app).get('/');
