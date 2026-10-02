@@ -24,6 +24,9 @@ src/web/public/work/playhouse-395/
 2. **Pages are complete, standalone HTML documents.** Own `<style>`, own script,
    no build step, no imports from the app, no shared stylesheet. They are copied
    verbatim into `dist/` by Vite, so what you write is what ships.
+   Start each page with the section's name linking back to its landing page —
+   `<a href="../">Playhouse 395</a>` in the top line — so a reader who arrives on one page
+   can find the rest.
 3. **Every section needs a `section.json`.** Without one the section has no
    landing page and nothing links its pages together.
 4. **Never write `index.html` at the section root.** `scripts/build-sections.mjs`
@@ -68,6 +71,15 @@ names neither or both.
   stub page behind that redirects** — an interstitial that bounces is a page
   that can be bookmarked, cached, and shared, and it is slower than the link it
   replaces. Delete the directory and give the entry a `url`.
+
+`new` (optional, `true` or `false`) lifts a page out of the list into a **New** block at the
+top of the section's landing page, as a larger card; the rest follow under "Everything else".
+With nothing marked new, the landing page is the plain list. Nothing expires on its own: take
+the flag off when the page is no longer news. Anything other than a real boolean fails the build.
+
+`image` (optional) is the picture on a new page's card — a path relative to the section, such as
+`sound-system/photos/console.jpg`. It must stay inside the section folder and the file must
+exist, or the build fails naming the page.
 
 `status` is free text — it is a label, not an enum. `locked` is optional and only
 adds a badge; it does not enforce anything. **If a page needs protecting, the
