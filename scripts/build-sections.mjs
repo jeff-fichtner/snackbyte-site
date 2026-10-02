@@ -41,19 +41,94 @@ function href(page) {
   return hasUrl ? page.url : `${page.path}/`;
 }
 
-/** Renders one section's index.html from its manifest. */
-export function renderSection(section) {
-  const cards = section.pages
-    .map(
-      (p) => `      <a class="card" href="${esc(href(p))}"${p.url ? ' rel="noopener"' : ''}>
-        <span class="row"><span class="t">${esc(p.title)}</span>${
-          p.url ? '<span class="ext" aria-label="Opens another site">&#8599;</span>' : ''
-        }${p.locked ? '<span class="lock" title="Password protected">Password</span>' : ''}</span>
+const nameOf = (page) => `section page "${page.title ?? '(untitled)'}"`;
+
+/**
+ * Whether a page is flagged new. Only a real boolean counts: a manifest saying "yes" or 1 is
+ * a typo or a misunderstanding, and quietly reading it either way would hide that.
+ */
+function isNew(page) {
+  if (page.new === undefined) return false;
+  if (typeof page.new !== 'boolean') {
+    throw new Error(`${nameOf(page)} has new: ${JSON.stringify(page.new)} — use true or false`);
+  }
+  return page.new;
+}
+
+/**
+ * A page's preview image, or null when it has none. The path is relative to the section and
+ * must stay inside it: a section only owns its own folder, and the build checks the file exists.
+ */
+function imageOf(page) {
+  if (page.image === undefined) return null;
+  const img = String(page.image);
+  const escapes =
+    !img ||
+    img.startsWith('/') ||
+    /^[a-z][a-z0-9+.-]*:/i.test(img) ||
+    img.split('/').includes('..');
+  if (escapes) {
+    throw new Error(`${nameOf(page)} has image "${img}" — it must be a path inside the section`);
+  }
+  return img;
+}
+
+const extMark = (p) =>
+  p.url ? '<span class="ext" aria-label="Opens another site">&#8599;</span>' : '';
+const lockMark = (p) =>
+  p.locked ? '<span class="lock" title="Password protected">Password</span>' : '';
+const linkAttrs = (p) => `href="${esc(href(p))}"${p.url ? ' rel="noopener"' : ''}`;
+
+/** The ordinary card: one line per page in the list. */
+const card = (p) => `      <a class="card" ${linkAttrs(p)}>
+        <span class="row"><span class="t">${esc(p.title)}</span>${extMark(p)}${lockMark(p)}</span>
         <span class="b">${esc(p.blurb)}</span>
         <span class="s">${esc(p.status)}</span>
-      </a>`,
-    )
-    .join('\n');
+      </a>`;
+
+/** A new page gets a larger card, with its picture when it has one. */
+const feature = (p) => {
+  const img = imageOf(p);
+  return `        <a class="feature" ${linkAttrs(p)}>${
+    img ? `\n          <span class="pic"><img src="${esc(img)}" alt="" loading="lazy"></span>` : ''
+  }
+          <span class="body">
+            <span class="row"><span class="badge">New</span>${extMark(p)}${lockMark(p)}</span>
+            <span class="t">${esc(p.title)}</span>
+            <span class="b">${esc(p.blurb)}</span>
+            <span class="s">${esc(p.status)}</span>
+          </span>
+        </a>`;
+};
+
+/** Renders one section's index.html from its manifest. */
+export function renderSection(section) {
+  for (const p of section.pages) imageOf(p);
+  const fresh = section.pages.filter(isNew);
+  const rest = section.pages.filter((p) => !isNew(p));
+
+  // With nothing new the page is the plain list it has always been. With something new, the
+  // new pages lead in their own block and the rest follow under a label of their own.
+  const body = fresh.length
+    ? `    <section class="fresh" aria-labelledby="fresh-h">
+      <h2 class="label" id="fresh-h">New</h2>
+      <div class="features">
+${fresh.map(feature).join('\n')}
+      </div>
+    </section>${
+      rest.length
+        ? `
+    <section aria-labelledby="rest-h">
+      <h2 class="label" id="rest-h">Everything else</h2>
+      <div class="cards">
+${rest.map(card).join('\n')}
+      </div>
+    </section>`
+        : ''
+    }`
+    : `    <div class="cards">
+${rest.map(card).join('\n')}
+    </div>`;
 
   return `<!doctype html>
 <html lang="en">
@@ -88,7 +163,23 @@ export function renderSection(section) {
   .b{color:var(--muted);font-size:.92rem}
   .s{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-top:.35rem}
   footer{border-top:1px solid var(--rule);padding-top:1.1rem;font-size:.82rem;color:var(--faint)}
-  @media (prefers-reduced-motion:reduce){.card{transition:none}}
+  section{display:flex;flex-direction:column}
+  .label{font-family:"IBM Plex Mono",monospace;font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--faint);margin:0 0 .8rem}
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  @media (max-width:36rem){.features{grid-template-columns:1fr}}
+  .feature{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--brand);border-radius:6px;
+    overflow:hidden;text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s}
+  .feature:hover{transform:translateY(-1px);box-shadow:0 8px 22px -14px var(--brand)}
+  .feature:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .pic{display:block;aspect-ratio:16/10;background:var(--rule);overflow:hidden;border-bottom:1px solid var(--rule)}
+  .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+  .feature .body{display:flex;flex-direction:column;gap:.3rem;padding:1rem 1.1rem 1.15rem;flex:1}
+  .feature .t{font-size:1.35rem;line-height:1.15}
+  .feature .s{margin-top:auto;padding-top:.35rem}
+  .badge{font-family:"IBM Plex Mono",monospace;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--surface);background:var(--brand);border-radius:2px;padding:.12rem .4rem}
+  @media (prefers-reduced-motion:reduce){.card,.feature{transition:none}}
 </style>
 </head>
 <body>
@@ -98,9 +189,7 @@ export function renderSection(section) {
       <h1>${esc(section.title)}</h1>
       <p class="blurb">${esc(section.blurb)}</p>
     </header>
-    <div class="cards">
-${cards}
-    </div>
+${body}
     <footer>Working documents, shared by link. Not listed publicly.</footer>
   </div>
 </body>
@@ -118,7 +207,17 @@ export function buildSections(workDir = WORK_DIR) {
     const manifest = join(dir, 'section.json');
     if (!existsSync(manifest)) continue;
     const section = JSON.parse(readFileSync(manifest, 'utf8'));
-    writeFileSync(join(dir, 'index.html'), renderSection(section));
+    const html = renderSection(section);
+    // A picture the manifest names but the folder lacks would ship as a broken image on the
+    // landing page; stop the build and say which one instead.
+    for (const page of section.pages) {
+      if (page.image !== undefined && !existsSync(join(dir, page.image))) {
+        throw new Error(
+          `section "${slug}": page "${page.title}" names image "${page.image}", which is not there`,
+        );
+      }
+    }
+    writeFileSync(join(dir, 'index.html'), html);
     built.push(slug);
   }
   return built;
