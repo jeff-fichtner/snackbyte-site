@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sound System Plan — Playhouse 395</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#EEF0F4; --surface:#FFFFFF; --sunk:#E3E7ED; --ghost:#F6F7FA;
+    --ink:#14171C; --muted:#59636F; --faint:#8A94A2; --rule:#D3D9E1;
+    --deep:#0E5E68; --deep-sf:#DDECEE;
+    --live:#B0620F;
+    --f-d:"Fraunces",Georgia,serif;
+    --f-b:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
+    --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
+    --deep:#5FB6C2; --deep-sf:#12262B; --live:#E0A055;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0F1217; --surface:#181D25; --sunk:#131820; --ghost:#141920;
+    --ink:#E9EDF2; --muted:#96A1B0; --faint:#697687; --rule:#262E39;
+    --deep:#5FB6C2; --deep-sf:#12262B; --live:#E0A055;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.55;margin:0;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:58rem;margin:0 auto;padding:3rem 1.25rem 5rem;display:flex;flex-direction:column;gap:2.75rem}
+
+  .eyebrow{font-family:var(--f-m);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  h1{font-family:var(--f-d);font-weight:600;font-size:clamp(2.4rem,6.5vw,3.6rem);line-height:.98;letter-spacing:-.02em;margin:0}
+  h2{font-family:var(--f-d);font-weight:600;font-size:clamp(1.35rem,3vw,1.75rem);line-height:1.1;margin:0;letter-spacing:-.01em}
+  h3{font-family:var(--f-m);font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:0}
+  p{margin:0}
+  a{color:var(--live);text-underline-offset:2px}
+  a:focus-visible{outline:2px solid var(--live);outline-offset:3px;border-radius:2px}
+
+  header{display:flex;flex-direction:column;gap:.7rem}
+  .sub{color:var(--muted);max-width:40rem}
+  section{display:flex;flex-direction:column;gap:1.1rem}
+  .sec-head{display:flex;flex-direction:column;gap:.4rem;max-width:44rem}
+  .sec-head p{color:var(--muted);font-size:.93rem}
+
+  /* ── the summary: everything a board member needs, before any scrolling ── */
+  .summary{background:var(--ink);color:var(--bg);border-radius:6px;padding:1.75rem 1.6rem 1.6rem;display:flex;flex-direction:column;gap:1.4rem}
+  .figures{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1.5rem;align-items:end}
+  @media (max-width:40rem){.figures{grid-template-columns:1fr;gap:1.1rem;align-items:start}}
+  .fig{display:flex;flex-direction:column;gap:.15rem}
+  .fig span{font-family:var(--f-m);font-size:.63rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;opacity:.55}
+  .fig b{font-family:var(--f-d);font-weight:600;font-size:1.5rem;line-height:1.1;letter-spacing:-.01em}
+  .fig.lead b{font-size:2.1rem}
+  .fig i{font-style:normal;font-family:var(--f-m);font-size:.7rem;opacity:.5;margin-top:.15rem}
+  .facts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.5rem;
+    border-top:1px solid rgba(128,128,128,.35);padding-top:1.2rem}
+  .facts li{font-size:.9rem;opacity:.85;line-height:1.5;padding-left:1rem;position:relative}
+  .facts li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:1px;background:currentColor;opacity:.55}
+  .facts b{font-weight:600;opacity:1}
+  .noprice{font-size:.89rem;line-height:1.6;opacity:.8;max-width:44rem;
+    border-top:1px solid rgba(128,128,128,.35);padding-top:1.1rem}
+  .noprice b{font-weight:600;opacity:1}
+
+  /* ── tables ── */
+  .t-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:.89rem}
+  table.spec{min-width:21rem}
+  table.band,table.pkg{min-width:30rem}
+  th{text-align:left;font-family:var(--f-m);font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);padding:.65rem 1rem;border-bottom:1px solid var(--rule);white-space:nowrap}
+  td{padding:.7rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  td.k{color:var(--ink);font-weight:500}
+  td.n{font-family:var(--f-m);font-size:.84rem;color:var(--ink);white-space:nowrap}
+  tfoot td{border-top:2px solid var(--rule);border-bottom:none;color:var(--ink);font-weight:600}
+  tr.applies td{background:var(--deep-sf)}
+  tr.applies td.k{color:var(--deep)}
+  .flag{display:inline-block;font-family:var(--f-m);font-size:.58rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--deep);border:1px solid var(--deep);border-radius:2px;padding:.05rem .3rem;margin-left:.4rem;vertical-align:.05em}
+
+  .note{background:var(--ghost);border:1px dashed var(--rule);border-left:3px solid var(--deep);border-radius:4px;
+    padding:.9rem 1.05rem;font-size:.88rem;color:var(--muted);max-width:46rem}
+  .note b{color:var(--ink);font-weight:600}
+
+  /* ── up / down ── */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+  @media (max-width:46rem){.split{grid-template-columns:1fr}}
+  .col{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:.95rem 1.05rem 1.1rem}
+  .col h3{margin-bottom:.6rem}
+  .col.up h3{color:var(--deep)}
+  .col.down h3{color:var(--live)}
+  .col ul{margin:0;padding-left:1rem;display:flex;flex-direction:column;gap:.4rem}
+  .col li{font-size:.86rem;color:var(--muted);line-height:1.5}
+  .col li b{color:var(--ink);font-weight:500}
+
+  details{background:var(--ghost);border:1px solid var(--rule);border-radius:4px;padding:.8rem 1.05rem}
+  summary{cursor:pointer;font-family:var(--f-m);font-size:.68rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+  summary:focus-visible{outline:2px solid var(--deep);outline-offset:3px;border-radius:2px}
+  details ul{margin:.85rem 0 0;padding-left:1.05rem;display:flex;flex-direction:column;gap:.35rem}
+  details li{font-size:.83rem;color:var(--muted);line-height:1.5}
+
+  footer{border-top:1px solid var(--rule);padding-top:1.2rem;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:.5rem}
+
+
+  /* ── this page only ── */
+
+  /* contents */
+  .toc{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem 1.5rem;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1rem 0}
+  @media (max-width:40rem){.toc{grid-template-columns:1fr 1fr}}
+  .toc a{display:flex;gap:.6rem;align-items:baseline;text-decoration:none;color:var(--ink);font-size:.9rem}
+  .toc a:hover span:last-child{text-decoration:underline;text-underline-offset:2px}
+  .toc .no{font-family:var(--f-m);font-size:.7rem;font-weight:600;color:var(--deep)}
+
+  /* each numbered part is its own block, ruled off from the last */
+  .part{border-top:2px solid var(--rule);padding-top:2rem;gap:1.4rem}
+  .secnum{font-family:var(--f-m);font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--deep)}
+
+  /* a purchase: photo beside its details, on its own card */
+  .items{display:flex;flex-direction:column;gap:1rem}
+  .item{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.25rem;
+    display:grid;grid-template-columns:13rem 1fr;gap:1.4rem;align-items:start}
+  @media (max-width:46rem){.item{grid-template-columns:1fr;gap:1rem}}
+  .item-body{display:flex;flex-direction:column;gap:.75rem;min-width:0}
+  .item-head{display:flex;flex-direction:column;gap:.3rem}
+  .item-head h3{color:var(--deep)}
+  .item-head .t{font-family:var(--f-d);font-weight:600;font-size:1.25rem;line-height:1.15;letter-spacing:-.01em}
+  .item-head .n{font-family:var(--f-m);font-size:.84rem;color:var(--ink)}
+  .item-body > p{color:var(--muted);font-size:.92rem}
+  .item-body > p b{color:var(--ink);font-weight:500}
+  .item .note{max-width:none}
+  .steps{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.3rem}
+  .steps li{font-size:.88rem;color:var(--muted);line-height:1.5}
+
+  /* product photos sit on white in both themes — they are shot on white */
+  .shots{display:flex;flex-direction:column;gap:.6rem}
+  @media (max-width:46rem){.shots{display:grid;grid-template-columns:1fr 1fr}.shots figure:only-child{grid-column:1/-1}}
+  figure{margin:0;display:flex;flex-direction:column;gap:.35rem}
+  figure a{display:block;border-radius:4px;overflow:hidden;border:1px solid var(--rule);background:#fff;line-height:0}
+  figure a:hover{border-color:var(--deep)}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font-size:.76rem;color:var(--faint);line-height:1.4}
+  .lead-fig{max-width:26rem}
+  .wide-fig{max-width:46rem}
+
+  .flag.rec{color:var(--live);border-color:var(--live)}
+  .flag.opt{color:var(--faint);border-color:var(--faint)}
+  .flag.pick{color:var(--bg);background:var(--deep);border-color:var(--deep)}
+  td .flag{margin-left:0}
+  table.need{min-width:20rem}
+  table.need td.k{min-width:11rem}
+  table.need .d{display:block;margin-top:.3rem;font-weight:400;font-size:.84rem;color:var(--muted);line-height:1.5}
+  table.need .d b{color:var(--ink);font-weight:500}
+  table.need td.n{white-space:normal;min-width:4.5rem}
+
+  .checks{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem;max-width:46rem}
+  .checks li{font-size:.9rem;color:var(--muted);line-height:1.5;padding-left:1.7rem;position:relative}
+  .checks li::before{content:"";position:absolute;left:0;top:.2em;width:.95rem;height:.95rem;border:1.5px solid var(--faint);border-radius:2px}
+  .checks b{color:var(--ink);font-weight:500}
+
+  @media (max-width:34rem){
+    .wrap{padding:2rem 1rem 3.5rem;gap:2.25rem}
+    .summary{padding:1.3rem 1.1rem}
+    .fig.lead b{font-size:1.8rem}
+    td,th{padding:.6rem .75rem}
+    .item{padding:1rem}
+    #purchases table.pkg,.item table.spec{min-width:0}
+    /* status tables stack on a phone: the item on one line, its status and estimate beneath */
+    table.need{min-width:0}
+    table.need thead{display:none}
+    table.need tr{display:grid;grid-template-columns:auto 1fr;border-bottom:1px solid var(--rule)}
+    table.need tr:last-child{border-bottom:none}
+    table.need td{border-bottom:none}
+    table.need td.k{grid-column:1/-1;padding-bottom:.45rem}
+    table.need td:not(.k){padding-top:0;align-self:center}
+    table.need td.n{text-align:right}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Playhouse 395 &middot; Bishop, California</div>
+    <h1>Sound System Plan</h1>
+    <p class="sub">A flight case for the WING, 16 more wireless channels in a band of their own, a
+    stage box with enough inputs to run all 32 at once, and somewhere proper to keep the mics.</p>
+  </header>
+
+  <div class="summary">
+    <div class="figures">
+      <div class="fig lead">
+        <span>New spend, three purchases</span>
+        <b>$2,275 &ndash; $2,335</b>
+        <i>before sales tax and support items</i>
+      </div>
+      <div class="fig">
+        <span>Sell the duplicate VocoPro</span>
+        <b>&minus;$650 &ndash; $850</b>
+        <i>estimate</i>
+      </div>
+      <div class="fig">
+        <span>Net</span>
+        <b>$1,425 &ndash; $1,685</b>
+      </div>
+    </div>
+    <ul class="facts">
+      <li><b>ProX XS-BWING W flight case</b>, no doghouse, for the WING console. About $409&ndash;$450.</li>
+      <li><b>Two Phenyx Pro PTU-6000-8B wireless kits</b>, 8 channels each in the 520&ndash;602&nbsp;MHz
+        band, so they can run alongside the VocoPro set we keep. $1,196 for both.</li>
+      <li><b>Behringer S32 stage box</b>: 32 mic inputs on one cable, so all 32 wireless channels have
+        somewhere to go. $670&ndash;$689.</li>
+      <li><b>Keep one VocoPro Digital-Play-16, sell the other</b> complete. The two sets share the same
+        frequencies and cannot run together.</li>
+    </ul>
+    <p class="noprice">The three purchases are <b>decided</b>. Everything from section 4 on &mdash; cables,
+    power, spares, mic storage &mdash; is a <b>proposal</b>, and not all of it is priced yet.</p>
+  </div>
+
+  <nav aria-label="Contents">
+    <ol class="toc">
+      <li><a href="#background"><span class="no">01</span><span>Background</span></a></li>
+      <li><a href="#purchases"><span class="no">02</span><span>The three purchases</span></a></li>
+      <li><a href="#vocopro"><span class="no">03</span><span>The VocoPro sets</span></a></li>
+      <li><a href="#needed"><span class="no">04</span><span>Also needed</span></a></li>
+      <li><a href="#storage"><span class="no">05</span><span>Storing the mics</span></a></li>
+      <li><a href="#open"><span class="no">06</span><span>Still open</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- ─────────────── 01 ─────────────── -->
+  <section class="part" id="background">
+    <div class="sec-head">
+      <div class="secnum">01 &middot; Background</div>
+      <h2>What we already have, and the problem</h2>
+      <p>The WING console (the full-size WING-BK, with the WING-LIVE recording card) and two VocoPro
+      Digital-Play-16 wireless sets were bought on the June 2025 B&amp;H quote: $6,629.49 in total,
+      paid for in part by a $5,000 Inyo County grant.</p>
+      <p>The two VocoPro sets turned out to be identical in the way that matters. Each is locked to the
+      same fixed 900&nbsp;MHz frequency groups, B1&ndash;B4, and nothing can be retuned, so only one can be
+      on at a time. That leaves 16 usable channels, not 32. The fix: keep one set, sell the other, and add
+      16 channels in a different band.</p>
+    </div>
+    <figure class="lead-fig">
+      <a href="photos/wing-bk.jpg"><img src="photos/wing-bk.jpg" alt="The Behringer WING-BK digital mixing console, black, seen from the front with its touch screen raised." width="1000" height="520" loading="lazy"></a>
+      <figcaption>Behringer WING-BK, the console we have. Manufacturer photo.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ─────────────── 02 ─────────────── -->
+  <section class="part" id="purchases">
+    <div class="sec-head">
+      <div class="secnum">02 &middot; Decided</div>
+      <h2>The three purchases</h2>
+    </div>
+
+    <div class="t-scroll">
+      <table class="pkg">
+        <thead><tr><th>Item</th><th>What it does</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td class="k">ProX XS-BWING W</td><td>Flight case for the WING, no doghouse</td><td class="n">$409 &ndash; $450</td></tr>
+          <tr><td class="k">Phenyx Pro PTU-6000-8B &times;2</td><td>16 wireless channels, 520&ndash;602&nbsp;MHz</td><td class="n">$1,196</td></tr>
+          <tr><td class="k">Behringer S32</td><td>32-input stage box, one cable to the WING</td><td class="n">$670 &ndash; $689</td></tr>
+        </tbody>
+        <tfoot><tr><td>Together</td><td>Before sales tax</td><td class="n">$2,275 &ndash; $2,335</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="items">
+
+      <article class="item">
+        <div class="shots">
+          <figure>
+            <a href="photos/prox-case.jpg"><img src="photos/prox-case.jpg" alt="A WING console sitting in the open base of the ProX flight case, lid removed." width="650" height="650" loading="lazy"></a>
+          </figure>
+          <figure>
+            <a href="photos/prox-case-rear.jpg"><img src="photos/prox-case-rear.jpg" alt="The WING in the ProX case base seen from behind, its rear-panel connectors above the case wall." width="650" height="650" loading="lazy"></a>
+            <figcaption>ProX photos, shown with the silver WING.</figcaption>
+          </figure>
+        </div>
+        <div class="item-body">
+          <div class="item-head">
+            <h3>1 &middot; Flight case</h3>
+            <span class="t">ProX XS-BWING W</span>
+            <span class="n">~$409 &ndash; $450</span>
+          </div>
+          <p>iDJNow lists it at <b>$409.40</b>, Full Compass at <b>$449.99</b>; Sweetwater also carries it.
+          About 37&Prime; &times; 26.5&Prime; &times; 12&Prime; and 45&nbsp;lb empty. No doghouse: the case is
+          lighter and smaller, and the cables come off for transport.</p>
+          <p>Chosen over the Gator GTOURWINGNDH ($449.99) because it rolls on four 4&Prime; casters, two
+          locking, which suit indoor floors; the Gator's tilt-and-go wheels are the better choice for gravel
+          and grass.</p>
+          <p><b>It fits the WING-BK.</b> The black edition is the same console in a different colour:
+          Behringer's own guide covers &ldquo;WING and WING-BK&rdquo; together, at the same 201 &times; 870
+          &times; 575&nbsp;mm and 24&nbsp;kg, and Thomann sells the WING-BK bundled with a case made for the
+          original WING. ProX's rear photo shows the connections clear of the base wall. ProX's listing only
+          says &ldquo;WING&rdquo;, so it is worth a quick yes from the seller when ordering.</p>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="shots">
+          <figure>
+            <a href="photos/phenyx-kit.jpg"><img src="photos/phenyx-kit.jpg" alt="The Phenyx Pro PTU-6000-8B kit: eight bodypack transmitters above the slim eight-channel receiver with four antennas." width="1000" height="1000" loading="lazy"></a>
+          </figure>
+          <figure>
+            <a href="photos/phenyx-receiver.jpg"><img src="photos/phenyx-receiver.jpg" alt="Front of the Phenyx Pro PWR-6000 eight-channel receiver, two displays showing four channels each." width="1000" height="300" loading="lazy"></a>
+            <figcaption>One kit, and its receiver. Manufacturer photos.</figcaption>
+          </figure>
+        </div>
+        <div class="item-body">
+          <div class="item-head">
+            <h3>2 &middot; Wireless</h3>
+            <span class="t">Phenyx Pro PTU-6000-8B &times;2</span>
+            <span class="n">$597.99 each &middot; $1,196</span>
+          </div>
+          <p>Eight channels per kit in the <b>520&ndash;602&nbsp;MHz</b> band, well clear of the VocoPro's
+          900&nbsp;MHz, so the two systems never collide. Two kits is the most this line supports together,
+          which is exactly 16 channels. Each kit comes with 8 PWB-7 bodypacks, 8 headset/lavalier combos,
+          4 BNC antennas, a power adapter and a &frac14;-inch audio cable.</p>
+          <p>Buy from <b>phenyxpro.com</b> or Phenyx Pro's official Amazon store &mdash; the one-year warranty
+          only holds when bought from an authorized seller. Neither Sweetwater nor B&amp;H stocks it.</p>
+          <p>The two kits cover the same range, so they have to be set apart by hand:</p>
+          <ol class="steps">
+            <li>Power on kit 1 and its 8 bodypacks, scan, and lock.</li>
+            <li>With kit 1 still running, scan kit 2 so it picks frequencies around kit 1. Then lock.</li>
+            <li>Label packs, receivers and mixer channels <b>A1&ndash;A8</b> and <b>B1&ndash;B8</b>.</li>
+            <li>Re-scan at every venue. Local TV signals, including the Owens Valley translators, change from
+              place to place.</li>
+          </ol>
+          <div class="note"><b>Before ordering,</b> email Phenyx support for their recommended two-system
+          frequency plan for the 8B.</div>
+        </div>
+      </article>
+
+      <article class="item">
+        <div class="shots">
+          <figure>
+            <a href="photos/s32.jpg"><img src="photos/s32.jpg" alt="Front of the Behringer S32 stage box: two rows of sixteen XLR inputs above a row of sixteen XLR outputs." width="1000" height="380" loading="lazy"></a>
+            <figcaption>Behringer S32. Manufacturer photo.</figcaption>
+          </figure>
+        </div>
+        <div class="item-body">
+          <div class="item-head">
+            <h3>3 &middot; Stage box</h3>
+            <span class="t">Behringer S32</span>
+            <span class="n">$669.99 &ndash; $689</span>
+          </div>
+          <p>$669.99 at Full Compass, $689 at Sweetwater. The S32 puts <b>32 mic inputs</b> at the far end of
+          a single AES50 cable. With the WING's own 8 mic inputs and 8 line inputs, that makes <b>40 mic and
+          8 line</b> &mdash; enough for all 32 wireless channels plus 8 more mics for a small pit, announce or
+          talkback.</p>
+          <div class="t-scroll">
+            <table class="spec">
+              <thead><tr><th>Where</th><th>Inputs</th><th>Used for</th></tr></thead>
+              <tbody>
+                <tr><td class="k">S32 stage box</td><td class="n">32 mic</td><td>VocoPro 16 + Phenyx 16</td></tr>
+                <tr><td class="k">WING, local</td><td class="n">8 mic</td><td>Pit, announce, talkback</td></tr>
+                <tr><td class="k">WING, aux in</td><td class="n">8 line</td><td>Keyboards, playback</td></tr>
+              </tbody>
+              <tfoot><tr><td>Total</td><td class="n">48</td><td>The WING mixes 48 + 8 aux</td></tr></tfoot>
+            </table>
+          </div>
+          <p>If that ever runs short, a <b>Behringer SD16</b> chains off the S32 on the same cable for 16 more
+          stage inputs.</p>
+          <div class="note"><b>Buy soon.</b> One UK retailer already lists the S32 as discontinued. US
+          retailers had stock at the time of research.</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ─────────────── 03 ─────────────── -->
+  <section class="part" id="vocopro">
+    <div class="sec-head">
+      <div class="secnum">03 &middot; Decided</div>
+      <h2>The VocoPro sets: keep one, sell one</h2>
+    </div>
+    <figure class="wide-fig">
+      <a href="photos/vocopro-set.jpg"><img src="photos/vocopro-set.jpg" alt="A complete VocoPro Digital-Play-16 set: sixteen bodypacks, four stacked receivers, headset and lavalier mics, and four XLR snake cables." width="1100" height="440" loading="lazy"></a>
+      <figcaption>One complete Digital-Play-16 set &mdash; this is what gets sold. Manufacturer photo.</figcaption>
+    </figure>
+    <div class="split">
+      <div class="col up">
+        <h3>Keep: one VocoPro Digital-Play-16</h3>
+        <ul>
+          <li><b>16 channels at 900&nbsp;MHz</b>, four 4-channel receivers, fixed groups B1&ndash;B4.</li>
+          <li><b>Works alongside the Phenyx kits</b> &mdash; different band, no shared frequencies.</li>
+          <li><b>Its own XLR snakes</b> run its 16 outputs into the S32.</li>
+          <li><b>Assign by system</b>, e.g. ensemble on one, leads on the other. Interference is much
+            easier to trace during tech.</li>
+        </ul>
+      </div>
+      <div class="col down">
+        <h3>Sell: the other, complete</h3>
+        <ul>
+          <li><b>Estimated $650&ndash;$850 used.</b> Budget 900&nbsp;MHz gear does not hold value the way
+            Shure or Sennheiser does. A return is off the table: opened, and over a year old.</li>
+          <li><b>List it as &ldquo;open box, unused&rdquo;</b> if the packs were never worn.</li>
+          <li><b>Keep it whole:</b> all 16 bodypacks, headsets, lavs, XLR snakes, mounting brackets,
+            original box and warranty card. Not the rechargeable batteries &mdash; those stay with us.</li>
+          <li><b>Say it is a full B1&ndash;B4 set</b>, so VocoPro owners know whether it will collide with
+            theirs.</li>
+          <li><b>Where:</b> Reverb, or locally to schools and churches.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────── 04 ─────────────── -->
+  <section class="part" id="needed">
+    <div class="sec-head">
+      <div class="secnum">04 &middot; Proposed</div>
+      <h2>Also needed</h2>
+      <p>What it takes to connect, power and run the three purchases. These are <b>proposals, not
+      decisions</b>. Where a price is given it comes from a retailer listing; the rest are not priced yet.</p>
+    </div>
+
+    <div class="t-scroll">
+      <table class="need">
+        <thead><tr><th>Item</th><th>Status</th><th>Estimate</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Shielded etherCON Cat5e, S32 &rarr; WING
+            <span class="d">The WING's panel says <b>&ldquo;shielded cable (STP) only&rdquo;</b>; unshielded
+            cable drops out. Example: ProCo C270201-100F, 100&nbsp;ft, $109.99 at Sweetwater ($169.99 with a
+            reel); the Whirlwind ENC2S100 is an alternative. The length depends on where the receivers live.
+            Add a short spare.</span></td>
+            <td><span class="flag">Needed</span></td><td class="n">~$110</td></tr>
+          <tr><td class="k">16 short XLR cables, Phenyx &rarr; S32
+            <span class="d">About 3&nbsp;ft each. Each Phenyx receiver has 8 XLR outputs, but the kits ship
+            with a &frac14;-inch cable only.</span></td>
+            <td><span class="flag">Needed</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">Power strip and heavy-duty extension cord
+            <span class="d">Six wall adapters to plug in (4 VocoPro receivers, 2 Phenyx), plus the S32's
+            power cord. A strip with widely spaced outlets takes the adapters without blocking its
+            neighbours.</span></td>
+            <td><span class="flag">Needed</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">More AA NiMH batteries
+            <span class="d">Every bodypack takes 2 &times; AA. The quote's 64 Watson NiMH cover 16 VocoPro
+            + 16 Phenyx packs exactly, with none left to rotate in while a set charges. They stay with
+            Playhouse 395, not with the set being sold.</span></td>
+            <td><span class="flag rec">Recommended</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">Spare bodypacks, Phenyx PWB-7
+            <span class="d">Plan one or two, so a failed pack does not take a mic out for the night.
+            $49.99 each.</span></td>
+            <td><span class="flag rec">Recommended</span></td><td class="n">$50 &ndash; $100</td></tr>
+          <tr><td class="k">Headset upgrades for leads
+            <span class="d">The included headsets are the weak point of budget systems. Better headsets on
+            the leads &mdash; Matilda, Trunchbull &mdash; improve the sound more than any receiver
+            choice.</span></td>
+            <td><span class="flag rec">Recommended</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">WING network control
+            <span class="d">A small Wi-Fi router on the WING's Ethernet port, so the board can be mixed from
+            a tablet with Behringer's WING Copilot app (iOS and Android).</span></td>
+            <td><span class="flag opt">Optional</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">Consumables
+            <span class="d">Mic tape, mic belts or pouches, sweat covers.</span></td>
+            <td><span class="flag opt">Optional</span></td><td class="n">Not priced</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ─────────────── 05 ─────────────── -->
+  <section class="part" id="storage">
+    <div class="sec-head">
+      <div class="secnum">05 &middot; Options</div>
+      <h2>Storing the mics</h2>
+      <p>Out of the cardboard boxes. There are 32 bodypacks to keep, each with a headset and a lavalier
+      whose thin cables tangle, plus batteries and chargers &mdash; kept at the theatre, and now and then
+      carried to another venue. These are <b>options, not a decision</b>.</p>
+    </div>
+
+    <div class="t-scroll">
+      <table class="need">
+        <thead><tr><th>Option</th><th></th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td class="k">A numbered pouch for every channel
+            <span class="d">One zip mesh pouch per mic: the pack, its headset, its lav and spare batteries
+            together, labelled to match the channel (A1&ndash;B8, and the VocoPro channels). Nothing tangles
+            and nothing gets separated. Example: vxb mesh zipper pouches with label pockets, $49.98 for 20.</span></td>
+            <td><span class="flag pick">Suggested</span></td><td class="n">~$100</td></tr>
+          <tr><td class="k">A hard case to carry the pouches
+            <span class="d">The pouches go into a lockable, weatherproof case for storage and for trips.
+            Example: Harbor Freight Apache 4800 X-Large, $59.99, interior 17.9&Prime; &times; 12.9&Prime; &times;
+            6.6&Prime;. Plan one or two.</span></td>
+            <td><span class="flag pick">Suggested</span></td><td class="n">$60 &ndash; $120</td></tr>
+          <tr><td class="k">A numbered organizer backstage
+            <span class="d">For show nights: an over-the-door 24-pocket organizer, each pocket numbered. Actors
+            drop their pack and mic in their own pocket, and it all goes back into the case at the end of the
+            night.</span></td>
+            <td><span class="flag opt">Optional</span></td><td class="n">$8 &ndash; $20</td></tr>
+          <tr><td class="k">Tackle-style divider boxes
+            <span class="d">Plano StowAway 3700 Deep, $14.99, adjustable dividers. About six packs with their
+            headsets per box, so around six boxes &mdash; and the lavs would likely need more.</span></td>
+            <td><span class="flag opt">Alternative</span></td><td class="n">~$90+</td></tr>
+          <tr><td class="k">A locking rolling tool cart
+            <span class="d">U.S. General 30&Prime; 5-drawer cart, $289.99. Very secure, and one drawer would hold
+            every pack. A good permanent home, but heavy to take anywhere else.</span></td>
+            <td><span class="flag opt">Alternative</span></td><td class="n">$290</td></tr>
+          <tr><td class="k">Purpose-built wireless cases
+            <span class="d">SKB iSeries 3i-1813-7WMC, $309.99, holds only 8 bodypacks (and 8 handheld mics we
+            don't have). Nothing off the shelf is made for 16 bodypacks.</span></td>
+            <td><span class="flag opt">Not a fit</span></td><td class="n">~$1,240</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note"><b>The suggestion:</b> numbered pouches inside one or two Apache cases, about
+    <b>$160&ndash;$220</b>, with a backstage organizer for show nights. It solves the tangling, keeps each mic
+    with its own pack, locks, and travels. Take the batteries out before storing, add a few silica gel
+    packs, and measure a VocoPro pack before buying, since its size isn't published.</div>
+  </section>
+
+  <!-- ─────────────── 06 ─────────────── -->
+  <section class="part" id="open">
+    <div class="sec-head">
+      <div class="secnum">06 &middot; To do</div>
+      <h2>Still open</h2>
+    </div>
+    <ul class="checks">
+      <li><b>Where the receivers live</b> &mdash; front of house or backstage. That sets where the S32 goes
+        and how long the shielded cable has to be.</li>
+      <li><b>List the non-wireless sources</b> &mdash; band, playback, front-of-house mics &mdash; to confirm
+        40 mic inputs is enough.</li>
+      <li><b>VocoPro line-level output.</b> If the receivers can output at line level, some channels could go
+        into the WING's aux inputs and free up mic preamps.</li>
+      <li><b>Email Phenyx</b> for the two-system frequency plan, before ordering.</li>
+      <li><b>New B&amp;H quote?</b> Decide whether to ask B&amp;H for a quote covering the S32 and the case.</li>
+      <li><b>Pick a mic storage option</b> from section 5.</li>
+      <li><b>When ordering the case,</b> a quick confirmation from the seller that it takes the WING-BK.</li>
+    </ul>
+  </section>
+
+  <details>
+    <summary>Where these figures come from</summary>
+    <ul>
+      <li>The June 2025 B&amp;H quote &mdash; what was bought, quantities, prices and tax.</li>
+      <li>ProX XS-BWING W &mdash; <a href="https://www.proxdirect.com/products/view/Fits-Behringer-Wing-Digital-Mixer-Console-Flight-Case-w-Low-Profile-Wheels-XS-BWINGW">ProX</a> (specifications and photos),
+        <a href="https://www.idjnow.com/prox-xs-bwing-w-case.html">iDJNow</a>,
+        <a href="https://www.fullcompass.com/prod/623711-prox-xs-bwing-w-mixer-case-for-behinger-wing-with-wheels">Full Compass</a>,
+        <a href="https://www.sweetwater.com/store/detail/BWINGW--prox-xs-bwing-with-ata-flight-case-for-behringer-wing-mixer-console">Sweetwater</a>.</li>
+      <li>Gator GTOURWINGNDH, the case not chosen &mdash;
+        <a href="https://soundpro.com/products/gator-gtourwingndh-flight-case-for-behringer-wing-mixer">SoundPro</a>.</li>
+      <li>Phenyx Pro &mdash; <a href="https://phenyxpro.com/products/ptu-6000-8b">PTU-6000-8B</a> (and photos),
+        <a href="https://phenyxpro.com/products/pwr-6000-receiver">PWR-6000 receiver</a>,
+        <a href="https://phenyxpro.com/products/pwb-7-bodypack">PWB-7 bodypack</a>, and the PTU-71/7000/6000
+        owner&rsquo;s manual (frequencies, batteries, warranty terms).</li>
+      <li>Behringer S32 &mdash;
+        <a href="https://www.fullcompass.com/prod/278127-behringer-s32-digital-snake-stagebox-with-32-inputs-16-outputs">Full Compass</a>,
+        <a href="https://www.sweetwater.com/store/detail/S32IO--behringer-s32-32-channel-stage-box">Sweetwater</a>;
+        photo via <a href="https://www.musicarts.com/behringer-s32-32-input-digital-stage-box-main0126591">Music &amp; Arts</a>.</li>
+      <li>Behringer &mdash; the <a href="https://www.behringer.com/en/wing/wing-black">WING-BK product page</a> and the
+        <a href="https://cdn-media.empowertribe.com/01a6a424478d4816a85b9ca03f946f9c/QSG_BE_0603-AFC_WING-BK_WW.pdf">&ldquo;WING and WING-BK&rdquo; quick start guide</a>
+        (dimensions and weight, one specification for both); Thomann&rsquo;s
+        <a href="https://www.thomannmusic.com/behringer_wing_bk_case_bundle.htm">WING-BK case bundle</a>.</li>
+      <li>Behringer WING-BK photo via <a href="https://chucklevins.com/products/behringer-wing-48-channel-digital-mixer-black">Chuck Levin&rsquo;s</a>.</li>
+      <li>VocoPro &mdash; <a href="https://vocopro.com/products/performing/wireless-microphones/Digital-Play-16">Digital-Play-16</a>
+        (included accessories, receiver dimensions, 900&nbsp;MHz band, photo).</li>
+      <li>Shielded etherCON cable &mdash;
+        <a href="https://www.sweetwater.com/store/detail/EtherShld100--pro-co-100-foot-shielded-cat-5e-ethercon-cable">ProCo C270201-100F</a>,
+        <a href="https://www.sweetwater.com/store/detail/EtherShld100Pk--pro-co-c270201-100f-shielded-cat-5e-cable-with-reel-100-foot">with reel</a>,
+        <a href="https://www.fullcompass.com/prod/571137-whirlwind-enc2s100-100-shielded-cat5e-ethercon-cable">Whirlwind ENC2S100</a>.</li>
+      <li>Behringer WING Copilot &mdash; <a href="https://apps.apple.com/us/app/wing-copilot/id1447618712">App Store</a>,
+        <a href="https://play.google.com/store/apps/details?id=musicgroup.wapp">Google Play</a>.</li>
+      <li>Mic storage &mdash;
+        <a href="https://vxb.com/products/mesh-zipper-pouch-bags-20-pack-with-label-pockets">vxb mesh pouches</a>,
+        <a href="https://www.harborfreight.com/4800-weatherproof-protective-case-x-large-black-64250.html">Apache 4800</a>,
+        <a href="https://www.planooutdoors.com/products/deep-stowaway-3700">Plano StowAway 3700</a>,
+        <a href="https://www.harborfreight.com/30-in-5-drawer-mechanics-cart-black-70380.html">U.S. General cart</a>,
+        <a href="https://www.skbcases.com/products/i-series-1813-7-wireless-eight-mic-case">SKB 3i-1813-7WMC</a>,
+        and a <a href="https://www.controlbooth.com/threads/wireless-mic-storage.7428/">ControlBooth thread</a> on how
+        theatres store wireless mics.</li>
+      <li>The WING itself &mdash; the rear-panel label and the &ldquo;shielded cable (STP) only&rdquo; marking.</li>
+    </ul>
+  </details>
+
+  <footer>
+    <p>Playhouse 395 &middot; Bishop, California. Compiled October 2026.</p>
+  </footer>
+
+</div>
+</body>
+</html>
