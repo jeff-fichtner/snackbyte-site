@@ -48,6 +48,13 @@
   .secnum{font-family:var(--f-m);font-size:.7rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--deep)}
 
   /* the summary: the whole direction before any scrolling */
+  /* the board's test link: a call to action, not part of the proposal itself */
+  .trytix{display:flex;align-items:center;justify-content:space-between;gap:1rem 1.5rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--live);border-radius:4px;padding:1rem 1.2rem}
+  .trytix div{display:flex;flex-direction:column;gap:.25rem;max-width:36rem}
+  .trytix b{font-family:var(--f-d);font-weight:600;font-size:1.15rem}
+  .trytix span{color:var(--muted);font-size:.9rem;line-height:1.5}
+  .trytix-go{display:inline-block;background:var(--live);color:var(--surface);font-weight:600;text-decoration:none;padding:.7rem 1.1rem;border-radius:3px;white-space:nowrap}
+  .trytix-go:hover{filter:brightness(1.08)}
   .summary{background:var(--ink);color:var(--bg);border-radius:6px;padding:1.75rem 1.6rem 1.6rem;display:flex;flex-direction:column;gap:1.3rem}
   .summary h3{font-family:var(--f-m);font-size:.66rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;opacity:.6;margin:0}
   .flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.6rem;align-items:center}
@@ -106,6 +113,15 @@
     and the Matilda page, so that everything someone sees about the show says the same thing and leads to
     the same place. <b>The direction is set,</b> and tickets are <a href="https://www.zeffy.com/en-US/ticketing/matilda-the-musical-16">on sale on Zeffy</a>.</p>
   </header>
+
+  <div class="trytix">
+    <div>
+      <b>Try the ticket page</b>
+      <span>This is the live Zeffy page the &ldquo;Buy tickets&rdquo; button goes to. Click through as a buyer
+      would &mdash; but stop before paying: it is real, and a finished checkout charges your card.</span>
+    </div>
+    <a class="trytix-go" href="https://www.zeffy.com/en-US/ticketing/matilda-the-musical-16" target="_blank" rel="noopener">Open the ticket page &rarr;</a>
+  </div>
 
   <div class="summary">
     <h3>How it fits together</h3>
