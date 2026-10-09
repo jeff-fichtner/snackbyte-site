@@ -162,6 +162,15 @@
   .checks li{font-size:.9rem;color:var(--muted);line-height:1.5;padding-left:1.7rem;position:relative}
   .checks li::before{content:"";position:absolute;left:0;top:.2em;width:.95rem;height:.95rem;border:1.5px solid var(--faint);border-radius:2px}
   .checks b{color:var(--ink);font-weight:500}
+  .checks li.done::before{background:var(--deep);border-color:var(--deep)}
+  .checks li.done::after{content:"";position:absolute;left:.3rem;top:.32em;width:.3rem;height:.55rem;
+    border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  #done .checks{margin-bottom:.4rem}
+  .notes{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.5rem;max-width:46rem}
+  .notes li{font-size:.92rem;color:var(--muted);line-height:1.5;padding-left:1rem;position:relative}
+  .notes li::before{content:"";position:absolute;left:0;top:.7em;width:5px;height:1px;background:var(--faint)}
+  .notes b{color:var(--ink);font-weight:500}
+  #wireless .sec-head h3{margin-top:.4rem;color:var(--deep)}
 
   @media (max-width:34rem){
     .wrap{padding:2rem 1rem 3.5rem;gap:2.25rem}
@@ -169,7 +178,8 @@
     .fig.lead b{font-size:1.8rem}
     td,th{padding:.6rem .75rem}
     .item{padding:1rem}
-    #purchases table.pkg,.item table.spec{min-width:0}
+    #wireless table.pkg,.item table.spec{min-width:0}
+    #wireless td.n{white-space:normal}
     /* status tables stack on a phone: the item on one line, its status and estimate beneath */
     table.need{min-width:0}
     table.need thead{display:none}
@@ -188,8 +198,8 @@
   <header>
     <div class="eyebrow"><a href="../">Playhouse 395</a> &middot; Bishop, California</div>
     <h1>Sound System Plan</h1>
-    <p class="sub">A flight case for the WING, 16 more wireless channels in a band of their own, a
-    stage box with enough inputs to run all 32 at once, and somewhere proper to keep the mics.</p>
+    <p class="sub">A flight case for the WING, a stage box with enough inputs for every mic, and enough
+    wireless to run 32 body mics and 4 handhelds at the same time. Here is what's done and what's left.</p>
   </header>
 
   <div class="summary">
@@ -200,55 +210,67 @@
         <i>case and stage box, with tax</i>
       </div>
       <div class="fig">
-        <span>Still to buy</span>
-        <b>$1,196</b>
-        <i>two Phenyx kits, before tax</i>
+        <span>Wireless, still to buy</span>
+        <b>$1,307 or $1,810</b>
+        <i>plan 1 or plan 2, before tax</i>
       </div>
       <div class="fig">
         <span>Net, after selling the duplicate VocoPro</span>
-        <b>$1,580 &ndash; $1,780</b>
+        <b>$1,690 &ndash; $2,390</b>
         <i>estimate</i>
       </div>
     </div>
     <ul class="facts">
-      <li><b>ProX XS-BWING W flight case</b>, no doghouse, for the WING console. <b>Ordered</b>, $444.95.</li>
-      <li><b>Behringer S32 stage box</b>: 32 mic inputs on one cable, so all 32 wireless channels have
-        somewhere to go. <b>Ordered</b>, $689.</li>
-      <li><b>Two Phenyx Pro PTU-6000-8B wireless kits</b>, 8 channels each in the 520&ndash;602&nbsp;MHz
-        band, clear of the VocoPro set we keep. <b>Still to buy</b>, $1,196 for both &mdash; once we know
-        they won't clash with the Phenyx handhelds we already own.</li>
-      <li><b>Keep one VocoPro Digital-Play-16, sell the other</b> complete. The two sets share the same
-        frequencies and cannot run together.</li>
+      <li><b>Done:</b> the flight case and the S32 stage box are ordered. We know exactly what our Phenyx
+        handhelds are, Phenyx has told us its limit, and we've checked the radio conditions at the school.</li>
+      <li><b>The goal:</b> 32 body mics and 4 handheld mics, all live at once.</li>
+      <li><b>The decision left:</b> which of two wireless plans to buy. Both reach the goal. Plan 1 is
+        $1,307 and runs the Phenyx gear at its limit. Plan 2 is $1,810 and leaves room to spare.</li>
+      <li><b>One check first:</b> both plans use a VocoPro add-on whose exact frequencies aren't published.
+        We need them before ordering.</li>
     </ul>
-    <p class="noprice">The case and the stage box are <b>ordered</b>. The Phenyx kits wait on <b>one
-    check</b>, in section 2. Everything from section 4 on &mdash; cables, power, spares, mic storage &mdash;
-    is a <b>proposal</b>, and not all of it is priced yet.</p>
+    <p class="noprice">Everything from section 5 on &mdash; cables, power, spares, mic storage &mdash; is a
+    <b>proposal</b>, and not all of it is priced yet.</p>
   </div>
 
   <nav aria-label="Contents">
     <ol class="toc">
-      <li><a href="#background"><span class="no">01</span><span>Background</span></a></li>
-      <li><a href="#purchases"><span class="no">02</span><span>The three purchases</span></a></li>
-      <li><a href="#vocopro"><span class="no">03</span><span>The VocoPro sets</span></a></li>
-      <li><a href="#needed"><span class="no">04</span><span>Also needed</span></a></li>
-      <li><a href="#storage"><span class="no">05</span><span>Storing the mics</span></a></li>
-      <li><a href="#open"><span class="no">06</span><span>Still open</span></a></li>
+      <li><a href="#done"><span class="no">01</span><span>Done so far</span></a></li>
+      <li><a href="#wireless"><span class="no">02</span><span>Wireless: two plans</span></a></li>
+      <li><a href="#ordered"><span class="no">03</span><span>Case and stage box</span></a></li>
+      <li><a href="#vocopro"><span class="no">04</span><span>The VocoPro sets</span></a></li>
+      <li><a href="#needed"><span class="no">05</span><span>Also needed</span></a></li>
+      <li><a href="#storage"><span class="no">06</span><span>Storing the mics</span></a></li>
+      <li><a href="#open"><span class="no">07</span><span>Still to do</span></a></li>
     </ol>
   </nav>
 
   <!-- ─────────────── 01 ─────────────── -->
-  <section class="part" id="background">
+  <section class="part" id="done">
     <div class="sec-head">
-      <div class="secnum">01 &middot; Background</div>
-      <h2>What we already have, and the problem</h2>
+      <div class="secnum">01 &middot; Done</div>
+      <h2>Where things stand</h2>
       <p>The WING console (the full-size WING-BK, with the WING-LIVE recording card) and two VocoPro
-      Digital-Play-16 wireless sets were bought on the June 2025 B&amp;H quote: $6,629.49 in total,
-      paid for in part by a $5,000 Inyo County grant.</p>
-      <p>The two VocoPro sets turned out to be identical in the way that matters. Each is locked to the
-      same fixed 900&nbsp;MHz frequency groups, B1&ndash;B4, and nothing can be retuned, so only one can be
-      on at a time. That leaves 16 usable channels, not 32. The fix: keep one set, sell the other, and add
-      16 channels in a different band.</p>
+      Digital-Play-16 wireless sets were bought on the June 2025 B&amp;H quote: $6,629.49 in total, paid for
+      in part by a $5,000 Inyo County grant. The two VocoPro sets turned out to be identical: same fixed
+      900&nbsp;MHz frequencies, nothing can be retuned, so only one can be on at a time. That left 16 usable
+      body mics. Everything since has been about getting back to 32.</p>
     </div>
+    <ul class="checks">
+      <li class="done"><b>Flight case ordered.</b> ProX XS-BWING W, $444.95, Sweetwater, October 6. It fits
+        the WING-BK: Behringer documents it as the same console as the original WING in a different color.</li>
+      <li class="done"><b>Stage box ordered.</b> Behringer S32, $689.00, same order. With the WING's own
+        inputs that's 40 mic inputs &mdash; enough for all 36 wireless mics plus 4 more.</li>
+      <li class="done"><b>Our handhelds identified.</b> A Phenyx PTU-5000: four handheld mics on fixed
+        frequencies that can't be changed &mdash; 541.90, 546.30, 561.60 and 568.65&nbsp;MHz.</li>
+      <li class="done"><b>Phenyx asked, and answered.</b> No more than 16 Phenyx mics running at once, and
+        maybe fewer depending on the location. They suggested mixing Phenyx systems with another brand.</li>
+      <li class="done"><b>Radio conditions at the school checked.</b> Only one TV station reaches the school
+        (KVME, 506&ndash;512&nbsp;MHz, 12 miles away); the mountains block the rest. Everything else from 470
+        to 608&nbsp;MHz is free. This is a terrain-based prediction, not a measurement on site.</li>
+      <li class="done"><b>Frequency plans worked out.</b> For both wireless plans below, there is a set of
+        frequencies that works. See section 2.</li>
+    </ul>
     <div class="pair">
       <figure>
         <a href="photos/wing-ours.jpg"><img src="photos/wing-ours.jpg" alt="Playhouse 395's black Behringer WING console on a carpeted floor, seen at an angle from the front: the touch screen, channel displays and faders." width="1024" height="768" loading="lazy"></a>
@@ -262,28 +284,159 @@
   </section>
 
   <!-- ─────────────── 02 ─────────────── -->
-  <section class="part" id="purchases">
+  <section class="part" id="wireless">
     <div class="sec-head">
-      <div class="secnum">02 &middot; Decided &middot; two ordered</div>
-      <h2>The three purchases</h2>
-      <p>The case and the stage box were ordered from Sweetwater on October 6, 2026, with free shipping.
-      The Phenyx kits are still to buy.</p>
+      <div class="secnum">02 &middot; To decide</div>
+      <h2>Wireless: two plans</h2>
+      <p>We keep one VocoPro set (16 body mics) and the Phenyx handhelds (4). We need <b>16 more body
+      mics</b>. The limits that shape this:</p>
+    </div>
+    <ul class="notes">
+      <li><b>Phenyx: 16 at most.</b> Counting our 4 handhelds, that leaves room for 12 new Phenyx body mics at
+        the very most.</li>
+      <li><b>VocoPro at 900&nbsp;MHz: full.</b> Their 900&nbsp;MHz gear has only four frequency sets, and the
+        set we keep uses all four. A second 900&nbsp;MHz set is what failed the first time.</li>
+      <li><b>VocoPro can add 4 more, in a different band.</b> The Digital-Quad-B-500 is a 4-body-mic system in
+        the 500&nbsp;MHz band. VocoPro's own 20-mic package is exactly our 16 plus this.</li>
+      <li><b>The free stretch is 470&ndash;504&nbsp;MHz.</b> Phenyx uses 520&ndash;602&nbsp;MHz, the TV station
+        sits at 506&ndash;512, and anything below 504 stays out of both.</li>
+    </ul>
+
+    <div class="t-scroll">
+      <table class="pkg">
+        <thead><tr><th>What we buy</th><th>Plan 1</th><th>Plan 2</th></tr></thead>
+        <tbody>
+          <tr><td class="k">Phenyx PTU-6000-8B (8 body mics)</td><td class="n">$597.99</td><td class="n">$597.99</td></tr>
+          <tr><td class="k">Phenyx PTU-7000-4B (4 body mics)</td><td class="n">$319.99</td><td class="n">&mdash;</td></tr>
+          <tr><td class="k">VocoPro Digital-Quad-B-500 (4 body mics)</td><td class="n">~$389</td><td class="n">~$389</td></tr>
+          <tr><td class="k">4 &times; Samson Concert 88x (4 body mics)</td><td class="n">&mdash;</td><td class="n">~$820</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Total, before tax</td><td class="n">~$1,307</td><td class="n">~$1,810</td></tr>
+        </tfoot>
+      </table>
     </div>
 
     <div class="t-scroll">
       <table class="pkg">
-        <thead><tr><th>Item</th><th>Status</th><th>Price</th></tr></thead>
+        <thead><tr><th>What we end up with</th><th>Plan 1</th><th>Plan 2</th></tr></thead>
         <tbody>
-          <tr><td class="k">ProX XS-BWING W flight case</td><td><span class="flag">Ordered</span></td><td class="n">$444.95</td></tr>
-          <tr><td class="k">Behringer S32 stage box</td><td><span class="flag">Ordered</span></td><td class="n">$689.00</td></tr>
-          <tr><td class="k">Sales tax on the order</td><td></td><td class="n">$99.22</td></tr>
-          <tr><td class="k">Phenyx Pro PTU-6000-8B &times;2</td><td><span class="flag rec">To buy</span></td><td class="n">$1,195.98</td></tr>
+          <tr><td class="k">VocoPro body mics</td><td class="n">20</td><td class="n">20</td></tr>
+          <tr><td class="k">Phenyx body mics</td><td class="n">12</td><td class="n">8</td></tr>
+          <tr><td class="k">Samson body mics</td><td class="n">&mdash;</td><td class="n">4</td></tr>
+          <tr><td class="k">Phenyx handhelds</td><td class="n">4</td><td class="n">4</td></tr>
+          <tr><td class="k">Phenyx mics running at once</td><td class="n">16 &mdash; the limit</td><td class="n">12 &mdash; 4 spare</td></tr>
         </tbody>
         <tfoot>
-          <tr><td>Ordered so far</td><td></td><td class="n">$1,233.17</td></tr>
-          <tr><td>All three</td><td>Phenyx tax not yet known</td><td class="n">$2,429.15</td></tr>
+          <tr><td>All at once</td><td class="n">32 + 4</td><td class="n">32 + 4</td></tr>
         </tfoot>
       </table>
+    </div>
+
+    <div class="split">
+      <div class="col down">
+        <h3>Plan 1 &middot; ~$1,307 &middot; at the limit</h3>
+        <ul>
+          <li><b>Cheapest way to the goal.</b> $500 less than plan 2.</li>
+          <li><b>Runs Phenyx at exactly 16,</b> the most they recommend. Their words: &ldquo;it might not be able
+            to reach 16.&rdquo;</li>
+          <li><b>The frequency plan only works with looser spacing</b> than the usual rule (below). Expect the
+            occasional noise or dropout when certain actors stand close together &mdash; the kind of problem
+            that comes and goes and is hard to pin down.</li>
+          <li><b>Fallback if it misbehaves:</b> return the PTU-7000-4B and buy 4 Samson instead, which turns it
+            into plan 2. Phenyx charges 10&ndash;30% to take back a used item, so $32&ndash;$96.</li>
+        </ul>
+      </div>
+      <div class="col up">
+        <h3>Plan 2 &middot; ~$1,810 &middot; room to spare</h3>
+        <ul>
+          <li><b>Phenyx at 12</b>, four under their limit.</li>
+          <li><b>A frequency plan exists that meets the usual spacing rule,</b> so the problem in plan 1 is
+            designed out rather than tested for.</li>
+          <li><b>Three brands to look after</b> instead of two: VocoPro, Phenyx and Samson, each with its own
+            headsets and settings.</li>
+          <li><b>The Samson kits sit at 470&ndash;494&nbsp;MHz</b>, well clear of everything else. In stock at
+            Sweetwater, B&amp;H and Walmart at the time of writing.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note"><b>Check before ordering either plan: the VocoPro Digital-Quad-B-500's frequencies.</b>
+    VocoPro says each of its 4 channels has &ldquo;six switchable frequencies&rdquo; in the 500&nbsp;MHz band,
+    but doesn't say which. &ldquo;500&nbsp;MHz&rdquo; covers 470&ndash;608, and the Phenyx gear is in it too.
+    If those frequencies are below 504&nbsp;MHz, both plans stand. If they're in 520&ndash;602, the VocoPro
+    add-on lands on top of the Phenyx gear and is out; its 4 mics would come from Samson instead, which makes
+    plan 1 about $1,740 and plan 2 about $2,240. The manual or one email to VocoPro settles it.</div>
+
+    <div class="sec-head">
+      <h3>Why there's a limit at all</h3>
+      <p>Mics on different frequencies don't hear each other. The problem is that wireless gear is slightly
+      imperfect: two transmitters together also give off faint copies of their signals at predictable
+      frequencies (twice one minus the other). If a copy lands on a frequency another mic is using, that mic
+      picks up noise. Our own handhelds at 546.30 and 561.60&nbsp;MHz, for example, put a copy at 531.00. The
+      number of copies grows much faster than the number of mics &mdash; 240 of the simplest kind with 16
+      mics, against 132 with 12 &mdash; and every mic has to avoid all of them. That's what Phenyx's 16
+      describes. The usual rule is to keep every mic at least 250&nbsp;kHz from every copy. At 12 Phenyx
+      mics that works. At 16 it only works if the weaker copies, the ones that need three transmitters close
+      together, are allowed within 100&nbsp;kHz.</p>
+    </div>
+
+    <details>
+      <summary>Frequency plans, for whoever sets up</summary>
+      <ul>
+        <li><b>Fixed, can't change:</b> Phenyx PTU-5000 handhelds 541.90, 546.30, 561.60, 568.65&nbsp;MHz.</li>
+        <li><b>Plan 1, PTU-6000 channels 1&ndash;8:</b> 520.65, 530.55, 540.90, 551.95, 562.75, 572.55, 587.55,
+          595.75&nbsp;MHz. <b>PTU-7000 channels 1&ndash;4:</b> 538.30, 555.10, 580.90, 598.00&nbsp;MHz.</li>
+        <li><b>Plan 2, PTU-6000 channels 1&ndash;8:</b> 520.15, 530.30, 541.15, 554.20, 563.25, 572.05, 586.05,
+          600.75&nbsp;MHz.</li>
+        <li><b>Not yet in either plan:</b> the VocoPro 500&nbsp;MHz add-on and the Samson kits. Their frequencies
+          go into the same plan before the first show, using Shure's free Wireless Workbench software, which
+          can model other brands.</li>
+        <li><b>Set up in this order:</b> handhelds on, then the VocoPro and Samson mics, then set the Phenyx
+          receivers to the planned frequencies by hand (don't rely on auto-scan) and lock them.</li>
+        <li><b>Labels:</b> Phenyx packs A1&ndash;A8 (and B1&ndash;B4 for the PTU-7000 in plan 1), matched on
+          the receivers and the mixer.</li>
+      </ul>
+    </details>
+
+    <div class="items">
+      <article class="item">
+        <div class="shots">
+          <figure>
+            <a href="photos/phenyx-kit.jpg"><img src="photos/phenyx-kit.jpg" alt="The Phenyx Pro PTU-6000-8B kit: eight bodypack transmitters above the slim eight-channel receiver with four antennas." width="1000" height="1000" loading="lazy"></a>
+          </figure>
+          <figure>
+            <a href="photos/phenyx-receiver.jpg"><img src="photos/phenyx-receiver.jpg" alt="Front of the Phenyx Pro PWR-6000 eight-channel receiver, two displays showing four channels each." width="1000" height="300" loading="lazy"></a>
+            <figcaption>The PTU-6000-8B, and its receiver.</figcaption>
+          </figure>
+        </div>
+        <div class="item-body">
+          <div class="item-head">
+            <h3>In both plans</h3>
+            <span class="t">Phenyx Pro PTU-6000-8B</span>
+            <span class="n">$597.99 &middot; phenyxpro.com</span>
+          </div>
+          <p>8 bodypacks, 8 headset/lavalier mics, one receiver. Each of its 8 channels tunes within its own
+          slice of 520&ndash;602&nbsp;MHz, so it can be set around the fixed handhelds. Buy from phenyxpro.com
+          or Phenyx's own Amazon store &mdash; the warranty only holds from an authorized seller. Phenyx refunds
+          within 30 days only if it's unused and in the original box.</p>
+          <p><b>Plan 1 adds the PTU-7000-4B</b> ($319.99): 4 more bodypacks and mics with its own receiver,
+          tuning within 538&ndash;600&nbsp;MHz. <b>Both plans add the VocoPro Digital-Quad-B-500</b> (~$389 at
+          B&amp;H, list $519): 4 bodypacks with headset and lavalier mics. <b>Plan 2 adds four Samson Concert 88x
+          headset systems</b> in the K band, 470&ndash;494&nbsp;MHz (~$191&ndash;$205 each). Samson says up to 8
+          of those run together, so 4 is comfortable.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ─────────────── 03 ─────────────── -->
+  <section class="part" id="ordered">
+    <div class="sec-head">
+      <div class="secnum">03 &middot; Ordered</div>
+      <h2>Case and stage box</h2>
+      <p>Ordered from Sweetwater on October 6, 2026, with free shipping: $444.95 and $689.00, plus $99.22
+      tax, $1,233.17 in all.</p>
     </div>
 
     <div class="items">
@@ -300,61 +453,17 @@
         </div>
         <div class="item-body">
           <div class="item-head">
-            <h3>1 &middot; Flight case</h3>
+            <h3>Flight case</h3>
             <span class="t">ProX XS-BWING W</span>
             <span class="n"><span class="flag">Ordered</span> $444.95 &middot; Sweetwater</span>
           </div>
-          <p>About 37&Prime; &times; 26.5&Prime; &times; 12&Prime; and 45&nbsp;lb empty. No doghouse: the case is
-          lighter and smaller, and the cables come off for transport.</p>
-          <p>Chosen over the Gator GTOURWINGNDH ($449.99) because it rolls on four 4&Prime; casters, two
-          locking, which suit indoor floors; the Gator's tilt-and-go wheels are the better choice for gravel
-          and grass.</p>
-          <p><b>It fits the WING-BK.</b> The black edition is the same console in a different colour:
-          Behringer's own guide covers &ldquo;WING and WING-BK&rdquo; together, at the same 201 &times; 870
-          &times; 575&nbsp;mm and 24&nbsp;kg, and Thomann sells the WING-BK bundled with a case made for the
-          original WING. ProX's rear photo shows the connections clear of the base wall. ProX's listing only
-          says &ldquo;WING&rdquo;, so test-fit it when it arrives: the console seated in the base, rear panel
-          reachable.</p>
-        </div>
-      </article>
-
-      <article class="item">
-        <div class="shots">
-          <figure>
-            <a href="photos/phenyx-kit.jpg"><img src="photos/phenyx-kit.jpg" alt="The Phenyx Pro PTU-6000-8B kit: eight bodypack transmitters above the slim eight-channel receiver with four antennas." width="1000" height="1000" loading="lazy"></a>
-          </figure>
-          <figure>
-            <a href="photos/phenyx-receiver.jpg"><img src="photos/phenyx-receiver.jpg" alt="Front of the Phenyx Pro PWR-6000 eight-channel receiver, two displays showing four channels each." width="1000" height="300" loading="lazy"></a>
-            <figcaption>One kit, and its receiver.</figcaption>
-          </figure>
-        </div>
-        <div class="item-body">
-          <div class="item-head">
-            <h3>2 &middot; Wireless</h3>
-            <span class="t">Phenyx Pro PTU-6000-8B &times;2</span>
-            <span class="n"><span class="flag rec">To buy</span> $597.99 each &middot; $1,195.98</span>
-          </div>
-          <p>Eight channels per kit in the <b>520&ndash;602&nbsp;MHz</b> band, well clear of the VocoPro's
-          900&nbsp;MHz, so the two systems never collide. Two kits is the most this line supports together,
-          which is exactly 16 channels. Each kit comes with 8 PWB-7 bodypacks, 8 headset/lavalier combos,
-          4 BNC antennas, a power adapter and a &frac14;-inch audio cable.</p>
-          <p>Buy from <b>phenyxpro.com</b> or Phenyx Pro's official Amazon store &mdash; the one-year warranty
-          only holds when bought from an authorized seller. Neither Sweetwater nor B&amp;H stocks it.</p>
-          <p>The two kits cover the same range, so they have to be set apart by hand:</p>
-          <ol class="steps">
-            <li>Power on kit 1 and its 8 bodypacks, scan, and lock.</li>
-            <li>With kit 1 still running, scan kit 2 so it picks frequencies around kit 1. Then lock.</li>
-            <li>Label packs, receivers and mixer channels <b>A1&ndash;A8</b> and <b>B1&ndash;B8</b>.</li>
-            <li>Re-scan at every venue. Local TV signals, including the Owens Valley translators, change from
-              place to place.</li>
-          </ol>
-          <div class="note"><b>Before ordering: check our Phenyx handhelds.</b> We already own Phenyx
-          handheld mics, and Phenyx's current handheld systems run in the same 500&ndash;600&nbsp;MHz range as
-          these kits. Two systems on the same frequencies can't run at once &mdash; the same clash that stopped
-          the two VocoPro sets. Unlike the VocoPros, Phenyx systems scan and can be tuned apart, but only so
-          far: Phenyx rates the PTU-6000 for two systems together, and the handhelds would make a third.
-          Read the model off the handheld receiver, then email Phenyx support for one frequency plan that
-          covers both 8B kits and the handhelds, all running at the same time.</div>
+          <p>About 37&Prime; &times; 26.5&Prime; &times; 12&Prime; and 45&nbsp;lb empty. No doghouse: lighter
+          and smaller, and the cables come off for transport. Four 4&Prime; casters, two locking, for indoor
+          floors.</p>
+          <p><b>It fits the WING-BK.</b> Behringer's own guide covers &ldquo;WING and WING-BK&rdquo; together,
+          at the same 201 &times; 870 &times; 575&nbsp;mm and 24&nbsp;kg, and Thomann sells the WING-BK bundled
+          with a case made for the original WING. When it arrives, seat the console in the base and check the
+          rear panel is reachable.</p>
         </div>
       </article>
 
@@ -367,23 +476,21 @@
         </div>
         <div class="item-body">
           <div class="item-head">
-            <h3>3 &middot; Stage box</h3>
+            <h3>Stage box</h3>
             <span class="t">Behringer S32</span>
             <span class="n"><span class="flag">Ordered</span> $689.00 &middot; Sweetwater</span>
           </div>
-          <p>The S32 puts <b>32 mic inputs</b> at the far end of
-          a single AES50 cable. With the WING's own 8 mic inputs and 8 line inputs, that makes <b>40 mic and
-          8 line</b> &mdash; enough for all 32 wireless channels plus 8 more mics for a small pit, announce or
-          talkback.</p>
+          <p>32 mic inputs at the far end of one network cable to the WING. With the WING's own 8 mic inputs
+          that's 40, and every wireless mic gets its own channel:</p>
           <div class="t-scroll">
             <table class="spec">
               <thead><tr><th>Where</th><th>Inputs</th><th>Used for</th></tr></thead>
               <tbody>
-                <tr><td class="k">S32 stage box</td><td class="n">32 mic</td><td>VocoPro 16 + Phenyx 16</td></tr>
-                <tr><td class="k">WING, local</td><td class="n">8 mic</td><td>Pit, announce, talkback</td></tr>
+                <tr><td class="k">S32 stage box</td><td class="n">32 mic</td><td>All 32 body mics</td></tr>
+                <tr><td class="k">WING, local</td><td class="n">8 mic</td><td>4 handhelds, 4 left for pit or announce</td></tr>
                 <tr><td class="k">WING, aux in</td><td class="n">8 line</td><td>Keyboards, playback</td></tr>
               </tbody>
-              <tfoot><tr><td>Total</td><td class="n">48</td><td>The WING mixes 48 + 8 aux</td></tr></tfoot>
+              <tfoot><tr><td>Total</td><td class="n">48</td><td>40 mic, 8 line</td></tr></tfoot>
             </table>
           </div>
           <p>If that ever runs short, a <b>Behringer SD16</b> chains off the S32 on the same cable for 16 more
@@ -394,10 +501,10 @@
     </div>
   </section>
 
-  <!-- ─────────────── 03 ─────────────── -->
+  <!-- ─────────────── 04 ─────────────── -->
   <section class="part" id="vocopro">
     <div class="sec-head">
-      <div class="secnum">03 &middot; Decided</div>
+      <div class="secnum">04 &middot; Decided</div>
       <h2>The VocoPro sets: keep one, sell one</h2>
     </div>
     <figure class="wide-fig">
@@ -408,22 +515,22 @@
       <div class="col up">
         <h3>Keep: one VocoPro Digital-Play-16</h3>
         <ul>
-          <li><b>16 channels at 900&nbsp;MHz</b>, four 4-channel receivers, fixed groups B1&ndash;B4.</li>
-          <li><b>Works alongside the Phenyx kits</b> &mdash; different band, no shared frequencies.</li>
+          <li><b>16 body mics at 900&nbsp;MHz</b>, four 4-channel receivers, fixed groups B1&ndash;B4.</li>
+          <li><b>Nothing else we own or plan to buy uses 900&nbsp;MHz,</b> so it never interferes with them.</li>
           <li><b>Its own XLR snakes</b> run its 16 outputs into the S32.</li>
-          <li><b>Assign by system</b>, e.g. ensemble on one, leads on the other. Interference is much
-            easier to trace during tech.</li>
+          <li><b>Both plans add VocoPro's 500&nbsp;MHz quad</b> to it, for 20 VocoPro body mics &mdash; the same
+            mix as VocoPro's own 20-mic package.</li>
         </ul>
       </div>
       <div class="col down">
         <h3>Sell: the other, complete</h3>
         <ul>
-          <li><b>Estimated $650&ndash;$850 used.</b> Budget 900&nbsp;MHz gear does not hold value the way
-            Shure or Sennheiser does. A return is off the table: opened, and over a year old.</li>
+          <li><b>Estimated $650&ndash;$850 used.</b> Budget 900&nbsp;MHz gear doesn't hold value the way Shure or
+            Sennheiser does. A return is off the table: opened, and over a year old.</li>
           <li><b>List it as &ldquo;open box, unused&rdquo;</b> if the packs were never worn.</li>
-          <li><b>Keep it whole:</b> all 16 bodypacks, headsets, lavs, XLR snakes, mounting brackets,
-            original box and warranty card. Not the rechargeable batteries &mdash; those stay with us.</li>
-          <li><b>Say it is a full B1&ndash;B4 set</b>, so VocoPro owners know whether it will collide with
+          <li><b>Keep it whole:</b> all 16 bodypacks, headsets, lavs, XLR snakes, mounting brackets, original
+            box and warranty card. Not the rechargeable batteries &mdash; those stay with us.</li>
+          <li><b>Say it's a full B1&ndash;B4 set</b>, so VocoPro owners know whether it will collide with
             theirs.</li>
           <li><b>Where:</b> Reverb, or locally to schools and churches.</li>
         </ul>
@@ -431,51 +538,54 @@
     </div>
   </section>
 
-  <!-- ─────────────── 04 ─────────────── -->
+  <!-- ─────────────── 05 ─────────────── -->
   <section class="part" id="needed">
     <div class="sec-head">
-      <div class="secnum">04 &middot; Proposed</div>
+      <div class="secnum">05 &middot; Proposed</div>
       <h2>Also needed</h2>
-      <p>What it takes to connect, power and run the three purchases. These are <b>proposals, not
-      decisions</b>. Where a price is given it comes from a retailer listing; the rest are not priced yet.</p>
+      <p>What it takes to connect, power and run all of it. These are <b>proposals, not decisions</b>. Where a
+      price is given it comes from a retailer listing; the rest aren't priced yet.</p>
     </div>
 
     <div class="t-scroll">
       <table class="need">
         <thead><tr><th>Item</th><th>Status</th><th>Estimate</th></tr></thead>
         <tbody>
-          <tr><td class="k">Shielded etherCON Cat5e, S32 &rarr; WING
-            <span class="d">The WING's panel says <b>&ldquo;shielded cable (STP) only&rdquo;</b>; unshielded
-            cable drops out. Example: ProCo C270201-100F, 100&nbsp;ft, $109.99 at Sweetwater ($169.99 with a
-            reel); the Whirlwind ENC2S100 is an alternative. The length depends on where the receivers live.
+          <tr><td class="k">Shielded network cable, S32 &rarr; WING
+            <span class="d">The WING's panel says <b>&ldquo;shielded cable (STP) only&rdquo;</b>; ordinary
+            network cable drops out. Example: ProCo C270201-100F, 100&nbsp;ft, $109.99 at Sweetwater ($169.99
+            with a reel); Whirlwind ENC2S100 is an alternative. The length depends on where the receivers live.
             Add a short spare.</span></td>
             <td><span class="flag">Needed</span></td><td class="n">~$110</td></tr>
-          <tr><td class="k">16 short XLR cables, Phenyx &rarr; S32
-            <span class="d">About 3&nbsp;ft each. Each Phenyx receiver has 8 XLR outputs, but the kits ship
-            with a &frac14;-inch cable only.</span></td>
+          <tr><td class="k">Short XLR cables, receivers &rarr; S32
+            <span class="d">About 3&nbsp;ft each, one per channel on the new receivers and the handheld receiver:
+            roughly 20. The Phenyx kits ship with a &frac14;-inch cable only. The VocoPro set we keep has its
+            own.</span></td>
             <td><span class="flag">Needed</span></td><td class="n">Not priced</td></tr>
           <tr><td class="k">Power strip and heavy-duty extension cord
-            <span class="d">Six wall adapters to plug in (4 VocoPro receivers, 2 Phenyx), plus the S32's
-            power cord. A strip with widely spaced outlets takes the adapters without blocking its
-            neighbours.</span></td>
+            <span class="d">Every receiver runs off a wall adapter: 8 in plan 1, 11 in plan 2 (each Samson has
+            its own). Plus the S32's power cord. A strip with widely spaced outlets fits the adapters.</span></td>
             <td><span class="flag">Needed</span></td><td class="n">Not priced</td></tr>
-          <tr><td class="k">More AA NiMH batteries
-            <span class="d">Every bodypack takes 2 &times; AA. The quote's 64 Watson NiMH cover 16 VocoPro
-            + 16 Phenyx packs exactly, with none left to rotate in while a set charges. They stay with
-            Playhouse 395, not with the set being sold.</span></td>
-            <td><span class="flag rec">Recommended</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">More AA rechargeable batteries
+            <span class="d">Every bodypack and handheld takes 2 AA: 72 for all 36 mics. The quote's 64 NiMH
+            fall short before anything is charging. They stay with Playhouse 395, not with the set being
+            sold.</span></td>
+            <td><span class="flag">Needed</span></td><td class="n">Not priced</td></tr>
+          <tr><td class="k">A scanner, tinySA Ultra
+            <span class="d">Shows what's on the air at the venue before a show, and finds the cause when a mic
+            misbehaves.</span></td>
+            <td><span class="flag rec">Recommended</span></td><td class="n">~$120 &ndash; $130</td></tr>
           <tr><td class="k">Spare bodypacks, Phenyx PWB-7
-            <span class="d">Plan one or two, so a failed pack does not take a mic out for the night.
-            $49.99 each.</span></td>
+            <span class="d">One or two, so a failed pack doesn't take a mic out for the night. Fits both the
+            PTU-6000 and the PTU-7000. $49.99 each.</span></td>
             <td><span class="flag rec">Recommended</span></td><td class="n">$50 &ndash; $100</td></tr>
           <tr><td class="k">Headset upgrades for leads
-            <span class="d">The included headsets are the weak point of budget systems. Better headsets on
-            the leads &mdash; Matilda, Trunchbull &mdash; improve the sound more than any receiver
-            choice.</span></td>
+            <span class="d">The included headsets are the weak point of budget systems. Better headsets on the
+            leads &mdash; Matilda, Trunchbull &mdash; improve the sound more than any receiver choice.</span></td>
             <td><span class="flag rec">Recommended</span></td><td class="n">Not priced</td></tr>
           <tr><td class="k">WING network control
-            <span class="d">A small Wi-Fi router on the WING's Ethernet port, so the board can be mixed from
-            a tablet with Behringer's WING Copilot app (iOS and Android).</span></td>
+            <span class="d">A small Wi-Fi router on the WING's network port, so the board can be mixed from a
+            tablet with Behringer's WING Copilot app.</span></td>
             <td><span class="flag opt">Optional</span></td><td class="n">Not priced</td></tr>
           <tr><td class="k">Consumables
             <span class="d">Mic tape, mic belts or pouches, sweat covers.</span></td>
@@ -485,14 +595,14 @@
     </div>
   </section>
 
-  <!-- ─────────────── 05 ─────────────── -->
+  <!-- ─────────────── 06 ─────────────── -->
   <section class="part" id="storage">
     <div class="sec-head">
-      <div class="secnum">05 &middot; Options</div>
+      <div class="secnum">06 &middot; Options</div>
       <h2>Storing the mics</h2>
-      <p>Out of the cardboard boxes. There are 32 bodypacks to keep, each with a headset and a lavalier
-      whose thin cables tangle, plus batteries and chargers &mdash; kept at the theatre, and now and then
-      carried to another venue. These are <b>options, not a decision</b>.</p>
+      <p>Out of the cardboard boxes. 32 bodypacks, each with a headset and a lavalier whose thin cables
+      tangle, plus 4 handhelds, batteries and chargers &mdash; kept at the theatre, and now and then carried
+      to another venue. These are <b>options, not a decision</b>.</p>
     </div>
 
     <div class="t-scroll">
@@ -501,8 +611,8 @@
         <tbody>
           <tr><td class="k">A numbered pouch for every channel
             <span class="d">One zip mesh pouch per mic: the pack, its headset, its lav and spare batteries
-            together, labelled to match the channel (A1&ndash;B8, and the VocoPro channels). Nothing tangles
-            and nothing gets separated. Example: vxb mesh zipper pouches with label pockets, $49.98 for 20.</span></td>
+            together, labeled to match the channel. Nothing tangles and nothing gets separated. Example: vxb
+            mesh zipper pouches with label pockets, $49.98 for 20.</span></td>
             <td><span class="flag pick">Suggested</span></td><td class="n">~$100</td></tr>
           <tr><td class="k">A hard case to carry the pouches
             <span class="d">The pouches go into a lockable, weatherproof case for storage and for trips.
@@ -523,37 +633,40 @@
             every pack. A good permanent home, but heavy to take anywhere else.</span></td>
             <td><span class="flag opt">Alternative</span></td><td class="n">$290</td></tr>
           <tr><td class="k">Purpose-built wireless cases
-            <span class="d">SKB iSeries 3i-1813-7WMC, $309.99, holds only 8 bodypacks (and 8 handheld mics we
-            don't have). Nothing off the shelf is made for 16 bodypacks.</span></td>
+            <span class="d">SKB iSeries 3i-1813-7WMC, $309.99, holds only 8 bodypacks. Nothing off the shelf is
+            made for 16.</span></td>
             <td><span class="flag opt">Not a fit</span></td><td class="n">~$1,240</td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="note"><b>The suggestion:</b> numbered pouches inside one or two Apache cases, about
-    <b>$160&ndash;$220</b>, with a backstage organizer for show nights. It solves the tangling, keeps each mic
-    with its own pack, locks, and travels. Take the batteries out before storing, add a few silica gel
-    packs, and measure a VocoPro pack before buying, since its size isn't published.</div>
+    <b>$160&ndash;$220</b>, with a backstage organizer for show nights. It stops the tangling, keeps each mic
+    with its own pack, locks, and travels. Take the batteries out before storing, add a few silica gel packs,
+    and measure a VocoPro pack before buying, since its size isn't published.</div>
   </section>
 
-  <!-- ─────────────── 06 ─────────────── -->
+  <!-- ─────────────── 07 ─────────────── -->
   <section class="part" id="open">
     <div class="sec-head">
-      <div class="secnum">06 &middot; To do</div>
-      <h2>Still open</h2>
+      <div class="secnum">07 &middot; To do</div>
+      <h2>Still to do</h2>
+      <p>In order. The first two decide the wireless purchase.</p>
     </div>
     <ul class="checks">
-      <li><b>Phenyx handhelds vs. the new kits</b> &mdash; before ordering the kits. Find the model of our
-        handheld system, and get Phenyx's frequency plan for both 8B kits and the handhelds running at once,
-        so we don't repeat the two-VocoPro problem.</li>
-      <li><b>Where the receivers live</b> &mdash; front of house or backstage. That sets where the S32 goes
-        and how long the shielded cable has to be.</li>
-      <li><b>List the non-wireless sources</b> &mdash; band, playback, front-of-house mics &mdash; to confirm
-        40 mic inputs is enough.</li>
-      <li><b>VocoPro line-level output.</b> If the receivers can output at line level, some channels could go
-        into the WING's aux inputs and free up mic preamps.</li>
-      <li><b>Pick a mic storage option</b> from section 5.</li>
+      <li><b>Get the VocoPro Digital-Quad-B-500's frequencies</b> from its manual or from VocoPro. Below
+        504&nbsp;MHz, both plans stand; inside 520&ndash;602, swap it for Samson.</li>
+      <li><b>Choose plan 1 or plan 2</b> (section 2).</li>
+      <li><b>Order the wireless</b>, plus the batteries and short XLR cables.</li>
+      <li><b>Plan the frequencies for all 36 mics together</b> in Wireless Workbench, and scan the theatre
+        with the tinySA.</li>
+      <li><b>Run a full test in the theatre</b> &mdash; every mic on, actors in their places &mdash; inside
+        Phenyx's 30-day window. In plan 1 this is the test that decides whether the fallback is needed.</li>
+      <li><b>Decide where the receivers live</b> &mdash; front of house or backstage. That sets where the S32
+        goes and how long the shielded cable has to be.</li>
       <li><b>When the case arrives,</b> seat the WING in the base and check the rear panel is reachable.</li>
+      <li><b>Sell the duplicate VocoPro set</b> (section 4).</li>
+      <li><b>Pick a mic storage option</b> (section 6).</li>
     </ul>
   </section>
 
@@ -561,31 +674,37 @@
     <summary>Where these figures come from</summary>
     <ul>
       <li>The June 2025 B&amp;H quote &mdash; what was bought, quantities, prices and tax.</li>
-      <li>The Sweetwater order of October 6, 2026 &mdash; the case and stage box as bought: $444.95 and
-        $689.00, $99.22 tax, free shipping, $1,233.17 in all.</li>
-      <li>ProX XS-BWING W &mdash; <a href="https://www.proxdirect.com/products/view/Fits-Behringer-Wing-Digital-Mixer-Console-Flight-Case-w-Low-Profile-Wheels-XS-BWINGW">ProX</a> (specifications and photos),
-        <a href="https://www.idjnow.com/prox-xs-bwing-w-case.html">iDJNow</a>,
-        <a href="https://www.fullcompass.com/prod/623711-prox-xs-bwing-w-mixer-case-for-behinger-wing-with-wheels">Full Compass</a>,
-        <a href="https://www.sweetwater.com/store/detail/BWINGW--prox-xs-bwing-with-ata-flight-case-for-behringer-wing-mixer-console">Sweetwater</a>.</li>
-      <li>Gator GTOURWINGNDH, the case not chosen &mdash;
-        <a href="https://soundpro.com/products/gator-gtourwingndh-flight-case-for-behringer-wing-mixer">SoundPro</a>.</li>
-      <li>Phenyx Pro &mdash; <a href="https://phenyxpro.com/products/ptu-6000-8b">PTU-6000-8B</a> (and photos),
+      <li>The Sweetwater order of October 6, 2026 &mdash; the case and stage box as bought.</li>
+      <li>Phenyx support, by email on October 8, 2026 &mdash; the 16-mic limit and the suggestion to mix in
+        another brand.</li>
+      <li>Phenyx Pro &mdash; <a href="https://phenyxpro.com/products/ptu-6000-8b">PTU-6000-8B</a>,
+        <a href="https://phenyxpro.com/products/ptu-7000-4b">PTU-7000-4B</a>,
+        <a href="https://phenyxpro.com/products/ptu-5000">PTU-5000</a>,
         <a href="https://phenyxpro.com/products/pwr-6000-receiver">PWR-6000 receiver</a>,
-        <a href="https://phenyxpro.com/products/pwb-7-bodypack">PWB-7 bodypack</a>, and the PTU-71/7000/6000
-        owner&rsquo;s manual (frequencies, batteries, warranty terms).</li>
-      <li>Behringer S32 &mdash;
-        <a href="https://www.fullcompass.com/prod/278127-behringer-s32-digital-snake-stagebox-with-32-inputs-16-outputs">Full Compass</a>,
-        <a href="https://www.sweetwater.com/store/detail/S32IO--behringer-s32-32-channel-stage-box">Sweetwater</a>;
-        photo via <a href="https://www.musicarts.com/behringer-s32-32-input-digital-stage-box-main0126591">Music &amp; Arts</a>.</li>
+        <a href="https://phenyxpro.com/products/pwb-7-bodypack">PWB-7 bodypack</a>,
+        <a href="https://phenyxpro.com/policies/refund-policy">refund policy</a>, and the labels on our own
+        PTU-5000 handhelds.</li>
+      <li>VocoPro &mdash; <a href="https://vocopro.com/products/performing/wireless-microphones/Digital-Play-16">Digital-Play-16</a>,
+        <a href="https://vocopro.com/products/performing/wireless-microphones/Digital-Play-20">Digital-Play-20</a>,
+        <a href="https://vocopro.com/products/performing/wireless-microphones/Digital-Quad-B-500">Digital-Quad-B-500</a>;
+        its price from <a href="https://www.bhphotovideo.com/c/product/1874625-REG/vocopro_digital_quad_b_500_4_channel_uhf_wireless_mic.html">B&amp;H</a>.</li>
+      <li>Samson Concert 88x, K band &mdash;
+        <a href="https://www.sweetwater.com/store/detail/SWC88XBHS5K--samson-concert-88x-headset-wireless-system-k-band">Sweetwater</a>,
+        <a href="https://www.bhphotovideo.com/c/product/1531558-REG/samson_swc88xbhs5_k_concert_88x_wireless_headset.html">B&amp;H</a>.</li>
+      <li>TV signals at the school &mdash; RabbitEars terrain predictions
+        (<a href="https://www.rabbitears.info/s/3154224">60 miles</a>,
+        <a href="https://www.rabbitears.info/s/3154225">110 miles</a>), and the FCC rule for unlicensed mics,
+        <a href="https://www.ecfr.gov/current/title-47/section-15.236">47 CFR 15.236</a>.</li>
+      <li>Spacing rule &mdash; <a href="https://www.shure.com/en-US/insights/all-about-wireless-intermodulation-distortion">Shure on intermodulation</a>.
+        The frequency plans were computed from Phenyx's published tuning steps.</li>
+      <li>ProX XS-BWING W &mdash; <a href="https://www.proxdirect.com/products/view/Fits-Behringer-Wing-Digital-Mixer-Console-Flight-Case-w-Low-Profile-Wheels-XS-BWINGW">ProX</a>
+        (specifications and photos).</li>
       <li>Behringer &mdash; the <a href="https://www.behringer.com/en/wing/wing-black">WING-BK product page</a> and the
-        <a href="https://cdn-media.empowertribe.com/01a6a424478d4816a85b9ca03f946f9c/QSG_BE_0603-AFC_WING-BK_WW.pdf">&ldquo;WING and WING-BK&rdquo; quick start guide</a>
-        (dimensions and weight, one specification for both); Thomann&rsquo;s
-        <a href="https://www.thomannmusic.com/behringer_wing_bk_case_bundle.htm">WING-BK case bundle</a>.</li>
-      <li>VocoPro &mdash; <a href="https://vocopro.com/products/performing/wireless-microphones/Digital-Play-16">Digital-Play-16</a>
-        (included accessories, receiver dimensions, 900&nbsp;MHz band, photo).</li>
-      <li>Shielded etherCON cable &mdash;
+        <a href="https://cdn-media.empowertribe.com/01a6a424478d4816a85b9ca03f946f9c/QSG_BE_0603-AFC_WING-BK_WW.pdf">&ldquo;WING and WING-BK&rdquo; quick start guide</a>;
+        Thomann&rsquo;s <a href="https://www.thomannmusic.com/behringer_wing_bk_case_bundle.htm">WING-BK case bundle</a>;
+        S32 photo via <a href="https://www.musicarts.com/behringer-s32-32-input-digital-stage-box-main0126591">Music &amp; Arts</a>.</li>
+      <li>Shielded network cable &mdash;
         <a href="https://www.sweetwater.com/store/detail/EtherShld100--pro-co-100-foot-shielded-cat-5e-ethercon-cable">ProCo C270201-100F</a>,
-        <a href="https://www.sweetwater.com/store/detail/EtherShld100Pk--pro-co-c270201-100f-shielded-cat-5e-cable-with-reel-100-foot">with reel</a>,
         <a href="https://www.fullcompass.com/prod/571137-whirlwind-enc2s100-100-shielded-cat5e-ethercon-cable">Whirlwind ENC2S100</a>.</li>
       <li>Behringer WING Copilot &mdash; <a href="https://apps.apple.com/us/app/wing-copilot/id1447618712">App Store</a>,
         <a href="https://play.google.com/store/apps/details?id=musicgroup.wapp">Google Play</a>.</li>
@@ -595,14 +714,13 @@
         <a href="https://www.planooutdoors.com/products/deep-stowaway-3700">Plano StowAway 3700</a>,
         <a href="https://www.harborfreight.com/30-in-5-drawer-mechanics-cart-black-70380.html">U.S. General cart</a>,
         <a href="https://www.skbcases.com/products/i-series-1813-7-wireless-eight-mic-case">SKB 3i-1813-7WMC</a>,
-        and a <a href="https://www.controlbooth.com/threads/wireless-mic-storage.7428/">ControlBooth thread</a> on how
-        theatres store wireless mics.</li>
+        and a <a href="https://www.controlbooth.com/threads/wireless-mic-storage.7428/">ControlBooth thread</a>.</li>
       <li>The WING itself &mdash; the rear-panel label and the &ldquo;shielded cable (STP) only&rdquo; marking.</li>
     </ul>
   </details>
 
   <footer>
-    <p>Playhouse 395 &middot; Bishop, California. Compiled October 2026; updated October 6 with the Sweetwater order.</p>
+    <p>Playhouse 395 &middot; Bishop, California. Compiled October 2026; updated October 9.</p>
   </footer>
 
 </div>
