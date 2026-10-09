@@ -77,6 +77,7 @@ steps:
           --image=${_AR_HOST}/${PROJECT_ID}/${_REPO}/${_SERVICE}:${TAG_NAME}-${SHORT_SHA} \
           --project=${PROJECT_ID} \
           --region=${_REGION} \
+          --ingress=internal-and-cloud-load-balancing \
           --min-instances="$${MIN_INSTANCES}" \
           --set-env-vars="$${ENV_VARS}"
 
