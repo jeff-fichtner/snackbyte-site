@@ -3,6 +3,7 @@ installed:
 - clickup
 - engine
 - git-lifecycle
+- review-loop
 settings:
   auto_execute_hooks: true
 hooks:
@@ -39,6 +40,15 @@ hooks:
     prompt: Sync this feature's card to ClickUp (→ in-design)?
     description: Sync the feature-card after specify (→ in-design)
     condition: null
+  - extension: review-loop
+    command: speckit.review-loop.run
+    enabled: true
+    optional: false
+    priority: 5
+    prompt: Recursively review the spec and fix unambiguous issues?
+    description: 'Review the just-written spec (target: spec) — must run first at
+      this event, before provision/sync/clarify'
+    condition: null
   after_plan:
   - extension: agent-context
     command: speckit.agent-context.update
@@ -74,16 +84,6 @@ hooks:
     description: Sync the feature-card after task generation (holds or returns to
       in-design; tasks written ≠ ready; peels stale analyzed/verifyPassed claims)
     condition: null
-  after_implement:
-  - extension: engine
-    command: speckit.converge
-    enabled: true
-    optional: false
-    priority: 10
-    prompt: Converge the codebase against the spec now?
-    description: 'Auto-continue the lifecycle: converge the codebase against the spec
-      (then converge triggers verify)'
-    condition: null
   after_converge:
   - extension: engine
     command: speckit.engine.verify
@@ -102,6 +102,34 @@ hooks:
     prompt: Sync this feature's card to ClickUp (stays in-development)?
     description: Re-sync after converge (stays in-development until /speckit-engine-verify
       passes)
+    condition: null
+  before_implement:
+  - extension: clickup
+    command: speckit.clickup.sync
+    enabled: true
+    optional: false
+    priority: 15
+    prompt: Sync this feature's card to ClickUp (→ in-development)?
+    description: Sync after the git checkpoint, before code — sets implementStarted;
+      card → in-development
+    condition: null
+  - extension: git-lifecycle
+    command: speckit.git-lifecycle.commit
+    enabled: true
+    optional: false
+    priority: 10
+    prompt: Commit this feature's spec artifacts before implementing?
+    description: Checkpoint the feature's spec artifacts before implementation
+    condition: null
+  after_implement:
+  - extension: engine
+    command: speckit.converge
+    enabled: true
+    optional: false
+    priority: 10
+    prompt: Converge the codebase against the spec now?
+    description: 'Auto-continue the lifecycle: converge the codebase against the spec
+      (then converge triggers verify)'
     condition: null
   after_clarify:
   - extension: clickup
@@ -122,23 +150,14 @@ hooks:
     prompt: Sync this feature's card to ClickUp (→ ready)?
     description: Sync after analyze — sets the analyzed marker; card → ready
     condition: null
-  before_implement:
-  - extension: clickup
-    command: speckit.clickup.sync
-    enabled: true
-    optional: false
-    priority: 15
-    prompt: Sync this feature's card to ClickUp (→ in-development)?
-    description: Sync after the git checkpoint, before code — sets implementStarted;
-      card → in-development
-    condition: null
-  - extension: git-lifecycle
-    command: speckit.git-lifecycle.commit
+  - extension: review-loop
+    command: speckit.review-loop.run
     enabled: true
     optional: false
     priority: 10
-    prompt: Commit this feature's spec artifacts before implementing?
-    description: Checkpoint the feature's spec artifacts before implementation
+    prompt: Apply unambiguous analysis fixes and re-present the results?
+    description: 'Apply the analysis findings (target: analysis) — runs before the
+      tracker sync that records the analyzed marker'
     condition: null
   before_verify:
   - extension: clickup

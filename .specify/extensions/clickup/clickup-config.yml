@@ -1,14 +1,12 @@
-# Where this repo's feature-cards live.
+# Where this repo's feature-cards live, by ID (the clickup plug resolves nothing by name).
 #
-# NOTE: the target is "products" → the "site" folder → its "Roadmap" list
-# (901418532217). Every product folder in this workspace has a list called
-# "Roadmap", so resolving by name alone is ambiguous — the per-feature manifest
-# (.clickup-sync.json) carries the explicit list id, which is what sync uses.
-# If a future provision resolves the wrong Roadmap, check the id against the one
-# above before letting it write.
-space: 'products'
-list: 'Roadmap'
-statuses:
+# Every product folder in this workspace has a list called "Roadmap", which is why names
+# were never enough. These are the same IDs the per-feature manifests (.clickup-sync.json)
+# already carry.
+workspace-id: '90141363864' # Workspace
+space-id: '90146746995' # space: 'products'
+list-id: '901418532217' # list: 'Roadmap' (products › site › Roadmap)
+statuses: # unchanged: mapped by name
   open: 'backlog'
   in-design: 'in design'
   ready: 'ready for development'
