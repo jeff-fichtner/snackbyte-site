@@ -16,12 +16,12 @@
       "installed_at": "2026-06-01T04:38:21.146185+00:00"
     },
     "engine": {
-      "version": "1.0.0",
+      "version": "2.0.0",
       "source": {
         "kind": "catalog",
         "catalog": "snackbyte"
       },
-      "manifest_hash": "sha256:e86aa97e7646711fb0dac0110a8f0016c4811e30ea38c2c7f2c548b7af9c60d2",
+      "manifest_hash": "sha256:590e96b048bbcc01e9b02b517bc7d6d02a65111d1a923664fc124f942eaf9ad3",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -34,12 +34,12 @@
       "installed_at": "2026-09-23T07:03:23.510185+00:00"
     },
     "clickup": {
-      "version": "1.0.0",
+      "version": "2.0.0",
       "source": {
         "kind": "catalog",
         "catalog": "snackbyte"
       },
-      "manifest_hash": "sha256:178a388c026ffaefb9e5edb956ec07d9a21f405812d42ea983b19e1f8073fa16",
+      "manifest_hash": "sha256:4e3a82d4fd3523eac49ec83d342f4e0abb53dd2d28e227d7c6e0a8ffd07053c8",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -53,12 +53,12 @@
       "installed_at": "2026-09-23T07:03:24.359048+00:00"
     },
     "git-lifecycle": {
-      "version": "1.0.0",
+      "version": "2.0.0",
       "source": {
         "kind": "catalog",
         "catalog": "snackbyte"
       },
-      "manifest_hash": "sha256:e676444f7dd270320f97af82d226b31e9b39fe630ba31951d5fa65aa65c5dc42",
+      "manifest_hash": "sha256:eae34b479809c06094dae614e098a8c46f9007f5e766e732f127ec234d5485bb",
       "enabled": true,
       "priority": 10,
       "registered_commands": {
@@ -69,6 +69,23 @@
       },
       "registered_skills": [],
       "installed_at": "2026-09-23T07:03:25.231014+00:00"
+    },
+    "review-loop": {
+      "version": "2.0.0",
+      "source": {
+        "kind": "catalog",
+        "catalog": "snackbyte"
+      },
+      "manifest_hash": "sha256:8492d64fba759c4861717f9ad3e0067c4ddaf1debbe0737cf4dda270fd9faa90",
+      "enabled": true,
+      "priority": 10,
+      "registered_commands": {
+        "claude": [
+          "speckit.review-loop.run"
+        ]
+      },
+      "registered_skills": [],
+      "installed_at": "2026-10-13T20:16:46.070898+00:00"
     }
   }
 }
