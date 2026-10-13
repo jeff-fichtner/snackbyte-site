@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import request from 'supertest';
+import { color } from '@snackbyte/brand';
 import { createApp } from '../../src/server.js';
 
 // Smoke test for a server app: the built frontend is served and the API responds.
@@ -55,6 +56,15 @@ describe('app serves', () => {
     const card = await request(app).get('/social.png');
     expect(card.status).toBe(200);
     expect(card.headers['content-type']).toBe('image/png');
+  });
+
+  it('fills the head from the brand at build, leaving nothing unfilled', async () => {
+    const app = createApp();
+    for (const path of ['/', '/nothing-is-here']) {
+      const res = await request(app).get(path);
+      expect(res.text, path).not.toContain('%head:');
+      expect(res.text, path).toContain(`content="${color.ground.day}"`);
+    }
   });
 
   it('responds on an API route (replace with your own)', async () => {

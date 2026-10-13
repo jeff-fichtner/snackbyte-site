@@ -4,7 +4,7 @@
 
 **Created**: 2026-09-22
 
-**Status**: Draft
+**Status**: Shipped 2026-09-23 · changed after launch through 2026-09-26 · closed 2026-10-13
 
 **Input**: User description: "The real homepage for snackbyte.io — replacing the holding page. What a stranger who was handed a link or a business card needs to see in ten seconds: who snackbyte is, what it does, that the work is real, and how to reach Jeff if they want to. Governed by the constitution at .specify/memory/constitution.md; brand comes from @snackbyte/brand. Client sections are never linked. Open questions to surface as clarifications rather than assume: whether there is contact and in what form, whether any work is listed and which, and whether /style stays reachable."
 

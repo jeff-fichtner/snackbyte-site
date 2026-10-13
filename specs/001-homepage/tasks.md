@@ -69,6 +69,9 @@ happen.
 
 **Goal**: three pieces of real work, described by what they do, linked nowhere.
 
+> **Withdrawn from the page** (2026-09-26, PR #17). These tasks shipped in PR #11; the list
+> was then taken down. They stay ticked because they were done; T044 records the withdrawal.
+
 **Independent test**: a visitor can name one real thing snackbyte has built.
 
 - [x] T019 [US3] Add the three work descriptions to `src/web/copy.ts`, exactly as approved in the plan's Content section
@@ -101,17 +104,39 @@ anyone not touching `App.tsx`.
 Principle VII: this is part of done, not a follow-up.
 
 - [x] T031 Measure contrast on the real rendered colours for every text element in both themes against its actual background, and confirm each reaches 4.5:1, or 3:1 where the text is 24px or larger
-- [x] T032 Confirm `prefers-reduced-motion` is honoured and the page is complete without motion
+- [x] T032 Confirm `prefers-reduced-motion` is honoured and the page is complete without motion — true by construction at launch, when nothing moved; re-verified against the arrival in T050
 - [x] T033 Re-read the whole page and the not-found page at 1280 and 390, both themes
 - [x] T034 Confirm the link preview still resolves: the head points at `/social.png` and it serves
 - [x] T035 Read `dist/index.html` and `dist/404.html` and confirm the words are in the delivered HTML
-- [x] T036 Confirm no brand value appears anywhere in `src/` — no hex, no scale literal, no mark geometry
+- [x] T036 Confirm no brand value appears anywhere in `src/` — no hex, no scale literal, no mark geometry — **this check passed wrongly**: both pages' `theme-color` held the ground colours as hex. Found at close and fixed by T048, which also makes it a test
 - [x] T037 Confirm no spec or FR reference leaked into `src/`, `tests/` or `README.md`
 - [x] T038 Measure first contentful paint for the built page on a throttled connection and confirm the words are visible within two seconds; record the number rather than asserting the page is fast
 - [x] T039 Re-read every sentence on the finished page and confirm none becomes untrue through the passage of time alone — no status, no count, no date, and no claim that expires when the work behind it finishes
 - [x] T040 Confirm the three pieces of work still span more than one kind of client, so a later swap cannot quietly narrow them
 - [x] T041 Run `npm run check:all` and confirm green
-- [ ] T042 Open the PR with day and night screenshots and the verification results
+- [x] T042 Open the PR with day and night screenshots and the verification results — PR #11 carried the results; the screenshots it lacked are in `screenshots/`, taken at close from the built page (T050)
+
+---
+
+## Phase 8: After launch (2026-09-23 to 26)
+
+What changed once the page was live, each on the owner's word. The spec carries the
+requirements; these are the units that shipped them.
+
+- [x] T043 Correct the claim: Bishop is where the work is done, not who it is for, so the place leaves the claim and comes from the guide's `copy.based` (PR #12; guide v1.2.0)
+- [x] T044 Take down the work list, for now. US3 and FR-008 to FR-008c stay as written so it can return (PR #17)
+- [x] T045 Take down the footer: the legal-name line was neither the brand nor the legal name (PR #14)
+- [x] T046 Rewrite the claim, with the address as its second sentence: "snackbyte makes the tools that somehow don’t exist yet. Based in Bishop, California." (PRs #13 and #17; history in `plan.md` § Content)
+- [x] T047 The mark arrives by spelling the name, per the guide's § Motion: FR-017 to FR-019 (PR #18)
+
+---
+
+## Phase 9: Close-out (2026-10-13)
+
+- [x] T048 Fill both pages' heads from the brand package at build (theme colours, name, headline, description) instead of writing them into the HTML. An unfilled value fails the build, and a test fails on any colour literal in `src/`
+- [x] T049 Take the name in `Logo.tsx` from the package instead of typing it
+- [x] T050 Re-verify the built page: every route; contrast of every text element at 390 and 1280 in both themes; Tab reaches the one link with focus visible; reduced motion plays nothing; the arrival lights each letter's bits and comes to rest as the mark; screenshots
+- [x] T051 Run `npm run check:all` and confirm green
 
 ---
 

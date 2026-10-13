@@ -15,7 +15,7 @@ export const page = {
   /** Where the work is done. Not who it is for — the work goes wherever it is wanted. */
   based: brand.based,
 
-  /** What snackbyte does, and for whom: anyone, anywhere, who needs a thing that is not sold. */
+  /** What snackbyte does. It names no place and no market: the work goes wherever it is wanted. */
   claim: 'snackbyte makes the tools that somehow don’t exist yet.',
 
   /** The only address, and the only link on the page. */
