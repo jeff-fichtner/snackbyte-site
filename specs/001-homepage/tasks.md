@@ -58,7 +58,7 @@ happen.
 - [x] T014 [US2] Render it in `src/web/App.tsx` as a `mailto:` link with nothing pre-filled but the recipient
 - [x] T015 [US2] Style the link in `src/web/app.css` from the brand's tokens, with a visible focus state
 - [x] T016 [P] [US2] Extend `tests/app/app.test.tsx`: exactly one `mailto:`, no form element, no other link
-- [~] T017 [US2] **Send a real message to `jeff@snackbyte.io` and confirm it arrives.** DNS routes to Workspace; the mailbox itself is unverified and this is the page's only call to action — SENT 2026-09-23, no bounce; **arrival is the one thing that could not be verified from here**, because the sending account is not the Workspace mailbox
+- [x] T017 [US2] **Send a real message to `jeff@snackbyte.io` and confirm it arrives.** DNS routes to Workspace; the mailbox itself is unverified and this is the page's only call to action — SENT 2026-09-23, no bounce; arrival could not be verified from here, because the sending account is not the Workspace mailbox. **Arrival confirmed by the owner; signed off at close, 2026-10-13**
 - [x] T018 [US2] Tab to the link in the built page and confirm focus is visible
 
 **Checkpoint**: the page can produce a conversation.
