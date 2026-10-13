@@ -100,6 +100,14 @@ Run the gate from this repo after publishing. A section cannot break typecheck o
 lint — it is not app source — but it can break the build if a manifest is
 malformed, and that is worth catching before a deploy.
 
+**Where it lands.** Open the pull request against `dev`, the default branch. Merging
+it deploys to staging, not to snackbyte.io: the section goes live when `dev` is
+promoted to `main`, a fast-forward the site's owner approves. If the section is
+time-sensitive, say so in the pull request, so the promotion follows the merge
+instead of waiting for the next one. Never open a section's pull request against
+`main`. `main` only ever moves forward to match `dev`, and a commit made on it
+directly breaks that.
+
 ## Pages that hold personal data
 
 Several of these pages exist to show a schedule to the people on it. That means
