@@ -14,10 +14,37 @@
   },
   "card": {
     "id": "86bc5txgz",
-    "hash": "sha256:3e9b05ae936288d002aa60292df17da58e916c0c97abda4e152ce6ecd5ac9283"
+    "hash": "sha256:6b59379072684630ef0f09bfd884ebf820a2baad86d360ab041cdf69969074ee",
+    "provenanceHash": "sha256:b6a4d72cd8bcf102189588b4ad1c63ba9013d8274ca4fb62b81e302746467f98"
   },
   "lifecycle": {
     "analyzed": true,
-    "implementStarted": true
-  }
+    "implementStarted": true,
+    "verifyPassed": true
+  },
+  "userStories": [
+    {
+      "us": "US1",
+      "id": "86bchtkqj",
+      "hash": "sha256:0fcb628212ad1b017cae8f930985fd86a2087751609988989ab3e481c3365fb2",
+      "dependsOn": []
+    },
+    {
+      "us": "US2",
+      "id": "86bchtkqz",
+      "hash": "sha256:ba8051acaf073544ab09b1bd83e07ddcc19e7993cc6e2765f41770511b959f7c",
+      "dependsOn": [
+        "US1"
+      ]
+    },
+    {
+      "us": "US3",
+      "id": "86bchtkrb",
+      "hash": "sha256:6d0786673d7b7c31c976b1e3c4c938ea1209f7178110342d63ab4bb4255ab0f6",
+      "dependsOn": [
+        "US1",
+        "US2"
+      ]
+    }
+  ]
 }

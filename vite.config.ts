@@ -1,9 +1,10 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { PORT } from './src/config';
+import { fillHead } from './src/web/head';
 
 const webRoot = fileURLToPath(new URL('./src/web', import.meta.url));
 const distDir = fileURLToPath(new URL('./dist', import.meta.url));
@@ -27,9 +28,17 @@ const versionDefines = {
   ),
 };
 
+// The pages' heads carry brand values HTML cannot read from CSS — the theme colours, the name,
+// the headline. They are filled from the brand package here rather than written into the HTML.
+// 'pre' so this runs before Vite's own %ENV% replacement, which would otherwise see them first.
+const brandHead: Plugin = {
+  name: 'brand-head',
+  transformIndexHtml: { order: 'pre', handler: fillHead },
+};
+
 export default defineConfig({
   root: webRoot,
-  plugins: [react()],
+  plugins: [react(), brandHead],
   define: versionDefines,
   // Forward /api calls from the dev frontend to the Express API (same-origin in
   // production), so app code can call relative /api paths in both dev and prod.

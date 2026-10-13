@@ -10,6 +10,11 @@ Replace the holding page with the real homepage: the lockup, a claim, what snack
 does, three pieces of work described in words, a place, and one contact address. One
 screen at a phone size, prerendered, following the system theme.
 
+> **As it shipped** (closed 2026-10-13): one screen with the lockup, which arrives by
+> spelling the name; the headline; the claim, with the address as its second sentence; and
+> one contact address. No footer, and for now no work list. `tasks.md` Phases 8 and 9
+> record each change after launch and what the close-out fixed.
+
 Most of the machinery already exists and was built during the brand work — the lockup,
 the theme, prerendering, the favicons, the link-preview card. What this feature adds is
 **content and one gap**: copy that has never been written, and a not-found page, because
@@ -239,7 +244,8 @@ appears exactly once.
 
 ### The place
 
-Unchanged from the holding page: _Bishop, California._
+Planned as unchanged from the holding page: _Bishop, California._ It shipped as the claim's
+second sentence instead, "Based in Bishop, California.", from the guide's `copy.based`.
 
 ### Retired
 

@@ -1,4 +1,5 @@
 import { marks } from '@snackbyte/brand';
+import { page } from './copy';
 
 /**
  * The mark: one row, two nibbles, a bite. The geometry comes from the brand package,
@@ -10,7 +11,7 @@ export function Mark(props: React.SVGProps<SVGSVGElement>) {
       viewBox={marks.row.viewBox}
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="snackbyte"
+      aria-label={page.name}
       {...props}
     >
       {marks.row.shapes.map((s, i) => (
@@ -25,7 +26,7 @@ export function Lockup({ className = '' }: { className?: string }) {
   return (
     <div className={`lockup ${className}`.trim()}>
       <Mark className="mark" />
-      <span className="wordmark">snackbyte</span>
+      <span className="wordmark">{page.name}</span>
     </div>
   );
 }
