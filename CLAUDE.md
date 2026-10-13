@@ -20,7 +20,7 @@ the owner's global rules and `snackbyte-base`'s constitution by reference rather
 than restating them. A feature gets a spec (`/speckit-specify`); a chore does not.
 Plans live under `specs/`.
 
-Active: `specs/001-homepage/plan.md` — the real homepage, replacing the holding page.
+Active: none. Closed: `specs/001-homepage/`, the homepage (shipped 2026-09-23, closed 2026-10-13).
 Backlogged: `specs/backlog-brand-page/`, `specs/backlog-activity-view/`.
 <!-- SPECKIT END -->
 
