@@ -37,5 +37,5 @@ Run's reduced idle CPU rate plus memory. Check current pricing before flipping.
 - [x] `--min-instances` baked into the deploy, production-only, staging pinned to 0
 - [x] v1 is live and verified at snackbyte.io
 - [x] `_MIN_INSTANCES` flipped to `1`
-- [ ] Confirmed: `gcloud run services describe snackbyte-site --region=us-central1 --format='value(spec.template.metadata.annotations.autoscaling.knative.dev/minScale)'` returns `1`
-- [ ] First-request latency after idle checked
+- [x] Confirmed: `gcloud run services describe snackbyte-site --region=us-central1 --format='value(spec.template.metadata.annotations.autoscaling.knative.dev/minScale)'` returns `1` (revision `snackbyte-site-00088-hgg`, v0.1.63, 2026-10-13)
+- [x] First-request latency after idle checked: after 25 idle minutes, 0.165 / 0.176 / 0.174 s to first byte, and no cold start (2026-10-14)
