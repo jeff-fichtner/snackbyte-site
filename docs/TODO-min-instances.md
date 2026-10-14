@@ -5,8 +5,14 @@
 from `_APP_ENV`, so the deploy job's `--substitutions` line stays byte-identical to
 every other app's).
 
-**Decision: open.** `_MIN_INSTANCES` still defaults to `0`, so production behaviour
-is unchanged. Flipping it is a one-character edit.
+**Decision: on, production only** (owner, 2026-10-13). `_MIN_INSTANCES` is `1`, so
+production keeps one warm instance. Staging stays at `0`: the deploy step forces it from
+`_APP_ENV`, whatever the default says.
+
+Measured before the change (production logs, 2026-10-11 to 13): of 220 homepage requests
+the median was 5 ms but the slowest 5% took over 2.4 s and the worst 9.0 s, against the
+homepage's own target of words on screen within two seconds. 486 cold starts were logged
+from 2026-09-29.
 
 ## Why it matters
 
@@ -29,7 +35,7 @@ Run's reduced idle CPU rate plus memory. Check current pricing before flipping.
 ## Definition of done
 
 - [x] `--min-instances` baked into the deploy, production-only, staging pinned to 0
-- [ ] v1 is live and verified at snackbyte.io
-- [ ] `_MIN_INSTANCES` flipped to `1`
+- [x] v1 is live and verified at snackbyte.io
+- [x] `_MIN_INSTANCES` flipped to `1`
 - [ ] Confirmed: `gcloud run services describe snackbyte-site --region=us-central1 --format='value(spec.template.metadata.annotations.autoscaling.knative.dev/minScale)'` returns `1`
 - [ ] First-request latency after idle checked

@@ -21,7 +21,7 @@ substitutions:
   # first request after idle; 1 costs one always-on instance. Staging is always 0 —
   # it is derived from _APP_ENV in the deploy step, not passed in, so the deploy job's
   # substitutions line stays exactly as every other app calls it.
-  _MIN_INSTANCES: '0'
+  _MIN_INSTANCES: '1'
 
 # Build tags → filterable chips in Cloud Build History (which app / ref / commit). Critical when
 # many apps build in the same project. (Underscores aren't allowed in tag values.)
