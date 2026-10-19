@@ -1,5 +1,10 @@
 <!--
 Sync Impact Report
+Version change: 1.1.0 → 1.1.1 (2026-10-19): PATCH, wording. The check gate gained the
+env-file check (`npm run check:env`, run by `check:all`), so the Development Workflow line
+that lists the gate's parts names it. No principle changed. Previous text is in version
+history.
+
 Version change: 1.0.0 → 1.1.0 (2026-09-22): the brand left this repository. Principle I
 now forbids brand values here outright rather than fencing them into four files;
 Principles II, III and VI and the governing-files list point at the guide and the
@@ -168,7 +173,7 @@ second copy is the one that drifts.
   is — a new page, new behaviour, a change to what the homepage says it does.
   A chore does not: a copy fix, a new client section, regenerating assets, a
   dependency bump. Neither skips the check gate or Principle VII.
-- **The check gate** is `npm run check:all` — format, lint, typecheck, test.
+- **The check gate** is `npm run check:all` — format, lint, typecheck, env files, test.
 - **Versioning is derived.** CI creates a tag from the commit; no version is
   committed and no agent edits one.
 - **Deployment is automatic**: `main` deploys production, `dev` deploys
@@ -187,4 +192,4 @@ MAJOR for a principle removed or redefined, MINOR for a principle added or
 materially expanded, PATCH for wording. `CLAUDE.md` carries the runtime
 guidance for agents working here and points at this file.
 
-**Version**: 1.1.0 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-09-22
+**Version**: 1.1.1 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-19
