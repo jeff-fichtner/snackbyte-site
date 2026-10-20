@@ -177,6 +177,40 @@ describe('the page', () => {
     expect(shown('summary')).toBe(false);
   });
 
+  it('switches her from driving to staying in one tap, saved, without opening the questions', () => {
+    const storage = memoryStorage();
+    mount(document, storage);
+    answerAll();
+    choose('after', 'drive');
+    click('save');
+    expect(planText()).toContain('It isn’t advised.');
+
+    const button = document.querySelector<HTMLButtonElement>('#landing button[data-name="after"]');
+    expect(button?.textContent).toBe('Stay near LAX instead');
+    button?.click();
+
+    expect(planText()).toContain('Stay near the airport');
+    expect(planText()).not.toContain('riskiest part of the trip');
+    expect(document.querySelector('#landing button[data-name]')).toBeNull();
+    expect(shown('answers')).toBe(false);
+    expect(summaryLines()).toContain('After landing: Stay near LAX');
+    expect(JSON.parse(storage.data.get('for-jan-jet-lag') ?? '{}')).toMatchObject({
+      after: 'stay',
+      saved: true,
+    });
+    expect(document.activeElement).toBe(document.getElementById('landing'));
+  });
+
+  it('updates the open question too when she takes the switch before saving', () => {
+    mount(document, memoryStorage());
+    choose('after', 'drive');
+    document.querySelector<HTMLButtonElement>('#landing button[data-name="after"]')?.click();
+    expect(
+      document.querySelector<HTMLInputElement>('input[name="after"][value="stay"]')?.checked,
+    ).toBe(true);
+    expect(shown('answers')).toBe(true);
+  });
+
   it('fails loudly on a page without its form', () => {
     document.body.innerHTML = '<div id="plan"></div>';
     expect(() => mount(document, null)).toThrow(/#answers/);

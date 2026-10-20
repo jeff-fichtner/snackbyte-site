@@ -15,6 +15,7 @@ type Card = {
   general: string;
   you: string[];
   warn?: string;
+  action?: { label: string; name: string; value: string };
   branches?: { title: string; you: string[]; warn?: string }[];
   why: string;
 };
@@ -178,6 +179,24 @@ describe('the plan', () => {
       expect(landing.warn).toContain('5:30am on your body clock');
       expect(landing.warn).toContain('about 26 hours awake');
       expect(landing.you).toContain('Swap drivers every hour.');
+    });
+
+    it('ends the drive warning by advising against it, with one tap to take the advice', () => {
+      const landing = card(plan({ after: 'drive' }), 'landing');
+      expect(landing.warn).toMatch(
+        /It isn’t advised\. Stay in LA tonight and drive home Thursday morning\.$/,
+      );
+      expect(landing.action).toEqual({
+        label: 'Stay near LAX instead',
+        name: 'after',
+        value: 'stay',
+      });
+    });
+
+    it('offers the one-tap switch only once she has chosen to drive', () => {
+      expect(card(plan(), 'landing').action).toBeUndefined();
+      expect(card(plan(), 'landing').branches?.[1].warn).toContain('It isn’t advised.');
+      expect(card(plan({ after: 'stay' }), 'landing').action).toBeUndefined();
     });
 
     it('makes Thursday the drive day when she stays near LAX', () => {

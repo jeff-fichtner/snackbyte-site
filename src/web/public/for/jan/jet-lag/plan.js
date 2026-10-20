@@ -221,7 +221,7 @@ export function buildPlan(raw) {
 
   const drive = {
     title: 'Drive home Wednesday',
-    warn: `This is the riskiest part of the trip. You’d leave LAX around ${clock(curb)} into rush hour and reach Bishop around ${clock(home)}: ${clock(home + TRIP.hoursBehind * 60)} on your body clock, after about ${awake} hours awake, with most of 395 in the dark.`,
+    warn: `This is the riskiest part of the trip. You’d leave LAX around ${clock(curb)} into rush hour and reach Bishop around ${clock(home)}: ${clock(home + TRIP.hoursBehind * 60)} on your body clock, after about ${awake} hours awake, with most of 395 in the dark. It isn’t advised. Stay in LA tonight and drive home Thursday morning.`,
     you: [
       ...(coffee
         ? ['Coffee right before you leave LAX. It may cost some sleep; staying awake on 395 matters more.']
@@ -247,6 +247,8 @@ export function buildPlan(raw) {
   } else if (a.after === 'drive') {
     landing.you = drive.you;
     landing.warn = drive.warn;
+    // One tap to take the advice, without reopening the questions.
+    landing.action = { label: 'Stay near LAX instead', name: 'after', value: 'stay' };
   } else {
     landing.you = ['Two ways to do this day. Question 5 picks one.'];
     landing.branches = [stay, drive];
@@ -361,6 +363,13 @@ function renderCard(doc, card) {
   node.append(general, el(doc, 'p', 'label', 'For you'));
 
   if (card.warn) node.append(el(doc, 'p', 'warn', card.warn));
+  if (card.action) {
+    const button = el(doc, 'button', 'primary', card.action.label);
+    button.type = 'button';
+    button.dataset.name = card.action.name;
+    button.dataset.value = card.action.value;
+    node.append(button);
+  }
   node.append(renderLines(doc, card.you));
   for (const branch of card.branches ?? []) {
     const block = el(doc, 'div', 'branch');
@@ -476,6 +485,22 @@ export function mount(doc, storage) {
   };
 
   form.addEventListener('change', render);
+  // A button in the plan answers one question on the spot: the answer is saved and the plan
+  // redrawn where she is, and the questions stay as they were, folded or open.
+  plan.addEventListener('click', (event) => {
+    const button = event.target.closest?.('button[data-name]');
+    if (!button) return;
+    const card = button.closest('.card')?.id;
+    form.elements.namedItem(button.dataset.name).value = button.dataset.value;
+    render();
+    fold();
+    const redrawn = card ? doc.getElementById(card) : null;
+    if (redrawn) {
+      redrawn.tabIndex = -1;
+      redrawn.focus({ preventScroll: true });
+      redrawn.scrollIntoView?.({ block: 'start' });
+    }
+  });
   saveButton.addEventListener('click', () => {
     saved = true;
     render();

@@ -56,6 +56,7 @@
   }
   .summary { gap: var(--gap); }
   #answers:focus { outline: none; }
+  .card:focus { outline: none; }
   .summary ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--unit); }
 
   button {
@@ -124,7 +125,7 @@
   .you { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 2); }
   .you li:first-child { font-weight: 600; }
   .warn { border-left: var(--unit) solid var(--bitterbrush); padding-left: var(--gap); font-weight: 600; }
-  .warn + .you li:first-child { font-weight: 400; }
+  .warn ~ .you li:first-child { font-weight: 400; }
   .branch {
     display: grid;
     gap: calc(var(--unit) * 2);
