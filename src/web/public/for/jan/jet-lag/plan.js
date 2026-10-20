@@ -291,6 +291,19 @@ export function buildPlan(raw) {
     `Outside from about ${clock(Math.max(start, 12 * 60))} until sunset, about ${clock(TRIP.sunset)}.`,
   ) ?? [`Outside from about 3pm until sunset, about ${clock(TRIP.sunset)}.`];
 
+  // Something on Thursday changes when to put it, coffee for it, and how late to keep going.
+  // Staying near LAX, the drive home takes the morning, so the commitment moves after it.
+  const busy =
+    a.thursday !== 'busy'
+      ? []
+      : [
+          a.after === 'stay'
+            ? 'The drive home takes your best hours. Put what you have on early in the afternoon, once you’re in Bishop, and keep it short.'
+            : 'Put anything that matters before noon. You’ll fade from mid-afternoon.',
+          ...(coffee ? ['A coffee before it helps, as long as it’s before 2pm.'] : []),
+          'Keep the late afternoon easy, and don’t drive after 3pm if you can help it.',
+        ];
+
   const thursday = {
     id: 'thursday',
     title: 'First day back',
@@ -302,10 +315,8 @@ export function buildPlan(raw) {
       ...(a.after === 'stay'
         ? ['Leave after breakfast; mornings are your sharpest time this week. You’ll be in Bishop by early afternoon.']
         : []),
+      ...busy,
       ...thursdayLight,
-      ...(a.thursday === 'busy'
-        ? ['Put anything that matters before noon. You’ll fade from mid-afternoon.']
-        : []),
       ...(a.thursday === 'free'
         ? ['Nap if you need to: once, 30 minutes at most, before 3pm.']
         : []),
@@ -314,6 +325,9 @@ export function buildPlan(raw) {
     ],
     why:
       'Flying west has one shape: alert mornings, a slump from mid-afternoon, sleepy by early evening. Light in that late window pushes the slump later each day. A long or late nap takes from tonight’s sleep.' +
+      (a.thursday === 'busy'
+        ? ' With something on, put it in your sharp hours: by mid-afternoon it feels like late evening to your body.'
+        : '') +
       (a.wake === null ? '' : ` ${LIGHT_WHY}`),
   };
 

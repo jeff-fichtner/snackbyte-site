@@ -321,6 +321,40 @@ describe('her sleep times', () => {
   });
 });
 
+describe('something on Thursday', () => {
+  const thursdayOf = (answers: Record<string, unknown>) => card(plan(answers), 'thursday');
+
+  it('puts it in the morning, with an easy late afternoon and no late drive', () => {
+    const you = thursdayOf({ thursday: 'busy', after: 'drive', coffee: 'no' }).you;
+    expect(you).toContain('Put anything that matters before noon. You’ll fade from mid-afternoon.');
+    expect(you).toContain(
+      'Keep the late afternoon easy, and don’t drive after 3pm if you can help it.',
+    );
+    expect(you.join(' ')).not.toMatch(/coffee|Nap if/i);
+  });
+
+  it('times a coffee for it when she drinks coffee, inside the 2pm cutoff', () => {
+    expect(thursdayOf({ thursday: 'busy', coffee: 'yes' }).you).toContain(
+      'A coffee before it helps, as long as it’s before 2pm.',
+    );
+  });
+
+  it('moves it after the drive home when she stays near LAX', () => {
+    const you = thursdayOf({ thursday: 'busy', after: 'stay' }).you;
+    expect(you.join(' ')).toContain('The drive home takes your best hours.');
+    expect(you.join(' ')).not.toContain('before noon');
+  });
+
+  it('changes the day in substance, not one line', () => {
+    const base = { coffee: 'yes', after: 'drive' };
+    const busyLines = new Set(thursdayOf({ ...base, thursday: 'busy' }).you);
+    const free = thursdayOf({ ...base, thursday: 'free' }).you;
+    const differing = [...busyLines].filter((l) => !free.includes(l)).length;
+    expect(differing).toBeGreaterThanOrEqual(3);
+    expect(thursdayOf({ ...base, thursday: 'busy' }).why).toContain('late evening to your body');
+  });
+});
+
 describe('isComplete', () => {
   it('is true only when every question has an answer', () => {
     const all = {
