@@ -1,5 +1,10 @@
 <!--
 Sync Impact Report
+Version change: 1.2.0 → 1.2.1 (2026-10-20): PATCH, wording. The Development Workflow line
+that defines a unit of work said units are cut from `main`; since the default-branch rule
+(2026-10-12) they are cut from `dev`, merge into `dev`, and `main` changes only by promoting
+`dev`. The line now says so. No principle changed. Previous text is in version history.
+
 Version change: 1.1.1 → 1.2.0 (2026-10-20): MINOR, a kind of page added. Pages made for one
 person live under /for/ (docs/FOR.md). Principle IV says they are not sections and how they
 read the brand; Principle V lists them among the unlinked, noindex pages; a new /for/ page
@@ -178,10 +183,11 @@ second copy is the one that drifts.
 
 ## Development Workflow
 
-- **A unit of work** is a branch cut from `main` with a pull request as its
-  handle, ending as a ready PR with the check gate green. The owner reviews and
-  approves it in conversation; the agent then merges. An agent never merges a
-  unit the owner has not reviewed.
+- **A unit of work** is a branch cut from `dev`, the default branch, with a pull
+  request into `dev` as its handle, ending as a ready PR with the check gate
+  green. The owner reviews and approves it in conversation; the agent then
+  merges. An agent never merges a unit the owner has not reviewed. `main`
+  changes only by promoting `dev`.
 - **A feature gets a spec; a chore does not.** A feature changes what the site
   is — a new page, new behaviour, a change to what the homepage says it does.
   A chore does not: a copy fix, a new client section, a new `/for/` page,
@@ -205,4 +211,4 @@ MAJOR for a principle removed or redefined, MINOR for a principle added or
 materially expanded, PATCH for wording. `CLAUDE.md` carries the runtime
 guidance for agents working here and points at this file.
 
-**Version**: 1.2.0 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20
+**Version**: 1.2.1 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20
