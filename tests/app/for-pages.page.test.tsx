@@ -102,6 +102,79 @@ describe('the page', () => {
     expect(document.querySelectorAll('#plan .card')).toHaveLength(7);
   });
 
+  const answerAll = () => {
+    pick('bedtime', 22 * 60);
+    pick('wake', 6 * 60 + 30);
+    choose('coffee', 'yes');
+    choose('melatonin', 'no');
+    choose('thursday', 'free');
+    choose('after', 'stay');
+  };
+  const shown = (id: string) => !document.getElementById(id)?.hidden;
+  const summaryLines = () =>
+    [...document.querySelectorAll('#summary-list li')].map((li) => li.textContent);
+  const click = (id: string) => document.getElementById(id)?.click();
+
+  it('folds the questions into a summary when she saves, and opens them on Change', () => {
+    mount(document, memoryStorage());
+    expect(shown('answers')).toBe(true);
+    expect(shown('summary')).toBe(false);
+
+    answerAll();
+    click('save');
+    expect(shown('answers')).toBe(false);
+    expect(shown('summary')).toBe(true);
+    expect(summaryLines()).toEqual([
+      'Bed: 10pm',
+      'Up: 6:30am',
+      'Coffee: Yes',
+      'Melatonin: No',
+      'Thursday: Free',
+      'After landing: Stay near LAX',
+    ]);
+    expect(planText()).toContain('Last cup by 2pm');
+
+    click('change');
+    expect(shown('answers')).toBe(true);
+    expect(shown('summary')).toBe(false);
+    expect(document.getElementById('change')?.getAttribute('aria-expanded')).toBe('true');
+  });
+
+  it('opens on the plan, answers folded, when she comes back after saving', () => {
+    const storage = memoryStorage();
+    mount(document, storage);
+    choose('coffee', 'no');
+    click('save');
+
+    loadPage();
+    mount(document, storage);
+    expect(shown('answers')).toBe(false);
+    expect(summaryLines()).toContain('Coffee: No');
+    expect(summaryLines()).toContain('Bed: not answered');
+  });
+
+  it('opens folded when every question was answered, even without Save', () => {
+    const storage = memoryStorage();
+    mount(document, storage);
+    answerAll();
+
+    loadPage();
+    mount(document, storage);
+    expect(shown('answers')).toBe(false);
+    expect(shown('summary')).toBe(true);
+  });
+
+  it('keeps the questions open on return when some are still unanswered and unsaved', () => {
+    const storage = memoryStorage();
+    mount(document, storage);
+    choose('coffee', 'yes');
+
+    loadPage();
+    mount(document, storage);
+    expect(shown('answers')).toBe(true);
+    expect(shown('summary')).toBe(false);
+  });
+
   it('fails loudly on a page without its form', () => {
     document.body.innerHTML = '<div id="plan"></div>';
     expect(() => mount(document, null)).toThrow(/#answers/);

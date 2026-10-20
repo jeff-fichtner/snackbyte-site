@@ -22,6 +22,7 @@
   :root { color-scheme: light dark; }
   html { font-size: 112.5%; }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
 
   .wrap {
     max-width: 34rem;
@@ -47,12 +48,27 @@
   .lede { color: var(--muted); margin-top: var(--gap); }
   .intro { display: grid; gap: var(--gap); }
 
-  form {
+  form, .summary {
     display: grid;
     gap: var(--seam);
     border-top: 1px solid var(--rule);
     padding-top: var(--seam);
   }
+  .summary { gap: var(--gap); }
+  .summary ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--unit); }
+
+  button {
+    font: inherit;
+    min-height: calc(var(--unit) * 12);
+    padding: 0 var(--seam);
+    border-radius: var(--unit);
+    cursor: pointer;
+    justify-self: start;
+  }
+  button:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
+  .primary { background: var(--sky); color: var(--ground); border: 1px solid var(--sky); font-weight: 600; }
+  .secondary { background: none; color: var(--ink); border: 1px solid var(--rule); }
+  .save { display: grid; gap: var(--gap); }
   fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   legend { padding: 0; margin-bottom: calc(var(--unit) * 2); font-weight: 600; }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--unit) * 2); }
@@ -150,6 +166,12 @@
     <p><strong>The jet lag diet:</strong> it’s the Argonne diet — four days of alternating feast and fast before the flight, from a federal lab, used by the military. Skip it. Its one useful idea, eating on California time, is built into your plan.</p>
   </section>
 
+  <section id="summary" class="summary" hidden>
+    <h2>Your answers</h2>
+    <ul id="summary-list"></ul>
+    <button type="button" id="change" class="secondary" aria-controls="answers">Change answers</button>
+  </section>
+
   <form id="answers">
     <fieldset>
       <legend>1. At home, when do you usually go to bed and get up?</legend>
@@ -163,7 +185,7 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset data-short="Coffee">
       <legend>2. Do you drink coffee?</legend>
       <div class="pair">
         <label class="choice"><input type="radio" name="coffee" value="yes"><span>Yes</span></label>
@@ -171,7 +193,7 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset data-short="Melatonin">
       <legend>3. Open to melatonin?</legend>
       <div class="pair">
         <label class="choice"><input type="radio" name="melatonin" value="yes"><span>Yes</span></label>
@@ -179,7 +201,7 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset data-short="Thursday">
       <legend>4. Thursday the 29th?</legend>
       <div class="pair">
         <label class="choice"><input type="radio" name="thursday" value="busy"><span>Something on</span></label>
@@ -187,7 +209,7 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset data-short="After landing">
       <legend>5. After you land?</legend>
       <div class="pair">
         <label class="choice"><input type="radio" name="after" value="drive"><span>Drive home Wednesday</span></label>
@@ -195,7 +217,10 @@
       </div>
     </fieldset>
 
-    <p class="hint">The plan below changes as you answer.</p>
+    <div class="save">
+      <button type="button" id="save" class="primary">Save answers</button>
+      <p class="hint">The plan below changes as you answer. Once you save, this page opens on your plan; you can change your answers any time.</p>
+    </div>
   </form>
 
   <div id="plan"></div>

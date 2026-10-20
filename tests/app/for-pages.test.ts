@@ -7,7 +7,7 @@ import * as jetLag from '../../src/web/public/for/jan/jet-lag/plan.js';
 // @ts-expect-error — plain JS build script, no types
 import { brandStylesheet } from '../../scripts/copy-brand-assets.mjs';
 
-const { buildPlan, clock, normalize, TRIP } = jetLag;
+const { buildPlan, clock, normalize, isComplete, lowPoint, TRIP } = jetLag;
 
 type Card = {
   id: string;
@@ -94,8 +94,8 @@ describe('the plan', () => {
   });
 
   describe('bedtime', () => {
-    it('moves Tuesday earlier for the 4am start when her usual bedtime is later', () => {
-      expect(card(plan({ bedtime: 23 * 60 }), 'before').you).toContain('Tuesday: bed by 9pm.');
+    it('moves Tuesday earlier for the 4am start when her usual bedtime is a little later', () => {
+      expect(card(plan({ bedtime: 22 * 60 }), 'before').you).toContain('Tuesday: bed by 9pm.');
     });
 
     it('keeps her usual Tuesday bedtime when it is already early enough', () => {
@@ -202,6 +202,107 @@ describe('the plan', () => {
       );
       expect(card(plan(), 'thursday').you.join(' ')).not.toMatch(/before noon|30 minutes/);
     });
+  });
+});
+
+const H = 60;
+const stayAt = (bedtime: number | null, wake: number | null) =>
+  plan({ bedtime, wake, after: 'stay', coffee: 'no', melatonin: 'no', thursday: 'free' });
+const linesOf = (cards: Card[]) =>
+  cards.flatMap((c) => [c.general, ...c.you, c.warn ?? ''].map((l) => `${c.id}: ${l}`));
+/** The lines that differ between two plans, and how many cards they fall in. */
+function changed(x: Card[], y: Card[]) {
+  const other = new Set(linesOf(y));
+  const lines = linesOf(x).filter((l) => !other.has(l));
+  return { lines, cards: new Set(lines.map((l) => l.split(':')[0])).size };
+}
+
+describe('her sleep times', () => {
+  it('estimates her body clock’s low point on California time from her wake time', () => {
+    expect(lowPoint(6 * H + 30, 0)).toBe(20 * H + 30);
+    expect(lowPoint(6 * H + 30, 1)).toBe(22 * H);
+    // A late riser's low point runs past midnight and is still read as that evening's.
+    expect(lowPoint(9 * H, 1)).toBe(24 * H + 30);
+  });
+
+  it('gives a 6:30 riser real light times on landing day and Thursday', () => {
+    const cards = stayAt(22 * H, 6 * H + 30);
+    expect(card(cards, 'landing').you).toEqual([
+      'Stay near the airport. You’ll be out of LAX by about 4pm.',
+      'Walk outside until sunset, about 6pm. This does more than anything else on the page.',
+      'Dinner around 6pm.',
+      'After dark, keep the lights bright until about 8:30pm, then dim them.',
+      'Bed at your usual 10pm; not before 8pm.',
+    ]);
+    const thursday = card(cards, 'thursday').you;
+    expect(thursday).toContain('Outside from about 4pm until sunset, about 6pm.');
+    expect(thursday).toContain('After dark, keep the lights bright until bed.');
+    expect(thursday[0]).toMatch(/^Breakfast by 7:30am\./);
+  });
+
+  it('moves an early riser’s light earlier and a late riser’s into the evening', () => {
+    expect(card(stayAt(null, 4 * H + 30), 'landing').you).toContain(
+      'After dark, keep the lights bright until about 6:30pm, then dim them.',
+    );
+    expect(card(stayAt(null, 4 * H + 30), 'thursday').you).toContain(
+      'Outside from about 2pm until sunset, about 6pm.',
+    );
+    const late = stayAt(24 * H, 9 * H);
+    expect(card(late, 'landing').you).toContain(
+      'Walk outside from about 5pm until sunset, about 6pm. This does more than anything else on the page.',
+    );
+    expect(card(late, 'thursday').you).toContain(
+      'Late-afternoon daylight still helps a little; the evening light indoors matters more.',
+    );
+  });
+
+  it('caps landing night at 10pm for a late sleeper, and keeps an early one’s own time', () => {
+    expect(card(stayAt(24 * H, null), 'landing').you).toContain(
+      'Bed by 10pm tonight, earlier than your usual midnight.',
+    );
+    expect(card(stayAt(20 * H, null), 'landing').you).toContain('Bed at your usual 8pm.');
+    expect(card(stayAt(null, null), 'landing').you).toContain('Bed by 10pm; not before 8pm.');
+  });
+
+  it('does not tell a late sleeper to be asleep by 9 the night before a 4am start', () => {
+    expect(card(stayAt(24 * H, null), 'before').you.join(' ')).toContain(
+      'as early as you’ll actually fall asleep',
+    );
+    expect(card(stayAt(21 * H + 30, null), 'before').you).toContain('Tuesday: bed by 9pm.');
+  });
+
+  it('tells early risers and late sleepers what to expect', () => {
+    expect(words(card(stayAt(20 * H + 30, null), 'nights'))).toContain('Early risers');
+    expect(words(card(stayAt(null, 5 * H), 'nights'))).toContain('Early risers');
+    expect(words(card(stayAt(23 * H + 30, 8 * H + 30), 'nights'))).toContain('Late sleepers');
+    expect(words(card(stayAt(22 * H, 6 * H + 30), 'nights'))).not.toMatch(
+      /Early risers|Late sleepers/,
+    );
+  });
+
+  it('changes the plan in substance, not just the time in a sentence', () => {
+    const bed = changed(stayAt(20 * H, 6 * H + 30), stayAt(24 * H, 6 * H + 30));
+    expect(bed.lines.length).toBeGreaterThanOrEqual(8);
+    expect(bed.cards).toBeGreaterThanOrEqual(5);
+    const wake = changed(stayAt(22 * H, 4 * H + 30), stayAt(22 * H, 9 * H));
+    expect(wake.lines.length).toBeGreaterThanOrEqual(7);
+    expect(wake.cards).toBeGreaterThanOrEqual(3);
+  });
+});
+
+describe('isComplete', () => {
+  it('is true only when every question has an answer', () => {
+    const all = {
+      bedtime: 1320,
+      wake: 390,
+      coffee: 'no',
+      melatonin: 'no',
+      thursday: 'free',
+      after: 'stay',
+    };
+    expect(isComplete(all)).toBe(true);
+    expect(isComplete({ ...all, after: null })).toBe(false);
+    expect(isComplete(null)).toBe(false);
   });
 });
 
