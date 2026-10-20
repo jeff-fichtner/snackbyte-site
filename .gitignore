@@ -53,3 +53,6 @@ src/web/public/favicon.svg
 src/web/public/favicon.ico
 src/web/public/apple-touch-icon.png
 src/web/public/social.png
+
+# The brand as one stylesheet for the /for/ pages — written by scripts/copy-brand-assets.mjs at build time
+src/web/public/brand/

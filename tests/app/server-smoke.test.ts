@@ -35,6 +35,30 @@ describe('app serves', () => {
     expect(res.status).toBe(200);
   });
 
+  it('serves a /for/ page with its script and the brand stylesheet it reads', async () => {
+    const app = createApp();
+    const page = await request(app).get('/for/jan/jet-lag/');
+    expect(page.status).toBe(200);
+    expect(page.headers['content-type']).toContain('text/html');
+    expect(page.text).toContain('href="/brand/brand.css"');
+
+    const script = await request(app).get('/for/jan/jet-lag/plan.js');
+    expect(script.status).toBe(200);
+    expect(script.headers['content-type']).toMatch(/javascript/);
+
+    const css = await request(app).get('/brand/brand.css');
+    expect(css.status).toBe(200);
+    expect(css.headers['content-type']).toContain('text/css');
+    expect(css.text).toContain(`--ground: ${color.ground.day}`);
+  });
+
+  it('lists nothing at /for/ — each page is reached by its own link', async () => {
+    const app = createApp();
+    for (const path of ['/for/', '/for/jan/']) {
+      expect((await request(app).get(path)).status, path).toBe(404);
+    }
+  });
+
   it('redirects the unhyphenated playhouse395 address to the real section, keeping the rest', async () => {
     const app = createApp();
     for (const [from, to] of [

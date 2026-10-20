@@ -13,6 +13,13 @@ are standalone HTML, `section.json` is the manifest, and the section's root
 
 Sections are never linked from the homepage.
 
+## Pages for one person
+
+`src/web/public/for/<name>/<page>/` holds one-off pages made for one person and sent
+as a link — the first is `/for/jan/jet-lag/`. They are written here, not published
+from elsewhere, and they wear the brand through `/brand/brand.css`. Read
+`docs/FOR.md` before adding one.
+
 <!-- SPECKIT START -->
 This project uses spec-driven development (GitHub Spec Kit). Read
 `.specify/memory/constitution.md` first — it governs this repository, and it binds
