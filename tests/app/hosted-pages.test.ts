@@ -16,14 +16,6 @@ import { renderSection } from '../../scripts/build-sections.mjs';
 const PUBLIC = join(process.cwd(), 'src/web/public');
 const KIT = join(process.cwd(), 'src/web/kit/page.css');
 
-/** Sections still on their own styles, each with what moves it. The list only shrinks. */
-const NOT_YET = new Map([
-  [
-    'work/grimoire',
-    'written by snackbyte-chat-automations’ publish script; moves in the next unit',
-  ],
-]);
-
 function filesUnder(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
     const path = join(dir, name);
@@ -34,11 +26,10 @@ function filesUnder(dir: string): string[] {
 const rel = (file: string) => relative(PUBLIC, file);
 /** A section's landing page is generated at build; it is checked from the generator below. */
 const isLanding = (file: string) => /^work\/[^/]+\/index\.html$/.test(rel(file));
-const notYet = (file: string) => [...NOT_YET.keys()].some((dir) => rel(file).startsWith(`${dir}/`));
 
 const hosted = ['for', 'work']
   .flatMap((dir) => filesUnder(join(PUBLIC, dir)))
-  .filter((f) => /\.(html|js|css)$/.test(f) && !isLanding(f) && !notYet(f));
+  .filter((f) => /\.(html|js|css)$/.test(f) && !isLanding(f));
 const pages = hosted.filter((f) => f.endsWith('.html'));
 
 /**
@@ -95,6 +86,7 @@ describe('every hosted page', () => {
         'for/jan/jet-lag/index.html',
         'work/playhouse-395/roadmap/index.html',
         'work/playhouse-395/sound-system/index.html',
+        'work/grimoire/design/index.html',
       ]),
     );
   });

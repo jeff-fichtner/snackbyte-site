@@ -5,21 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Grimoire Design Canvas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body { background: #0b0a08; -webkit-font-smoothing: antialiased; }
-  ::selection { background: rgba(205,163,73,0.28); }
-  a { color: #cda349; text-decoration: none; }
-  a:hover { color: #e4c374; }
-  .cvs-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
-  .cvs-scroll::-webkit-scrollbar-thumb { background: rgba(232,224,208,0.14); border-radius: 4px; }
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/kit/page.css">
+<link data-exhibit rel="preconnect" href="https://fonts.googleapis.com">
+<link data-exhibit rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link data-exhibit href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style data-exhibit>
+  .exhibit { background: #0b0a08; -webkit-font-smoothing: antialiased; }
+  .exhibit ::selection { background: rgba(205,163,73,0.28); }
+  .exhibit a { color: #cda349; text-decoration: none; }
+  .exhibit a:hover { color: #e4c374; }
+  .exhibit .cvs-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+  .exhibit .cvs-scroll::-webkit-scrollbar-thumb { background: rgba(232,224,208,0.14); border-radius: 4px; }
 </style>
 </head>
 <body>
+<main class="page wide">
+  <header>
+    <div class="crumb"><a href="../">Grimoire</a> &middot; design work</div>
+    <h1>Design Canvas</h1>
+    <p class="lede">Four design turns, newest first — the spellbook, the composer, records and refusals, and the states board.</p>
+  </header>
+</main>
+<div class="exhibit full">
 <div style="display:flex; flex-direction:column; gap:56px; padding:64px; font-family:'Hanken Grotesk', system-ui, sans-serif;">
 
   <section style="display:flex; flex-direction:column; gap:28px;">
@@ -1596,6 +1604,7 @@
 
     </div>
   </section>
+</div>
 </div>
 </body>
 </html>

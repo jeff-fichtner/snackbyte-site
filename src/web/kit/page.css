@@ -8,7 +8,7 @@
  * never renamed or removed, because every hosted page restyles when this file changes.
  */
 
-/* Plain HTML */
+/* Plain HTML. Each rule stops at an exhibit's edge: what is inside one renders as it was made. */
 
 :root {
   color-scheme: light dark;
@@ -32,35 +32,35 @@ html.large {
   display: none !important;
 }
 
-p {
+p:where(:not(.exhibit *)) {
   margin: 0;
 }
-h1,
-h2 {
+h1:where(:not(.exhibit *)),
+h2:where(:not(.exhibit *)) {
   margin: 0;
   font-weight: 700;
   font-variation-settings: 'opsz' var(--font-display-opsz);
   letter-spacing: -0.02em;
   line-height: 1.05;
 }
-h1 {
+h1:where(:not(.exhibit *)) {
   font-size: var(--type-2);
 }
-h2 {
+h2:where(:not(.exhibit *)) {
   font-size: var(--type-1);
 }
-h3 {
+h3:where(:not(.exhibit *)) {
   margin: 0;
   font-size: var(--type-0);
   font-weight: 700;
 }
 @media (min-width: 40rem) {
-  h1 {
+  h1:where(:not(.exhibit *)) {
     font-size: var(--type-3);
   }
 }
 
-button {
+button:where(:not(.exhibit *)) {
   font: inherit;
   min-height: calc(var(--unit) * 12);
   padding: 0 var(--seam);
@@ -68,23 +68,23 @@ button {
   cursor: pointer;
   justify-self: start;
 }
-button:focus-visible {
+button:where(:not(.exhibit *)):focus-visible {
   outline: 2px solid var(--sky);
   outline-offset: 3px;
 }
 
-fieldset {
+fieldset:where(:not(.exhibit *)) {
   border: 0;
   margin: 0;
   padding: 0;
   min-width: 0;
 }
-legend {
+legend:where(:not(.exhibit *)) {
   padding: 0;
   margin-bottom: calc(var(--unit) * 2);
   font-weight: 600;
 }
-select {
+select:where(:not(.exhibit *)) {
   font: inherit;
   color: var(--ink);
   background: var(--ground);
@@ -94,49 +94,49 @@ select {
   padding: 0 var(--gap);
   width: 100%;
 }
-select:focus-visible {
+select:where(:not(.exhibit *)):focus-visible {
   outline: 2px solid var(--sky);
   outline-offset: 3px;
 }
 
-details summary {
+details:where(:not(.exhibit *)) summary {
   color: var(--sky);
   cursor: pointer;
   min-height: calc(var(--unit) * 11);
   display: flex;
   align-items: center;
 }
-details summary:focus-visible {
+details:where(:not(.exhibit *)) summary:focus-visible {
   outline: 2px solid var(--sky);
   outline-offset: 3px;
 }
-details p {
+details:where(:not(.exhibit *)) p {
   color: var(--muted);
 }
 
-img {
+img:where(:not(.exhibit *)) {
   max-width: 100%;
   height: auto;
 }
-figure {
+figure:where(:not(.exhibit *)) {
   margin: 0;
 }
-figcaption {
+figcaption:where(:not(.exhibit *)) {
   color: var(--muted);
 }
 
 /* Tables: rules between rows, no fills; the header row is quieter than the data. */
-table {
+table:where(:not(.exhibit *)) {
   border-collapse: collapse;
 }
-th,
-td {
+th:where(:not(.exhibit *)),
+td:where(:not(.exhibit *)) {
   text-align: left;
   vertical-align: top;
   padding: calc(var(--unit) * 2) var(--gap);
   border-bottom: 1px solid var(--rule);
 }
-th {
+th:where(:not(.exhibit *)) {
   font-weight: 600;
   color: var(--muted);
 }
@@ -356,9 +356,27 @@ th {
    Inside it the page's own styles apply, and a <style> or font <link> marked data-exhibit may
    style it; the kit draws only the frame. Everything outside stays on the kit. */
 .exhibit {
+  /* Nothing the page sets reaches inside: colour, type, colour scheme and smoothing all start
+     from the browser's defaults, as they would in a page of its own. */
+  all: initial;
+  /* Except the language, which the page's lang still sets for everything on it. */
+  -webkit-locale: inherit;
+  display: block;
   border: 1px solid var(--rule);
   border-radius: var(--unit);
   overflow: auto;
+}
+/* An exhibit that needs the whole width, like a design canvas: it follows the page's header,
+   edge to edge, and the column above it closes up to it. */
+.exhibit.full {
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  /* Edge to edge there is nothing to scroll, and a scroll box would draw it differently. */
+  overflow: visible;
+}
+.page:has(+ .exhibit.full) {
+  padding-bottom: var(--seam);
 }
 
 /* Small marks beside a title: what is new, what is behind a password, what leaves the site. */
