@@ -114,6 +114,33 @@ details p {
   color: var(--muted);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+figure {
+  margin: 0;
+}
+figcaption {
+  color: var(--muted);
+}
+
+/* Tables: rules between rows, no fills; the header row is quieter than the data. */
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: calc(var(--unit) * 2) var(--gap);
+  border-bottom: 1px solid var(--rule);
+}
+th {
+  font-weight: 600;
+  color: var(--muted);
+}
+
 /* Components */
 
 /* The page: one reading column, with a phone gutter and the seam between its blocks. */
@@ -126,17 +153,44 @@ details p {
   gap: var(--seam);
 }
 
+/* A wider page, for tables and figures that need the room. */
+.page.wide {
+  max-width: 58rem;
+}
+@media (min-width: 40rem) {
+  .page.wide h2 {
+    font-size: var(--type-2);
+  }
+}
+
+/* The line above a hosted page's title: the section it belongs to, linked back, then what
+   the page is. */
+.crumb {
+  color: var(--muted);
+}
+
+/* Something wider than a phone, like a table, scrolls sideways inside its own box. */
+.scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 /* The line under a page's title. */
 .lede {
   color: var(--muted);
   margin-top: var(--gap);
 }
 
-/* A short label above what it names. Sage carries words only in its text value. */
+/* A short label above what it names. Sage carries words only in its text value. On a heading
+   it stays a label: text size and cut, not the heading's. */
 .label {
   display: block;
   color: var(--sage-text);
   font-weight: 600;
+  font-size: var(--type-0);
+  font-variation-settings: 'opsz' var(--font-text-opsz);
+  letter-spacing: normal;
+  line-height: 1.5;
 }
 
 /* Secondary text: a date, a place, a caption. */
@@ -235,6 +289,97 @@ details p {
 }
 .contents .meta {
   white-space: nowrap;
+}
+
+/* A list of links to other pages, one block each: a row with the title and any marks, a
+   line about it, and its status. .big sets them two across, room for a .pic on top. */
+.links {
+  display: grid;
+  gap: var(--gap);
+}
+@media (min-width: 36rem) {
+  .links.big {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--unit);
+  padding: var(--gap) calc(var(--unit) * 4);
+  border: 1px solid var(--rule);
+  border-radius: var(--unit);
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+}
+.link:hover {
+  border-color: var(--sky);
+}
+.link:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+.link .row {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--unit) * 2);
+  flex-wrap: wrap;
+}
+.link .title {
+  font-size: var(--type-1);
+  font-weight: 700;
+  font-variation-settings: 'opsz' var(--font-display-opsz);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.link .status {
+  color: var(--sage-text);
+  font-weight: 600;
+  margin-top: auto;
+}
+.link .pic {
+  display: block;
+  aspect-ratio: 16 / 10;
+  margin: calc(var(--gap) * -1) calc(var(--unit) * -4) var(--unit);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.link .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Something shown as it looks elsewhere: another product's screens, a client's own design.
+   Inside it the page's own styles apply, and a <style> or font <link> marked data-exhibit may
+   style it; the kit draws only the frame. Everything outside stays on the kit. */
+.exhibit {
+  border: 1px solid var(--rule);
+  border-radius: var(--unit);
+  overflow: auto;
+}
+
+/* Small marks beside a title: what is new, what is behind a password, what leaves the site. */
+.badge,
+.lock {
+  border: 1px solid currentColor;
+  border-radius: var(--unit);
+  padding: 0 calc(var(--unit) * 2);
+}
+.badge {
+  color: var(--sky);
+  font-weight: 600;
+}
+.lock {
+  color: var(--muted);
+}
+.ext {
+  color: var(--muted);
+}
+.link:hover .ext {
+  color: var(--sky);
 }
 
 /* The page's last line: who made it, and the name. */

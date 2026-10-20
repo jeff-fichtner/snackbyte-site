@@ -20,12 +20,8 @@ look like snackbyte because they link the page kit.
    and nothing else. The page writes no colour or font of its own — no hex, `rgb()`,
    `hsl()` or font name — and its `<style>`, if it has one, only lays out its own parts with
    tokens. `tests/app/for-pages.test.ts` checks every page under `for/`.
-   - Plain HTML is styled already: headings, paragraphs, lists, `details`, `select`,
-     `fieldset`, buttons.
-   - Components: `.page` (the column; put it on `<main>`), `.lede`, `.label`, `.meta`,
-     `.card`, `.callout`, `.primary` and `.secondary` buttons, `.choice` (a radio drawn as a
-     button), `.contents` (a table of contents) and the page's `<footer>`.
-     `<html class="large">` sets the whole scale a step bigger.
+   - What the kit gives you — plain HTML styled, the components, the tokens, exhibits — is
+     in `docs/SECTIONS.md` § The page kit. One list, for both kinds of page.
    - Need something the kit doesn't have? Add it to the kit, generically named, rather than
      to the page. The kit only grows: never rename or remove a class.
 4. **`noindex, nofollow`, never linked from the homepage.** The person has the link; nobody

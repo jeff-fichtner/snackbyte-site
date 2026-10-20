@@ -1,11 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join } from 'node:path';
-import { type } from '@snackbyte/brand';
 // @ts-expect-error — plain JS page script, no types
 import * as jetLag from '../../src/web/public/for/jan/jet-lag/plan.js';
-// @ts-expect-error — plain JS build script, no types
-import { kitStylesheet } from '../../scripts/copy-brand-assets.mjs';
 
 const { buildPlan, clock, normalize, isComplete, lowPoint, TRIP } = jetLag;
 
@@ -19,9 +14,6 @@ type Card = {
   branches?: { title: string; you: string[]; warn?: string }[];
   why: string;
 };
-
-// From the repository root (vitest's root): jsdom replaces the URL global, which file paths can't use.
-const FOR_DIR = join(process.cwd(), 'src/web/public/for');
 
 const plan = (answers: Record<string, unknown> = {}): Card[] => buildPlan(answers);
 const card = (cards: Card[], id: string): Card => {
@@ -368,73 +360,5 @@ describe('isComplete', () => {
     expect(isComplete(all)).toBe(true);
     expect(isComplete({ ...all, after: null })).toBe(false);
     expect(isComplete(null)).toBe(false);
-  });
-});
-
-/**
- * Fails on a brand value written by hand: a hex, rgb() or hsl() colour, or the brand's font
- * by name. Those come from the kit, so a page that writes one has stopped following it.
- */
-function expectNoBrandValues(text: string, file: string) {
-  expect(text, file).not.toMatch(/#[0-9a-f]{3}(?:[0-9a-f]{3})?\b/i);
-  expect(text, file).not.toMatch(/\b(?:rgba?|hsla?)\(/i);
-  expect(text, file).not.toContain(type.family);
-}
-
-/** Every file under /for/, so the guards below cover pages added later. */
-function filesUnder(dir: string): string[] {
-  return readdirSync(dir).flatMap((name) => {
-    const path = join(dir, name);
-    return statSync(path).isDirectory() ? filesUnder(path) : [path];
-  });
-}
-
-describe('every /for/ page', () => {
-  const pages = filesUnder(FOR_DIR).filter((f) => f.endsWith('.html'));
-
-  it('exists', () => {
-    expect(pages.length).toBeGreaterThan(0);
-  });
-
-  it('links the page kit, and writes no colour or font of its own', () => {
-    for (const page of pages) {
-      expect(readFileSync(page, 'utf8'), page).toContain('href="/kit/page.css"');
-    }
-    for (const file of filesUnder(FOR_DIR).filter((f) => /\.(html|js|css)$/.test(f))) {
-      expectNoBrandValues(readFileSync(file, 'utf8'), file);
-    }
-  });
-
-  it('is shared by link, not listed', () => {
-    for (const page of pages) {
-      expect(readFileSync(page, 'utf8'), page).toContain('<meta name="robots" content="noindex');
-    }
-  });
-});
-
-describe('the page kit', () => {
-  const KIT = join(process.cwd(), 'src/web/kit/page.css');
-
-  it('is served as one stylesheet: the font, then the tokens, the base rules and the kit', () => {
-    const css: string = kitStylesheet();
-    expect(
-      css.startsWith(
-        `@import url('https://fonts.googleapis.com/css2?family=${type.googleFonts}&display=swap');`,
-      ),
-    ).toBe(true);
-    const tokens = css.indexOf('--ground');
-    const base = css.indexOf('.wordmark');
-    const kit = css.indexOf('snackbyte page kit');
-    expect(tokens).toBeGreaterThan(0);
-    expect(base).toBeGreaterThan(tokens);
-    expect(kit).toBeGreaterThan(base);
-  });
-
-  it('only arranges brand tokens: no colour, font or size of its own', () => {
-    const css = readFileSync(KIT, 'utf8');
-    expectNoBrandValues(css, KIT);
-    for (const [, value] of css.matchAll(/font-size:\s*([^;]+);/g)) {
-      expect(value, 'font-size').toMatch(/^var\(--type-\d\)$|^\d+(\.\d+)?%$/);
-    }
   });
 });

@@ -8,6 +8,10 @@ touching the app.
 Sections are **not linked from the homepage** and are marked `noindex`. They are
 reached by direct URL and shared deliberately.
 
+Every page this site hosts looks like snackbyte. You don't have to design that: link
+the page kit, write plain HTML, and the page comes out right. This file is all you
+need to do it.
+
 ```
 src/web/public/work/playhouse-395/
   section.json           the manifest — you write this
@@ -21,21 +25,110 @@ src/web/public/work/playhouse-395/
    not `scripts/`, not another client's folder. If your change needs anything
    outside that directory, it is a change to the site and belongs to whoever owns
    the site — raise it, don't reach in.
-2. **Pages are complete, standalone HTML documents.** Own `<style>`, own script,
-   no build step, no imports from the app, no shared stylesheet. They are copied
-   verbatim into `dist/` by Vite, so what you write is what ships.
-   Start each page with the section's name linking back to its landing page —
-   `<a href="../">Playhouse 395</a>` in the top line — so a reader who arrives on one page
-   can find the rest.
-3. **Every section needs a `section.json`.** Without one the section has no
+2. **Pages are complete, standalone HTML documents** with no build step and no
+   imports from the app. They are copied verbatim into `dist/` by Vite, so what
+   you write is what ships.
+3. **Link the page kit, and no other stylesheet:**
+   `<link rel="stylesheet" href="/kit/page.css">`. It carries the font, the
+   palette, the type scale and the components below.
+4. **Write no colour, font or size of your own.** No hex, `rgb()` or `hsl()`; no
+   font link and no `font-family` but `var(--font)`; every `font-size` a type
+   token (`var(--type-0)` to `var(--type-5)`); no all-caps labels. A `<style>` of
+   your own may lay out your page's parts, using the tokens below. The one
+   exception is an exhibit (below). The build checks every page for all of this.
+5. **Start each page with the crumb:** the section's name linking back to its
+   landing page, then what the page is — `<div class="crumb"><a href="../">Playhouse
+395</a> · Bishop, California</div>` — so a reader who arrives on one page can find
+   the rest.
+6. **Every section needs a `section.json`.** Without one the section has no
    landing page and nothing links its pages together.
-4. **Never write `index.html` at the section root.** `scripts/build-sections.mjs`
+7. **Never write `index.html` at the section root.** `scripts/build-sections.mjs`
    generates it from the manifest on every build, so a hand-written one is
    overwritten. This is deliberate: it keeps every client section navigating the
    same way without any contributor writing that markup.
-5. **Sections are prettier-ignored** (`../src/web/public/**` in
+8. **Sections are prettier-ignored** (`../src/web/public/**` in
    `config/.prettierignore`). Do not format them; a generator's output would
    fight the formatter on every regeneration.
+
+## A page
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Schedule Map — Playhouse 395</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/kit/page.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div class="crumb"><a href="../">Playhouse 395</a> · scheduling</div>
+        <h1>Schedule Map</h1>
+        <p class="lede">One or two sentences on what this page is for.</p>
+      </header>
+      <section class="card">
+        <h2>A section</h2>
+        <p>Plain HTML from here on.</p>
+      </section>
+    </main>
+  </body>
+</html>
+```
+
+## The page kit
+
+**Plain HTML is styled already:** headings, paragraphs, lists, links, tables,
+`details`, images and figures, `select`, `fieldset`, buttons. Reach for a class
+only when you need one of these:
+
+| Class                     | What it is                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.page`                   | The page: one reading column with a phone gutter. Put it on `<main>`. Add `.wide` for tables and figures that need the room.                                                       |
+| `.crumb`                  | The line above the title, linking back to the section.                                                                                                                             |
+| `.lede`                   | The line under the title.                                                                                                                                                          |
+| `.label`                  | A short label above what it names. Works on a heading too.                                                                                                                         |
+| `.meta`                   | Secondary text: a date, a place, a caption.                                                                                                                                        |
+| `.card`                   | One bounded block of the page, a rule above it.                                                                                                                                    |
+| `.callout`                | The one thing on the page the reader must not miss.                                                                                                                                |
+| `.primary`, `.secondary`  | A button: the one main action, and the quieter way back.                                                                                                                           |
+| `.choice`                 | A radio drawn as a button: `<label class="choice"><input type="radio" …><span>Yes</span></label>`.                                                                                 |
+| `.contents`               | A table of contents: a `.label`, then a list of links, each with a `.meta` on the right.                                                                                           |
+| `.links`, `.link`         | A list of links to other pages: each `.link` holds a `.row` (a `.title` and any marks), a `.meta` line and a `.status`. `.links.big` sets them two across, with room for a `.pic`. |
+| `.badge`, `.lock`, `.ext` | Small marks beside a title: new, behind a password, leaves the site.                                                                                                               |
+| `.scroll`                 | A box that scrolls sideways, for a table wider than a phone.                                                                                                                       |
+| `.exhibit`                | Something shown as it looks elsewhere. See below.                                                                                                                                  |
+| `<html class="large">`    | Sets the whole page a type step bigger, for a reader who needs it.                                                                                                                 |
+
+**The tokens**, for your own layout. Each colour is a role with a day and a night
+value; the kit switches them with the reader's theme, so never write a colour for
+dark mode.
+
+- **Colour:** `--ground` (the page), `--ink` (text), `--muted` (secondary text),
+  `--rule` (lines and borders), `--sky` (the accent: links, focus, what is
+  current), `--sage-text` (sage where it must carry words), `--sage` and
+  `--bitterbrush` (marks and surfaces only — never text).
+- **Type:** `--type-0` (text) to `--type-5`, `--font`, and the two optical sizes
+  `--font-text-opsz` and `--font-display-opsz`.
+- **Space:** `--unit` (4px), `--gap`, `--seam`, `--cell`, `--cell-seam`, `--stack`.
+
+**Exhibits.** Some content is meant to look like something else: another
+product's screens, a client's own flyer. Put it inside an element with class
+`exhibit`. Inside that element its own styles apply, and a `<style>` or a font
+`<link>` marked `data-exhibit` may style it. The page around it stays on the kit,
+and the build's checks skip only what is inside. An image needs no exhibit; it is
+already its own thing.
+
+## Proposing a style change
+
+If the kit lacks something your page needs, or something in it is wrong, don't
+work around it in your page. File a request to snackbyte-site
+(`ops request snackbyte-site "<what, and why>"`). The site makes the change to the
+kit itself, forwards a change to the brand itself to `snackbyte-brand`, or says
+why not. Only the site asks the brand for changes.
 
 ## The manifest
 
