@@ -1,7 +1,12 @@
 # Cloud Build config for the deploy. Invoked by the per-app deploy job (see DEPLOY.md) via:
 #   gcloud builds submit --config=cloudbuild.yaml \
-#     --substitutions=TAG_NAME=vX.Y.Z,SHORT_SHA=<sha>,_SERVICE=<service> \
+#     --substitutions=TAG_NAME=vX.Y.Z,SHORT_SHA=<sha>,_SERVICE=<service>,_RUN_SA=<runtime-SA> \
 #     [--substitutions=_APP_ENV=staging,_APP_IS_PRODUCTION=false]   # staging only
+#
+# _RUN_SA is the Cloud Run *runtime* service account, one per environment (see DEPLOY.md), and
+# NOT the build/deploy identity passed to `gcloud builds submit --service-account`. It has no
+# usable default on purpose: without it Cloud Run runs the service as the project's default
+# compute service account, the one identity every app in the project shares.
 #
 # The version, commit, and date are passed in (the version is the derived git tag, NOT a
 # package.json patch). Build tags + image tags keep this app's builds legible in the shared
@@ -22,6 +27,10 @@ substitutions:
   # it is derived from _APP_ENV in the deploy step, not passed in, so the deploy job's
   # substitutions line stays exactly as every other app calls it.
   _MIN_INSTANCES: '1'
+  # REQUIRED — the Cloud Run runtime service account (see the header). Named on every deploy,
+  # never inherited: Cloud Run keeps whatever account a service already has when
+  # --service-account is omitted. The deploy step refuses to run while it is empty.
+  _RUN_SA: ''
 
 # Build tags → filterable chips in Cloud Build History (which app / ref / commit). Critical when
 # many apps build in the same project. (Underscores aren't allowed in tag values.)
@@ -63,12 +72,18 @@ steps:
   # 4. Deploy to Cloud Run from the immutable vX.Y.Z-<sha> image. Runtime env vars feed
   #    /api/version. NODE_ENV stays 'production' in BOTH environments so the real version is read;
   #    APP_ENV is appended ONLY when non-empty, so production is never given a stray APP_ENV=.
+  #    --service-account names the runtime identity on every revision rather than letting Cloud
+  #    Run carry the old one forward; the guard at the top has already refused an empty _RUN_SA.
   - id: deploy
     name: gcr.io/google.com/cloudsdktool/cloud-sdk
     entrypoint: bash
     args:
       - -c
       - |
+        if [ -z "${_RUN_SA}" ]; then
+          echo "_RUN_SA is required: the runtime service account this service runs as" >&2
+          exit 1
+        fi
         ENV_VARS="NODE_ENV=production,APP_VERSION=${TAG_NAME},BUILD_GIT_COMMIT=${SHORT_SHA},BUILD_DATE=$$(cat /workspace/build_date.txt)"
         if [ -n "${_APP_ENV}" ]; then ENV_VARS="$${ENV_VARS},APP_ENV=${_APP_ENV}"; fi
         MIN_INSTANCES="${_MIN_INSTANCES}"
@@ -78,6 +93,7 @@ steps:
           --project=${PROJECT_ID} \
           --region=${_REGION} \
           --ingress=internal-and-cloud-load-balancing \
+          --service-account=${_RUN_SA} \
           --min-instances="$${MIN_INSTANCES}" \
           --set-env-vars="$${ENV_VARS}"
 

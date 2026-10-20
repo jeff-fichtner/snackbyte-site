@@ -8,6 +8,7 @@ works end to end, distilled from standing up the first apps in the project.
 Placeholders used throughout: `<project>` (GCP project id), `<service>` (Cloud Run service
 = app name), `<owner>/<repo>` (GitHub repo), `<region>` (e.g. `us-central1`), `<LB-IP>`
 (the load balancer's static IP), `<deployer-SA>` (the build/deploy service account),
+`<runtime-SA>` (the account a Cloud Run service runs as, one per environment),
 `<project-number>` (numeric GCP project number).
 
 ## The model in one paragraph
@@ -81,7 +82,7 @@ the same build CI submits:
 
 ```bash
 gcloud builds submit --config=cloudbuild.yaml \
-  --substitutions="TAG_NAME=<tag>,SHORT_SHA=$(git rev-parse --short HEAD),_SERVICE=<service>" \
+  --substitutions="TAG_NAME=<tag>,SHORT_SHA=$(git rev-parse --short HEAD),_SERVICE=<service>,_RUN_SA=<runtime-SA>" \
   --service-account="projects/<project>/serviceAccounts/<deployer-SA>" \
   --default-buckets-behavior=REGIONAL_USER_OWNED_BUCKET \
   --project=<project> --region=<region> .
@@ -226,9 +227,9 @@ Project roles it needs: `roles/run.admin`, `roles/cloudbuild.builds.editor`,
 `actAs` (`roles/iam.serviceAccountUser`) bindings — **both** matter:
 
 ```bash
-# (a) on the compute runtime SA — Cloud Run runs the service as the compute SA:
-gcloud iam service-accounts add-iam-policy-binding \
-  <project-number>-compute@developer.gserviceaccount.com \
+# (a) on each runtime SA (section 3a) — the deploy names it with --service-account, so the
+#     deployer must be allowed to act as it:
+gcloud iam service-accounts add-iam-policy-binding <runtime-SA> \
   --project=<project> --role="roles/iam.serviceAccountUser" \
   --member="serviceAccount:<deployer-SA>"
 
@@ -239,6 +240,26 @@ gcloud iam service-accounts add-iam-policy-binding <deployer-SA> \
   --project=<project> --role="roles/iam.serviceAccountUser" \
   --member="serviceAccount:<deployer-SA>"
 ```
+
+### 3a. Runtime service accounts (one per environment — required)
+
+Each Cloud Run service runs as its own user-managed account, never the project's default
+compute service account: that one is shared by every app in the project, so anything granted to
+it is granted to all of them. This site uses `site-prod-runtime@snackbyte-apps.iam.gserviceaccount.com`
+for `snackbyte-site` (branch `main`) and `site-stg-runtime@snackbyte-apps.iam.gserviceaccount.com`
+for `snackbyte-site-staging` (branch `dev`). Each holds only `roles/logging.logWriter`: the
+site calls no Google Cloud API.
+
+```bash
+gcloud iam service-accounts create <name> --project=<project> \
+  --display-name="<service> runtime"   # => <runtime-SA>
+gcloud projects add-iam-policy-binding <project> \
+  --role="roles/logging.logWriter" --member="serviceAccount:<runtime-SA>"
+```
+
+`cloudbuild.yaml` takes it as `_RUN_SA`, which has no usable default: the deploy step refuses
+to run while it is empty, and every deploy passes `--service-account`, because Cloud Run keeps
+a service's existing account when the flag is omitted.
 
 ### 4. Cloud Run service — ingress AND invoker (both required)
 
@@ -325,9 +346,10 @@ one hand-assembly step, so don't change these four load-bearing lines (the **att
    deploy, no silent success).
 3. **`ref: ${{ needs.version-and-tag.outputs.tag }}`** — check out the _tagged_ commit, so the
    build is exactly what was versioned (not whatever `HEAD` drifted to).
-4. **the `--substitutions` set** — `TAG_NAME` / `_SERVICE` / `_APP_ENV` / `_APP_IS_PRODUCTION` are
-   what `cloudbuild.yaml` reads; the `Select environment from branch` step derives them from
-   `github.ref_name` (`dev` → `-staging` + `APP_ENV=staging` + chip on; `main` → prod defaults).
+4. **the `--substitutions` set** — `TAG_NAME` / `_SERVICE` / `_APP_ENV` / `_APP_IS_PRODUCTION` /
+   `_RUN_SA` are what `cloudbuild.yaml` reads; the `Select environment from branch` step derives
+   them from `github.ref_name` (`dev` → `-staging` + `APP_ENV=staging` + chip on + the staging
+   runtime account; `main` → prod defaults + the production runtime account).
 
 ```yaml
 deploy:
@@ -351,10 +373,12 @@ deploy:
           echo "service=<service>-staging" >> "$GITHUB_OUTPUT"
           echo "app_env=staging" >> "$GITHUB_OUTPUT"
           echo "is_production=false" >> "$GITHUB_OUTPUT"
+          echo "run_sa=<staging-runtime-SA>" >> "$GITHUB_OUTPUT"
         else
           echo "service=<service>" >> "$GITHUB_OUTPUT"
           echo "app_env=" >> "$GITHUB_OUTPUT"
           echo "is_production=true" >> "$GITHUB_OUTPUT"
+          echo "run_sa=<production-runtime-SA>" >> "$GITHUB_OUTPUT"
         fi
     - uses: google-github-actions/auth@v2
       with:
@@ -369,7 +393,7 @@ deploy:
         SHORT_SHA="$(git rev-parse --short HEAD)"
         gcloud builds submit \
           --config=cloudbuild.yaml \
-          --substitutions="TAG_NAME=${TAG},SHORT_SHA=${SHORT_SHA},_SERVICE=${{ steps.target.outputs.service }},_APP_ENV=${{ steps.target.outputs.app_env }},_APP_IS_PRODUCTION=${{ steps.target.outputs.is_production }}" \
+          --substitutions="TAG_NAME=${TAG},SHORT_SHA=${SHORT_SHA},_SERVICE=${{ steps.target.outputs.service }},_APP_ENV=${{ steps.target.outputs.app_env }},_APP_IS_PRODUCTION=${{ steps.target.outputs.is_production }},_RUN_SA=${{ steps.target.outputs.run_sa }}" \
           --service-account="projects/${PROJECT_ID}/serviceAccounts/${DEPLOY_SA}" \
           --default-buckets-behavior=REGIONAL_USER_OWNED_BUCKET \
           --project="$PROJECT_ID" --region="$REGION" .
@@ -377,7 +401,7 @@ deploy:
 
 `cloudbuild.yaml` (shipped) stamps a UTC build date, builds the `Dockerfile` forwarding
 `APP_VERSION` / `APP_IS_PRODUCTION` / `BUILD_GIT_COMMIT` / `BUILD_DATE` as build-args, tags the
-image `<service>:<TAG>-<sha>`, pushes to Artifact Registry, and `gcloud run deploy`s with runtime
+image `<service>:<TAG>-<sha>`, pushes to Artifact Registry, and `gcloud run deploy`s as `_RUN_SA`, with runtime
 env (`NODE_ENV=production`, `APP_VERSION`, commit/date, and `APP_ENV` **only when non-empty** so
 prod is never given a stray `APP_ENV=`). Its per-target knobs (`_SERVICE`, `_APP_ENV`,
 `_APP_IS_PRODUCTION`) default to production, so the prod path is byte-identical to a non-staging

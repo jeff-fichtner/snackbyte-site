@@ -107,10 +107,12 @@ jobs:
             echo "service=snackbyte-site-staging" >> "$GITHUB_OUTPUT"
             echo "app_env=staging" >> "$GITHUB_OUTPUT"
             echo "is_production=false" >> "$GITHUB_OUTPUT"
+            echo "run_sa=site-stg-runtime@snackbyte-apps.iam.gserviceaccount.com" >> "$GITHUB_OUTPUT"
           else
             echo "service=snackbyte-site" >> "$GITHUB_OUTPUT"
             echo "app_env=" >> "$GITHUB_OUTPUT"
             echo "is_production=true" >> "$GITHUB_OUTPUT"
+            echo "run_sa=site-prod-runtime@snackbyte-apps.iam.gserviceaccount.com" >> "$GITHUB_OUTPUT"
           fi
       - uses: google-github-actions/auth@v2
         with:
@@ -125,7 +127,7 @@ jobs:
           SHORT_SHA="$(git rev-parse --short HEAD)"
           gcloud builds submit \
             --config=cloudbuild.yaml \
-            --substitutions="TAG_NAME=${TAG},SHORT_SHA=${SHORT_SHA},_SERVICE=${{ steps.target.outputs.service }},_APP_ENV=${{ steps.target.outputs.app_env }},_APP_IS_PRODUCTION=${{ steps.target.outputs.is_production }}" \
+            --substitutions="TAG_NAME=${TAG},SHORT_SHA=${SHORT_SHA},_SERVICE=${{ steps.target.outputs.service }},_APP_ENV=${{ steps.target.outputs.app_env }},_APP_IS_PRODUCTION=${{ steps.target.outputs.is_production }},_RUN_SA=${{ steps.target.outputs.run_sa }}" \
             --service-account="projects/${PROJECT_ID}/serviceAccounts/${DEPLOY_SA}" \
             --default-buckets-behavior=REGIONAL_USER_OWNED_BUCKET \
             --project="$PROJECT_ID" --region="$REGION" .
