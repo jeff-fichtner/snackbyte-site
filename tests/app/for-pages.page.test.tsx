@@ -211,6 +211,34 @@ describe('the page', () => {
     expect(shown('answers')).toBe(true);
   });
 
+  it('opens with a table of contents that links to every card, above her answers', () => {
+    mount(document, memoryStorage());
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('#contents a')];
+    expect(links.map((a) => a.getAttribute('href'))).toEqual([
+      '#before',
+      '#flight',
+      '#landing',
+      '#nights',
+      '#thursday',
+      '#weekend',
+      '#sunday',
+    ]);
+    for (const a of links) {
+      expect(document.querySelector(a.getAttribute('href') ?? ''), a.href).not.toBeNull();
+    }
+    expect(links[2].textContent).toBe('LandingOct 28');
+    const contents = document.getElementById('contents');
+    for (const id of ['summary', 'answers']) {
+      const later = document.getElementById(id);
+      expect(
+        contents &&
+          later &&
+          contents.compareDocumentPosition(later) & Node.DOCUMENT_POSITION_FOLLOWING,
+        id,
+      ).toBeTruthy();
+    }
+  });
+
   it('fails loudly on a page without its form', () => {
     document.body.innerHTML = '<div id="plan"></div>';
     expect(() => mount(document, null)).toThrow(/#answers/);

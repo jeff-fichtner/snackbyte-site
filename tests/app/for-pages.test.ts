@@ -78,6 +78,18 @@ describe('the plan', () => {
     ]);
   });
 
+  it('gives every card a short date for the table of contents', () => {
+    expect(plan().map((c) => (c as Card & { short: string }).short)).toEqual([
+      'Oct 25–27',
+      'Oct 28',
+      'Oct 28',
+      'Oct 28–30',
+      'Oct 29',
+      'Oct 30–31',
+      'Nov 1',
+    ]);
+  });
+
   it('pairs every step with the general rule and the reason', () => {
     for (const c of plan()) {
       expect(c.general, c.id).not.toBe('');

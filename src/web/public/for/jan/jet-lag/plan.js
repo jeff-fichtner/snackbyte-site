@@ -157,6 +157,7 @@ export function buildPlan(raw) {
     id: 'before',
     title: 'Before you fly',
     when: 'Sunday to Tuesday, October 25–27 · Italy',
+    short: 'Oct 25–27',
     general: 'Go to bed an hour later each night for two or three nights.',
     you: [
       `Skip that. Wednesday starts around ${clock(TRIP.wakeWednesday)}.`,
@@ -173,6 +174,7 @@ export function buildPlan(raw) {
     id: 'flight',
     title: 'The flight',
     when: 'Wednesday, October 28 · Bologna to Rome to Los Angeles',
+    short: 'Oct 28',
     general: 'Set your watch to California time when you board, and eat and sleep by it.',
     you: [
       `Switch it when you board in Rome. The flight leaves about ${clock(TRIP.romeDeparts)} there, which is ${clock(TRIP.romeDeparts - TRIP.hoursBehind * 60)} in California.`,
@@ -236,6 +238,7 @@ export function buildPlan(raw) {
     id: 'landing',
     title: 'Landing',
     when: `Wednesday, October 28, about ${clock(TRIP.laxLands)} · Los Angeles`,
+    short: 'Oct 28',
     general: 'Stay up until a normal bedtime, and get outside in the late afternoon.',
     you: [],
     why:
@@ -258,6 +261,7 @@ export function buildPlan(raw) {
     id: 'nights',
     title: 'Nights one to three',
     when: 'Wednesday to Friday',
+    short: 'Oct 28–30',
     general: `Expect to wake around 2 to 4am. At 3am in California your body thinks it’s ${clock(3 * 60 + TRIP.hoursBehind * 60)} in Italy.`,
     you: [
       'Stay in bed with the lights off and the phone away. It gets shorter each night.',
@@ -291,6 +295,7 @@ export function buildPlan(raw) {
     id: 'thursday',
     title: 'First day back',
     when: `Thursday, October 29 · ${a.after === 'stay' ? 'Los Angeles to Bishop' : 'Bishop'}`,
+    short: 'Oct 29',
     general: 'A real breakfast at breakfast time, high in protein. Outside in the late afternoon. One short nap at most.',
     you: [
       `${a.wake === null ? 'Breakfast at California breakfast time.' : `Breakfast by ${clock(a.wake + 60)}.`} Eggs or yogurt are good; the time matters more than the protein.`,
@@ -316,6 +321,7 @@ export function buildPlan(raw) {
     id: 'weekend',
     title: 'Friday and Saturday',
     when: 'October 30–31 · Bishop',
+    short: 'Oct 30–31',
     general: 'Keep doing what Thursday did.',
     you: [
       `Breakfast on time, outside late in the afternoon, bed at ${usual}.`,
@@ -328,6 +334,7 @@ export function buildPlan(raw) {
     id: 'sunday',
     title: 'Clocks go back',
     when: 'Sunday, November 1',
+    short: 'Nov 1',
     general: 'California’s clocks go back an hour at 2am.',
     you: [
       `Go to bed at ${usual} on the new clock.`,
@@ -350,6 +357,20 @@ const el = (doc, tag, className, text) => {
 function renderLines(doc, lines) {
   const list = el(doc, 'ul', 'you');
   for (const line of lines) list.append(el(doc, 'li', '', line));
+  return list;
+}
+
+/** The table of contents: one link per card, with its dates, in the plan's order. */
+function renderContents(doc, cards) {
+  const list = el(doc, 'ul');
+  for (const card of cards) {
+    const link = el(doc, 'a');
+    link.href = `#${card.id}`;
+    link.append(el(doc, 'span', '', card.title), el(doc, 'span', 'date', card.short));
+    const item = el(doc, 'li');
+    item.append(link);
+    list.append(item);
+  }
   return list;
 }
 
@@ -461,6 +482,7 @@ function need(doc, id) {
 export function mount(doc, storage) {
   const form = need(doc, 'answers');
   const plan = need(doc, 'plan');
+  const contents = need(doc, 'contents');
   const summary = need(doc, 'summary');
   const summaryList = need(doc, 'summary-list');
   const saveButton = need(doc, 'save');
@@ -475,7 +497,9 @@ export function mount(doc, storage) {
   const render = () => {
     const answers = read(form);
     persist(storage, answers, saved);
-    plan.replaceChildren(...buildPlan(answers).map((card) => renderCard(doc, card)));
+    const cards = buildPlan(answers);
+    plan.replaceChildren(...cards.map((card) => renderCard(doc, card)));
+    contents.replaceChildren(el(doc, 'p', 'label', 'On this page'), renderContents(doc, cards));
   };
   const fold = () => {
     form.hidden = saved;
