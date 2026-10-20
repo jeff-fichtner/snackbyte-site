@@ -1,0 +1,255 @@
+/* snackbyte page kit.
+ *
+ * How a page hosted on this site looks: the pages under /work/ and /for/. The build serves it
+ * at /kit/page.css after the brand's font, tokens and base rules, so a page links that one
+ * file and nothing else. Every value here is a brand token; the kit only arranges them.
+ *
+ * It styles plain HTML first, then a short list of components. It only grows: a class is
+ * never renamed or removed, because every hosted page restyles when this file changes.
+ */
+
+/* Plain HTML */
+
+:root {
+  color-scheme: light dark;
+}
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+/* A page for a reader who needs the text a step bigger; the whole scale moves together. */
+html.large {
+  font-size: 112.5%;
+}
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+
+p {
+  margin: 0;
+}
+h1,
+h2 {
+  margin: 0;
+  font-weight: 700;
+  font-variation-settings: 'opsz' var(--font-display-opsz);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+h1 {
+  font-size: var(--type-2);
+}
+h2 {
+  font-size: var(--type-1);
+}
+h3 {
+  margin: 0;
+  font-size: var(--type-0);
+  font-weight: 700;
+}
+@media (min-width: 40rem) {
+  h1 {
+    font-size: var(--type-3);
+  }
+}
+
+button {
+  font: inherit;
+  min-height: calc(var(--unit) * 12);
+  padding: 0 var(--seam);
+  border-radius: var(--unit);
+  cursor: pointer;
+  justify-self: start;
+}
+button:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+legend {
+  padding: 0;
+  margin-bottom: calc(var(--unit) * 2);
+  font-weight: 600;
+}
+select {
+  font: inherit;
+  color: var(--ink);
+  background: var(--ground);
+  border: 1px solid var(--rule);
+  border-radius: var(--unit);
+  min-height: var(--cell-seam);
+  padding: 0 var(--gap);
+  width: 100%;
+}
+select:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
+details summary {
+  color: var(--sky);
+  cursor: pointer;
+  min-height: calc(var(--unit) * 11);
+  display: flex;
+  align-items: center;
+}
+details summary:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+details p {
+  color: var(--muted);
+}
+
+/* Components */
+
+/* The page: one reading column, with a phone gutter and the seam between its blocks. */
+.page {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: var(--seam) calc(var(--unit) * 4) var(--stack);
+  display: flex;
+  flex-direction: column;
+  gap: var(--seam);
+}
+
+/* The line under a page's title. */
+.lede {
+  color: var(--muted);
+  margin-top: var(--gap);
+}
+
+/* A short label above what it names. Sage carries words only in its text value. */
+.label {
+  display: block;
+  color: var(--sage-text);
+  font-weight: 600;
+}
+
+/* Secondary text: a date, a place, a caption. */
+.meta {
+  color: var(--muted);
+}
+
+/* One bounded block of a page, a seam below the rule that starts it. */
+.card {
+  display: grid;
+  gap: var(--gap);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--seam);
+  scroll-margin-top: var(--gap);
+}
+.card:focus {
+  outline: none;
+}
+
+/* The one thing on a page the reader must not miss. Bitterbrush marks it; it is never text. */
+.callout {
+  border-left: var(--unit) solid var(--bitterbrush);
+  padding-left: var(--gap);
+  font-weight: 600;
+}
+
+/* Buttons: one primary action, and the quieter way back. */
+.primary {
+  background: var(--sky);
+  color: var(--ground);
+  border: 1px solid var(--sky);
+  font-weight: 600;
+}
+.secondary {
+  background: none;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+
+/* A choice drawn as a button: a radio input followed by its span. */
+.choice {
+  position: relative;
+  display: block;
+}
+.choice input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+}
+.choice span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: var(--cell-seam);
+  padding: calc(var(--unit) * 2) var(--gap);
+  border: 1px solid var(--rule);
+  border-radius: var(--unit);
+  cursor: pointer;
+  line-height: 1.2;
+}
+.choice input:checked + span {
+  background: var(--sky);
+  border-color: var(--sky);
+  color: var(--ground);
+  font-weight: 600;
+}
+.choice input:focus-visible + span {
+  outline: 2px solid var(--sky);
+  outline-offset: 3px;
+}
+
+/* A table of contents: a label, then one row per link with its .meta on the right. */
+.contents {
+  display: grid;
+  gap: calc(var(--unit) * 2);
+}
+.contents ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.contents a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--gap);
+  min-height: calc(var(--unit) * 11);
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+}
+.contents li:first-child a {
+  border-top: 1px solid var(--rule);
+}
+.contents .meta {
+  white-space: nowrap;
+}
+
+/* The page's last line: who made it, and the name. */
+.page > footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap);
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  padding-top: var(--gap);
+}
+.page > footer .wordmark {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: var(--type-1);
+}

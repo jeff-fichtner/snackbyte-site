@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="large">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,37 +15,10 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/brand/brand.css">
+<link rel="stylesheet" href="/kit/page.css">
 <style>
-  /* Every colour, size and space below is a brand token from /brand/brand.css. The page only
-     arranges them. The root is set larger so the whole brand scale reads a step bigger. */
-  :root { color-scheme: light dark; }
-  html { font-size: 112.5%; }
-  * { box-sizing: border-box; }
-  [hidden] { display: none !important; }
-
-  .wrap {
-    max-width: 34rem;
-    margin: 0 auto;
-    padding: var(--seam) calc(var(--unit) * 4) var(--stack);
-    display: flex;
-    flex-direction: column;
-    gap: var(--seam);
-  }
-  p { margin: 0; }
-  h1, h2 {
-    margin: 0;
-    font-weight: 700;
-    font-variation-settings: 'opsz' var(--font-display-opsz);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-  }
-  h1 { font-size: var(--type-2); }
-  h2 { font-size: var(--type-1); }
-  h3 { margin: 0; font-size: var(--type-0); font-weight: 700; }
-  @media (min-width: 40rem) { h1 { font-size: var(--type-3); } }
-
-  .lede { color: var(--muted); margin-top: var(--gap); }
+  /* This page's own layout. The look is the kit's (/kit/page.css); every value here is a
+     brand token. */
   .intro { display: grid; gap: var(--gap); }
 
   form, .summary {
@@ -55,94 +28,19 @@
     padding-top: var(--seam);
   }
   .summary { gap: var(--gap); }
-  #answers:focus { outline: none; }
-  .card:focus { outline: none; }
-  .card { scroll-margin-top: var(--gap); }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-  .contents { display: grid; gap: calc(var(--unit) * 2); }
-  .contents ul { list-style: none; margin: 0; padding: 0; }
-  .contents a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--gap);
-    min-height: calc(var(--unit) * 11);
-    border-bottom: 1px solid var(--rule);
-    text-decoration: none;
-  }
-  .contents li:first-child a { border-top: 1px solid var(--rule); }
-  .contents .date { color: var(--muted); white-space: nowrap; }
   .summary ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--unit); }
-
-  button {
-    font: inherit;
-    min-height: calc(var(--unit) * 12);
-    padding: 0 var(--seam);
-    border-radius: var(--unit);
-    cursor: pointer;
-    justify-self: start;
-  }
-  button:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
-  .primary { background: var(--sky); color: var(--ground); border: 1px solid var(--sky); font-weight: 600; }
-  .secondary { background: none; color: var(--ink); border: 1px solid var(--rule); }
+  #answers:focus { outline: none; }
   .save { display: grid; gap: var(--gap); }
-  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
-  legend { padding: 0; margin-bottom: calc(var(--unit) * 2); font-weight: 600; }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--unit) * 2); }
   .time { display: grid; gap: var(--unit); color: var(--muted); }
-
-  select {
-    font: inherit;
-    color: var(--ink);
-    background: var(--ground);
-    border: 1px solid var(--rule);
-    border-radius: var(--unit);
-    min-height: var(--cell-seam);
-    padding: 0 var(--gap);
-    width: 100%;
-  }
-  select:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
-
-  .choice { position: relative; display: block; }
-  .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
-  .choice span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: var(--cell-seam);
-    padding: calc(var(--unit) * 2) var(--gap);
-    border: 1px solid var(--rule);
-    border-radius: var(--unit);
-    cursor: pointer;
-    line-height: 1.2;
-  }
-  .choice input:checked + span {
-    background: var(--sky);
-    border-color: var(--sky);
-    color: var(--ground);
-    font-weight: 600;
-  }
-  .choice input:focus-visible + span { outline: 2px solid var(--sky); outline-offset: 3px; }
-
   .hint { color: var(--muted); }
 
   #plan { display: grid; gap: var(--seam); }
-  .card {
-    display: grid;
-    gap: var(--gap);
-    border-top: 1px solid var(--rule);
-    padding-top: var(--seam);
-  }
-  .when, .general { color: var(--muted); }
-  .label { display: block; color: var(--sage-text); font-weight: 600; }
+  .general { color: var(--muted); }
   .general .label { margin-bottom: var(--unit); }
   .you { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 2); }
   .you li:first-child { font-weight: 600; }
-  .warn { border-left: var(--unit) solid var(--bitterbrush); padding-left: var(--gap); font-weight: 600; }
-  .warn ~ .you li:first-child { font-weight: 400; }
+  .callout ~ .you li:first-child { font-weight: 400; }
   .branch {
     display: grid;
     gap: calc(var(--unit) * 2);
@@ -150,31 +48,10 @@
     border-left: 1px solid var(--rule);
   }
   .branch .you li:first-child { font-weight: 400; }
-  details summary {
-    color: var(--sky);
-    cursor: pointer;
-    min-height: calc(var(--unit) * 11);
-    display: flex;
-    align-items: center;
-  }
-  details summary:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
-  details p { color: var(--muted); }
-
-  footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--gap);
-    color: var(--muted);
-    border-top: 1px solid var(--rule);
-    padding-top: var(--gap);
-  }
-  footer .wordmark { color: var(--ink); text-decoration: none; font-size: var(--type-1); }
 </style>
 </head>
 <body>
-<main class="wrap">
+<main class="page">
   <header>
     <h1>Jan’s jet lag plan</h1>
     <p class="lede">Bologna to Bishop, Wednesday, October 28. California is 8 hours behind Italy.</p>

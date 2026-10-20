@@ -380,7 +380,7 @@ function renderContents(doc, cards) {
   for (const card of cards) {
     const link = el(doc, 'a');
     link.href = `#${card.id}`;
-    link.append(el(doc, 'span', '', card.title), el(doc, 'span', 'date', card.short));
+    link.append(el(doc, 'span', '', card.title), el(doc, 'span', 'meta', card.short));
     const item = el(doc, 'li');
     item.append(link);
     list.append(item);
@@ -391,13 +391,13 @@ function renderContents(doc, cards) {
 function renderCard(doc, card) {
   const node = el(doc, 'section', 'card');
   node.id = card.id;
-  node.append(el(doc, 'h2', '', card.title), el(doc, 'p', 'when', card.when));
+  node.append(el(doc, 'h2', '', card.title), el(doc, 'p', 'meta', card.when));
 
   const general = el(doc, 'p', 'general');
   general.append(el(doc, 'span', 'label', 'Generally'), doc.createTextNode(card.general));
   node.append(general, el(doc, 'p', 'label', 'For you'));
 
-  if (card.warn) node.append(el(doc, 'p', 'warn', card.warn));
+  if (card.warn) node.append(el(doc, 'p', 'callout', card.warn));
   if (card.action) {
     const button = el(doc, 'button', 'primary', card.action.label);
     button.type = 'button';
@@ -409,7 +409,7 @@ function renderCard(doc, card) {
   for (const branch of card.branches ?? []) {
     const block = el(doc, 'div', 'branch');
     block.append(el(doc, 'h3', '', branch.title));
-    if (branch.warn) block.append(el(doc, 'p', 'warn', branch.warn));
+    if (branch.warn) block.append(el(doc, 'p', 'callout', branch.warn));
     block.append(renderLines(doc, branch.you));
     node.append(block);
   }

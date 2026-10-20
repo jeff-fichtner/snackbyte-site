@@ -35,21 +35,35 @@ describe('app serves', () => {
     expect(res.status).toBe(200);
   });
 
-  it('serves a /for/ page with its script and the brand stylesheet it reads', async () => {
+  it('serves a /for/ page with its script and the page kit it links', async () => {
     const app = createApp();
     const page = await request(app).get('/for/jan/jet-lag/');
     expect(page.status).toBe(200);
     expect(page.headers['content-type']).toContain('text/html');
-    expect(page.text).toContain('href="/brand/brand.css"');
+    expect(page.text).toContain('href="/kit/page.css"');
 
     const script = await request(app).get('/for/jan/jet-lag/plan.js');
     expect(script.status).toBe(200);
     expect(script.headers['content-type']).toMatch(/javascript/);
 
-    const css = await request(app).get('/brand/brand.css');
+    const css = await request(app).get('/kit/page.css');
     expect(css.status).toBe(200);
     expect(css.headers['content-type']).toContain('text/css');
     expect(css.text).toContain(`--ground: ${color.ground.day}`);
+    expect(css.text).toContain('snackbyte page kit');
+  });
+
+  it('answers a miss anywhere, inside sections and /for/ too, with the one not-found page', async () => {
+    const app = createApp();
+    for (const path of [
+      '/work/playhouse-395/nothing-here/',
+      '/for/jan/nothing-here/',
+      '/brand/brand.css',
+    ]) {
+      const res = await request(app).get(path);
+      expect(res.status, path).toBe(404);
+      expect(res.text, path).toContain('There is nothing at this address.');
+    }
   });
 
   it('lists nothing at /for/ — each page is reached by its own link', async () => {
