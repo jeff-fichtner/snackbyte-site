@@ -5,7 +5,7 @@ import { type } from '@snackbyte/brand';
 // @ts-expect-error — plain JS page script, no types
 import * as jetLag from '../../src/web/public/for/jan/jet-lag/plan.js';
 // @ts-expect-error — plain JS build script, no types
-import { brandStylesheet } from '../../scripts/copy-brand-assets.mjs';
+import { kitStylesheet } from '../../scripts/copy-brand-assets.mjs';
 
 const { buildPlan, clock, normalize, isComplete, lowPoint, TRIP } = jetLag;
 
@@ -371,6 +371,16 @@ describe('isComplete', () => {
   });
 });
 
+/**
+ * Fails on a brand value written by hand: a hex, rgb() or hsl() colour, or the brand's font
+ * by name. Those come from the kit, so a page that writes one has stopped following it.
+ */
+function expectNoBrandValues(text: string, file: string) {
+  expect(text, file).not.toMatch(/#[0-9a-f]{3}(?:[0-9a-f]{3})?\b/i);
+  expect(text, file).not.toMatch(/\b(?:rgba?|hsla?)\(/i);
+  expect(text, file).not.toContain(type.family);
+}
+
 /** Every file under /for/, so the guards below cover pages added later. */
 function filesUnder(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
@@ -386,14 +396,12 @@ describe('every /for/ page', () => {
     expect(pages.length).toBeGreaterThan(0);
   });
 
-  it('reads the brand from the stylesheet the build writes, and writes no brand value itself', () => {
+  it('links the page kit, and writes no colour or font of its own', () => {
     for (const page of pages) {
-      expect(readFileSync(page, 'utf8'), page).toContain('href="/brand/brand.css"');
+      expect(readFileSync(page, 'utf8'), page).toContain('href="/kit/page.css"');
     }
     for (const file of filesUnder(FOR_DIR).filter((f) => /\.(html|js|css)$/.test(f))) {
-      const text = readFileSync(file, 'utf8');
-      expect(text, file).not.toMatch(/#[0-9a-f]{3}(?:[0-9a-f]{3})?\b/i);
-      expect(text, file).not.toContain(type.family);
+      expectNoBrandValues(readFileSync(file, 'utf8'), file);
     }
   });
 
@@ -404,15 +412,29 @@ describe('every /for/ page', () => {
   });
 });
 
-describe('the brand stylesheet', () => {
-  it('loads the font first, then the tokens, then the base rules', () => {
-    const css: string = brandStylesheet();
+describe('the page kit', () => {
+  const KIT = join(process.cwd(), 'src/web/kit/page.css');
+
+  it('is served as one stylesheet: the font, then the tokens, the base rules and the kit', () => {
+    const css: string = kitStylesheet();
     expect(
       css.startsWith(
         `@import url('https://fonts.googleapis.com/css2?family=${type.googleFonts}&display=swap');`,
       ),
     ).toBe(true);
-    expect(css.indexOf('--ground')).toBeGreaterThan(0);
-    expect(css.indexOf('.wordmark')).toBeGreaterThan(css.indexOf('--ground'));
+    const tokens = css.indexOf('--ground');
+    const base = css.indexOf('.wordmark');
+    const kit = css.indexOf('snackbyte page kit');
+    expect(tokens).toBeGreaterThan(0);
+    expect(base).toBeGreaterThan(tokens);
+    expect(kit).toBeGreaterThan(base);
+  });
+
+  it('only arranges brand tokens: no colour, font or size of its own', () => {
+    const css = readFileSync(KIT, 'utf8');
+    expectNoBrandValues(css, KIT);
+    for (const [, value] of css.matchAll(/font-size:\s*([^;]+);/g)) {
+      expect(value, 'font-size').toMatch(/^var\(--type-\d\)$|^\d+(\.\d+)?%$/);
+    }
   });
 });

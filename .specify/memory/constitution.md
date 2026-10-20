@@ -1,5 +1,15 @@
 <!--
 Sync Impact Report
+Version change: 1.2.1 → 2.0.0 (2026-10-20): MAJOR, Principle IV redefined. Hosted pages share
+one stylesheet, the page kit at /kit/page.css (source src/web/kit/page.css), instead of each
+carrying its own: snackbyte-site is the brand's primary application and every page it hosts
+looks like snackbyte. Principle I gains who may ask for a brand change: agents using the site
+propose to the site, which makes kit changes itself, forwards brand changes to snackbyte-brand
+as its own request, or declines with the reason. Principle VII: a kit change touches every
+hosted page. The kit joins the governing files. Previous text is in version history.
+Deferred: the work/ sections and their generated landing pages still carry their own styles;
+they move onto the kit in the next units, with docs/SECTIONS.md rewritten alongside them.
+
 Version change: 1.2.0 → 1.2.1 (2026-10-20): PATCH, wording. The Development Workflow line
 that defines a unit of work said units are cut from `main`; since the default-branch rule
 (2026-10-12) they are cut from `dev`, merge into `dev`, and `main` changes only by promoting
@@ -63,9 +73,18 @@ implementation that compresses it is `snackbyte-brand-render`, consumed here as
 not in `app.css`, not in a component, not in a page under `public/`. It is read from
 the package, or the page is wrong.
 
+The site is the brand's primary application, with the products born directly from
+it. Agents that use the site — publishing into `work/` or `for/` — propose style
+changes to the site, never to the brand. The site settles each proposal one of three
+ways: a change to the page kit, which it makes itself; a brand change, which it
+forwards to `snackbyte-brand` as its own request; or a decline, with the reason. Of
+everything that uses the site, only the site requests brand changes.
+
 **Rationale**: every snackbyte app consumes this brand. While the site owned it,
 every app would have depended on the site. The boundary this principle drew is what
-made the extraction a move rather than a rewrite.
+made the extraction a move rather than a rewrite. Routing contributors' proposals
+through the site keeps the brand hearing from the one application that sees all of
+them, not from every page that wants a different blue.
 
 ### II. Derived, Never Hand-Cut
 
@@ -101,19 +120,24 @@ What survives is what was written down.
 including agents from other repositories that never open this one, and it MUST
 remain self-contained: a reader with only that file can comply with it.
 
-The app never reaches into a section, and a section never reaches out. Section
-pages are standalone HTML documents with no import from `src/`, no shared
-stylesheet and no build step, and they are excluded from this repository's
-formatter.
+The app never reaches into a section, and a section reaches out for one thing
+only: the page kit. Section pages are standalone HTML documents with no import from
+`src/` and no build step, excluded from this repository's formatter. Each links
+`/kit/page.css` and writes no colour or font of its own; content that must look like
+something else — another product's screens, a client's flyer — sits inside
+`.exhibit`, the one place a page's own styles apply.
 
-Pages under `/for/` are not sections. They are made for one person and written
-in this repository, so they need no isolation from it: they read the brand from
-`/brand/brand.css`, which the build writes from the package, and `docs/FOR.md`
-holds their rules.
+Pages under `/for/` are not sections. They are made for one person and written in
+this repository, they link the same kit, and `docs/FOR.md` holds their rules.
 
-**Rationale**: a section is published by someone who does not know this
-codebase and should not have to learn it. The isolation is what keeps the site
-from breaking a client's page, and a client's page from breaking the site.
+The kit only grows. A class is never renamed or removed, because every hosted page
+restyles when it changes.
+
+**Rationale**: a section is published by someone who does not know this codebase
+and should not have to learn it — including how snackbyte looks. The kit is what
+lets them write plain HTML and still ship a page that belongs here; the rest of the
+isolation is what keeps the site from breaking a client's page, and a client's page
+from breaking the site.
 
 ### V. Nothing Is Linked That Is Not Finished
 
@@ -145,8 +169,9 @@ go wrong.
 A change is not done when it compiles. Before it is handed over: the check gate
 green; the production build served by the real server; every route the change
 touches requested and its status and content type checked; and the result
-looked at in both themes and at phone width. Whatever could not be verified
-automatically is stated plainly, with why.
+looked at in both themes and at phone width. A change to the page kit touches
+every hosted page. Whatever could not be verified automatically is stated plainly,
+with why.
 
 **Rationale**: this site's output is visual, and its build runs steps the dev
 server does not — prerendering, section generation, asset copying. A change can
@@ -177,6 +202,8 @@ second copy is the one that drifts.
 - `docs/SECTIONS.md` — the client-section contract, binding on contributors
   from outside this repository.
 - `docs/FOR.md` — the rules for pages made for one person, under `/for/`.
+- `src/web/kit/page.css` — the page kit every hosted page links, served at
+  `/kit/page.css` after the brand's tokens.
 - <https://snackbyte.io/style/> — the readable style guide, with the reasoning.
 - `artifacts/` — published documents whose URLs are stable; never a scratch
   directory.
@@ -211,4 +238,4 @@ MAJOR for a principle removed or redefined, MINOR for a principle added or
 materially expanded, PATCH for wording. `CLAUDE.md` carries the runtime
 guidance for agents working here and points at this file.
 
-**Version**: 1.2.1 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20
+**Version**: 2.0.0 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20

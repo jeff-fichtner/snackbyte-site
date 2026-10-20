@@ -5,8 +5,8 @@ them as a link: a plan, a guide, something made for them. The first is
 `/for/jan/jet-lag/`.
 
 They differ from client sections (`docs/SECTIONS.md`) in the one way that matters: they
-are written in this repository, by whoever works on the site. So they need none of a
-section's isolation, and they wear the snackbyte brand.
+are written in this repository, by whoever works on the site. Like every hosted page, they
+look like snackbyte because they link the page kit.
 
 ## Rules
 
@@ -14,10 +14,20 @@ section's isolation, and they wear the snackbyte brand.
    beside it. `<name>` is the person's first name, lowercase. There is no index page at
    `/for/` or `/for/<name>/`; both answer 404, so nobody can browse who has a page.
 2. **Standalone HTML**, copied verbatim into `dist/`: no build step, no import from `src/`.
-3. **The brand comes from `/brand/brand.css`**, which `scripts/copy-brand-assets.mjs`
-   writes from `@snackbyte/brand` at build: the font, the tokens and the base rules. The
-   page writes no brand value of its own — no hex, no font name — and its `<style>` only
-   arranges tokens. `tests/app/for-pages.test.ts` checks every page under `for/`.
+3. **The look comes from the page kit, `/kit/page.css`**, which
+   `scripts/copy-brand-assets.mjs` writes at build: the brand's font, tokens and base rules
+   from `@snackbyte/brand`, then the site's components from `src/web/kit/page.css`. Link it
+   and nothing else. The page writes no colour or font of its own — no hex, `rgb()`,
+   `hsl()` or font name — and its `<style>`, if it has one, only lays out its own parts with
+   tokens. `tests/app/for-pages.test.ts` checks every page under `for/`.
+   - Plain HTML is styled already: headings, paragraphs, lists, `details`, `select`,
+     `fieldset`, buttons.
+   - Components: `.page` (the column; put it on `<main>`), `.lede`, `.label`, `.meta`,
+     `.card`, `.callout`, `.primary` and `.secondary` buttons, `.choice` (a radio drawn as a
+     button), `.contents` (a table of contents) and the page's `<footer>`.
+     `<html class="large">` sets the whole scale a step bigger.
+   - Need something the kit doesn't have? Add it to the kit, generically named, rather than
+     to the page. The kit only grows: never rename or remove a class.
 4. **`noindex, nofollow`, never linked from the homepage.** The person has the link; nobody
    else needs it.
 5. **Personal data: first name only**, and only what the person needs on the page. No

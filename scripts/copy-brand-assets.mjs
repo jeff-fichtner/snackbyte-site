@@ -2,8 +2,10 @@
  * Places the site's favicons and social card into public/ from the brand package, so the
  * frontend build ships them at the root without a second copy living in git.
  *
- * It also writes /brand/brand.css: the brand as one stylesheet, for the pages under /for/,
- * which the build copies verbatim and so cannot import the package the way the app does.
+ * It also writes /kit/page.css, the one stylesheet a hosted page links: the brand's font,
+ * tokens and base rules from the package, then the site's page kit (src/web/kit/page.css).
+ * Hosted pages are copied verbatim by the build, so they can't import the package the way
+ * the app does.
  */
 import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -15,6 +17,8 @@ const require = createRequire(import.meta.url);
 const brandDir = resolve(require.resolve('@snackbyte/brand/marks.json'), '..');
 const from = (p) => resolve(brandDir, p);
 const to = (p) => fileURLToPath(new URL(`../src/web/public/${p}`, import.meta.url));
+// From this file's path as a string: tests run under jsdom, whose URL a file path can't use.
+const KIT = resolve(fileURLToPath(import.meta.url), '../../src/web/kit/page.css');
 
 const FILES = [
   ['tile.svg', 'favicon.svg'], // follows the OS theme
@@ -24,20 +28,22 @@ const FILES = [
 ];
 
 /**
- * The font, the tokens and the base rules, in that order. The font import comes first
- * because a browser ignores an @import that follows any other rule.
+ * The font, the tokens, the base rules and the kit, in that order. The font import comes
+ * first because a browser ignores an @import that follows any other rule; the kit comes last
+ * because it builds on the rest.
  */
-export function brandStylesheet() {
+export function kitStylesheet() {
   const font = `https://fonts.googleapis.com/css2?family=${type.googleFonts}&display=swap`;
   return [
     `@import url('${font}');`,
     readFileSync(from('tokens.css'), 'utf8'),
     readFileSync(from('base.css'), 'utf8'),
+    readFileSync(KIT, 'utf8'),
   ].join('\n');
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   for (const [src, dest] of FILES) copyFileSync(from(src), to(dest));
-  mkdirSync(to('brand'), { recursive: true });
-  writeFileSync(to('brand/brand.css'), brandStylesheet());
+  mkdirSync(to('kit'), { recursive: true });
+  writeFileSync(to('kit/page.css'), kitStylesheet());
 }

@@ -17,8 +17,16 @@ Sections are never linked from the homepage.
 
 `src/web/public/for/<name>/<page>/` holds one-off pages made for one person and sent
 as a link — the first is `/for/jan/jet-lag/`. They are written here, not published
-from elsewhere, and they wear the brand through `/brand/brand.css`. Read
-`docs/FOR.md` before adding one.
+from elsewhere. Read `docs/FOR.md` before adding one.
+
+## The page kit
+
+Every hosted page — `work/` and `for/` — links one stylesheet, `/kit/page.css`: the
+brand's tokens and base rules, then the site's components from `src/web/kit/page.css`.
+Pages write no colour or font of their own. The kit only grows; never rename or remove
+a class, since every hosted page restyles when it changes. Agents using the site propose
+style changes to the site, and the site forwards brand changes to `snackbyte-brand`
+(constitution, Principles I and IV).
 
 <!-- SPECKIT START -->
 This project uses spec-driven development (GitHub Spec Kit). Read
