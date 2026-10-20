@@ -5,8 +5,9 @@
  * browser. mount wires it to the page, and remembers her answers on her device only.
  */
 
-// The trip. The Bologna leg is AZ1312 at 6:30. The Rome and LAX times are ITA's published
-// winter schedule for AZ620, not her ticket.
+// The trip: AZ1312 Bologna to Rome at 6:30, then AZ620 Rome to LAX, both confirmed as her
+// flights. AZ620's times are ITA's winter schedule (09:10 out, 14:30 in, as last winter),
+// which starts Oct 25 — not read from her ticket.
 export const TRIP = {
   hoursBehind: 8, // Italy on CET from Oct 25, California on PDT until Nov 1
   wakeWednesday: 4 * 60, // Italy time; up around 4 for the 6:30 flight from Bologna
