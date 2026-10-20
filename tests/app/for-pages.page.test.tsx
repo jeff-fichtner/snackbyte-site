@@ -138,6 +138,8 @@ describe('the page', () => {
     expect(shown('answers')).toBe(true);
     expect(shown('summary')).toBe(false);
     expect(document.getElementById('change')?.getAttribute('aria-expanded')).toBe('true');
+    // Focus lands on the questions, never on a picker: on a phone that would pop it open.
+    expect(document.activeElement).toBe(document.getElementById('answers'));
   });
 
   it('opens on the plan, answers folded, when she comes back after saving', () => {

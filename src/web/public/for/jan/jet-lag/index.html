@@ -55,6 +55,7 @@
     padding-top: var(--seam);
   }
   .summary { gap: var(--gap); }
+  #answers:focus { outline: none; }
   .summary ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--unit); }
 
   button {
@@ -172,7 +173,7 @@
     <button type="button" id="change" class="secondary" aria-controls="answers">Change answers</button>
   </section>
 
-  <form id="answers">
+  <form id="answers" tabindex="-1">
     <fieldset>
       <legend>1. At home, when do you usually go to bed and get up?</legend>
       <div class="pair">

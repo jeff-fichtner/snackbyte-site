@@ -486,7 +486,10 @@ export function mount(doc, storage) {
     saved = false;
     render();
     fold();
-    form.querySelector('select')?.focus();
+    // Focus the questions as a whole, not the first picker: on a phone, focusing a picker
+    // opens it, and she may not want to change her bedtime at all.
+    form.focus({ preventScroll: true });
+    form.scrollIntoView?.({ block: 'start' });
   });
   render();
   fold();
