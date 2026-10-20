@@ -19,8 +19,8 @@ export default tseslint.config(
     },
   },
   {
-    // Frontend code also runs in the browser.
-    files: ['src/web/**/*.{ts,tsx}'],
+    // Frontend code also runs in the browser, and so do the scripts beside the /for/ pages.
+    files: ['src/web/**/*.{ts,tsx}', 'src/web/public/for/**/*.js'],
     languageOptions: {
       globals: {
         ...globals.browser,

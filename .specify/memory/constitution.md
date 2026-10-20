@@ -1,5 +1,11 @@
 <!--
 Sync Impact Report
+Version change: 1.1.1 → 1.2.0 (2026-10-20): MINOR, a kind of page added. Pages made for one
+person live under /for/ (docs/FOR.md). Principle IV says they are not sections and how they
+read the brand; Principle V lists them among the unlinked, noindex pages; a new /for/ page
+is named as a chore; docs/FOR.md joins the governing files. No principle redefined. Previous
+text is in version history.
+
 Version change: 1.1.0 → 1.1.1 (2026-10-19): PATCH, wording. The check gate gained the
 env-file check (`npm run check:env`, run by `check:all`), so the Development Workflow line
 that lists the gate's parts names it. No principle changed. Previous text is in version
@@ -95,6 +101,11 @@ pages are standalone HTML documents with no import from `src/`, no shared
 stylesheet and no build step, and they are excluded from this repository's
 formatter.
 
+Pages under `/for/` are not sections. They are made for one person and written
+in this repository, so they need no isolation from it: they read the brand from
+`/brand/brand.css`, which the build writes from the package, and `docs/FOR.md`
+holds their rules.
+
 **Rationale**: a section is published by someone who does not know this
 codebase and should not have to learn it. The isolation is what keeps the site
 from breaking a client's page, and a client's page from breaking the site.
@@ -103,7 +114,8 @@ from breaking a client's page, and a client's page from breaking the site.
 
 The homepage links only what it owns and what is done. Client sections are
 never linked from it. Pages that are shared deliberately rather than published
-— client sections, `/style` — are marked `noindex` and reached by direct URL.
+— client sections, `/for/` pages, `/style` — are marked `noindex` and reached by
+direct URL.
 A link is a claim that what is behind it is ready.
 
 **Rationale**: the two kinds of page on this site have different audiences. A
@@ -159,6 +171,7 @@ second copy is the one that drifts.
   — the implementation that compresses the guide, consumed here as `@snackbyte/brand`.
 - `docs/SECTIONS.md` — the client-section contract, binding on contributors
   from outside this repository.
+- `docs/FOR.md` — the rules for pages made for one person, under `/for/`.
 - <https://snackbyte.io/style/> — the readable style guide, with the reasoning.
 - `artifacts/` — published documents whose URLs are stable; never a scratch
   directory.
@@ -171,8 +184,8 @@ second copy is the one that drifts.
   unit the owner has not reviewed.
 - **A feature gets a spec; a chore does not.** A feature changes what the site
   is — a new page, new behaviour, a change to what the homepage says it does.
-  A chore does not: a copy fix, a new client section, regenerating assets, a
-  dependency bump. Neither skips the check gate or Principle VII.
+  A chore does not: a copy fix, a new client section, a new `/for/` page,
+  regenerating assets, a dependency bump. Neither skips the check gate or Principle VII.
 - **The check gate** is `npm run check:all` — format, lint, typecheck, env files, test.
 - **Versioning is derived.** CI creates a tag from the commit; no version is
   committed and no agent edits one.
@@ -192,4 +205,4 @@ MAJOR for a principle removed or redefined, MINOR for a principle added or
 materially expanded, PATCH for wording. `CLAUDE.md` carries the runtime
 guidance for agents working here and points at this file.
 
-**Version**: 1.1.1 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-19
+**Version**: 1.2.0 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20
