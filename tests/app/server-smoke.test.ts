@@ -10,9 +10,11 @@ import { createApp } from '../../src/server.js';
 // Smoke test for a server app: the built frontend is served and the API responds.
 // Use this as a pattern for testing your own routes.
 const distIndex = fileURLToPath(new URL('../../dist/index.html', import.meta.url));
+// A dist/ built before the legal pages existed has an index but no /privacy; build again.
+const distPrivacy = fileURLToPath(new URL('../../dist/privacy/index.html', import.meta.url));
 
 beforeAll(() => {
-  if (!existsSync(distIndex)) {
+  if (!existsSync(distIndex) || !existsSync(distPrivacy)) {
     execFileSync('node', ['scripts/build.mjs'], { stdio: 'ignore' });
   }
 });

@@ -81,6 +81,16 @@ describe('the legal page generator', () => {
   it('refuses a page it does not know', () => {
     expect(() => renderLegal('cookies', SAMPLE)).toThrow(/cookies/);
   });
+
+  it('reads a source saved with Windows line endings the same way', () => {
+    expect(renderLegal('privacy', SAMPLE.replace(/\n/g, '\r\n'))).toBe(page);
+  });
+
+  it('takes the page title from the source heading, so the two cannot drift', () => {
+    const renamed = renderLegal('privacy', SAMPLE.replace('# Privacy policy', '# Privacy notice'));
+    expect(renamed).toContain(`<title>${copy.name} privacy notice</title>`);
+    expect(renamed).toContain('<h1>Privacy notice</h1>');
+  });
 });
 
 // The words themselves. Whether each statement is true is checked against the fact register

@@ -19,16 +19,17 @@ import { copy } from '@snackbyte/brand';
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
 const TEMPLATE = resolve(ROOT, 'src/web/legal/page.html');
 
-/** The pages, by the name in their address. The URLs are given to Google and never move. */
+/**
+ * The pages, by the name in their address, with the line a search result or a link preview
+ * shows. The URLs are given to Google and never move. Each page's title is its source's
+ * heading, after the name.
+ */
 const PAGES = {
   privacy: {
-    title: `${copy.name} privacy policy`,
-    description:
-      'What snackbyte keeps when you use this site or sign in to its products with Google, for how long, and who sees it.',
+    description: `What ${copy.name} keeps when you use this site or sign in to its products with Google, for how long, and who sees it.`,
   },
   terms: {
-    title: `${copy.name} terms of service`,
-    description: 'The terms for using snackbyte’s products and this site.',
+    description: `The terms for using ${copy.name}’s products and this site.`,
   },
 };
 
@@ -47,7 +48,7 @@ const esc = (s) =>
 
 /** The source split into its title, its date line, and the blocks after them. */
 function parse(name, markdown) {
-  const lines = markdown.split('\n');
+  const lines = markdown.split(/\r?\n/);
   const filled = (from) => lines.findIndex((l, i) => i >= from && l.trim() !== '');
   const first = filled(0);
   const title = /^# (.+)$/.exec(first < 0 ? '' : lines[first]);
@@ -75,7 +76,7 @@ export function renderLegal(name, markdown, template = readFileSync(TEMPLATE, 'u
     .map((b) => `<section class="card">\n${md.render(b).trim()}\n</section>`)
     .join('\n');
   const values = {
-    title: esc(page.title),
+    title: esc(`${copy.name} ${heading[0].toLowerCase()}${heading.slice(1)}`),
     description: esc(page.description),
     url: `https://snackbyte.io/${name}`,
     name: esc(copy.name),
@@ -83,12 +84,11 @@ export function renderLegal(name, markdown, template = readFileSync(TEMPLATE, 'u
     date: esc(date),
     body,
   };
-  const html = template.replace(/%legal:([a-z]+)%/g, (whole, key) => {
+  // The template's void elements are written for the formatter; the page carries them plain.
+  return template.replace(/ \/>/g, '>').replace(/%legal:([a-z]+)%/g, (whole, key) => {
     if (!Object.hasOwn(values, key)) throw new Error(`page.html: ${whole} has no value`);
     return values[key];
   });
-  // The template's void elements are written for the formatter; the page carries them plain.
-  return html.replace(/ \/>/g, '>');
 }
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url);
