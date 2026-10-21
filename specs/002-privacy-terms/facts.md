@@ -6,7 +6,7 @@ in one commit. Commitments (FR-013) are promises, not facts, and are listed last
 
 | # | Statement | Source | Read |
 | --- | --- | --- | --- |
-| F1 | snackbyte is Snackbyte LLC, a California company in Bishop, California | The LLC's California formation document and state notice (`~/snackbyte/legal/llc-formation/`); `@snackbyte/brand` `copy.based` | 2026-10-20 |
+| F1 | snackbyte is Snackbyte LLC, a California limited liability company | Articles of Organization, California Secretary of State file no. B20250278867, and the Statement of Information (`~/snackbyte/legal/llc-formation/`) | 2026-10-21 |
 | F2 | snackbyte.io sets no cookies | This repository: no `Set-Cookie` and no `document.cookie` anywhere in `src/`; route contract 001, "What the site never does" | 2026-10-20 |
 | F3 | snackbyte.io runs no analytics | This repository: no analytics or tag script in any page under `src/web/` | 2026-10-20 |
 | F4 | The site loads its typeface from Google Fonts | `/kit/page.css` and the homepage's head import `fonts.googleapis.com`; the only other host any page loads from | 2026-10-20 |

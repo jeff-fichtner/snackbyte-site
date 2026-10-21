@@ -2,7 +2,7 @@
 
 Last changed October 21, 2026.
 
-snackbyte is Snackbyte LLC, a California company in Bishop, California. This policy covers this site and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
+snackbyte is Snackbyte LLC, a California limited liability company. This policy covers this site and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
 
 We don't sell what we keep, and we don't use it for advertising.
 

@@ -2,7 +2,7 @@
 
 Last changed October 21, 2026.
 
-These terms are an agreement between you and snackbyte, which is Snackbyte LLC, a California company in Bishop, California. They cover this site and the snackbyte products you sign in to. Using them means you accept these terms.
+snackbyte is Snackbyte LLC, a California limited liability company. These terms are an agreement between you and snackbyte. They cover this site and the snackbyte products you sign in to. Using the site or a product means you accept these terms.
 
 ## Your account
 

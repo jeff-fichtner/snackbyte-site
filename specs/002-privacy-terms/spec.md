@@ -41,6 +41,10 @@ once given to Google they do not move, and what changes is the text behind them.
   agreement. No uptime, notice or refund promises. The warranty and liability terms get
   their own headings instead of the conventional capitals, which the voice rules out
   (FR-017, FR-017a). Described to the owner as common practice, not legal advice.
+- Q: Where is the company, on legal paper? → A: nowhere: "snackbyte is Snackbyte LLC, a
+  California limited liability company." The principal office on file is the registered
+  agent's address in Sacramento, which is not where snackbyte is; Bishop stays the brand's
+  line on the homepage; the venue stays Inyo County (FR-005, FR-016).
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -117,7 +121,7 @@ the company the terms are with, two things they may not do, and the law that gov
 **Acceptance Scenarios**:
 
 1. **Given** the terms, **When** a reader looks for who they are dealing with, **Then**
-   they find Snackbyte LLC, a California company in Bishop, California.
+   they find Snackbyte LLC, a California limited liability company.
 2. **Given** the terms, **When** a reader looks for what snackbyte promises, **Then**
    it says what it does and what it does not, in the same voice as the rest of the site.
 
@@ -180,7 +184,7 @@ analytics, loads its typeface from Google Fonts, and keeps request logs for 30 d
 **What the privacy policy says** — each statement true on the day it is published
 
 - **FR-005**: It MUST say whose policy it is and what it covers: snackbyte, which is
-  Snackbyte LLC, a California company in Bishop, California; this site, and the snackbyte
+  Snackbyte LLC, a California limited liability company; this site, and the snackbyte
   products a person reaches by signing in with the snackbyte Google client.
 - **FR-006**: About this site, it MUST say: no cookies are set and no analytics run; the
   typeface is loaded from Google Fonts, so the browser asks Google for it; the server
@@ -233,7 +237,7 @@ analytics, loads its typeface from Google Fonts, and keeps request logs for 30 d
 **What the terms say**
 
 - **FR-016**: The terms MUST say who they are between (a person and Snackbyte LLC, a
-  California company in Bishop, California) and what they cover (the same products as
+  California limited liability company) and what they cover (the same products as
   the privacy policy, and this site); how an account works (a person signs in with an
   account from a provider such as Google, and is responsible for what is done with it);
   what a person may not do (break the law with the products; reach accounts or data that
