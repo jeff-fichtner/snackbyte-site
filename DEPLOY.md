@@ -515,6 +515,34 @@ Per new app `<app>`:
 
 ---
 
+## Uptime checks and the down alert
+
+Google watches both hosts, so "is it down?" has an answer that doesn't depend on the network
+asking. Created by hand on 2026-10-21 in `snackbyte-apps`:
+
+- **Uptime checks** (Monitoring › Uptime checks): `snackbyte.dev staging`
+  (`snackbyte-dev-staging-awLGnDVh0oM`) and `snackbyte.io production`
+  (`snackbyte-io-production-OqyPN64PpKE`). Each requests `https://<host>/api/version` every 5
+  minutes from `usa-oregon`, `europe` and `asia-pacific`, and passes only when the body says the
+  right `"environment"`, so a host answering with the wrong deploy fails too.
+- **Alert policy** `snackbyte site is down`: one condition over both checks, grouped by host. It
+  fires when a host fails from two or more regions for 5 minutes and emails the `Jeff (email)`
+  channel (jeff@snackbyte.io). The email says which host.
+- **Cost:** free. Uptime checks are free up to 1 million executions per project a month; these
+  run about 52,000. Alerting is free until **2027-09-01**, when Google starts charging $0.35 a month per metric referenced in a policy; this policy references one.
+
+**When a host looks down, run `node scripts/probe-staging.mjs`.** It asks this machine and
+Google's probes at once and says which it is: `down` (Google can't reach it either — a real
+outage), `blocked here` (Google can, this network can't), or `up`. Exit status 0 up, 1 down, 2
+blocked here, 3 can't tell (gcloud not signed in).
+
+**Known: snackbyte.dev is blocked on Jeff's network, on and off.** On 2026-10-07, 10-14 and
+10-20/21 the `.dev` names reset mid-handshake from Jeff's network while staging kept serving
+everyone else (Cloud Run's request log shows other clients throughout). DNS was right and nothing
+in GCP changed; the block matches on the name, so it is a filter on that network's path,
+likely the router's or the ISP's security feature. The fix is to allowlist `snackbyte.dev` there,
+not anything in GCP. Background and evidence: snackbyte-site inbox #3e4c6c.
+
 ## Operational gotchas
 
 - **Version-line drift** — if the derivation fails on "tag vX.Y.Z already exists" for a number
