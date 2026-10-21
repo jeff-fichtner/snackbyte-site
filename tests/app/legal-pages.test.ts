@@ -143,3 +143,28 @@ describe('the privacy policy', () => {
     expect(text).toMatch(/not built yet/);
   });
 });
+
+describe('the terms of service', () => {
+  const text = prose(source('terms'));
+  holdsTheVoice('terms');
+
+  it('states the owner’s legal choices: California law, Inyo County, and the cap', () => {
+    expect(text).toMatch(/California law/);
+    expect(text).toMatch(/Inyo County/);
+    expect(text).toMatch(/twelve months/);
+    expect(text).toContain('$100');
+  });
+
+  it('gives the warranty and the liability limit each a heading of its own', () => {
+    expect(source('terms')).toMatch(/^## No warranty$/m);
+    expect(source('terms')).toMatch(/^## Limit of liability$/m);
+  });
+
+  it('promises no uptime, no refunds and no notice in advance', () => {
+    expect(text).not.toMatch(/uptime|refund|advance notice|in advance|guarantee/i);
+  });
+
+  it('says where to report a security problem', () => {
+    expect(source('terms')).toContain('security@snackbyte.io');
+  });
+});

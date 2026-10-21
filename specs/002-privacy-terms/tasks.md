@@ -77,8 +77,8 @@ the four routes answer 200 with no redirect.
 **Independent test**: the content guards pass; a reader can name the company, two things
 they may not do, and the governing law.
 
-- [ ] T018 [P] [US3] Write failing content guards for `src/web/legal/terms.md` in `tests/app/legal-pages.test.ts`: `Snackbyte LLC` exactly once; California law and Inyo County named; the $100 floor and the twelve months named; `No warranty` and `Limit of liability` each a heading; no word in capitals beyond the same acronym list (`IP`, `ID`, `KMS`, `PKCE`, `SQL`, `LLC`); no promise of uptime, availability, refunds or advance notice (FR-017a); `security@snackbyte.io` present
-- [ ] T019 [US3] Write `src/web/legal/terms.md` from FR-016, FR-017 and FR-017a: who and what; your account; what you may not do; what is yours and what is ours; ending; no warranty; limit of liability; the law and where disputes go; changes; the whole agreement; contact; confirm T018 passes
+- [x] T018 [P] [US3] Write failing content guards for `src/web/legal/terms.md` in `tests/app/legal-pages.test.ts`: `Snackbyte LLC` exactly once; California law and Inyo County named; the $100 floor and the twelve months named; `No warranty` and `Limit of liability` each a heading; no word in capitals beyond the same acronym list (`IP`, `ID`, `KMS`, `PKCE`, `SQL`, `LLC`); no promise of uptime, availability, refunds or advance notice (FR-017a); `security@snackbyte.io` present
+- [x] T019 [US3] Write `src/web/legal/terms.md` from FR-016, FR-017 and FR-017a: who and what; your account; what you may not do; what is yours and what is ours; ending; no warranty; limit of liability; the law and where disputes go; changes; the whole agreement; contact; confirm T018 passes
 
 **Checkpoint**: the terms are complete.
 
