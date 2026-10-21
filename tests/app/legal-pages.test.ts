@@ -1,5 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { copy } from '@snackbyte/brand';
 // @ts-expect-error — plain JS build script, no types
 import { renderLegal } from '../../scripts/build-legal.mjs';
@@ -78,5 +80,66 @@ describe('the legal page generator', () => {
 
   it('refuses a page it does not know', () => {
     expect(() => renderLegal('cookies', SAMPLE)).toThrow(/cookies/);
+  });
+});
+
+// The words themselves. Whether each statement is true is checked against the fact register
+// (specs/002-privacy-terms/facts.md) by a person; these guards hold what a rushed edit breaks
+// quietly: the name, the voice, the addresses, and the promises the spec forbids.
+
+const source = (name: string) =>
+  readFileSync(join(process.cwd(), `src/web/legal/${name}.md`), 'utf8');
+
+/** The words a reader sees: link targets and code spans left out. */
+const prose = (md: string) => md.replace(/\]\([^)]*\)/g, ']').replace(/`[^`]*`/g, '');
+
+/** Acronyms the policy and the terms need; any other word in capitals breaks the voice. */
+const ACRONYMS = ['IP', 'ID', 'KMS', 'PKCE', 'SQL', 'LLC'];
+
+function holdsTheVoice(name: string) {
+  const text = prose(source(name));
+  it('names the company once by its legal name, and is lowercase everywhere else', () => {
+    expect([...text.matchAll(/Snackbyte LLC/g)]).toHaveLength(1);
+    expect([...text.matchAll(/Snackbyte/g)]).toHaveLength(1);
+  });
+  it('writes no word in capitals but the acronyms it needs', () => {
+    const shouting = [...text.matchAll(/\b[A-Z]{2,}\b/g)].map((m) => m[0]);
+    expect(shouting.filter((w) => !ACRONYMS.includes(w))).toEqual([]);
+  });
+  it('raises its voice nowhere', () => {
+    expect(text).not.toContain('!');
+  });
+}
+
+describe('the privacy policy', () => {
+  const text = prose(source('privacy'));
+  holdsTheVoice('privacy');
+
+  it('gives the privacy address and the security address', () => {
+    expect(source('privacy')).toContain('privacy@snackbyte.io');
+    expect(source('privacy')).toContain('security@snackbyte.io');
+  });
+
+  it('makes the three promises the owner approved', () => {
+    expect(text).toMatch(/don['’]t sell/i);
+    expect(text).toMatch(/advertising/i);
+    expect(text).toMatch(/ask us to delete it, and we will/i);
+    expect(text).toMatch(/this page changes first/i);
+  });
+
+  it('promises nothing that is not true yet, and says nothing it has no fact for', () => {
+    expect(text).not.toMatch(/deleted? after (a|one) year/i);
+    expect(text).not.toMatch(/\bchild(ren)?\b|\bminors?\b|\bunder 1[0-9]\b/i);
+    expect(text).not.toMatch(/\bby hand\b|\bmanually\b/i);
+  });
+
+  it('says what is asked of Google, and that no password is kept', () => {
+    expect(text).toMatch(/nothing else in your Google account/);
+    expect(text).toMatch(/stores no passwords, ever/);
+    expect(text).toMatch(/never your Google id/);
+  });
+
+  it('says the deleting of old sign-in records is not built', () => {
+    expect(text).toMatch(/not built yet/);
   });
 });

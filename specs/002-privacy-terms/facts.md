@@ -29,12 +29,13 @@ in one commit. Commitments (FR-013) are promises, not facts, and are listed last
 | F21 | The sign-in pages run no tracking or analytics and load nothing from another host | Request #cba6aa; README: "Every stylesheet and font comes from the broker's own host" | 2026-10-20 |
 | F22 | An app receives the snackbyte id, never the Google id, and the provider | Request #cba6aa; README: "The ID token's `sub` is our person id… it carries `idp`" | 2026-10-20 |
 | F23 | It also receives primary verified email, name and picture; an app not marked first-party asks consent first | Request #cba6aa; README: "an app the tenant did not mark first-party asks their consent once" | 2026-10-20 |
-| F24 | No snackbyte product does more with what it receives, today | No product repository references nod's host or library; only a test app is registered (snackbyte-auth `specs/004-sign-in/spec.md`) | 2026-10-21 |
+| F24 | (Not stated on the page; it is why FR-011 keeps the page silent on what apps do.) No snackbyte product does more with what it receives, today | No product repository references nod's host or library; only a test app is registered (snackbyte-auth `specs/004-sign-in/spec.md`) | 2026-10-21 |
 | F25 | Data is held in Google Cloud, Cloud SQL, us-central1 | Request #cba6aa | 2026-10-20 |
 | F26 | Provider credentials, signing keys and cookie keys are encrypted with Cloud KMS | Request #cba6aa; README: "Secrets are sealed with the environment's key" | 2026-10-20 |
 | F27 | No one but the app signed in to and Google Cloud receives the data | F22–F25; no other processor in snackbyte-auth's record | 2026-10-21 |
 | F28 | Security problems go to security@snackbyte.io | Request #cba6aa | 2026-10-20 |
 | F29 | Privacy questions go to privacy@snackbyte.io | The owner, 2026-10-21: address created to deliver to them | 2026-10-21 |
+| F30 | What Google sends is used to sign you in and to tell the app you sign in to who you are | snackbyte-auth `README.md`, Sign-in: the broker checks Google's ID token and issues its own, whose `sub` is the person id | 2026-10-21 |
 
 ## Commitments (promises, owner-approved 2026-10-21)
 

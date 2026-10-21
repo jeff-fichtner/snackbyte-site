@@ -62,9 +62,9 @@ the four routes answer 200 with no redirect.
 
 **Independent test**: the content guards pass, and every sentence has a row in `facts.md`.
 
-- [ ] T015 [US2] Write failing content guards for `src/web/legal/privacy.md` in `tests/app/legal-pages.test.ts`: `privacy@snackbyte.io` and `security@snackbyte.io` present; `Snackbyte LLC` exactly once; `snackbyte` never capitalised otherwise; no word in capitals but `IP`, `ID`, `KMS`, `PKCE`, `SQL` and `LLC`; no promise of deletion after a year, no statement about children, no sentence saying how a deletion is carried out; the three commitments present (FR-013)
-- [ ] T016 [US2] Write the policy's opening and sign-in sections in `src/web/legal/privacy.md` — who and what it covers; signing in with Google; what is kept; how long; cookies; what an app receives; where it is kept and who sees it; what you can ask; changes; contact — from facts F1 and F8–F29 and commitments C1–C3 in `specs/002-privacy-terms/facts.md`
-- [ ] T017 [US2] Read every sentence of `src/web/legal/privacy.md` against `specs/002-privacy-terms/facts.md`; add a row for any statement without one or cut the statement; confirm T015 passes
+- [x] T015 [US2] Write failing content guards for `src/web/legal/privacy.md` in `tests/app/legal-pages.test.ts`: `privacy@snackbyte.io` and `security@snackbyte.io` present; `Snackbyte LLC` exactly once; `snackbyte` never capitalised otherwise; no word in capitals but `IP`, `ID`, `KMS`, `PKCE`, `SQL` and `LLC`; no promise of deletion after a year, no statement about children, no sentence saying how a deletion is carried out; the three commitments present (FR-013)
+- [x] T016 [US2] Write the policy's opening and sign-in sections in `src/web/legal/privacy.md` — who and what it covers; signing in with Google; what is kept; how long; cookies; what an app receives; where it is kept and who sees it; what you can ask; changes; contact — from facts F1 and F8–F29 and commitments C1–C3 in `specs/002-privacy-terms/facts.md`
+- [x] T017 [US2] Read every sentence of `src/web/legal/privacy.md` against `specs/002-privacy-terms/facts.md`; add a row for any statement without one or cut the statement; confirm T015 passes
 
 **Checkpoint**: the policy says only what is true about sign-in.
 
