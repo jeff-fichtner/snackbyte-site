@@ -25,6 +25,9 @@ run(process.execPath, ['scripts/build-sections.mjs']);
 // Favicons and the social card, from the generated brand assets, likewise.
 run(process.execPath, ['scripts/copy-brand-assets.mjs']);
 
+// /style, the readable preview of the brand, filled from the brand package.
+run(process.execPath, ['scripts/build-style.mjs']);
+
 // Frontend build.
 run(bin('vite'), ['build']);
 

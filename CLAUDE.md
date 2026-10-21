@@ -51,4 +51,6 @@ link-preview card copied into `public/` at build.
 **Never write a brand value here** — no hex, no scale step, no mark geometry. Change
 it in the guide, bump the tag, rebuild. Page styling belongs in `src/web/app.css`;
 `docs/BRAND.md` is a pointer, and <https://snackbyte.io/style/> is the readable
-version, served from this repo.
+version, served from this repo: `scripts/build-style.mjs` fills its template,
+`src/web/style/page.html`, from the package at build, so the template holds no brand
+value either.

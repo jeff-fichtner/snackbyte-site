@@ -56,3 +56,6 @@ src/web/public/social.png
 
 # The page kit as one stylesheet for hosted pages — written by scripts/copy-brand-assets.mjs at build time
 src/web/public/kit/
+
+# /style — generated from src/web/style/page.html and the brand package by scripts/build-style.mjs at build time
+src/web/public/style/
