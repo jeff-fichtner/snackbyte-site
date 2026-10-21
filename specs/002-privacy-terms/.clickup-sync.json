@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1",
+  "feature": "002-privacy-terms",
+  "workspaceId": "90141363864",
+  "spaceId": "90146746995",
+  "listId": "901418532217",
+  "statusMapping": {
+    "open": "backlog",
+    "in-design": "in design",
+    "ready": "ready for development",
+    "in-development": "in development",
+    "in-review": "in review",
+    "done": "shipped"
+  },
+  "card": {
+    "id": "86bcnvm5g",
+    "hash": "sha256:673ba0af52d24bcb05f2f9ae0d91fb0b9f66705bdb01af78314026ca8ffea32a",
+    "provenanceHash": "sha256:3cea1990ec3132516d87dc46575f8e3a70d59957d595eda0c1d4c811fee75cb3"
+  },
+  "userStories": [
+    {
+      "us": "US1",
+      "id": "86bcnvm8y",
+      "hash": "sha256:6c98f88c93ee2970cfec09b9e95c19d74333bd2eac57dc08a824578d6cd7b39b",
+      "dependsOn": []
+    },
+    {
+      "us": "US2",
+      "id": "86bcnvm92",
+      "hash": "sha256:7f02f3fd639d196324403ffb00646a52008cd249c494178a7999a6a31e3cf5dd",
+      "dependsOn": [
+        "US1"
+      ]
+    },
+    {
+      "us": "US3",
+      "id": "86bcnvm94",
+      "hash": "sha256:ad6d9ed7b0b6356784cd5c5969496a35dbfd79969a35c1ca07105ab194dfd480",
+      "dependsOn": [
+        "US1",
+        "US2"
+      ]
+    },
+    {
+      "us": "US4",
+      "id": "86bcnvm96",
+      "hash": "sha256:be5ea275b9a05c12868c2f5953defd9c4098ecb8eb255b3f39fa16de910f809b",
+      "dependsOn": [
+        "US1",
+        "US2",
+        "US3"
+      ]
+    }
+  ],
+  "lifecycle": {
+    "analyzed": true
+  }
+}
