@@ -6,6 +6,14 @@ snackbyte is Snackbyte LLC, a California company in Bishop, California. This pol
 
 We don't sell what we keep, and we don't use it for advertising.
 
+## This site
+
+snackbyte.io sets no cookies and runs no analytics. It loads its typeface from Google Fonts, so your browser asks Google for the font.
+
+Our server logs each request: your IP address, the page, what your browser says it is, and the time. We use the logs to keep the site running, and Google Cloud deletes them after 30 days.
+
+A page that remembers a choice, such as a colour theme or answers you type, keeps it in your browser. It is never sent to us.
+
 ## Signing in with Google
 
 Today you sign in to snackbyte's products with your Google account, through OpenID Connect. The part of snackbyte that does this is called nod. It stores no passwords, ever: Google checks who you are and tells us.

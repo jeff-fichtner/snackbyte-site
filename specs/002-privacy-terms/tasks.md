@@ -91,8 +91,8 @@ they may not do, and the governing law.
 **Independent test**: the section states no cookies, no analytics, Google Fonts, and 30
 days of request logs.
 
-- [ ] T020 [US4] Write a failing guard in `tests/app/legal-pages.test.ts` that the privacy policy's section about this site names cookies, analytics, Google Fonts and the 30 days
-- [ ] T021 [US4] Write the section in `src/web/legal/privacy.md` from facts F2–F7, after the opening and before the sign-in sections (data-model.md order); confirm T020 passes
+- [x] T020 [US4] Write a failing guard in `tests/app/legal-pages.test.ts` that the privacy policy's section about this site names cookies, analytics, Google Fonts and the 30 days
+- [x] T021 [US4] Write the section in `src/web/legal/privacy.md` from facts F2–F7, after the opening and before the sign-in sections (data-model.md order); confirm T020 passes
 
 **Checkpoint**: all four stories complete.
 

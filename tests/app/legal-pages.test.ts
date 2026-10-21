@@ -168,3 +168,17 @@ describe('the terms of service', () => {
     expect(source('terms')).toContain('security@snackbyte.io');
   });
 });
+
+describe('the privacy policy, about this site', () => {
+  const site = /^## This site$([\s\S]*?)(?=^## )/m.exec(source('privacy'))?.[1] ?? '';
+
+  it('comes before signing in, and says what the site keeps and for how long', () => {
+    expect(source('privacy').indexOf('## This site')).toBeLessThan(
+      source('privacy').indexOf('## Signing in with Google'),
+    );
+    expect(site).toMatch(/no cookies/);
+    expect(site).toMatch(/no analytics/);
+    expect(site).toMatch(/Google Fonts/);
+    expect(site).toMatch(/30 days/);
+  });
+});

@@ -36,6 +36,7 @@ in one commit. Commitments (FR-013) are promises, not facts, and are listed last
 | F28 | Security problems go to security@snackbyte.io | Request #cba6aa | 2026-10-20 |
 | F29 | Privacy questions go to privacy@snackbyte.io | The owner, 2026-10-21: address created to deliver to them | 2026-10-21 |
 | F30 | What Google sends is used to sign you in and to tell the app you sign in to who you are | snackbyte-auth `README.md`, Sign-in: the broker checks Google's ID token and issues its own, whose `sub` is the person id | 2026-10-21 |
+| F31 | The site's request logs are used to keep it running | Practice: they are read to diagnose outages (the 2026-10-21 staging investigation, request #3e4c6c) and for nothing else on record | 2026-10-21 |
 
 ## Commitments (promises, owner-approved 2026-10-21)
 
