@@ -45,6 +45,8 @@ once given to Google they do not move, and what changes is the text behind them.
   California limited liability company." The principal office on file is the registered
   agent's address in Sacramento, which is not where snackbyte is; Bishop stays the brand's
   line on the homepage; the venue stays Inyo County (FR-005, FR-016).
+- Q: Is the privacy policy approved as written? → A: yes, by the owner on 2026-10-21, as
+  in commit 650e600 (FR-021).
 
 ## User Scenarios & Testing _(mandatory)_
 
