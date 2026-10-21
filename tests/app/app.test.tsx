@@ -50,11 +50,21 @@ describe('the homepage', () => {
     expect(page.claim).not.toMatch(/—[^—]*,[^—]*,[^—]*—/); // a rule-of-three aside
   });
 
-  it('ends on the one thing it asks for', () => {
+  it('ends on the one thing it asks for, with only the two legal links under it', () => {
     // No footer: the address is in the opening, and a legal-name line was neither the
-    // brand nor the legal name. The last thing on the page is the contact.
+    // brand nor the legal name. The last thing the page asks for is the contact; under it,
+    // since spec 002, only the privacy policy and the terms, which Google's verification
+    // looks for on the homepage.
     expect(html).not.toContain('<footer');
-    expect(html.trimEnd().endsWith('</a></p></section></main>')).toBe(true);
+    expect(html.indexOf('mailto:')).toBeLessThan(html.indexOf('href="/privacy"'));
+    expect(
+      html.trimEnd().endsWith(`<a href="/terms">${page.legal.terms}</a></p></section></main>`),
+    ).toBe(true);
+  });
+
+  it('links the privacy policy and the terms at the addresses Google is given', () => {
+    expect(html).toContain(`<a href="/privacy">${page.legal.privacy}</a>`);
+    expect(html).toContain(`<a href="/terms">${page.legal.terms}</a>`);
   });
 
   it('names no client', () => {
@@ -66,8 +76,9 @@ describe('the homepage', () => {
   it('offers exactly one way to make contact, and collects nothing', () => {
     expect([...html.matchAll(/mailto:/g)]).toHaveLength(1);
     expect(html).toContain(`mailto:${page.contact.address}`);
-    // the contact address is the only link on the page
-    expect([...html.matchAll(/<a\b/g)]).toHaveLength(1);
+    // the contact address, then the two legal pages, and no other link
+    const links = [...html.matchAll(/<a\b[^>]*href="([^"]*)"/g)].map((m) => m[1]);
+    expect(links).toEqual([`mailto:${page.contact.address}`, '/privacy', '/terms']);
     expect(html).not.toContain('<form');
     expect(html).not.toContain('<input');
   });

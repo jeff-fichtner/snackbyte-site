@@ -20,6 +20,12 @@ export function App() {
             {page.contact.lead}{' '}
             <a href={`mailto:${page.contact.address}`}>{page.contact.address}</a>
           </p>
+          {/* Quiet, under the one thing the page asks for. Google's verification of the
+              sign-in looks for the privacy policy here, at the address it was given. */}
+          <p className="legal">
+            <a href="/privacy">{page.legal.privacy}</a>
+            <a href="/terms">{page.legal.terms}</a>
+          </p>
         </section>
       </main>
       <VersionChip />

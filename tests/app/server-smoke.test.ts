@@ -24,6 +24,12 @@ describe('app serves', () => {
     expect(res.text).toContain('<div id="root"');
   });
 
+  it('links the privacy policy and the terms from the built homepage', async () => {
+    const res = await request(createApp()).get('/');
+    expect(res.text).toContain('href="/privacy"');
+    expect(res.text).toContain('href="/terms"');
+  });
+
   it('answers a path that does not exist with 404 and the not-found page', async () => {
     const res = await request(createApp()).get('/nothing-is-here');
     expect(res.status).toBe(404);

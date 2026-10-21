@@ -47,10 +47,10 @@ until these are done.
 **Independent test**: the built homepage carries `href="/privacy"` and `href="/terms"`;
 the four routes answer 200 with no redirect.
 
-- [ ] T011 [US1] Update the failing expectations in `tests/app/app.test.tsx`: the homepage links `/privacy` and `/terms` with the words from `copy.ts`, and the contact address is still the only `mailto:`
-- [ ] T012 [US1] Add the words (`Privacy`, `Terms`) to `src/web/copy.ts` and correct its comment that the address is "the only link on the page"
-- [ ] T013 [US1] Add the line under the contact line in `src/web/App.tsx`, and place it in `src/web/app.css` with tokens only, muted, at the page's foot
-- [ ] T014 [US1] Add to `tests/app/server-smoke.test.ts`: the built homepage links `/privacy` and `/terms`; confirm T011's expectations and these pass
+- [x] T011 [US1] Update the failing expectations in `tests/app/app.test.tsx`: the homepage links `/privacy` and `/terms` with the words from `copy.ts`, and the contact address is still the only `mailto:`
+- [x] T012 [US1] Add the words (`Privacy`, `Terms`) to `src/web/copy.ts` and correct its comment that the address is "the only link on the page"
+- [x] T013 [US1] Add the line under the contact line in `src/web/App.tsx`, and place it in `src/web/app.css` with tokens only, muted, at the page's foot
+- [x] T014 [US1] Add to `tests/app/server-smoke.test.ts`: the built homepage links `/privacy` and `/terms`; confirm T011's expectations and these pass
 
 **Checkpoint**: US1 complete — the verification path works end to end, whatever the words.
 
