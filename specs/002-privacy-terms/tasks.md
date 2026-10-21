@@ -100,8 +100,8 @@ days of request logs.
 
 ## Phase 7: Polish, approval and release
 
-- [ ] T022 Present both texts, as they will be published, to the owner; the owner reads each as a first-time reader and answers SC-004's three questions; record the approval and its date under Clarifications in `specs/002-privacy-terms/spec.md` (FR-021, SC-004, SC-006). Nothing merges before this
-- [ ] T023 Set each source's date line to the approval date in `src/web/legal/privacy.md` and `src/web/legal/terms.md`
+- [x] T022 Present both texts, as they will be published, to the owner; the owner reads each as a first-time reader and answers SC-004's three questions; record the approval and its date under Clarifications in `specs/002-privacy-terms/spec.md` (FR-021, SC-004, SC-006). Nothing merges before this
+- [x] T023 Set each source's date line to the approval date in `src/web/legal/privacy.md` and `src/web/legal/terms.md`
 - [ ] T024 Run `npm run check:all` and confirm green
 - [x] T025 Principle VII: build, start the real server, request the four routes and the homepage per `specs/002-privacy-terms/quickstart.md`, and record status, content type and the absence of a redirect
 - [x] T026 Screenshot both pages and the homepage with headless Chrome at 390 px and 1280 px, day and night, into `specs/002-privacy-terms/screenshots/`, and look at each

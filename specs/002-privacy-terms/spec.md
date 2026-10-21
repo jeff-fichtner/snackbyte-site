@@ -47,6 +47,10 @@ once given to Google they do not move, and what changes is the text behind them.
   line on the homepage; the venue stays Inyo County (FR-005, FR-016).
 - Q: Is the privacy policy approved as written? → A: yes, by the owner on 2026-10-21, as
   in commit 650e600 (FR-021).
+- Q: Are the terms approved as written? → A: yes, by the owner on 2026-10-21, as in commit
+  7508f40: the general contact is jeff@snackbyte.io (no new info@ address), and the cap
+  stays the greater of twelve months' payments and $100, a ceiling that keeps the clause
+  defensible (FR-016, FR-017, FR-021, SC-006).
 
 ## User Scenarios & Testing _(mandatory)_
 
