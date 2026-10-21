@@ -1,0 +1,82 @@
+// @vitest-environment node
+import { describe, it, expect } from 'vitest';
+import { copy } from '@snackbyte/brand';
+// @ts-expect-error — plain JS build script, no types
+import { renderLegal } from '../../scripts/build-legal.mjs';
+
+// The privacy policy and the terms are given to Google by their URLs, so the pages must be
+// there, readable and on the brand; the words are the owner's, approved as written.
+
+const SAMPLE = [
+  '# Privacy policy',
+  '',
+  'Last changed October 21, 2026.',
+  '',
+  'An opening paragraph.',
+  '',
+  '## A section',
+  '',
+  'What it says.',
+  '',
+  '## Another',
+  '',
+  '- one',
+  '- two',
+  '',
+].join('\n');
+
+describe('the legal page generator', () => {
+  const page: string = renderLegal('privacy', SAMPLE);
+
+  it('links the page kit and the favicon, and nothing else of its own', () => {
+    expect(page).toContain('<link rel="stylesheet" href="/kit/page.css">');
+    expect(page).toContain('<link rel="icon" href="/favicon.svg" type="image/svg+xml">');
+    expect(page).not.toMatch(/<script/i);
+    expect(page).not.toMatch(/<style/i);
+    expect(page).not.toMatch(/\sstyle=/i);
+  });
+
+  it('names the page with the name lowercase, and points at its one address', () => {
+    expect(page).toContain(`<title>${copy.name} privacy policy</title>`);
+    expect(page).toContain('<link rel="canonical" href="https://snackbyte.io/privacy">');
+    expect(page).toContain('<meta property="og:url" content="https://snackbyte.io/privacy">');
+    expect(renderLegal('terms', SAMPLE.replace('Privacy policy', 'Terms of service'))).toContain(
+      `<title>${copy.name} terms of service</title>`,
+    );
+  });
+
+  it('is published, so nothing asks search engines to stay away', () => {
+    expect(page).not.toMatch(/name="robots"/i);
+  });
+
+  it('makes the source title the one heading, with the date under it', () => {
+    expect([...page.matchAll(/<h1>/g)]).toHaveLength(1);
+    expect(page).toContain('<h1>Privacy policy</h1>');
+    expect(page).toContain('<p class="lede">Last changed October 21, 2026.</p>');
+  });
+
+  it('puts the opening and each section in a block of its own', () => {
+    expect([...page.matchAll(/<section class="card">/g)]).toHaveLength(3);
+    expect(page).toContain('<h2>A section</h2>');
+    expect(page).toContain('<li>two</li>');
+  });
+
+  it('signs the page with the wordmark, linked home', () => {
+    expect(page).toContain(`<a class="wordmark" href="/">${copy.name}</a>`);
+  });
+
+  it('fills every placeholder', () => {
+    expect(page).not.toContain('%legal:');
+  });
+
+  it('refuses a source with no date line under its title, naming the file', () => {
+    const undated = SAMPLE.replace('Last changed October 21, 2026.\n\n', '');
+    expect(() => renderLegal('privacy', undated)).toThrow(/privacy\.md.*Last changed/);
+    const vague = SAMPLE.replace('October 21, 2026', 'recently');
+    expect(() => renderLegal('privacy', vague)).toThrow(/privacy\.md.*Last changed/);
+  });
+
+  it('refuses a page it does not know', () => {
+    expect(() => renderLegal('cookies', SAMPLE)).toThrow(/cookies/);
+  });
+});

@@ -1,8 +1,8 @@
 /* snackbyte page kit.
  *
- * How a page hosted on this site looks: the pages under /work/ and /for/. The build serves it
- * at /kit/page.css after the brand's font, tokens and base rules, so a page links that one
- * file and nothing else. Every value here is a brand token; the kit only arranges them.
+ * How a page hosted on this site looks: the pages under /work/ and /for/, and the site's own
+ * reading pages, /privacy and /terms. The build serves it at /kit/page.css after the brand's
+ * font, tokens and base rules, so a page links that one file and nothing else. Every value here is a brand token; the kit only arranges them.
  *
  * It styles plain HTML first, then a short list of components. It only grows: a class is
  * never renamed or removed, because every hosted page restyles when this file changes.

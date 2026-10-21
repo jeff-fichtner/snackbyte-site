@@ -74,6 +74,23 @@ describe('app serves', () => {
     expect(res.text).not.toContain('%brand:');
   });
 
+  // These two addresses are given to Google and never move; each answers itself, with or
+  // without the slash, never with a redirect.
+  for (const [path, heading] of [
+    ['/privacy', 'Privacy policy'],
+    ['/privacy/', 'Privacy policy'],
+    ['/terms', 'Terms of service'],
+    ['/terms/', 'Terms of service'],
+  ]) {
+    it(`serves ${path} directly, with no redirect`, async () => {
+      const res = await request(createApp()).get(path);
+      expect(res.status).toBe(200);
+      expect(res.headers.location).toBeUndefined();
+      expect(res.headers['content-type']).toContain('text/html');
+      expect(res.text).toContain(`<h1>${heading}</h1>`);
+    });
+  }
+
   it('lists nothing at /for/ — each page is reached by its own link', async () => {
     const app = createApp();
     for (const path of ['/for/', '/for/jan/']) {

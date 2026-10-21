@@ -33,6 +33,15 @@ export function createApp(): Express {
     res.redirect(301, `/work/playhouse-395${m[1] ?? '/'}${query}`);
   });
 
+  // The privacy policy and the terms are given to Google as https://snackbyte.io/privacy and
+  // /terms, and those addresses never move. The static handler would answer the bare form with
+  // a 301 to the slashed one, so both forms are served here, directly.
+  for (const name of ['privacy', 'terms']) {
+    app.get([`/${name}`, `/${name}/`], (_req, res) => {
+      res.sendFile(`${name}/index.html`, { root: distDir });
+    });
+  }
+
   app.use(express.static(distDir));
 
   // Anything not served above does not exist. This site has no client-side routing, so

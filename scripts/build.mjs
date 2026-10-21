@@ -28,6 +28,9 @@ run(process.execPath, ['scripts/copy-brand-assets.mjs']);
 // /style, the readable preview of the brand, filled from the brand package.
 run(process.execPath, ['scripts/build-style.mjs']);
 
+// /privacy and /terms, rendered from their markdown sources in src/web/legal/.
+run(process.execPath, ['scripts/build-legal.mjs']);
+
 // Frontend build.
 run(bin('vite'), ['build']);
 

@@ -17,7 +17,7 @@ test task names the file and must be seen failing first.
 
 ## Phase 1: Setup
 
-- [ ] T001 Confirm the worktree is on `002-privacy-terms` cut from current `origin/dev`, `npm ci` is clean, and `npm run check:all` is green before any change, in the repo root
+- [x] T001 Confirm the worktree is on `002-privacy-terms` cut from current `origin/dev`, `npm ci` is clean, and `npm run check:all` is green before any change, in the repo root
 
 ---
 
@@ -26,15 +26,15 @@ test task names the file and must be seen failing first.
 The generator, the two sources' skeletons and the routes. Nothing in Phase 3+ starts
 until these are done.
 
-- [ ] T002 Write failing tests in `tests/app/legal-pages.test.ts` for the generator `renderLegal(name, markdown)` exported by `scripts/build-legal.mjs`: the output links `/kit/page.css` and `/favicon.svg`; the `<title>` is `snackbyte privacy policy` or `snackbyte terms of service`; `<link rel="canonical">` is `https://snackbyte.io/<name>`; there is no robots meta, no `<script>`, no `<style>` block and no `style=` attribute (FR-004); the markdown's `#` heading becomes the page's only `<h1>`; a source without a `Last changed <Month D, YYYY>.` line under the title throws, naming the file
-- [ ] T003 Create the page template `src/web/legal/page.html`: head (charset, viewport, `%legal:title%`, `%legal:description%`, canonical `%legal:url%`, og tags as `/style` and `/for/` pages carry them, favicon, `/kit/page.css`), `<main class="page">` holding `%legal:body%`, and the kit footer with the wordmark linking `/`; no colour, font or size
-- [ ] T004 Create `scripts/build-legal.mjs`: `renderLegal(name, markdown)` renders with `markdown-it` (HTML disabled, typographer off), fills the template, fails on a missing date line or an unfilled `%legal:…%`; run as a script it renders `src/web/legal/privacy.md` and `terms.md` into `src/web/public/privacy/index.html` and `src/web/public/terms/index.html`, with titles and descriptions held in the script beside each name
-- [ ] T005 Create the two sources with their title and date line only, `src/web/legal/privacy.md` and `src/web/legal/terms.md`, so the build has something to render
-- [ ] T006 Run `scripts/build-legal.mjs` from `scripts/build.mjs` after `build-style.mjs`, and add `src/web/public/privacy/` and `src/web/public/terms/` to `.gitignore` with a comment naming the generator; confirm T002's tests pass
-- [ ] T007 Write failing tests in `tests/app/server-smoke.test.ts`: `/privacy`, `/privacy/`, `/terms`, `/terms/` each answer 200 `text/html` with no `Location` header and the page's `<h1>`
-- [ ] T008 Serve the four paths directly in `src/server.ts`, registered before `express.static`, each sending `<name>/index.html` from `dist/`, with a comment saying why (the static handler's directory redirect; the URLs given to Google); confirm T007's tests pass
-- [ ] T009 Widen the header comment of `src/web/kit/page.css` to name the site's own published pages (`/privacy`, `/terms`) among the pages it styles; change no rule
-- [ ] T010 Run `npm run check:all` and confirm green
+- [x] T002 Write failing tests in `tests/app/legal-pages.test.ts` for the generator `renderLegal(name, markdown)` exported by `scripts/build-legal.mjs`: the output links `/kit/page.css` and `/favicon.svg`; the `<title>` is `snackbyte privacy policy` or `snackbyte terms of service`; `<link rel="canonical">` is `https://snackbyte.io/<name>`; there is no robots meta, no `<script>`, no `<style>` block and no `style=` attribute (FR-004); the markdown's `#` heading becomes the page's only `<h1>`; a source without a `Last changed <Month D, YYYY>.` line under the title throws, naming the file
+- [x] T003 Create the page template `src/web/legal/page.html`: head (charset, viewport, `%legal:title%`, `%legal:description%`, canonical `%legal:url%`, og tags as `/style` and `/for/` pages carry them, favicon, `/kit/page.css`), `<main class="page">` holding `%legal:body%`, and the kit footer with the wordmark linking `/`; no colour, font or size
+- [x] T004 Create `scripts/build-legal.mjs`: `renderLegal(name, markdown)` renders with `markdown-it` (HTML disabled, typographer off), fills the template, fails on a missing date line or an unfilled `%legal:…%`; run as a script it renders `src/web/legal/privacy.md` and `terms.md` into `src/web/public/privacy/index.html` and `src/web/public/terms/index.html`, with titles and descriptions held in the script beside each name
+- [x] T005 Create the two sources with their title and date line only, `src/web/legal/privacy.md` and `src/web/legal/terms.md`, so the build has something to render
+- [x] T006 Run `scripts/build-legal.mjs` from `scripts/build.mjs` after `build-style.mjs`, and add `src/web/public/privacy/` and `src/web/public/terms/` to `.gitignore` with a comment naming the generator; confirm T002's tests pass
+- [x] T007 Write failing tests in `tests/app/server-smoke.test.ts`: `/privacy`, `/privacy/`, `/terms`, `/terms/` each answer 200 `text/html` with no `Location` header and the page's `<h1>`
+- [x] T008 Serve the four paths directly in `src/server.ts`, registered before `express.static`, each sending `<name>/index.html` from `dist/`, with a comment saying why (the static handler's directory redirect; the URLs given to Google); confirm T007's tests pass
+- [x] T009 Widen the header comment of `src/web/kit/page.css` to name the site's own published pages (`/privacy`, `/terms`) among the pages it styles; change no rule
+- [x] T010 Run `npm run check:all` and confirm green
 
 **Checkpoint**: both URLs answer directly with a dated, kit-styled page.
 
