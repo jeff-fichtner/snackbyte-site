@@ -1,5 +1,10 @@
 <!--
 Sync Impact Report
+Version change: 2.0.0 → 2.0.1 (2026-10-20): PATCH, wording. /style joins Principle II's list of
+derived pages: it is generated from src/web/style/page.html and the brand package at build. The
+deferral recorded at 2.0.0 is done: every work/ section and its landing page is on the kit. No
+principle changed. Previous text is in version history.
+
 Version change: 1.2.1 → 2.0.0 (2026-10-20): MAJOR, Principle IV redefined. Hosted pages share
 one stylesheet, the page kit at /kit/page.css (source src/web/kit/page.css), instead of each
 carrying its own: snackbyte-site is the brand's primary application and every page it hosts
@@ -91,7 +96,7 @@ them, not from every page that wants a different blue.
 Anything that can be computed from a source MUST be computed from it: the marks
 and tokens from the guide, by the brand package; the favicons and the link-preview
 card copied into `public/` at build; each client section's landing page from its
-`section.json`. A generated file MUST NOT be hand-edited — the generator is fixed
+`section.json`; `/style` from its template and the package. A generated file MUST NOT be hand-edited — the generator is fixed
 and the file regenerated.
 
 Generated output that only this deployment needs is produced at build and excluded
@@ -238,4 +243,4 @@ MAJOR for a principle removed or redefined, MINOR for a principle added or
 materially expanded, PATCH for wording. `CLAUDE.md` carries the runtime
 guidance for agents working here and points at this file.
 
-**Version**: 2.0.0 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20
+**Version**: 2.0.1 | **Ratified**: 2026-09-22 | **Last Amended**: 2026-10-20

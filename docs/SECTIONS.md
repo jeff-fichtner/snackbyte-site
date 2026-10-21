@@ -81,6 +81,9 @@ src/web/public/work/playhouse-395/
 
 ## The page kit
 
+Every component below is shown working at <https://snackbyte.io/style/>, in the page kit
+section.
+
 **Plain HTML is styled already:** headings, paragraphs, lists, links, tables,
 `details`, images and figures, `select`, `fieldset`, buttons. Reach for a class
 only when you need one of these:

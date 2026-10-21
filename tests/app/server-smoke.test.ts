@@ -66,6 +66,14 @@ describe('app serves', () => {
     }
   });
 
+  it('serves /style, generated from the brand package', async () => {
+    const res = await request(createApp()).get('/style/');
+    expect(res.status).toBe(200);
+    expect(res.headers['content-type']).toContain('text/html');
+    expect(res.text).toContain(`--ground: ${color.ground.day};`);
+    expect(res.text).not.toContain('%brand:');
+  });
+
   it('lists nothing at /for/ — each page is reached by its own link', async () => {
     const app = createApp();
     for (const path of ['/for/', '/for/jan/']) {

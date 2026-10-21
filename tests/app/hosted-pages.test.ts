@@ -149,6 +149,19 @@ describe('every section landing page', () => {
   });
 });
 
+describe('the /style template', () => {
+  const TEMPLATE = join(process.cwd(), 'src/web/style/page.html');
+
+  it('links the page kit and writes no brand value: the build fills them all', () => {
+    const html = readFileSync(TEMPLATE, 'utf8');
+    expect(html.match(/<link rel="stylesheet"[^>]*>/g)).toEqual([
+      '<link rel="stylesheet" href="/kit/page.css">',
+    ]);
+    expect(html).toContain('<meta name="robots" content="noindex');
+    expectOnTheKit(html, 'src/web/style/page.html');
+  });
+});
+
 describe('the page kit', () => {
   it('is served as one stylesheet: the font, then the tokens, the base rules and the kit', () => {
     const css: string = kitStylesheet();
