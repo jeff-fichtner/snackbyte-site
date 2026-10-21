@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 // @ts-expect-error — plain JS page script, no types
 import * as jetLag from '../../src/web/public/for/jan/jet-lag/plan.js';
 
-const { buildPlan, clock, normalize, isComplete, lowPoint, TRIP } = jetLag;
+const { buildPlan, cardsOn, clock, localDay, normalize, isComplete, lowPoint, TRIP } = jetLag;
 
 type Card = {
   id: string;
@@ -344,6 +344,32 @@ describe('something on Thursday', () => {
     const differing = [...busyLines].filter((l) => !free.includes(l)).length;
     expect(differing).toBeGreaterThanOrEqual(3);
     expect(thursdayOf({ ...base, thursday: 'busy' }).why).toContain('late evening to your body');
+  });
+});
+
+describe('today', () => {
+  it('reads the reader’s own calendar date', () => {
+    expect(localDay(new Date(2026, 9, 28, 23, 30))).toBe('2026-10-28');
+    expect(localDay(new Date(2026, 10, 1, 0, 5))).toBe('2026-11-01');
+  });
+
+  it('marks the cards whose days include it, and none before or after the trip', () => {
+    const cards = plan();
+    expect(cardsOn(cards, '2026-10-21')).toEqual([]);
+    expect(cardsOn(cards, '2026-10-26')).toEqual(['before']);
+    expect(cardsOn(cards, '2026-10-28')).toEqual(['flight', 'landing', 'nights']);
+    expect(cardsOn(cards, '2026-10-29')).toEqual(['nights', 'thursday']);
+    expect(cardsOn(cards, '2026-10-31')).toEqual(['weekend']);
+    expect(cardsOn(cards, '2026-11-01')).toEqual(['sunday']);
+    expect(cardsOn(cards, '2026-11-02')).toEqual([]);
+  });
+
+  it('gives every card its days, inside the trip', () => {
+    for (const c of plan() as (Card & { days: string[] })[]) {
+      expect(c.days.length, c.id).toBeGreaterThan(0);
+      for (const d of c.days)
+        expect(d >= '2026-10-25' && d <= '2026-11-01', `${c.id} ${d}`).toBe(true);
+    }
   });
 });
 

@@ -239,6 +239,24 @@ describe('the page', () => {
     }
   });
 
+  it('marks today’s cards, and their rows in the contents, on the day she opens it', () => {
+    mount(document, memoryStorage(), new Date(2026, 9, 29, 9));
+    expect([...document.querySelectorAll('#plan .card.today')].map((c) => c.id)).toEqual([
+      'nights',
+      'thursday',
+    ]);
+    expect(document.querySelector('#thursday .meta')?.textContent).toMatch(/^Today /);
+    const marked = [...document.querySelectorAll('#contents a')].filter((a) =>
+      a.querySelector('.badge'),
+    );
+    expect(marked.map((a) => a.getAttribute('href'))).toEqual(['#nights', '#thursday']);
+  });
+
+  it('marks nothing before the trip starts', () => {
+    mount(document, memoryStorage(), new Date(2026, 9, 21, 9));
+    expect(document.querySelectorAll('.today, #plan .badge, #contents .badge')).toHaveLength(0);
+  });
+
   it('fails loudly on a page without its form', () => {
     document.body.innerHTML = '<div id="plan"></div>';
     expect(() => mount(document, null)).toThrow(/#answers/);
