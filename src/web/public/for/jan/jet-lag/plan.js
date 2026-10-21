@@ -158,6 +158,7 @@ export function buildPlan(raw) {
     title: 'Before you fly',
     when: 'Sunday to Tuesday, October 25–27 · Italy',
     short: 'Oct 25–27',
+    days: ['2026-10-25', '2026-10-26', '2026-10-27'],
     general: 'Go to bed an hour later each night for two or three nights.',
     you: [
       `Skip that. Wednesday starts around ${clock(TRIP.wakeWednesday)}.`,
@@ -175,6 +176,7 @@ export function buildPlan(raw) {
     title: 'The flight',
     when: 'Wednesday, October 28 · Bologna to Rome to Los Angeles',
     short: 'Oct 28',
+    days: ['2026-10-28'],
     general: 'Set your watch to California time when you board, and eat and sleep by it.',
     you: [
       `Switch it when you board in Rome. The flight leaves about ${clock(TRIP.romeDeparts)} there, which is ${clock(TRIP.romeDeparts - TRIP.hoursBehind * 60)} in California.`,
@@ -239,6 +241,7 @@ export function buildPlan(raw) {
     title: 'Landing',
     when: `Wednesday, October 28, about ${clock(TRIP.laxLands)} · Los Angeles`,
     short: 'Oct 28',
+    days: ['2026-10-28'],
     general: 'Stay up until a normal bedtime, and get outside in the late afternoon.',
     you: [],
     why:
@@ -262,6 +265,7 @@ export function buildPlan(raw) {
     title: 'Nights one to three',
     when: 'Wednesday to Friday',
     short: 'Oct 28–30',
+    days: ['2026-10-28', '2026-10-29', '2026-10-30'],
     general: `Expect to wake around 2 to 4am. At 3am in California your body thinks it’s ${clock(3 * 60 + TRIP.hoursBehind * 60)} in Italy.`,
     you: [
       'Stay in bed with the lights off and the phone away. It gets shorter each night.',
@@ -309,6 +313,7 @@ export function buildPlan(raw) {
     title: 'First day back',
     when: `Thursday, October 29 · ${a.after === 'stay' ? 'Los Angeles to Bishop' : 'Bishop'}`,
     short: 'Oct 29',
+    days: ['2026-10-29'],
     general: 'A real breakfast at breakfast time, high in protein. Outside in the late afternoon. One short nap at most.',
     you: [
       `${a.wake === null ? 'Breakfast at California breakfast time.' : `Breakfast by ${clock(a.wake + 60)}.`} Eggs or yogurt are good; the time matters more than the protein.`,
@@ -336,6 +341,7 @@ export function buildPlan(raw) {
     title: 'Friday and Saturday',
     when: 'October 30–31 · Bishop',
     short: 'Oct 30–31',
+    days: ['2026-10-30', '2026-10-31'],
     general: 'Keep doing what Thursday did.',
     you: [
       `Breakfast on time, outside late in the afternoon, bed at ${usual}.`,
@@ -349,6 +355,7 @@ export function buildPlan(raw) {
     title: 'Clocks go back',
     when: 'Sunday, November 1',
     short: 'Nov 1',
+    days: ['2026-11-01'],
     general: 'California’s clocks go back an hour at 2am.',
     you: [
       `Go to bed at ${usual} on the new clock.`,
@@ -374,13 +381,31 @@ function renderLines(doc, lines) {
   return list;
 }
 
+/**
+ * The reader's own calendar date, as the cards write their days: whatever her device says,
+ * Italy's date before she flies and California's after.
+ */
+export function localDay(now) {
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
+/** The cards whose days include this date: none before the trip or after it. */
+export function cardsOn(cards, day) {
+  return cards.filter((card) => card.days.includes(day)).map((card) => card.id);
+}
+
+const todayBadge = (doc) => el(doc, 'span', 'badge', 'Today');
+
 /** The table of contents: one link per card, with its dates, in the plan's order. */
-function renderContents(doc, cards) {
+function renderContents(doc, cards, today) {
   const list = el(doc, 'ul');
   for (const card of cards) {
     const link = el(doc, 'a');
     link.href = `#${card.id}`;
-    link.append(el(doc, 'span', '', card.title), el(doc, 'span', 'meta', card.short));
+    const title = el(doc, 'span', '', card.title);
+    if (today.includes(card.id)) title.append(' ', todayBadge(doc));
+    link.append(title, el(doc, 'span', 'meta', card.short));
     const item = el(doc, 'li');
     item.append(link);
     list.append(item);
@@ -388,10 +413,15 @@ function renderContents(doc, cards) {
   return list;
 }
 
-function renderCard(doc, card) {
+function renderCard(doc, card, today) {
   const node = el(doc, 'section', 'card');
   node.id = card.id;
-  node.append(el(doc, 'h2', '', card.title), el(doc, 'p', 'meta', card.when));
+  const when = el(doc, 'p', 'meta', card.when);
+  if (today.includes(card.id)) {
+    node.classList.add('today');
+    when.prepend(todayBadge(doc), ' ');
+  }
+  node.append(el(doc, 'h2', '', card.title), when);
 
   const general = el(doc, 'p', 'general');
   general.append(el(doc, 'span', 'label', 'Generally'), doc.createTextNode(card.general));
@@ -491,9 +521,10 @@ function need(doc, id) {
 /**
  * Wires the page: fills the time pickers, restores saved answers, and renders the plan on
  * every change. Saving folds the questions into a summary with a way back; a visit that
- * finds them saved, or all answered, opens folded.
+ * finds them saved, or all answered, opens folded. The cards for the day the page is opened
+ * are marked Today.
  */
-export function mount(doc, storage) {
+export function mount(doc, storage, now = new Date()) {
   const form = need(doc, 'answers');
   const plan = need(doc, 'plan');
   const contents = need(doc, 'contents');
@@ -512,8 +543,12 @@ export function mount(doc, storage) {
     const answers = read(form);
     persist(storage, answers, saved);
     const cards = buildPlan(answers);
-    plan.replaceChildren(...cards.map((card) => renderCard(doc, card)));
-    contents.replaceChildren(el(doc, 'p', 'label', 'On this page'), renderContents(doc, cards));
+    const today = cardsOn(cards, localDay(now));
+    plan.replaceChildren(...cards.map((card) => renderCard(doc, card, today)));
+    contents.replaceChildren(
+      el(doc, 'p', 'label', 'On this page'),
+      renderContents(doc, cards, today),
+    );
   };
   const fold = () => {
     form.hidden = saved;
