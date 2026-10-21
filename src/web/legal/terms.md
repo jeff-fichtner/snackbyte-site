@@ -50,4 +50,4 @@ These terms and the [privacy policy](/privacy) are the whole agreement between y
 
 ## Contact
 
-Security problems: [security@snackbyte.io](mailto:security@snackbyte.io). Questions about what we keep: [privacy@snackbyte.io](mailto:privacy@snackbyte.io).
+Security problems: [security@snackbyte.io](mailto:security@snackbyte.io). Questions about what we keep: [privacy@snackbyte.io](mailto:privacy@snackbyte.io). Anything else: [jeff@snackbyte.io](mailto:jeff@snackbyte.io).
