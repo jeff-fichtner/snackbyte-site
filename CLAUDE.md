@@ -19,6 +19,13 @@ Sections are never linked from the homepage.
 as a link — the first is `/for/jan/jet-lag/`. They are written here, not published
 from elsewhere. Read `docs/FOR.md` before adding one.
 
+## The privacy policy and the terms
+
+`/privacy` and `/terms` are the company's, one of each for everything snackbyte runs as
+itself, and the privacy URL is on Google's consent screen for nod's sign-in, so it never moves.
+The words are `src/web/legal/*.md`. Read `docs/PRIVACY.md` before changing them, and run its
+check when an app or service is about to be public.
+
 ## The page kit
 
 Every hosted page — `work/` and `for/` — links one stylesheet, `/kit/page.css`: the

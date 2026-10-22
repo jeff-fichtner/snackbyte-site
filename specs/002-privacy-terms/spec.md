@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-20
 
-**Status**: Draft
+**Status**: Shipped 2026-10-22 in v0.1.82 (https://snackbyte.io/privacy, https://snackbyte.io/terms)
 
 **Input**: User description: "snackbyte's privacy policy and terms of service, at https://snackbyte.io/privacy and https://snackbyte.io/terms. Source: cross-repo request #cba6aa from snackbyte-auth (2026-10-20), needed now: Google's OAuth brand verification for the "snackbyte" Google OAuth clients needs a privacy policy URL and a terms of service URL on an authorized domain, and Google requires the homepage named on the consent screen to link to that exact privacy policy URL. The pages are the company's; they say what snackbyte does with what its sign-in obtains, state only what is true now, in the brand's voice, and the owner reads both texts before anything is merged or published. Production is the target, not only staging." (The full description, with every fact, is the request text and the conversation of 2026-10-20; the facts are carried into the requirements below.)
 
