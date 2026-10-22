@@ -71,3 +71,5 @@ so.
 - **2026-10-22, snackbyte-discord, becoming snackbyte-chat-automations: does not apply yet.** A
   private bot in chosen servers; its database holds routing and role configuration, no member
   data. Rows 3 and 4 apply when it opens to other communities.
+- **2026-10-22, pxp-stripe-webhooks: not snackbyte's.** A client's magazine store; its buyers
+  are the client's, covered by the client's privacy policy. Nothing here applies.
