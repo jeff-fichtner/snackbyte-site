@@ -104,7 +104,7 @@ const source = (name: string) =>
 const prose = (md: string) => md.replace(/\]\([^)]*\)/g, ']').replace(/`[^`]*`/g, '');
 
 /** Acronyms the policy and the terms need; any other word in capitals breaks the voice. */
-const ACRONYMS = ['IP', 'ID', 'KMS', 'PKCE', 'SQL', 'LLC'];
+const ACRONYMS = ['IP', 'ID', 'KMS', 'PKCE', 'SQL', 'LLC', 'QR'];
 
 function holdsTheVoice(name: string) {
   const text = prose(source(name));
@@ -190,5 +190,23 @@ describe('the privacy policy, about this site', () => {
     expect(site).toMatch(/no analytics/);
     expect(site).toMatch(/Google Fonts/);
     expect(site).toMatch(/30 days/);
+  });
+});
+
+describe('the privacy policy, about the short links', () => {
+  const links = /^## Short links$([\s\S]*?)(?=^## )/m.exec(source('privacy'))?.[1] ?? '';
+
+  it('sits between this site and signing in, and is in the scope', () => {
+    const p = source('privacy');
+    expect(p.indexOf('## This site')).toBeLessThan(p.indexOf('## Short links'));
+    expect(p.indexOf('## Short links')).toBeLessThan(p.indexOf('## Signing in with Google'));
+    expect(p).toMatch(/covers this site, its short links at go\.snackbyte\.io/);
+  });
+
+  it('says what a followed link leaves behind, and that no click is counted', () => {
+    // When click tracking ships in snackbyte-links, this section changes first, and so does this.
+    expect(links).toMatch(/30 days/);
+    expect(links).toMatch(/No click is counted/);
+    expect(links).toMatch(/for an hour/);
   });
 });
