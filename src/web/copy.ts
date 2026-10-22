@@ -18,10 +18,16 @@ export const page = {
   /** What snackbyte does. It names no place and no market: the work goes wherever it is wanted. */
   claim: 'snackbyte makes the tools that somehow don’t exist yet.',
 
-  /** The only address, and the only link on the page. */
+  /** The only address on the page, and the one thing it asks for. */
   contact: {
     lead: 'Something you need built?',
     address: 'jeff@snackbyte.io',
+  },
+
+  /** Under the contact: the two pages Google's verification looks for on the homepage. */
+  legal: {
+    privacy: 'Privacy',
+    terms: 'Terms',
   },
 
   /** The not-found page. */

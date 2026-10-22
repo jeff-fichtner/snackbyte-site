@@ -59,3 +59,7 @@ src/web/public/kit/
 
 # /style — generated from src/web/style/page.html and the brand package by scripts/build-style.mjs at build time
 src/web/public/style/
+
+# /privacy and /terms — rendered from src/web/legal/*.md by scripts/build-legal.mjs at build time
+src/web/public/privacy/
+src/web/public/terms/

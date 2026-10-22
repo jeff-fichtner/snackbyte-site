@@ -10,9 +10,11 @@ import { createApp } from '../../src/server.js';
 // Smoke test for a server app: the built frontend is served and the API responds.
 // Use this as a pattern for testing your own routes.
 const distIndex = fileURLToPath(new URL('../../dist/index.html', import.meta.url));
+// A dist/ built before the legal pages existed has an index but no /privacy; build again.
+const distPrivacy = fileURLToPath(new URL('../../dist/privacy/index.html', import.meta.url));
 
 beforeAll(() => {
-  if (!existsSync(distIndex)) {
+  if (!existsSync(distIndex) || !existsSync(distPrivacy)) {
     execFileSync('node', ['scripts/build.mjs'], { stdio: 'ignore' });
   }
 });
@@ -22,6 +24,12 @@ describe('app serves', () => {
     const res = await request(createApp()).get('/');
     expect(res.status).toBe(200);
     expect(res.text).toContain('<div id="root"');
+  });
+
+  it('links the privacy policy and the terms from the built homepage', async () => {
+    const res = await request(createApp()).get('/');
+    expect(res.text).toContain('href="/privacy"');
+    expect(res.text).toContain('href="/terms"');
   });
 
   it('answers a path that does not exist with 404 and the not-found page', async () => {
@@ -73,6 +81,23 @@ describe('app serves', () => {
     expect(res.text).toContain(`--ground: ${color.ground.day};`);
     expect(res.text).not.toContain('%brand:');
   });
+
+  // These two addresses are given to Google and never move; each answers itself, with or
+  // without the slash, never with a redirect.
+  for (const [path, heading] of [
+    ['/privacy', 'Privacy policy'],
+    ['/privacy/', 'Privacy policy'],
+    ['/terms', 'Terms of service'],
+    ['/terms/', 'Terms of service'],
+  ]) {
+    it(`serves ${path} directly, with no redirect`, async () => {
+      const res = await request(createApp()).get(path);
+      expect(res.status).toBe(200);
+      expect(res.headers.location).toBeUndefined();
+      expect(res.headers['content-type']).toContain('text/html');
+      expect(res.text).toContain(`<h1>${heading}</h1>`);
+    });
+  }
 
   it('lists nothing at /for/ — each page is reached by its own link', async () => {
     const app = createApp();

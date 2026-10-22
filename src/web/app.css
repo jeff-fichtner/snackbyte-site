@@ -56,6 +56,17 @@
   font-size: var(--type-1);
 }
 
+/* The privacy policy and the terms, under the contact: text size, muted, never competing. */
+.contact .legal {
+  margin-top: var(--seam);
+  display: flex;
+  gap: var(--seam);
+  font-size: var(--type-0);
+}
+.contact .legal a {
+  color: var(--muted);
+}
+
 /* The not-found page: the opening block and nothing after it. */
 .not-found {
   gap: 0;
