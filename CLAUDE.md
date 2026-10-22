@@ -19,6 +19,13 @@ Sections are never linked from the homepage.
 as a link — the first is `/for/jan/jet-lag/`. They are written here, not published
 from elsewhere. Read `docs/FOR.md` before adding one.
 
+## The privacy policy and the terms
+
+`/privacy` and `/terms` are the company's, one of each for everything snackbyte runs as
+itself, and the privacy URL is on Google's consent screen for nod's sign-in, so it never moves.
+The words are `src/web/legal/*.md`. Read `docs/PRIVACY.md` before changing them, and run its
+check when an app or service is about to be public.
+
 ## The page kit
 
 Every hosted page — `work/` and `for/` — links one stylesheet, `/kit/page.css`: the
@@ -35,9 +42,8 @@ the owner's global rules and `snackbyte-base`'s constitution by reference rather
 than restating them. A feature gets a spec (`/speckit-specify`); a chore does not.
 Plans live under `specs/`.
 
-Active: `specs/002-privacy-terms/` — the privacy policy and terms of service; plan at
-`specs/002-privacy-terms/plan.md`. Closed: `specs/001-homepage/`, the homepage (shipped
-2026-09-23, closed 2026-10-13).
+Active: none. Closed: `specs/002-privacy-terms/`, the privacy policy and terms (shipped and
+closed 2026-10-22); `specs/001-homepage/`, the homepage (shipped 2026-09-23, closed 2026-10-13).
 Backlogged: `specs/backlog-brand-page/`, `specs/backlog-activity-view/`.
 <!-- SPECKIT END -->
 

@@ -105,9 +105,9 @@ days of request logs.
 - [x] T024 Run `npm run check:all` and confirm green
 - [x] T025 Principle VII: build, start the real server, request the four routes and the homepage per `specs/002-privacy-terms/quickstart.md`, and record status, content type and the absence of a redirect
 - [x] T026 Screenshot both pages and the homepage with headless Chrome at 390 px and 1280 px, day and night, into `specs/002-privacy-terms/screenshots/`, and look at each
-- [ ] T027 Open the PR into `dev` with the gate green; after the owner approves, merge; confirm staging deploys and `https://snackbyte.dev/privacy` and `/terms` answer 200 with `X-Robots-Tag: noindex`
-- [ ] T028 Promote `main` to the `dev` commit by fast-forward; confirm production deploys and, per the quickstart, the four routes answer 200 with no redirect, the homepage links both, and no `X-Robots-Tag` is sent
-- [ ] T029 Close request #cba6aa with `ops done cba6aa` naming `https://snackbyte.io/privacy` and `https://snackbyte.io/terms`
+- [x] T027 Open the PR into `dev` with the gate green; after the owner approves, merge; confirm staging deploys and `https://snackbyte.dev/privacy` and `/terms` answer 200 with `X-Robots-Tag: noindex`
+- [x] T028 Promote `main` to the `dev` commit by fast-forward; confirm production deploys and, per the quickstart, the four routes answer 200 with no redirect, the homepage links both, and no `X-Robots-Tag` is sent
+- [x] T029 Close request #cba6aa with `ops done cba6aa` naming `https://snackbyte.io/privacy` and `https://snackbyte.io/terms`
 
 ---
 
