@@ -64,10 +64,10 @@ so.
 
 ## Checked
 
-- **2026-10-22, snackbyte-links (`go.snackbyte.io`): applies, not yet covered.** A public
-  snackbyte host. Its server logs each request, kept 30 days; it sets a cookie when someone
-  unlocks a password-protected link; click tracking is planned in its spec 003 and is not built.
-  Rows 6, and 3 when 003 ships.
+- **2026-10-22, snackbyte-links (`go.snackbyte.io`): applies; covered the same day** in the
+  policy's "Short links" section. A public snackbyte host. Its server logs each request, kept 30
+  days; it sets a cookie for an hour when someone unlocks a password-protected link; click
+  tracking is planned in its spec 003 and is not built. Row 6 now, and row 3 when 003 ships.
 - **2026-10-22, snackbyte-discord, becoming snackbyte-chat-automations: does not apply yet.** A
   private bot in chosen servers; its database holds routing and role configuration, no member
   data. Rows 3 and 4 apply when it opens to other communities.

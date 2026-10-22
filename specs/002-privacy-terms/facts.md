@@ -37,6 +37,10 @@ in one commit. Commitments (FR-013) are promises, not facts, and are listed last
 | F29 | Privacy questions go to privacy@snackbyte.io | The owner, 2026-10-21: address created to deliver to them | 2026-10-21 |
 | F30 | What Google sends is used to sign you in and to tell the app you sign in to who you are | snackbyte-auth `README.md`, Sign-in: the broker checks Google's ID token and issues its own, whose `sub` is the person id | 2026-10-21 |
 | F31 | The site's request logs are used to keep it running | Practice: they are read to diagnose outages (the 2026-10-21 staging investigation, request #3e4c6c) and for nothing else on record | 2026-10-21 |
+| F32 | Short links and their QR codes go through go.snackbyte.io and redirect to their destination | snackbyte-links `CLAUDE.md` (001 redirect engine, live on go.snackbyte.io) | 2026-10-22 |
+| F33 | Its server logs each request (IP address, link, user agent, time) and the logs are deleted after 30 days | Cloud Run request logs and the load balancer log for `snackbyte-links-backend` (enabled, sample rate 1) both land in `_Default` of `snackbyte-apps`, retention 30 days | 2026-10-22 |
+| F34 | No click is counted, and nothing else about a visitor is kept | snackbyte-links `src/resolve/clickHook.ts`: the analytics hook is a deliberate no-op until its spec 003; no visitor fields stored | 2026-10-22 |
+| F35 | An unlocked password-protected link sets one cookie for an hour; its pages load nothing from another site | `src/resolve/handler.ts` (`UNLOCK_TTL_MS` one hour, HttpOnly, per link); the live 404 page has no external resource and sets no cookie; the source references no other host | 2026-10-22 |
 
 ## Commitments (promises, owner-approved 2026-10-21)
 

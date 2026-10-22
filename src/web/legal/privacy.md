@@ -1,8 +1,8 @@
 # Privacy policy
 
-Last changed October 21, 2026.
+Last changed October 22, 2026.
 
-snackbyte is Snackbyte LLC, a California limited liability company. This policy covers this site and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
+snackbyte is Snackbyte LLC, a California limited liability company. This policy covers this site, its short links at go.snackbyte.io, and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
 
 We don't sell what we keep, and we don't use it for advertising.
 
@@ -13,6 +13,12 @@ snackbyte.io sets no cookies and runs no analytics. It loads its typeface from G
 Our server logs each request: your IP address, the page, what your browser says it is, and the time. We use the logs to keep the site running, and Google Cloud deletes them after 30 days.
 
 A page that remembers a choice, such as a colour theme or answers you type, keeps it in your browser. It is never sent to us.
+
+## Short links
+
+snackbyte's short links, and the QR codes printed with them, go through go.snackbyte.io. Following one sends you on to where it points. Our server logs the request, as this site's does: your IP address, the link, what your browser says it is, and the time. Google Cloud deletes those logs after 30 days. No click is counted, and nothing else about you is kept.
+
+A link protected by a password sets one cookie when you unlock it, so you don't type the password again for an hour. The pages go.snackbyte.io shows load nothing from any other site.
 
 ## Signing in with Google
 
