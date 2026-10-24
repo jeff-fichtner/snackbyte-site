@@ -37,15 +37,15 @@
   .general { color: var(--muted); }
   .general .label { margin-bottom: var(--unit); }
   .you { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--unit) * 2); }
-  .you li:first-child { font-weight: 600; }
-  .callout ~ .you li:first-child { font-weight: 400; }
+  .you li:first-child { font-weight: var(--weight-strong); }
+  .callout ~ .you li:first-child { font-weight: var(--weight-regular); }
   .branch {
     display: grid;
     gap: calc(var(--unit) * 2);
     padding-left: var(--gap);
     border-left: 1px solid var(--rule);
   }
-  .branch .you li:first-child { font-weight: 400; }
+  .branch .you li:first-child { font-weight: var(--weight-regular); }
   .card.today { border-top: 2px solid var(--sky); }
 </style>
 </head>

@@ -139,7 +139,7 @@ function scale(b) {
   const type = b.type.scale.steps
     .map(
       (px, i) =>
-        `      <div class="step"><span class="sample" style="font-size:var(--type-${i})">${esc(b.copy.name)}</span><small>--type-${i} · ${px}px</small></div>`,
+        `      <div class="step"><span class="sample wordmark" style="font-size:var(--type-${i})">${esc(b.copy.name)}</span><small>--type-${i} · ${px}px</small></div>`,
     )
     .join('\n');
   const space = [['unit', b.space.unit], ...Object.entries(b.space.steps)]

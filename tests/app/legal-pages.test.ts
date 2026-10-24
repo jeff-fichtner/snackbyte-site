@@ -47,6 +47,10 @@ describe('the legal page generator', () => {
     );
   });
 
+  it('sets its text in the legal face, below a title in the title cut', () => {
+    expect(page).toMatch(/<html lang="en" data-face="legal">/);
+  });
+
   it('is published, so nothing asks search engines to stay away', () => {
     expect(page).not.toMatch(/name="robots"/i);
   });
@@ -188,7 +192,8 @@ describe('the privacy policy, about this site', () => {
     );
     expect(site).toMatch(/no cookies/);
     expect(site).toMatch(/no analytics/);
-    expect(site).toMatch(/Google Fonts/);
+    expect(site).toMatch(/serves its own typefaces/);
+    expect(site).toMatch(/client's own design may load that design's fonts from Google Fonts/);
     expect(site).toMatch(/30 days/);
   });
 });

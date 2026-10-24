@@ -1,10 +1,11 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { createRequire } from 'node:module';
+import { join, relative, resolve } from 'node:path';
 import { type } from '@snackbyte/brand';
 // @ts-expect-error — plain JS build script, no types
-import { kitStylesheet } from '../../scripts/copy-brand-assets.mjs';
+import { kitStylesheet, kitFonts } from '../../scripts/copy-brand-assets.mjs';
 // @ts-expect-error — plain JS build script, no types
 import { renderSection } from '../../scripts/build-sections.mjs';
 
@@ -15,6 +16,12 @@ import { renderSection } from '../../scripts/build-sections.mjs';
 // From the repository root, vitest's root.
 const PUBLIC = join(process.cwd(), 'src/web/public');
 const KIT = join(process.cwd(), 'src/web/kit/page.css');
+const BRAND = resolve(createRequire(import.meta.url).resolve('@snackbyte/brand/marks.json'), '..');
+
+/** Every family the brand names, so a page that names one itself is caught. */
+const families = Object.entries(type.families)
+  .filter(([key]) => key !== '_')
+  .map(([, f]) => (f as { family: string }).family);
 
 function filesUnder(dir: string): string[] {
   return readdirSync(dir).flatMap((name) => {
@@ -62,17 +69,30 @@ function withoutExhibits(html: string): string {
 
 /**
  * Fails on anything a page should take from the kit instead: a colour written as hex, rgb() or
- * hsl(); a font, by name, by link or by its own font-family; a size off the brand's type scale;
- * or the all-caps labels the guide rules out.
+ * hsl(); a font, by name, by link or by its own font-family; a weight that is not one of the
+ * text face's two; an optical size or cut of its own; a size off the brand's type scale; or the
+ * all-caps labels the guide rules out.
  */
 function expectOnTheKit(text: string, where: string, { sizes = /^var\(--type-\d\)$/ } = {}) {
   expect(text, where).not.toMatch(/#[0-9a-f]{3}(?:[0-9a-f]{3})?\b/i);
   expect(text, where).not.toMatch(/\b(?:rgba?|hsla?)\(/i);
-  expect(text, where).not.toContain(type.family);
+  for (const family of families) expect(text, where).not.toMatch(new RegExp(`\\b${family}\\b`));
   expect(text, where).not.toContain('fonts.googleapis.com');
+  // The text face is the page's own; Bricolage reaches a page only through h1, .headline,
+  // .wordmark and .mark-text, which the brand's base rules set.
   for (const [, value] of text.matchAll(/font-family:\s*([^;}"]+)/g)) {
-    expect(value.trim(), `${where}: font-family`).toMatch(/^(?:var\(--font\)|inherit)$/);
+    expect(value.trim(), `${where}: font-family`).toMatch(
+      /^(?:var\(--font-(?:text|code)\)|inherit)$/,
+    );
   }
+  for (const [, value] of text.matchAll(/font-weight:\s*([^;}"]+)/g)) {
+    expect(value.trim(), `${where}: font-weight`).toMatch(
+      /^(?:var\(--weight-(?:regular|strong)\)|inherit)$/,
+    );
+  }
+  expect(text, where).not.toMatch(
+    /font-variation-settings|--font-(?:display|text)-opsz|var\(--font\)/,
+  );
   for (const [, value] of text.matchAll(/font-size:\s*([^;}"]+)/g)) {
     expect(value.trim(), `${where}: font-size`).toMatch(sizes);
   }
@@ -163,19 +183,36 @@ describe('the /style template', () => {
 });
 
 describe('the page kit', () => {
-  it('is served as one stylesheet: the font, then the tokens, the base rules and the kit', () => {
+  it('is served as one stylesheet: the faces, then the tokens, the base rules and the kit', () => {
     const css: string = kitStylesheet();
-    expect(
-      css.startsWith(
-        `@import url('https://fonts.googleapis.com/css2?family=${type.googleFonts}&display=swap');`,
-      ),
-    ).toBe(true);
+    expect(css.startsWith(readFileSync(join(BRAND, 'fonts.css'), 'utf8'))).toBe(true);
+    expect(css).not.toContain('@import');
     const tokens = css.indexOf('--ground');
     const base = css.indexOf('.wordmark');
     const kit = css.indexOf('snackbyte page kit');
     expect(tokens).toBeGreaterThan(0);
     expect(base).toBeGreaterThan(tokens);
     expect(kit).toBeGreaterThan(base);
+  });
+
+  it("keeps the brand's base rules out of exhibits: they sit in a layer the kit reverts there", () => {
+    const css: string = kitStylesheet();
+    const layer = css.indexOf('@layer brand {');
+    expect(layer).toBeGreaterThan(0);
+    expect(css.indexOf('--ground')).toBeGreaterThan(layer);
+    expect(css.indexOf('.wordmark')).toBeGreaterThan(layer);
+    expect(readFileSync(KIT, 'utf8')).toMatch(
+      /@layer brand \{\s*\.exhibit \* \{\s*all: revert-layer;\s*\}\s*\}/,
+    );
+  });
+
+  it('serves every face it names beside itself, from the brand package', () => {
+    const named = [...kitStylesheet().matchAll(/url\('\.\/(fonts\/[^']+)'\)/g)].map((m) => m[1]);
+    expect(named.length).toBeGreaterThan(0);
+    const copied = (kitFonts() as [string, string][]).map(([, dest]) => dest);
+    for (const font of named) expect(copied, font).toContain(`kit/${font}`);
+    for (const [src] of kitFonts() as [string, string][])
+      expect(statSync(src).isFile(), src).toBe(true);
   });
 
   it('only arranges brand tokens', () => {

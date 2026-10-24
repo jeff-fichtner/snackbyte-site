@@ -35,11 +35,7 @@
 .headline {
   margin: var(--cell-seam) 0 0;
   max-width: 20ch;
-  font-weight: 800;
-  font-variation-settings: 'opsz' var(--font-display-opsz);
   font-size: clamp(var(--type-2), 4.6vw, var(--type-3));
-  line-height: 1.06;
-  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 

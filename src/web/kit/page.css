@@ -2,7 +2,7 @@
  *
  * How a page hosted on this site looks: the pages under /work/ and /for/, and the site's own
  * reading pages, /privacy and /terms. The build serves it at /kit/page.css after the brand's
- * font, tokens and base rules, so a page links that one file and nothing else. Every value here is a brand token; the kit only arranges them.
+ * faces, tokens and base rules, so a page links that one file and nothing else. Every value here is a brand token; the kit only arranges them.
  *
  * It styles plain HTML first, then a short list of components. It only grows: a class is
  * never renamed or removed, because every hosted page restyles when this file changes.
@@ -35,13 +35,11 @@ html.large {
 p:where(:not(.exhibit *)) {
   margin: 0;
 }
+/* The cuts are the brand's: h1 in the title cut, h2 and h3 in the text face's strong weight. */
 h1:where(:not(.exhibit *)),
-h2:where(:not(.exhibit *)) {
+h2:where(:not(.exhibit *)),
+h3:where(:not(.exhibit *)) {
   margin: 0;
-  font-weight: 700;
-  font-variation-settings: 'opsz' var(--font-display-opsz);
-  letter-spacing: -0.02em;
-  line-height: 1.05;
 }
 h1:where(:not(.exhibit *)) {
   font-size: var(--type-2);
@@ -50,9 +48,7 @@ h2:where(:not(.exhibit *)) {
   font-size: var(--type-1);
 }
 h3:where(:not(.exhibit *)) {
-  margin: 0;
   font-size: var(--type-0);
-  font-weight: 700;
 }
 @media (min-width: 40rem) {
   h1:where(:not(.exhibit *)) {
@@ -62,6 +58,7 @@ h3:where(:not(.exhibit *)) {
 
 button:where(:not(.exhibit *)) {
   font: inherit;
+  font-weight: var(--weight-strong);
   min-height: calc(var(--unit) * 12);
   padding: 0 var(--seam);
   border-radius: var(--unit);
@@ -82,7 +79,7 @@ fieldset:where(:not(.exhibit *)) {
 legend:where(:not(.exhibit *)) {
   padding: 0;
   margin-bottom: calc(var(--unit) * 2);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
 }
 select:where(:not(.exhibit *)) {
   font: inherit;
@@ -137,7 +134,7 @@ td:where(:not(.exhibit *)) {
   border-bottom: 1px solid var(--rule);
 }
 th:where(:not(.exhibit *)) {
-  font-weight: 600;
+  font-weight: var(--weight-strong);
   color: var(--muted);
 }
 
@@ -186,11 +183,10 @@ th:where(:not(.exhibit *)) {
 .label {
   display: block;
   color: var(--sage-text);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
   font-size: var(--type-0);
-  font-variation-settings: 'opsz' var(--font-text-opsz);
   letter-spacing: normal;
-  line-height: 1.5;
+  line-height: var(--leading-body);
 }
 
 /* Secondary text: a date, a place, a caption. */
@@ -214,7 +210,7 @@ th:where(:not(.exhibit *)) {
 .callout {
   border-left: var(--unit) solid var(--bitterbrush);
   padding-left: var(--gap);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
 }
 
 /* Buttons: one primary action, and the quieter way back. */
@@ -222,7 +218,7 @@ th:where(:not(.exhibit *)) {
   background: var(--sky);
   color: var(--ground);
   border: 1px solid var(--sky);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
 }
 .secondary {
   background: none;
@@ -252,13 +248,13 @@ th:where(:not(.exhibit *)) {
   border: 1px solid var(--rule);
   border-radius: var(--unit);
   cursor: pointer;
-  line-height: 1.2;
+  line-height: var(--leading-heading);
 }
 .choice input:checked + span {
   background: var(--sky);
   border-color: var(--sky);
   color: var(--ground);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
 }
 .choice input:focus-visible + span {
   outline: 2px solid var(--sky);
@@ -328,14 +324,12 @@ th:where(:not(.exhibit *)) {
 }
 .link .title {
   font-size: var(--type-1);
-  font-weight: 700;
-  font-variation-settings: 'opsz' var(--font-display-opsz);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-weight: var(--weight-strong);
+  line-height: var(--leading-heading);
 }
 .link .status {
   color: var(--sage-text);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
   margin-top: auto;
 }
 .link .pic {
@@ -375,6 +369,13 @@ th:where(:not(.exhibit *)) {
   /* Edge to edge there is nothing to scroll, and a scroll box would draw it differently. */
   overflow: visible;
 }
+/* The brand's base rules style elements, not classes (h2, table, code), so they would reach
+   inside too: inside an exhibit, everything the brand layer sets goes back to the browser's. */
+@layer brand {
+  .exhibit * {
+    all: revert-layer;
+  }
+}
 .page:has(+ .exhibit.full) {
   padding-bottom: var(--seam);
 }
@@ -388,7 +389,7 @@ th:where(:not(.exhibit *)) {
 }
 .badge {
   color: var(--sky);
-  font-weight: 600;
+  font-weight: var(--weight-strong);
 }
 .lock {
   color: var(--muted);

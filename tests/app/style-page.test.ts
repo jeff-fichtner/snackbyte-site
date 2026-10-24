@@ -25,12 +25,21 @@ describe('the /style page', () => {
     expect(page).not.toContain('%brand:');
   });
 
-  it('says what the brand says now: the headline, the subhead, the family and the version', () => {
+  it('says what the brand says now: the headline, the subhead, the faces and the version', () => {
     expect(page).toContain(brand.copy.headline);
     expect(page).toContain(brand.copy.subhead);
-    expect(page).toContain(brand.type.family);
+    for (const face of ['bricolage', 'inter', 'sourceSerif'] as const) {
+      expect(page).toContain(brand.type.families[face].family);
+    }
     expect(page).toContain(`guide v${brand.version}`);
-    expect(page).toContain(`Text, ${brand.type.text.weight}, opsz ${brand.type.text.opsz}`);
+    const { regular, strong } = brand.type.text.weights;
+    expect(page).toContain(`${brand.type.families.inter.family}, ${regular} and ${strong}`);
+    expect(page).toContain(`Headline, ${brand.type.headline.weight}`);
+  });
+
+  it('sets each face from the brand: the headline cut by class, the legal face by data-face', () => {
+    expect(page).toMatch(/<span class="d headline">/);
+    expect(page).toMatch(/<span class="l" data-face="legal">/);
   });
 
   it('shows every colour role with its day and night values, and names that say more', () => {

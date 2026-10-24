@@ -29,11 +29,14 @@ src/web/public/work/playhouse-395/
    imports from the app. They are copied verbatim into `dist/` by Vite, so what
    you write is what ships.
 3. **Link the page kit, and no other stylesheet:**
-   `<link rel="stylesheet" href="/kit/page.css">`. It carries the font, the
+   `<link rel="stylesheet" href="/kit/page.css">`. It carries the faces, the
    palette, the type scale and the components below.
 4. **Write no colour, font or size of your own.** No hex, `rgb()` or `hsl()`; no
-   font link and no `font-family` but `var(--font)`; every `font-size` a type
-   token (`var(--type-0)` to `var(--type-5)`); no all-caps labels. A `<style>` of
+   font link; no `font-family` but `var(--font-text)` or `var(--font-code)`, since
+   text already takes the text face and only `h1` takes the title face; no
+   `font-weight` but `var(--weight-regular)` or `var(--weight-strong)`; no
+   `font-variation-settings`; every `font-size` a type token (`var(--type-0)` to
+   `var(--type-5)`); no all-caps labels. A `<style>` of
    your own may lay out your page's parts, using the tokens below. The one
    exception is an exhibit (below). The build checks every page for all of this.
 5. **Start each page with the crumb:** the section's name linking back to its
@@ -114,8 +117,12 @@ dark mode.
   `--rule` (lines and borders), `--sky` (the accent: links, focus, what is
   current), `--sage-text` (sage where it must carry words), `--sage` and
   `--bitterbrush` (marks and surfaces only — never text).
-- **Type:** `--type-0` (text) to `--type-5`, `--font`, and the two optical sizes
-  `--font-text-opsz` and `--font-display-opsz`.
+- **Type:** `--type-0` (text) to `--type-5`, and `--type-small` for dense data;
+  `--weight-regular` and `--weight-strong`, the text face's two weights;
+  `--leading-body` and `--leading-heading`. The faces are set by the kit: `h1` in
+  the title cut, everything below it in the text face, `code` in monospace, and
+  the name with `.wordmark`. A legal or financial document sets
+  `data-face="legal"` on `<html>` to take the legal face below its title.
 - **Space:** `--unit` (4px), `--gap`, `--seam`, `--cell`, `--cell-seam`, `--stack`.
 
 **Exhibits.** Some content is meant to look like something else: another
