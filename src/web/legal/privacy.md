@@ -1,6 +1,6 @@
 # Privacy policy
 
-Last changed October 22, 2026.
+Last changed October 24, 2026.
 
 snackbyte is Snackbyte LLC, a California limited liability company. This policy covers this site, its short links at go.snackbyte.io, and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
 
@@ -8,7 +8,7 @@ We don't sell what we keep, and we don't use it for advertising.
 
 ## This site
 
-snackbyte.io sets no cookies and runs no analytics. It loads its typeface from Google Fonts, so your browser asks Google for the font.
+snackbyte.io sets no cookies and runs no analytics. It serves its own typefaces. A page that shows a client's own design may load that design's fonts from Google Fonts, and then your browser asks Google for them.
 
 Our server logs each request: your IP address, the page, what your browser says it is, and the time. We use the logs to keep the site running, and Google Cloud deletes them after 30 days.
 

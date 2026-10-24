@@ -37,7 +37,7 @@
   .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px calc(var(--unit) * 4); }
   .masthead { display: flex; align-items: center; gap: 10px; }
   .masthead svg { display: block; width: 92px; height: auto; }
-  .masthead b { font-size: var(--type-1); font-weight: 800; letter-spacing: -0.04em; font-variation-settings: "opsz" var(--font-display-opsz); line-height: 1; }
+  .masthead b { font-size: var(--type-1); }
   .switch { display: flex; gap: 2px; border: 1px solid var(--rule); border-radius: 999px; padding: 2px; }
   .switch button { font: inherit; font-size: var(--type-0); line-height: 1; min-height: 0; padding: 7px 12px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); }
   .switch button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
@@ -45,20 +45,20 @@
   /* ---- hero ---- */
   .hero { padding: 56px calc(var(--unit) * 4) 48px; }
   .hero svg { display: block; width: min(360px, 82%); height: auto; }
-  .hero .wm { margin-top: 16px; font-size: var(--type-4); font-weight: 800; line-height: 0.92; letter-spacing: -0.05em; font-variation-settings: "opsz" var(--font-display-opsz); }
+  .hero .wm { margin-top: 16px; font-size: var(--type-4); line-height: 0.92; }
   .hero p { margin: 26px 0 0; max-width: 46ch; font-size: var(--type-1); color: var(--muted); }
-  .hero p b { color: var(--ink); font-weight: 600; }
+  .hero p b { color: var(--ink); }
   @media (min-width: 48rem) { .hero .wm { font-size: var(--type-5); } }
 
   /* ---- sections ---- */
   .sec { padding: 48px 0 56px; border-top: 1px solid var(--rule); }
-  .sec > .wrap > h2 { margin: 0 0 8px; font-size: var(--type-2); font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; font-variation-settings: "opsz" var(--font-display-opsz); text-wrap: balance; }
+  .sec > .wrap > h2 { margin: 0 0 8px; font-size: var(--type-2); text-wrap: balance; }
   .sec > .wrap > p.lead { margin: 0 0 30px; max-width: 60ch; color: var(--muted); }
   .sec > .wrap > p, .two p { max-width: 62ch; }
   .sec > .wrap > p + p, .two p + p { margin-top: 12px; }
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
   @media (max-width: 760px) { .two { grid-template-columns: 1fr; gap: 28px; } }
-  .sec > .wrap > h3, .two h3 { margin: 28px 0 8px; font-size: var(--type-0); font-weight: 600; }
+  .sec > .wrap > h3, .two h3 { margin: 28px 0 8px; font-size: var(--type-0); }
   .why { margin: 0; color: var(--muted); }
 
   /* ---- day/night pair of samples ---- */
@@ -68,16 +68,16 @@
   .sample .tag { margin: 0 0 18px; color: var(--muted); }
   .sample svg { display: block; }
   .above svg { width: min(260px, 80%); height: auto; }
-  .above .wm { margin-top: 10px; font-size: var(--type-3); font-weight: 800; line-height: 0.95; letter-spacing: -0.045em; font-variation-settings: "opsz" var(--font-display-opsz); }
+  .above .wm { margin-top: 10px; font-size: var(--type-3); line-height: 0.95; }
   @media (min-width: 48rem) { .above .wm { font-size: var(--type-4); } }
   .beside { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .beside svg { width: 150px; height: auto; flex: none; }
-  .beside .wm { font-size: var(--type-3); font-weight: 800; line-height: 1; letter-spacing: -0.045em; font-variation-settings: "opsz" var(--font-display-opsz); }
+  .beside .wm { font-size: var(--type-3); }
 
   /* ---- construction ---- */
   .construct { margin-top: 18px; border: 1px solid var(--rule); border-radius: 8px; padding: 22px 18px 12px; }
   .construct svg { display: block; width: 100%; height: auto; max-width: 620px; }
-  .construct text { font-family: var(--font); fill: var(--muted); }
+  .construct text { fill: var(--muted); }
   .construct .dim { stroke: var(--muted); stroke-width: 0.35; fill: none; }
   .construct .bite { stroke: var(--sky); stroke-width: 0.5; stroke-dasharray: 1.2 1; fill: none; }
 
@@ -95,14 +95,14 @@
   .tok .chips { display: grid; grid-template-columns: 1fr 1fr; height: 64px; }
   .tok .chips i { display: block; }
   .tok .lbl { padding: 10px 12px 12px; }
-  .tok b { display: block; font-weight: 600; }
+  .tok b { display: block; }
   .tok small { display: block; color: var(--muted); line-height: 1.5; }
   .tok .from { margin-top: 6px; color: var(--ink); }
 
   /* ---- the scale ---- */
   .steps { display: grid; gap: var(--gap); margin-top: 18px; }
   .step { display: flex; align-items: baseline; gap: var(--gap); flex-wrap: wrap; border-top: 1px solid var(--rule); padding-top: var(--gap); overflow: hidden; }
-  .step .sample { border: 0; padding: 0; background: none; font-weight: 800; letter-spacing: -0.03em; line-height: 1; font-variation-settings: "opsz" var(--font-display-opsz); }
+  .step .sample { border: 0; padding: 0; background: none; }
   .step small, .space small { color: var(--muted); }
   .spaces { display: grid; gap: var(--unit); margin-top: var(--seam); }
   .space { display: flex; align-items: center; gap: var(--gap); }
@@ -110,29 +110,25 @@
 
   /* ---- type specimen ---- */
   .spec { margin-top: 18px; border: 1px solid var(--rule); border-radius: 8px; padding: 28px 26px; }
-  .spec .name { font-size: var(--type-3); font-weight: 800; line-height: 0.95; letter-spacing: -0.045em; font-variation-settings: "opsz" var(--font-display-opsz); }
+  .spec .name { font-size: var(--type-3); line-height: 0.95; }
   @media (min-width: 48rem) { .spec .name { font-size: var(--type-4); } }
-  .spec .head { margin: 22px 0 0; font-size: var(--type-2); font-weight: 800; line-height: 1.06; letter-spacing: -0.03em; font-variation-settings: "opsz" var(--font-display-opsz); max-width: 22ch; text-wrap: balance; }
+  .spec .head { margin: 22px 0 0; font-size: var(--type-2); max-width: 22ch; text-wrap: balance; }
   .spec .body { margin: 12px 0 0; max-width: 50ch; color: var(--muted); }
   .spec .cap { margin: 22px 0 0; color: var(--muted); }
   .glyphs { display: flex; gap: 28px; align-items: baseline; margin-top: 18px; flex-wrap: wrap; }
-  .glyphs span { font-size: var(--type-4); line-height: 1; letter-spacing: -0.03em; }
-  .glyphs .d { font-weight: 800; font-variation-settings: "opsz" var(--font-display-opsz); }
-  .glyphs .t { font-weight: 400; font-variation-settings: "opsz" var(--font-text-opsz); }
+  .glyphs span { display: block; font-size: var(--type-4); line-height: 1; }
   .glyphs small { display: block; color: var(--muted); margin-top: 8px; }
 
   /* ---- the kit, shown with the kit ---- */
   .demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 14px; margin-top: 18px; }
   .ex { border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: var(--gap); align-content: start; min-width: 0; }
-  code { font-family: var(--font); }
-  .ex > code { color: var(--sage-text); font-weight: 600; }
+  .ex > code { color: var(--sage-text); font-weight: var(--weight-strong); }
   .choices { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--unit) * 2); }
 
   /* ---- rules ---- */
   .rules { list-style: none; margin: 8px 0 0; padding: 0; max-width: 66ch; }
   .rules li { padding: 14px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .rules li:last-child { border-bottom: 1px solid var(--rule); }
-  .rules b { font-weight: 600; }
   .rules span { color: var(--muted); }
 
   .foot { padding: 40px calc(var(--unit) * 4) 72px; border-top: 1px solid var(--rule); color: var(--muted); }
@@ -143,7 +139,7 @@
 %brand:@marks%
 
 <header class="wrap top">
-  <div class="masthead"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name%"><use href="#m-row"/></svg><b>%brand:copy.name%</b></div>
+  <div class="masthead"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name%"><use href="#m-row"/></svg><b class="wordmark">%brand:copy.name%</b></div>
   <div class="switch" role="group" aria-label="Theme">
     <button type="button" data-set="light" aria-pressed="false">Day</button>
     <button type="button" data-set="dark" aria-pressed="false">Night</button>
@@ -153,7 +149,7 @@
 
 <div class="wrap hero">
   <svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg>
-  <div class="wm">%brand:copy.name%</div>
+  <div class="wm wordmark">%brand:copy.name%</div>
   <p><b>How %brand:copy.name% looks, and why.</b> A preview of the style guide: the mark, the palette, the type, and the rules that hold them together. Decided 21 September 2026.</p>
 </div>
 
@@ -207,14 +203,14 @@
     <p class="lead">The row is wide, so it wants to sit above the name. Where there is no height for that, it sits beside.</p>
     <h3>Above, the primary</h3>
     <div class="pair">
-      <div class="sample day"><p class="tag">Day</p><div class="above"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm">%brand:copy.name%</div></div></div>
-      <div class="sample night"><p class="tag">Night</p><div class="above"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm">%brand:copy.name%</div></div></div>
+      <div class="sample day"><p class="tag">Day</p><div class="above"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm wordmark">%brand:copy.name%</div></div></div>
+      <div class="sample night"><p class="tag">Night</p><div class="above"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm wordmark">%brand:copy.name%</div></div></div>
     </div>
     <p class="why" style="margin-top:12px">The row shares the name's left edge and is set a little narrower than the word. This is the poster form and the site form. Use it whenever there is room.</p>
     <h3>Beside, the low-height alternative</h3>
     <div class="pair">
-      <div class="sample day"><p class="tag">Day</p><div class="beside"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm">%brand:copy.name%</div></div></div>
-      <div class="sample night"><p class="tag">Night</p><div class="beside"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm">%brand:copy.name%</div></div></div>
+      <div class="sample day"><p class="tag">Day</p><div class="beside"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm wordmark">%brand:copy.name%</div></div></div>
+      <div class="sample night"><p class="tag">Night</p><div class="beside"><svg viewBox="%brand:marks.row.viewBox%" role="img" aria-label="%brand:copy.name% mark"><use href="#m-row"/></svg><div class="wm wordmark">%brand:copy.name%</div></div></div>
     </div>
     <p class="why" style="margin-top:12px">The row sits at the cap height and the bite reads as a notch. This is the letterhead form and the header form; it is what is at the top of this page. The rule between the two is height, nothing else.</p>
   </div>
@@ -276,17 +272,18 @@
 <!-- ============ THE TYPE ============ -->
 <section class="sec">
   <div class="wrap">
-    <h2>The type, one family</h2>
-    <p class="lead">%brand:type.family%, at two optical sizes. The display cut is tight and a little odd; the text cut is plain. That is the whole type system.</p>
+    <h2>The type, two faces</h2>
+    <p class="lead">Two faces on any page. %brand:type.families.bricolage.family% draws the name and sets the page's title, and nothing smaller; %brand:type.families.inter.family% sets everything below it. A legal or financial document swaps in %brand:type.families.sourceSerif.family% below its title. Code is the system's monospace.</p>
     <div class="spec">
-      <div class="name">%brand:copy.name%</div>
-      <p class="head">%brand:copy.headline%</p>
+      <div class="name wordmark">%brand:copy.name%</div>
+      <p class="head headline">%brand:copy.headline%</p>
       <p class="body">%brand:copy.subhead%</p>
       <div class="glyphs">
-        <div><span class="d">agy</span><small>Display, %brand:type.display.weight%, opsz %brand:type.display.opsz%</small></div>
-        <div><span class="t">agy</span><small>Text, %brand:type.text.weight%, opsz %brand:type.text.opsz%</small></div>
+        <div><span class="d headline">agy</span><small>Headline, %brand:type.headline.weight%; a title, %brand:type.title.weight%</small></div>
+        <div><span class="t">agy</span><small>%brand:type.families.inter.family%, %brand:type.text.weights.regular% and %brand:type.text.weights.strong%</small></div>
+        <div><span class="l" data-face="legal">agy</span><small>%brand:type.families.sourceSerif.family%, %brand:type.legal.weights.regular% and %brand:type.legal.weights.strong%</small></div>
       </div>
-      <p class="cap">The name is always lowercase, weight %brand:type.wordmark.weight%, optical size %brand:type.wordmark.opsz%, tracked to %brand:type.wordmark.tracking%em. Headlines take the display cut; anything read at length takes the text cut. Sentence case everywhere; no small caps, no tracked-out labels.</p>
+      <p class="cap">The name is always lowercase, weight %brand:type.wordmark.weight%, optical size %brand:type.wordmark.opsz%, tracked to %brand:type.wordmark.tracking%em. The home page's headline is weight %brand:type.headline.weight%; every other page's title, %brand:type.title.weight%. Text has two weights: %brand:type.text.weights.regular%, and %brand:type.text.weights.strong% for headings below the title, labels, table headers and bold lead-ins. Sentence case everywhere; no small caps, no tracked-out labels, no faked bold or italic.</p>
     </div>
   </div>
 </section>
@@ -328,7 +325,7 @@
       </div>
     </div>
     <h3>The headline</h3>
-    <p class="why"><b style="color:var(--ink);font-weight:600">%brand:copy.headline%</b> The seam as a claim, with the negative clause built in. Under it: "%brand:copy.subhead%" "Building something good" is retired.</p>
+    <p class="why"><b style="color:var(--ink)">%brand:copy.headline%</b> The seam as a claim, with the negative clause built in. Under it: "%brand:copy.subhead%" "Building something good" is retired.</p>
   </div>
 </section>
 
@@ -343,7 +340,7 @@
       <li><b>The bite is always at the end, always at the top right, always full size.</b><span>It is the only part of the mark that is not a rule.</span></li>
       <li><b>Ground and ink swap at night; the accents lift.</b><span>One palette, two values per role, no redrawing.</span></li>
       <li><b>%brand:color.sage.name.day% and %brand:color.bitterbrush.name.day% are for marks and surfaces, not for words.</b><span>Where sage must be read, it becomes %brand:color.sage-text.name.day% by day.</span></li>
-      <li><b>One family, two optical sizes, sentence case.</b><span>%brand:type.family% for the name, the headlines, and the text.</span></li>
+      <li><b>Two faces on a page, sentence case.</b><span>%brand:type.families.bricolage.family% for the name and the title, %brand:type.families.inter.family% for the text, %brand:type.families.sourceSerif.family% for legal paper.</span></li>
       <li><b>The name is lowercase, always.</b><span>In the wordmark and in prose, even at the start of a sentence. Legal paper is the only exception.</span></li>
       <li><b>Say what it does, then what it doesn't.</b><span>Every tool gets its negative clause.</span></li>
     </ul>
@@ -368,7 +365,7 @@
           <p class="label">A label</p>
           <h2>One bounded block</h2>
           <p class="meta">A date, a place, a caption.</p>
-          <p>Text in the block, set in the text cut.</p>
+          <p>Text in the block, set in the text face.</p>
         </div>
       </div>
       <div class="ex">
