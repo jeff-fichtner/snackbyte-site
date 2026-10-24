@@ -8,7 +8,7 @@
 
 ## What this is
 
-The page that replaces `/style`. Today that URL holds the style guide: a reference
+The page that replaces `/style` as the place to read about the brand. Today that URL holds the style guide: a reference
 document, complete, every token and rule on it, built so it could be shown to friends.
 What replaces it is **stripped, and about the brand rather than the style** — where the
 mark and the palette came from, not the specification of them.
@@ -38,15 +38,24 @@ is already in the guide.
 - The bite, which is the one part of the mark that is not a rule.
 - Little else. Every table, every hex value and every MUST belongs in the guide.
 
+## Who it is for (2026-10-24)
+
+The owner, 2026-10-24: it is **public facing and accessible**: published, indexed and
+findable, not a page shared by direct URL the way `/style` is today. Principle V already
+allows that: the homepage links what it owns once it is done, and `noindex` is for pages
+shared deliberately rather than published. Until it is done it stays unlinked.
+
 ## What it must not become
 
 - A second copy of the guide. If a value appears here it is read from the brand package,
   and it is there because the story needs it, not for reference.
-- Linked from the homepage. Principle V holds: reached by URL, `noindex`.
+- Linked or indexed before it is finished (Principle V).
 
 ## Open
 
-- Whether it keeps the `/style` path or takes its own.
+- **Where it lives** (owner, 2026-10-24: "somewhere", to be decided). Possibly not
+  `/style`, possibly not this site. Whether `/style` then redirects to it, or keeps the
+  reference copy for contributors, follows from that.
 - Whether it is one screen or a scroll.
 - Whether the valley appears in pictures or only in words, and if pictures, whose.
 
