@@ -44,7 +44,7 @@ Plans live under `specs/`.
 
 Active: none. Closed: `specs/002-privacy-terms/`, the privacy policy and terms (shipped and
 closed 2026-10-22); `specs/001-homepage/`, the homepage (shipped 2026-09-23, closed 2026-10-13).
-Backlogged: `specs/backlog-brand-page/`, `specs/backlog-activity-view/`.
+Backlogged: `specs/backlog-brand-page/`, `specs/backlog-activity-view/`, `specs/backlog-letter-bits/`.
 <!-- SPECKIT END -->
 
 ## Brand
