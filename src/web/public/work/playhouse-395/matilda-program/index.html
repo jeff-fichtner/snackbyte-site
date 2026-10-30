@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Matilda Program — Playhouse 395</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/kit/page.css">
+<style>
+  /* This page's own layout. The look is the kit's (/kit/page.css); every value here is a brand
+     token. The show's colours and title art are content, so they sit inside exhibits. */
+  header{display:flex;flex-direction:column;gap:.7rem}
+  .sub{color:var(--muted);max-width:40rem}
+  section{display:flex;flex-direction:column;gap:1.1rem}
+  .sec-head{display:flex;flex-direction:column;gap:.4rem;max-width:44rem}
+  .sec-head p{color:var(--muted);font-size:var(--type-0)}
+  .secnum{font-size:var(--type-0);font-weight:var(--weight-strong);color:var(--sky)}
+
+  figure{margin:0;display:flex;flex-direction:column;gap:.35rem}
+  figure > a{display:block;border-radius:4px;overflow:hidden;border:1px solid var(--rule);background:var(--ground);line-height:0}
+  figure > a:hover{border-color:var(--sky)}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font-size:var(--type-0);color:var(--muted);line-height:1.4;display:flex;flex-direction:column;gap:.3rem}
+  figcaption b{color:var(--ink);font-weight:var(--weight-strong)}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start;max-width:52rem}
+  @media (max-width:40rem){.pair{grid-template-columns:1fr}}
+
+  .tag{align-self:flex-start;font-size:var(--type-0);font-weight:var(--weight-strong);padding:.15rem .5rem;border-radius:2px;border:1px solid var(--rule);color:var(--sky);white-space:nowrap}
+  .tag.no{color:var(--ink);border-color:var(--bitterbrush);border-left-width:4px}
+
+  .files{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .files li{font-size:var(--type-0);line-height:1.45;color:var(--muted)}
+  .files a{font-weight:var(--weight-strong)}
+
+  /* An exhibit starts from the browser's defaults; the swatches take the page's text face and ink back. */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));gap:.9rem;max-width:52rem;border:0;border-radius:0;overflow:visible;font-family:var(--font-text);font-size:var(--type-0);color:var(--ink)}
+  .swatch{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--ground)}
+  .swatch .chip{height:4.5rem;border-bottom:1px solid var(--rule)}
+  .swatch .about{padding:.7rem .85rem;display:flex;flex-direction:column;gap:.15rem;font-size:var(--type-0);line-height:1.4;color:var(--ink)}
+  .swatch .hex{font-family:var(--font-code);font-weight:var(--weight-strong)}
+  .swatch .use{color:var(--muted)}
+
+  .ground{border:1px solid var(--rule);border-radius:4px;padding:1.5rem 1.2rem;line-height:0}
+  .ground img{width:100%;height:auto;display:block}
+
+  table{border-collapse:collapse;width:100%;min-width:40rem;background:var(--ground);font-size:var(--type-0)}
+  th,td{text-align:left;vertical-align:baseline;padding:.6rem .8rem;border-bottom:1px solid var(--rule)}
+  th{font-weight:var(--weight-strong);color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .scroll{max-width:52rem;border:1px solid var(--rule);border-radius:4px}
+  .pack{table-layout:fixed}
+  .pack thead th:nth-child(1){width:42%}
+  .pack thead th:nth-child(2){width:22%}
+  .pack td.num{white-space:normal}
+  .pack code{overflow-wrap:anywhere}
+  .pack tbody th{background:var(--ground);color:var(--ink)}
+  @media (max-width:40rem){
+    .pack{min-width:0;table-layout:auto}
+    .pack thead{display:none}
+    .pack tr{display:grid;grid-template-columns:1fr;border-bottom:1px solid var(--rule)}
+    .pack tr:last-child{border-bottom:none}
+    .pack td,.pack th{border-bottom:none;padding:.25rem .8rem}
+    .pack tbody th,.pack td:first-child{padding-top:.7rem}
+    .pack tbody th,.pack td:last-child{padding-bottom:.7rem}
+    .pack td.num{color:var(--muted)}
+  }
+  .go{display:inline-block;background:var(--sky);color:var(--ground);font-weight:var(--weight-strong);text-decoration:none;padding:.7rem 1.1rem;border-radius:3px}
+  .go:hover{filter:brightness(1.08)}
+
+  .notes{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem;max-width:44rem}
+  .notes li{font-size:var(--type-0);line-height:1.5;padding-left:1rem;position:relative;color:var(--ink)}
+  .notes li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:1px;background:var(--muted)}
+  .foot{color:var(--muted);font-size:var(--type-0);border-top:1px solid var(--rule);padding-top:1.2rem;max-width:44rem}
+</style>
+</head>
+<body>
+<main class="page wide">
+
+  <header>
+    <div class="crumb"><a href="../">Playhouse 395</a> &middot; For the program designer &middot; October 2026</div>
+    <h1>Matilda: everything for the program</h1>
+    <p class="sub">The program is a half-letter booklet: a letter sheet folded once, 5.5 &times; 8.5 in pages.
+    The cover is done. Everything below is what you need to lay out the inside pages so they match it and
+    the flyer: the files, the colours, the typeface and sizes, the title art, MTI&rsquo;s full logo pack for
+    anything else you make, and the rules from our license.</p>
+  </header>
+
+  <section id="cover">
+    <div class="sec-head">
+      <div class="secnum">01 &middot; The cover</div>
+      <h2>Finished, at trim size</h2>
+      <p>Place the cover as it is. It is cut to the page with no bleed, so it goes on the page edge to edge.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <span class="tag">Use this one</span>
+        <a href="files/matilda-program-cover-300dpi.png"><img src="files/matilda-program-cover-300dpi.png" alt="Program cover: Playhouse 395 presents, the Matilda key art with her silhouette and the white title, November 6 to 21, 2026, Bishop Union High School" width="1650" height="2550"></a>
+        <figcaption>
+          <b>The program cover, 5.5 &times; 8.5 in.</b>
+          <ul class="files">
+            <li><a href="files/matilda-program-cover-300dpi.png" download>Download the PNG</a> &middot; 1650 &times; 2550 px, 300 dpi, 1.2 MB. Place it on the cover page.</li>
+            <li><a href="files/matilda-program-cover.pdf" download>Download the PDF</a> &middot; one 5.5 &times; 8.5 in page, 453 KB. Print a test copy.</li>
+          </ul>
+        </figcaption>
+      </figure>
+      <figure>
+        <span class="tag no">Comparison only. Not for use.</span>
+        <a href="files/playbill-comparison-not-for-use.jpg"><img src="files/playbill-comparison-not-for-use.jpg" alt="Mock-up of the same art under a yellow Playbill masthead, for comparison only" width="1056" height="1632"></a>
+        <figcaption>
+          <b>What it would look like as a Playbill.</b>
+          <span>The PLAYBILL masthead is licensed only to programs built on Playbill&rsquo;s PLAYBILLDER site, so
+          it can&rsquo;t go on a program made anywhere else. It is here only to compare; 1056 &times; 1632 px.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="colours">
+    <div class="sec-head">
+      <div class="secnum">02 &middot; Colours</div>
+      <h2>Six colours, from the artwork</h2>
+      <p>The flyer and the cover use these and nothing else. The hex values go straight into InDesign or Canva.</p>
+    </div>
+    <div class="swatches exhibit">
+      <div class="swatch"><div class="chip" style="background:#000000"></div><div class="about"><span class="hex">#000000</span><span>Black</span><span class="use">The background. The key art&rsquo;s own ground, so the art blends into the page.</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#80d8fb"></div><div class="about"><span class="hex">#80D8FB</span><span>Title light blue</span><span class="use">Headings, labels, &ldquo;presents&rdquo;, day names. On black only.</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#ffffff"></div><div class="about"><span class="hex">#FFFFFF</span><span>White</span><span class="use">Main text on black: dates, times, venue, prices.</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#9fb4c8"></div><div class="about"><span class="hex">#9FB4C8</span><span>Muted blue-grey</span><span class="use">Fine print and credits on black.</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#335664"></div><div class="about"><span class="hex">#335664</span><span>Divider</span><span class="use">Thin rules between columns. Title light blue at 40% on black.</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#272054"></div><div class="about"><span class="hex">#272054</span><span>Navy</span><span class="use">The navy behind the title on the website. An accent that also works on white paper.</span></div></div>
+    </div>
+    <ul class="notes">
+      <li><b>On white pages, set text in black.</b> The light blue is too pale to read on white; use the navy
+        where a colour accent is wanted.</li>
+    </ul>
+  </section>
+
+  <section id="type">
+    <div class="sec-head">
+      <div class="secnum">03 &middot; Typeface and sizes</div>
+      <h2>Montserrat, in three weights</h2>
+      <p><a href="https://fonts.google.com/specimen/Montserrat">Montserrat is free from Google Fonts.</a> The
+      flyer and cover use Medium (500), SemiBold (600) and Bold (700), and nothing else. These are the sizes
+      they use.</p>
+    </div>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Size</th><th>Weight</th><th>Letter spacing</th><th>Case</th><th>Colour</th><th>Where</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&ldquo;Playhouse 395 presents&rdquo;</td><td class="num">15 pt</td><td>SemiBold</td><td class="num">0.32 em (320)</td><td>Caps</td><td>Light blue</td><td>Flyer</td></tr>
+          <tr><td>&ldquo;Playhouse 395 presents&rdquo;</td><td class="num">10 pt</td><td>SemiBold</td><td class="num">0.32 em (320)</td><td>Caps</td><td>Light blue</td><td>Cover</td></tr>
+          <tr><td>Date range</td><td class="num">12 pt</td><td>Bold</td><td class="num">0.18 em (180)</td><td>Caps</td><td>Light blue</td><td>Cover</td></tr>
+          <tr><td>Date numbers</td><td class="num">20 pt</td><td>Bold</td><td class="num">0</td><td>&ndash;</td><td>White</td><td>Flyer</td></tr>
+          <tr><td>Month heading</td><td class="num">10 pt</td><td>SemiBold</td><td class="num">0.5 em (500)</td><td>Caps</td><td>Light blue</td><td>Flyer</td></tr>
+          <tr><td>Venue</td><td class="num">11 pt</td><td>SemiBold</td><td class="num">0.14 em (140)</td><td>Caps</td><td>White</td><td>Flyer</td></tr>
+          <tr><td>Venue</td><td class="num">8.5 pt</td><td>SemiBold</td><td class="num">0.14 em (140)</td><td>Caps</td><td>White</td><td>Cover</td></tr>
+          <tr><td>Times</td><td class="num">11 pt</td><td>SemiBold</td><td class="num">0.04 em (40)</td><td>Caps</td><td>White</td><td>Flyer</td></tr>
+          <tr><td>Prices</td><td class="num">11 pt</td><td>SemiBold</td><td class="num">0.06 em (60)</td><td>As written</td><td>White</td><td>Flyer</td></tr>
+          <tr><td>Day names (FRI, SAT)</td><td class="num">9 pt</td><td>SemiBold</td><td class="num">0.18 em (180)</td><td>Caps</td><td>Light blue</td><td>Flyer</td></tr>
+          <tr><td>Small label (&ldquo;TICKETS&rdquo;)</td><td class="num">8 pt</td><td>Bold</td><td class="num">0.3 em (300)</td><td>Caps</td><td>Light blue</td><td>Flyer</td></tr>
+          <tr><td>Web address</td><td class="num">7 pt</td><td>SemiBold</td><td class="num">0</td><td>Lower case</td><td>White</td><td>Flyer</td></tr>
+          <tr><td>Fine print</td><td class="num">6 pt</td><td>Medium</td><td class="num">0.04 em (40)</td><td>As written</td><td>Muted</td><td>Flyer</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes">
+      <li><b>The number in brackets is the letter spacing in thousandths of an em:</b> what InDesign&rsquo;s
+        tracking field and Canva&rsquo;s letter spacing take.</li>
+      <li><b>The pattern:</b> small capitals get wide spacing; large numbers and running text get none.</li>
+      <li><b>Nothing on the flyer sets paragraphs,</b> so for bios and notes, Montserrat Medium at 9&ndash;10 pt
+        with no extra spacing stays in the same family.</li>
+    </ul>
+  </section>
+
+  <section id="title-art">
+    <div class="sec-head">
+      <div class="secnum">04 &middot; Title art</div>
+      <h2>The Matilda title for the inside pages</h2>
+      <p>The title comes in two versions, one for each ground. Each comes as a TIF for print and a PNG for
+      screens. Use the TIFs in the program: they are 300 dpi, sharp up to 7 in wide. The PNGs are screen
+      resolution and print soft.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <div class="ground exhibit" style="background:#000000"><img src="files/matilda-title-on-black-screen.png" alt="The Matilda title in white lettering with blue shading, on black" width="1000" height="367"></div>
+        <figcaption>
+          <b>On black.</b> White lettering, for black pages.
+          <ul class="files">
+            <li><a href="files/matilda-title-on-black-print.tif" download>Download the TIF, for print</a> &middot; CMYK, 2107 &times; 774 px, 300 dpi, 1.0 MB.</li>
+            <li><a href="files/matilda-title-on-black-screen.png" download>Download the PNG, not for print</a> &middot; transparent, 1000 &times; 367 px, 109 KB. For screens.</li>
+          </ul>
+        </figcaption>
+      </figure>
+      <figure>
+        <div class="ground exhibit" style="background:#ffffff"><img src="files/matilda-title-on-white-screen.png" alt="The Matilda title in black lettering with blue shading, on white" width="1000" height="367"></div>
+        <figcaption>
+          <b>On white.</b> Black lettering, for white pages.
+          <ul class="files">
+            <li><a href="files/matilda-title-on-white-print.tif" download>Download the TIF, for print</a> &middot; CMYK, 2107 &times; 774 px, 300 dpi, 1.3 MB.</li>
+            <li><a href="files/matilda-title-on-white-screen.png" download>Download the PNG, not for print</a> &middot; transparent, 1000 &times; 367 px, 122 KB. For screens.</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="logo-pack">
+    <div class="sec-head">
+      <div class="secnum">05 &middot; The full logo pack</div>
+      <h2>Everything MTI licensed to us, for whatever else you make</h2>
+      <p>The program needs only the files above. For anything else for this production (a poster, an ad, a
+      sign for the lobby), MTI&rsquo;s whole logo pack is in a Google Drive folder, in MTI&rsquo;s folders
+      and with MTI&rsquo;s file names. Jeff shares the folder with you, and the link opens once he has.</p>
+    </div>
+    <p><a class="go" href="https://drive.google.com/drive/folders/1E4k6tHbQDKWVQwJHNTFxPzOWzIxrkV4h">Open the logo pack on Google Drive &rarr;</a></p>
+    <div class="scroll">
+      <table class="pack">
+        <thead>
+          <tr><th>File</th><th>Size</th><th>Use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>^READ ME_Matilda_Style Guide.pdf</code></td><td class="num">1.5 MB</td><td>MTI&rsquo;s rules for the pack. Read it first; section 6 below sums it up.</td></tr>
+          <tr><th colspan="3">TIF: for print, 300 dpi</th></tr>
+          <tr><td><code>MATILDA TITLE_DARK BACKGROUNDS_4C.tif</code></td><td class="num">2107 &times; 774 px, 7.0 in wide</td><td>The title on black, in colour. The same file as the print TIF above.</td></tr>
+          <tr><td><code>MATILDA TITLE_LIGHT BACKGROUNDS_4C.tif</code></td><td class="num">2107 &times; 774 px, 7.0 in wide</td><td>The title on white, in colour. The same file as the print TIF above.</td></tr>
+          <tr><td><code>MATILDA TITLE_DARK BACKGROUNDS_GS.tif</code><br><code>MATILDA TITLE_LIGHT BACKGROUNDS_GS.tif</code></td><td class="num">2107 &times; 774 px, 7.0 in wide</td><td>The titles in grayscale, only for printing in black and white.</td></tr>
+          <tr><td><code>MATILDA_FULL ART_VERTICAL_VORTEX_4C.tif</code></td><td class="num">5906 &times; 7087 px, 19.7 &times; 23.6 in</td><td>The full key art, portrait: Matilda&rsquo;s silhouette and the white title on the vortex. The flyer and the cover are made from it.</td></tr>
+          <tr><td><code>MATILDA_FULL ART_HORIZONTAL_VORTEX_4C.tif</code></td><td class="num">9911 &times; 5065 px, 33.0 &times; 16.9 in</td><td>The full key art, landscape, for wide formats.</td></tr>
+          <tr><td><code>MATILDA_TITLE+SILHOUTTE_VERTICAL_4C.tif</code><br><code>MATILDA_TITLE+SILHOUTTE_HORIZONTAL_4C.tif</code></td><td class="num">5906 &times; 5360 px<br>5906 &times; 3405 px</td><td>The title with Matilda&rsquo;s silhouette, portrait and landscape.</td></tr>
+          <tr><td><code>MATILDA_TITLE+VORTEX_4C.tif</code></td><td class="num">5906 &times; 7087 px</td><td>The black-lettered title on the vortex, no silhouette.</td></tr>
+          <tr><td><code>MATILDA_XA_VORTEX_4C.tif</code></td><td class="num">5906 &times; 7087 px</td><td>The vortex with Matilda&rsquo;s silhouette and no title: a ground for the title on white.</td></tr>
+          <tr><td><code>MATILDA_XA_VORTEX_PLAIN_4C.tif</code></td><td class="num">5906 &times; 7087 px</td><td>The vortex alone: a ground for the title on white.</td></tr>
+          <tr><th colspan="3">EPS: for print, at any size</th></tr>
+          <tr><td><code>MATILDA_TITLE_DARK BACKGROUNDS_4C.eps, _GS.eps</code><br><code>MATILDA_TITLE_LIGHT BACKGROUNDS_4C.eps, _GS.eps</code></td><td class="num">1.4&ndash;1.7 MB each</td><td>The four titles as Illustrator vector files, which scale without going soft. The ^CS6 folder holds the same four saved for Illustrator CS6.</td></tr>
+          <tr><th colspan="3">JPG and PNG: for screens only</th></tr>
+          <tr><td><code>JPG/</code>, seven files</td><td class="num">1000 px wide</td><td>The titles and the art at screen size. They print soft.</td></tr>
+          <tr><td><code>PNG/</code>, four files</td><td class="num">1000 px wide</td><td>The two titles and the two title-and-silhouette pieces, transparent, at screen size. They print soft.</td></tr>
+          <tr><th colspan="3">PLAYBILLder &amp; Social</th></tr>
+          <tr><td><code>Matilda_PLAYBILLDER.jpg</code></td><td class="num">2120 &times; 2811 px</td><td>Only for a program built on PLAYBILLDER.com, so not for this one.</td></tr>
+          <tr><td><code>Matilda_Social_1080x1080.jpg</code><br><code>Matilda_Social_1080x1350.jpg</code></td><td class="num">1080 &times; 1080 px<br>1080 &times; 1350 px</td><td>Posts for Instagram and Facebook, as they are.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="rules">
+    <div class="sec-head">
+      <div class="secnum">06 &middot; Using the Matilda art</div>
+      <h2>The rules from our license with MTI</h2>
+    </div>
+    <ul class="notes">
+      <li><b>Use the title and key art exactly as supplied:</b> no recolouring, no stretching, nothing
+        cropped into the title, no rearranging the pieces.</li>
+      <li><b>For anything printed, use the print files</b>: the cover PNG and PDF above, and the pack&rsquo;s TIFs
+        and EPS files. The pack&rsquo;s JPGs and PNGs are for screens.</li>
+      <li><b>The vortex grounds (XA_VORTEX) go only with the title on white,</b> never with the title on black
+        or the grayscale titles, and the title is never larger than the vortex.</li>
+      <li><b>The silhouette keeps its size and place</b> in the vortex.</li>
+      <li><b>Grayscale files only when there is no other way,</b> and never in colour work.</li>
+      <li><b>Photos must be from this production.</b> Nothing from Broadway, the tour, the film or the book.</li>
+      <li><b>The license sets required author credits for the program&rsquo;s title page.</b> Ask Jeff for
+        the wording from the license before the title page is final.</li>
+      <li><b>The art is only for promoting our production:</b> programs, posters, ads and the like. Nothing
+        sold, no merchandise, and don&rsquo;t pass the files on or post them anywhere else. Any use the style guide
+        doesn&rsquo;t show needs MTI&rsquo;s written permission first.</li>
+    </ul>
+  </section>
+
+  <p class="foot">Questions or anything missing: tell Jeff.</p>
+
+</main>
+</body>
+</html>
