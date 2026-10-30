@@ -21,6 +21,10 @@ Decided with the owner on 2026-10-21 and 2026-10-22, when the pages shipped.
 - **Organised by what happens to data, not by app.** A common core (signing in), one section per
   shared service that handles people's data (payments, when it launches), and a line for an app
   only when it keeps personal data of its own beyond what it receives at sign-in.
+- **General before named.** A check first covers an app with a general section, stating what
+  any app of its kind keeps as a limit, and names an app only when it keeps something no general
+  section can say. A general section may say an app keeps more than a given app does; the owner
+  prefers that to a section per app (2026-10-30). It never says less.
 - **Templates never appear.** `snackbyte-base` and `snackbyte-npm-base` hold no one's data.
 - **Another organisation is responsible for its own people.** A school on its own nod tenant, or a
   client charging its customers through payments, needs its own privacy policy, and snackbyte a
