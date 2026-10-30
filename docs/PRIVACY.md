@@ -46,6 +46,12 @@ something new. A personal, Internal or Testing app never needs it.
 | 7. sends people messages (receipts, sign-in mail, newsletters)                   | what is sent and how to stop it; a newsletter brings consent rules          |
 | 8. is used by children or students                                               | usually the organisation's policy; perhaps an age line in the terms         |
 
+An app that signs in through nod and keeps nothing beyond the policy's "What an app keeps" (a
+session within 30 days, a sign-in for minutes, a record of first and last sign-in under the
+snackbyte id, sign-in cookies only, request logs for 30 days, all in Google Cloud) needs no change
+to the policy; the check records it under Checked. An app that keeps more gets a section of its
+own.
+
 If a row applies, file a request here (`ops request snackbyte-site "…"`) naming the row and the
 facts, before the app is public or the change ships. The page changes first; the policy promises
 so.
@@ -73,3 +79,7 @@ so.
   data. Rows 3 and 4 apply when it opens to other communities.
 - **2026-10-22, pxp-stripe-webhooks: not snackbyte's.** A client's magazine store; its buyers
   are the client's, covered by the client's privacy policy. Nothing here applies.
+- **2026-10-30, Concourse (snackbyte-ops-view, `concourse.snackbyte.io`): covered by "What an
+  app keeps", which this check added; not named.** Its sign-in page is public; only people on
+  its access list get in. Rows 1, 3 and 6 apply within that section's limits; row 4 is Google
+  Cloud alone. Its access list is the owner's own entries, not kept about anyone using it.

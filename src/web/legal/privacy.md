@@ -1,6 +1,6 @@
 # Privacy policy
 
-Last changed October 24, 2026.
+Last changed October 30, 2026.
 
 snackbyte is Snackbyte LLC, a California limited liability company. This policy covers this site, its short links at go.snackbyte.io, and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
 
@@ -54,6 +54,18 @@ Signing in sets two cookies: `__Host-session`, which keeps you signed in, and on
 ## What an app receives
 
 When you sign in to an app, it receives your snackbyte id, never your Google id, and which provider you used. It also receives your primary verified email address, your name and your picture; an app the tenant has not marked as its own asks you first.
+
+## What an app keeps
+
+An app you sign in to keeps only what it needs to let you in and keep you signed in:
+
+- **Your session,** under your snackbyte id, with the tokens nod gave it. A session ends within 30 days, and is deleted with its tokens.
+- **A sign-in,** while it happens or after the app turns it away, for minutes.
+- **A record of you,** under your snackbyte id: when you first signed in, and when you last did.
+
+It sets only the cookies that keep you signed in and carry a sign-in while it happens, and runs no tracking and no analytics. Its server logs each request, as this site's does, and Google Cloud deletes those logs after 30 days. All of it is held in Google Cloud, in the United States, and no one else receives it.
+
+An app that keeps more than this has a section of its own on this page.
 
 ## Where it is kept, and who sees it
 
