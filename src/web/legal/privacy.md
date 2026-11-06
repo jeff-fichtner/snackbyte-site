@@ -1,6 +1,6 @@
 # Privacy policy
 
-Last changed October 30, 2026.
+Last changed November 5, 2026.
 
 snackbyte is Snackbyte LLC, a California limited liability company. This policy covers this site, its short links at go.snackbyte.io, and the snackbyte products you sign in to with Google. It says what we keep, why, for how long, and who sees it.
 
@@ -37,19 +37,19 @@ For each organisation whose apps you sign in to, which we call a tenant, we keep
 - **Your email addresses,** each marked verified or not.
 - **Each sign-in:** your snackbyte id, the tenant, the app, the provider, your IP address, whether it worked, and when.
 
-While you sign in, we hold the sign-in's state, with its PKCE verifier encrypted. While you are signed in, we hold your session and its tokens. The sign-in servers also log each request, as this site's server does.
+While you sign in, we hold the sign-in's state, with its PKCE verifier encrypted. While you are signed in, we hold your session and its tokens. The sign-in servers also log each request, as this site's server does, and so does nod's landing page at nod.snackbyte.io.
 
 ## How long we keep it
 
 Your records have no set end. They are kept until you ask us to delete them.
 
-Each tenant is set to keep sign-in records for a year. The job that deletes older ones is not built yet, so until it is, sign-in records are not deleted.
+Each tenant is set to keep sign-in records for a year, and older ones are deleted twice a day.
 
-A sign-in in progress is held for minutes. A session and its tokens last as long as the session. The sign-in servers' request logs are deleted after 30 days.
+A sign-in in progress expires within an hour and is deleted within a day. A sign-in you start and do not finish leaves what Google sent about the account for fourteen days, then it is deleted. A sign-in you finish leaves its state, with your snackbyte id and the provider's id for your account, for fourteen days or as long as your session lasts, whichever is longer. A session and its tokens last as long as the session. The request logs of the sign-in servers and nod's landing page are deleted after 30 days.
 
 ## Cookies on the sign-in pages
 
-Signing in sets two cookies: `__Host-session`, which keeps you signed in, and one that carries a sign-in while it happens. Both are strictly necessary. The sign-in pages run no tracking and no analytics, and load nothing from any other site.
+Signing in sets `__Host-session`, which keeps you signed in, and two cookies that carry a sign-in while it happens, for up to an hour. Each of these comes with a second cookie holding its signature. Signing out sets `__Host-signed-out`, which makes your next sign-in ask which account to use, kept until that sign-in or for up to 400 days. All of them are strictly necessary. The sign-in pages run no tracking and no analytics, and load nothing from any other site.
 
 ## What an app receives
 
