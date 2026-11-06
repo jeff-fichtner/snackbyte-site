@@ -153,8 +153,20 @@ describe('the privacy policy', () => {
     expect(text).toMatch(/never your Google id/);
   });
 
-  it('says the deleting of old sign-in records is not built', () => {
-    expect(text).toMatch(/not built yet/);
+  it('says how long sign-in records and unfinished sign-ins are kept', () => {
+    expect(text).toMatch(/older ones are deleted twice a day/);
+    expect(text).toMatch(
+      /do not finish leaves what Google sent about the account for fourteen days/,
+    );
+  });
+
+  it('names the cookie a sign-out leaves, and how long it lasts', () => {
+    expect(source('privacy')).toContain('`__Host-signed-out`');
+    expect(text).toMatch(/up to 400 days/);
+  });
+
+  it('names the landing page among what logs requests', () => {
+    expect(text).toMatch(/nod's landing page/);
   });
 
   it('says what an app keeps as a limit, and that an app keeping more is named', () => {
