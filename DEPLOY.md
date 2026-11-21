@@ -509,7 +509,10 @@ Per new app `<app>`:
 3. **Artifact Registry** — images namespaced by service automatically.
 4. **Load balancer** — add a serverless NEG + backend + host-rule on the existing URL map; add one
    `A` record for the sub → same `<LB-IP>`. TLS is already covered by the wildcard cert (§5). **No
-   new LB, no new IP, no cert work, ~$0 added.**
+   new LB, no new IP, no cert work, ~$0 added.** The site is the URL map's default service and
+   answers only its own names (`src/hosts.ts`); any other name, including an app whose host-rule
+   is missing, gets the site's not-found page with 404. With the `*` records on both zones, a new
+   sub resolves before its `A` record exists, so the host-rule is what puts the app there.
 5. **Workflow** — copy `ci-cd.yml` and add the per-app `deploy` job (above), changing `_SERVICE`,
    the WIF principal, and the host.
 
