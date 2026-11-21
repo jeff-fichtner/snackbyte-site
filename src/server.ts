@@ -1,7 +1,8 @@
-import express, { type Express } from 'express';
+import express, { type Express, type Request, type Response } from 'express';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { PORT } from './config.js';
+import { isNotFoundAsset, servesHost } from './hosts.js';
 import { registerRoutes } from './routes/index.js';
 
 // The built frontend always lives in dist/ at the app root, regardless of whether
@@ -20,6 +21,19 @@ export function createApp(): Express {
   app.use((_req, res, next) => {
     if (process.env.APP_ENV === 'staging') res.set('X-Robots-Tag', 'noindex');
     next();
+  });
+
+  const notFound = (_req: Request, res: Response): void => {
+    res.status(404).sendFile('404.html', { root: distDir });
+  };
+  const files = express.static(distDir);
+
+  // A name the site does not serve gets the not-found page at every path, and the files that
+  // page loads, so a stray name never shows the homepage or anything else (see hosts.ts).
+  app.use((req, res, next) => {
+    if (servesHost(req.hostname)) return next();
+    if (isNotFoundAsset(req.path)) return files(req, res, () => notFound(req, res));
+    notFound(req, res);
   });
 
   registerRoutes(app);
@@ -42,15 +56,13 @@ export function createApp(): Express {
     });
   }
 
-  app.use(express.static(distDir));
+  app.use(files);
 
   // Anything not served above does not exist. This site has no client-side routing, so
   // answering a miss with the homepage would tell a visitor nothing and would let a
   // search engine index unlimited duplicates of it. Express 5 requires a named wildcard
   // rather than a bare "*".
-  app.get('/*splat', (_req, res) => {
-    res.status(404).sendFile('404.html', { root: distDir });
-  });
+  app.get('/*splat', notFound);
 
   return app;
 }
