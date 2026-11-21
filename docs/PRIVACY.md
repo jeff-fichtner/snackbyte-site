@@ -51,8 +51,9 @@ something new. A personal, Internal or Testing app never needs it.
 | 8. is used by children or students                                               | usually the organisation's policy; perhaps an age line in the terms         |
 
 An app that signs in through nod and keeps nothing beyond the policy's "What an app keeps" (a
-session within 30 days, a sign-in for minutes, a record of first and last sign-in under the
-snackbyte id, sign-in cookies only, request logs for 30 days, all in Google Cloud) needs no change
+session within 30 days, a sign-in for minutes, a record under the snackbyte id of first and last
+sign-in, the name the sign-in gave and choices made in the app, sign-in cookies only, request logs
+for 30 days, all in Google Cloud) needs no change
 to the policy; the check records it under Checked. An app that keeps more gets a section of its
 own.
 
@@ -87,3 +88,7 @@ so.
   app keeps", which this check added; not named.** Its sign-in page is public; only people on
   its access list get in. Rows 1, 3 and 6 apply within that section's limits; row 4 is Google
   Cloud alone. Its access list is the owner's own entries, not kept about anyone using it.
+- **2026-11-21, Concourse: still covered by "What an app keeps", which this check widened; not
+  named.** Concourse keeps the name Google gives at sign-in on the person's record, to show who
+  they are on its Settings page, and the colour theme they choose; never their email. The section's
+  record of you now says both, for any app.

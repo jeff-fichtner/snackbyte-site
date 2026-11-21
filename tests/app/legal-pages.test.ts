@@ -172,6 +172,8 @@ describe('the privacy policy', () => {
   it('says what an app keeps as a limit, and that an app keeping more is named', () => {
     const keeps = /^## What an app keeps$([\s\S]*?)(?=^## )/m.exec(source('privacy'))?.[1] ?? '';
     expect(keeps).toMatch(/ends within 30 days/);
+    expect(keeps).toMatch(/the name your latest sign-in gave, to show who you are/);
+    expect(keeps).toMatch(/choices you make in the app/);
     expect(keeps).toMatch(/no tracking and no analytics/);
     expect(keeps).toMatch(/no one else receives it/);
     expect(keeps).toMatch(/keeps more than this has a section of its own/);
